@@ -1,21 +1,20 @@
 package appeng.server.testplots;
 
-import static appeng.server.testplots.P2PPlotHelper.linkTunnels;
-import static appeng.server.testplots.P2PPlotHelper.placeTunnel;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEParts;
+import appeng.parts.AEBasePart;
+import appeng.server.testworld.PlotBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEParts;
-import appeng.parts.AEBasePart;
-import appeng.server.testworld.PlotBuilder;
+import java.util.ArrayList;
+import java.util.List;
+
+import static appeng.server.testplots.P2PPlotHelper.linkTunnels;
+import static appeng.server.testplots.P2PPlotHelper.placeTunnel;
 
 @TestPlotClass
 public class ItemP2PTestPlots {

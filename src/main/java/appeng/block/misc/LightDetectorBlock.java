@@ -18,9 +18,8 @@
 
 package appeng.block.misc;
 
-import java.util.EnumMap;
-import java.util.Map;
-
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.misc.LightDetectorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -42,8 +41,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.misc.LightDetectorBlockEntity;
+import java.util.EnumMap;
+import java.util.Map;
 
 public class LightDetectorBlock extends AEBaseEntityBlock<LightDetectorBlockEntity> {
 

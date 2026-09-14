@@ -18,10 +18,10 @@
 
 package appeng.block;
 
-import java.util.function.Consumer;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.orientation.IOrientableBlock;
+import appeng.api.orientation.IOrientationStrategy;
+import appeng.api.orientation.OrientationStrategies;
+import appeng.hooks.WrenchHook;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -39,11 +39,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.orientation.IOrientableBlock;
-import appeng.api.orientation.IOrientationStrategy;
-import appeng.api.orientation.OrientationStrategies;
-import appeng.hooks.WrenchHook;
+import java.util.function.Consumer;
 
 public abstract class AEBaseBlock extends Block implements IOrientableBlock {
 

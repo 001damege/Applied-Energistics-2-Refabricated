@@ -18,14 +18,14 @@
 
 package appeng.recipes.mattercannon;
 
-import java.util.List;
-import java.util.Objects;
-
+import appeng.core.AppEng;
+import appeng.core.definitions.AEItems;
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.MechanicsRecipe;
 import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -46,10 +46,8 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 
-import appeng.core.AppEng;
-import appeng.core.definitions.AEItems;
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.MechanicsRecipe;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Defines a type of ammo that can be used for the {@link appeng.items.tools.powered.MatterCannonItem}.

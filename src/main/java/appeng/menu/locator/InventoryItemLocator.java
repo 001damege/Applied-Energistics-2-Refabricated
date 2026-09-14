@@ -1,15 +1,13 @@
 package appeng.menu.locator;
 
-import java.util.Optional;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.implementations.menuobjects.IMenuItem;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.implementations.menuobjects.IMenuItem;
+import java.util.Optional;
 
 /**
  * Locates a menu host based on {@link IMenuItem} in the player inventory.

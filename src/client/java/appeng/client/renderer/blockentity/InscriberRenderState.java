@@ -1,9 +1,8 @@
 package appeng.client.renderer.blockentity;
 
+import appeng.api.orientation.BlockOrientation;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
-
-import appeng.api.orientation.BlockOrientation;
 
 public class InscriberRenderState extends BlockEntityRenderState {
     public BlockOrientation orientation;

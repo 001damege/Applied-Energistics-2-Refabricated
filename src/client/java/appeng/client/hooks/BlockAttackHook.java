@@ -1,5 +1,9 @@
 package appeng.client.hooks;
 
+import appeng.api.parts.IPartHost;
+import appeng.core.network.ServerboundPacket;
+import appeng.core.network.serverbound.PartLeftClickPacket;
+import appeng.util.InteractionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -9,11 +13,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
-import appeng.api.parts.IPartHost;
-import appeng.core.network.ServerboundPacket;
-import appeng.core.network.serverbound.PartLeftClickPacket;
-import appeng.util.InteractionUtil;
 
 /**
  * Handles the client->server interaction when a player left-clicks on an {@link appeng.api.parts.IPart} attached to a

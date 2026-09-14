@@ -1,11 +1,8 @@
 package appeng.client.render.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.client.render.AERenderTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.Camera;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.particle.ParticleGroup;
@@ -16,7 +13,8 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
 import net.minecraft.util.Mth;
 
-import appeng.client.render.AERenderTypes;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LightningFXGroup extends ParticleGroup<LightningFX> {
     public static ParticleRenderType GROUP = new ParticleRenderType("AE2_LIGHTNING");

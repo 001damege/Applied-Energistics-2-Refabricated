@@ -18,28 +18,18 @@
 
 package appeng.client.gui.style;
 
-import java.awt.event.ComponentAdapter;
-import java.lang.reflect.Type;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import com.google.gson.*;
 import com.mojang.serialization.JsonOps;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.chat.Style;
+import org.jetbrains.annotations.Nullable;
+
+import java.lang.reflect.Type;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A screen style document defines various visual aspects of AE2 screens.

@@ -18,15 +18,13 @@
 
 package appeng.util.helpers;
 
+import appeng.api.config.FuzzyMode;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.api.config.FuzzyMode;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A helper class for comparing {@link Item}, {@link ItemStack} or NBT

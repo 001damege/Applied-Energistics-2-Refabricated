@@ -1,12 +1,13 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.block.Blocks;
-
+import appeng.client.integrations.jei.widgets.View;
+import appeng.client.integrations.jei.widgets.Widget;
+import appeng.client.integrations.jei.widgets.WidgetFactory;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.localization.ItemModText;
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.transform.TransformRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -16,15 +17,12 @@ import mezz.jei.api.helpers.IPlatformFluidHelper;
 import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.Blocks;
 
-import appeng.client.integrations.jei.widgets.View;
-import appeng.client.integrations.jei.widgets.Widget;
-import appeng.client.integrations.jei.widgets.WidgetFactory;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.localization.ItemModText;
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.transform.TransformRecipe;
+import java.util.List;
 
 public class TransformCategory extends ViewBasedCategory<RecipeHolder<TransformRecipe>> {
 

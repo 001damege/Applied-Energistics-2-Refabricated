@@ -18,16 +18,6 @@
 
 package appeng.parts.automation;
 
-import java.util.List;
-
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.config.RedstoneMode;
 import appeng.api.config.Setting;
 import appeng.api.inventories.InternalInventory;
@@ -41,6 +31,14 @@ import appeng.api.util.IConfigManagerBuilder;
 import appeng.api.util.IConfigurableObject;
 import appeng.core.definitions.AEItems;
 import appeng.parts.AEBasePart;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class UpgradeablePart extends AEBasePart implements IConfigurableObject, IUpgradeableObject {
     private final IConfigManager config;

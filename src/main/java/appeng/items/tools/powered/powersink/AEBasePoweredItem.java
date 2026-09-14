@@ -18,9 +18,12 @@
 
 package appeng.items.tools.powered.powersink;
 
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
-
+import appeng.api.config.AccessRestriction;
+import appeng.api.config.Actionable;
+import appeng.api.ids.AEComponents;
+import appeng.api.implementations.items.IAEItemPowerStorage;
+import appeng.core.localization.Tooltips;
+import appeng.items.AEBaseItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.CreativeModeTab;
@@ -28,12 +31,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.Actionable;
-import appeng.api.ids.AEComponents;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.core.localization.Tooltips;
-import appeng.items.AEBaseItem;
+import java.util.function.Consumer;
+import java.util.function.DoubleSupplier;
 
 public abstract class AEBasePoweredItem extends AEBaseItem implements IAEItemPowerStorage {
     // Any energy capacity below this threshold will be clamped to zero

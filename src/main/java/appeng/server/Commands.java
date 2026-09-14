@@ -18,50 +18,37 @@
 
 package appeng.server;
 
+import appeng.server.services.compass.TestCompassCommand;
+import appeng.server.subcommands.*;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Locale;
 
-import net.minecraft.server.permissions.PermissionCheck;
-
-import appeng.server.services.compass.TestCompassCommand;
-import appeng.server.subcommands.ChannelModeCommand;
-import appeng.server.subcommands.ChunkLogger;
-import appeng.server.subcommands.GridsCommand;
-import appeng.server.subcommands.SetupTestWorldCommand;
-import appeng.server.subcommands.SpatialStorageCommand;
-import appeng.server.subcommands.TestMeteoritesCommand;
-import appeng.server.subcommands.TickMonitoring;
-
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum Commands {
     // Admin
-    CHUNK_LOGGER(net.minecraft.commands.Commands.LEVEL_OWNERS, "chunklogger", new ChunkLogger()),
-    SPATIAL(net.minecraft.commands.Commands.LEVEL_OWNERS, "spatial", new SpatialStorageCommand()),
-    CHANNEL_MODE(net.minecraft.commands.Commands.LEVEL_OWNERS, "channelmode", new ChannelModeCommand()),
-    TICK_MONITORING(net.minecraft.commands.Commands.LEVEL_OWNERS, "tickmonitor", new TickMonitoring()),
-    GRIDS(net.minecraft.commands.Commands.LEVEL_OWNERS, "grids", new GridsCommand()),
+    CHUNK_LOGGER(4, "chunklogger", new ChunkLogger()),
+    SPATIAL(4, "spatial", new SpatialStorageCommand()),
+    CHANNEL_MODE(4, "channelmode", new ChannelModeCommand()),
+    TICK_MONITORING(4, "tickmonitor", new TickMonitoring()),
+    GRIDS(4, "grids", new GridsCommand()),
 
     // Testing
-    COMPASS(net.minecraft.commands.Commands.LEVEL_OWNERS, "compass", new TestCompassCommand(), true),
-    TEST_METEORITES(net.minecraft.commands.Commands.LEVEL_OWNERS, "testmeteorites", new TestMeteoritesCommand(), true),
-    SETUP_TEST_WORLD(net.minecraft.commands.Commands.LEVEL_OWNERS, "setuptestworld", new SetupTestWorldCommand(), true);
+    COMPASS(4, "compass", new TestCompassCommand(), true),
+    TEST_METEORITES(4, "testmeteorites", new TestMeteoritesCommand(), true),
+    SETUP_TEST_WORLD(4, "setuptestworld", new SetupTestWorldCommand(), true);
 
-    public final PermissionCheck requiredPermission;
+    public final int level;
+    public final String literal;
     public final ISubCommand command;
     public final boolean test;
-    public final String literal;
 
-    Commands(PermissionCheck requiredPermission, String literal, ISubCommand w) {
-        this(requiredPermission, literal, w, false);
-    }
-
-    Commands(PermissionCheck requiredPermission, String literal, ISubCommand w, boolean test) {
-        this.requiredPermission = requiredPermission;
-        this.command = w;
-        this.test = test;
-        this.literal = literal;
+    Commands(int level, String literal, ISubCommand w) {
+        this(level, literal, w, false);
     }
 
     public String literal() {
         return literal.toLowerCase(Locale.ROOT);
     }
-
 }

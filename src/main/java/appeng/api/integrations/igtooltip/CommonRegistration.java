@@ -1,11 +1,9 @@
 package appeng.api.integrations.igtooltip;
 
-import org.jetbrains.annotations.ApiStatus;
-
+import appeng.api.integrations.igtooltip.providers.ServerDataProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntity;
-
-import appeng.api.integrations.igtooltip.providers.ServerDataProvider;
+import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Experimental
 @ApiStatus.NonExtendable

@@ -18,10 +18,9 @@
 
 package appeng.client.gui.widgets;
 
+import appeng.client.gui.style.ScreenStyle;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.input.KeyEvent;
-
-import appeng.client.gui.style.ScreenStyle;
 
 public class ConfirmableTextField extends AETextField {
 

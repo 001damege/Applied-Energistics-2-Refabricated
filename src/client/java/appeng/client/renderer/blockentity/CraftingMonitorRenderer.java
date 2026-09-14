@@ -18,10 +18,10 @@
 
 package appeng.client.renderer.blockentity;
 
+import appeng.api.stacks.AmountFormat;
+import appeng.blockentity.crafting.CraftingMonitorBlockEntity;
+import appeng.client.render.BlockEntityRenderHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -30,10 +30,7 @@ import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.api.stacks.AmountFormat;
-import appeng.blockentity.crafting.CraftingMonitorBlockEntity;
-import appeng.client.render.BlockEntityRenderHelper;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Renders the item currently being crafted

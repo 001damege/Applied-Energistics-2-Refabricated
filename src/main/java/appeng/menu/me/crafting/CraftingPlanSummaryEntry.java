@@ -18,11 +18,10 @@
 
 package appeng.menu.me.crafting;
 
-import java.util.Comparator;
-
+import appeng.api.stacks.AEKey;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 
-import appeng.api.stacks.AEKey;
+import java.util.Comparator;
 
 /**
  * Describes an entry in the crafting plan which describes how many items of one type are missing, already stored in the

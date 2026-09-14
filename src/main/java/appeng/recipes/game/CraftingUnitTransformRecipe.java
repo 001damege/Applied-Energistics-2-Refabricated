@@ -1,10 +1,9 @@
 package appeng.recipes.game;
 
-import java.util.List;
-
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.MechanicsRecipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -19,8 +18,7 @@ import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.block.Block;
 
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.MechanicsRecipe;
+import java.util.List;
 
 /**
  * Used to handle upgrading and removal of upgrades for crafting units (in-world).

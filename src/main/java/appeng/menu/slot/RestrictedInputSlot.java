@@ -18,12 +18,6 @@
 
 package appeng.menu.slot;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
 import appeng.api.crafting.PatternDetailsHelper;
 import appeng.api.features.GridLinkables;
 import appeng.api.features.IGridLinkableHandler;
@@ -41,6 +35,11 @@ import appeng.core.definitions.AEItems;
 import appeng.crafting.pattern.EncodedPatternItem;
 import appeng.util.Icon;
 import appeng.util.Platform;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 
 /**
  * @author AlgorithmX2

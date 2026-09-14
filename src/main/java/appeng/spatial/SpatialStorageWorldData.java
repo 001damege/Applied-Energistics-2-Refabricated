@@ -18,18 +18,15 @@
 
 package appeng.spatial;
 
-import java.util.List;
-
+import appeng.core.AppEng;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.saveddata.SavedData;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-
-import appeng.core.AppEng;
+import java.util.List;
 
 /**
  * Extra data attached to the spatial storage level.

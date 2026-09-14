@@ -18,18 +18,22 @@
 
 package appeng.items.parts;
 
+import appeng.api.ids.AEComponents;
+import appeng.api.ids.AETags;
+import appeng.api.implementations.items.IFacadeItem;
+import appeng.api.parts.IFacadePart;
+import appeng.api.parts.IPartHost;
+import appeng.api.parts.PartHelper;
+import appeng.facade.FacadePart;
+import appeng.items.AEBaseItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.Level;
@@ -39,15 +43,6 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 
-import appeng.api.ids.AEComponents;
-import appeng.api.ids.AETags;
-import appeng.api.implementations.items.IFacadeItem;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.PartHelper;
-import appeng.facade.FacadePart;
-import appeng.items.AEBaseItem;
-
 public class FacadeItem extends AEBaseItem implements IFacadeItem {
 
     public FacadeItem(Properties properties) {
@@ -55,7 +50,8 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
     }
 
     @Override
-    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
+    public InteractionResult useOn(UseOnContext context) {
+        var stack = context.getItemInHand();
         if (stack.getItem() != this) {
             return InteractionResult.PASS;
         }
@@ -81,11 +77,7 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
 
     public static boolean canPlaceFacade(IPartHost host, IFacadePart facade) {
         // Can only place a facade on cables if there's actually a cable at the center to hold them
-        if (host.getPart(null) == null) {
-            return false;
-        }
-
-        return host.getFacadeContainer().canAddFacade(facade);
+        return host.getPart(null) != null && host.getFacadeContainer().canAddFacade(facade);
     }
 
     private static boolean placeFacade(FacadePart facade, Level level, BlockPos blockPos) {
@@ -115,11 +107,7 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
     }
 
     public static IFacadePart createFacade(ItemStack held, Direction side) {
-        if (held.getItem() instanceof IFacadeItem) {
-            return ((IFacadeItem) held.getItem()).createPartFromItemStack(held, side);
-        }
-
-        return null;
+        return held.getItem() instanceof IFacadeItem ? ((IFacadeItem) held.getItem()).createPartFromItemStack(held, side) : null;
     }
 
     @Override
@@ -129,10 +117,7 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
             if (!in.isEmpty()) {
                 return super.getName(is).copy().append(" - ").append(in.getHoverName());
             }
-        } catch (Throwable ignored) {
-
-        }
-
+        } catch (Throwable ignored) {}
         return super.getName(is);
     }
 
@@ -142,8 +127,7 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
     }
 
     public ItemStack createFacadeForItem(ItemStack itemStack, boolean returnItem) {
-        if (itemStack.isEmpty() || !itemStack.getComponentsPatch().isEmpty()
-                || !(itemStack.getItem() instanceof BlockItem blockItem)) {
+        if (itemStack.isEmpty() || !itemStack.getComponentsPatch().isEmpty() || !(itemStack.getItem() instanceof BlockItem blockItem)) {
             return ItemStack.EMPTY;
         }
 
@@ -164,51 +148,29 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
         final boolean isBlockEntityAllowed = !isBlockEntity || isWhiteListed;
         final boolean isBlockAllowed = isFullCube || isWhiteListed;
 
-        if (isModel && isBlockEntityAllowed && isBlockAllowed) {
-            if (returnItem) {
-                return itemStack;
-            }
-
-            return createFacadeForItemUnchecked(itemStack);
-        }
-        return ItemStack.EMPTY;
+        return isModel && isBlockEntityAllowed && isBlockAllowed ? returnItem ? itemStack : createFacadeForItemUnchecked(itemStack) : ItemStack.EMPTY;
     }
 
     public ItemStack createFacadeForItemUnchecked(ItemStack itemStack) {
         var is = new ItemStack(this);
-        is.set(AEComponents.FACADE_ITEM, itemStack.typeHolder());
+        is.set(AEComponents.FACADE_ITEM, itemStack.getItem().builtInRegistryHolder());
         return is;
-    }
-
-    public ItemStackTemplate createFacadeTemplate(Holder<Item> item) {
-        return new ItemStackTemplate(this, DataComponentPatch.builder()
-                .set(AEComponents.FACADE_ITEM, item)
-                .build());
     }
 
     @Override
     public FacadePart createPartFromItemStack(ItemStack is, Direction side) {
         final ItemStack in = this.getTextureItem(is);
-        if (!in.isEmpty()) {
-            return new FacadePart(getTextureBlockState(is), side);
-        }
-        return null;
+        return !in.isEmpty() ? new FacadePart(getTextureBlockState(is), side) : null;
     }
 
     @Override
     public ItemStack getTextureItem(ItemStack is) {
         var baseItem = is.get(AEComponents.FACADE_ITEM);
-
-        if (baseItem == null) {
-            return ItemStack.EMPTY;
-        }
-
-        return new ItemStack(baseItem, 1);
+        return baseItem == null ? ItemStack.EMPTY : new ItemStack(baseItem, 1);
     }
 
     @Override
     public BlockState getTextureBlockState(ItemStack is) {
-
         ItemStack baseItemStack = this.getTextureItem(is);
 
         if (baseItemStack.isEmpty()) {
@@ -216,11 +178,6 @@ public class FacadeItem extends AEBaseItem implements IFacadeItem {
         }
 
         Block block = Block.byItem(baseItemStack.getItem());
-
-        if (block == Blocks.AIR) {
-            return Blocks.GLASS.defaultBlockState();
-        }
-
-        return block.defaultBlockState();
+        return block == Blocks.AIR ? Blocks.GLASS.defaultBlockState() : block.defaultBlockState();
     }
 }

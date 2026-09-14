@@ -1,15 +1,13 @@
 package appeng.menu.locator;
 
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.api.implementations.menuobjects.IMenuItem;
+import appeng.api.implementations.menuobjects.ItemMenuHost;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
-
-import appeng.api.implementations.menuobjects.IMenuItem;
-import appeng.api.implementations.menuobjects.ItemMenuHost;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A locator for stacks of items that implement {@link appeng.api.implementations.menuobjects.IMenuItem}. This allows

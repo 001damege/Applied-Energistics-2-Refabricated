@@ -18,21 +18,19 @@
 
 package appeng.api.networking;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.util.BootstrapMinecraft;
+import net.minecraft.world.level.Level;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
 
-import net.minecraft.world.level.Level;
+import java.util.ArrayList;
+import java.util.List;
 
-import appeng.util.BootstrapMinecraft;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @MockitoSettings
 @BootstrapMinecraft

@@ -1,10 +1,8 @@
 package appeng.api.upgrades;
 
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.level.ItemLike;
-
 import appeng.util.inv.AppEngInternalInventory;
+import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.Nullable;
 
 class MachineUpgradeInventory extends UpgradeInventory {
     @Nullable

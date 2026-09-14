@@ -18,31 +18,13 @@
 
 package appeng.items.contents;
 
-import java.util.Objects;
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
-
-import com.google.common.base.Preconditions;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
+import appeng.api.config.*;
 import appeng.api.features.HotkeyAction;
 import appeng.api.implementations.menuobjects.IPortableTerminal;
 import appeng.api.implementations.menuobjects.ItemMenuHost;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AEKeyType;
-import appeng.api.storage.ILinkStatus;
-import appeng.api.storage.MEStorage;
-import appeng.api.storage.StorageCells;
-import appeng.api.storage.StorageHelper;
-import appeng.api.storage.SupplierStorage;
+import appeng.api.storage.*;
 import appeng.api.storage.cells.IBasicCellItem;
 import appeng.api.util.IConfigManager;
 import appeng.core.localization.GuiText;
@@ -50,6 +32,13 @@ import appeng.items.tools.powered.AbstractPortableCell;
 import appeng.me.helpers.PlayerSource;
 import appeng.menu.ISubMenu;
 import appeng.menu.locator.ItemMenuHostLocator;
+import com.google.common.base.Preconditions;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.Objects;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 /**
  * Hosts the terminal interface for a {@link AbstractPortableCell}.
@@ -118,12 +107,7 @@ public class PortableCellMenuHost<T extends AbstractPortableCell> extends ItemMe
     @Override
     public double extractAEPower(double amt, Actionable mode, PowerMultiplier usePowerMultiplier) {
         amt = usePowerMultiplier.multiply(amt);
-
-        if (mode == Actionable.SIMULATE) {
-            return usePowerMultiplier.divide(Math.min(amt, this.item.getAECurrentPower(getItemStack())));
-        }
-
-        return usePowerMultiplier.divide(this.item.extractAEPower(getItemStack(), amt, Actionable.MODULATE));
+        return mode == Actionable.SIMULATE ? usePowerMultiplier.divide(Math.min(amt, this.item.getAECurrentPower(getItemStack()))) : usePowerMultiplier.divide(this.item.extractAEPower(getItemStack(), amt, Actionable.MODULATE));
     }
 
     @Override
@@ -154,7 +138,6 @@ public class PortableCellMenuHost<T extends AbstractPortableCell> extends ItemMe
                 return HotkeyAction.PORTABLE_FLUID_CELL;
             }
         }
-
         return null; // We don't know
     }
 

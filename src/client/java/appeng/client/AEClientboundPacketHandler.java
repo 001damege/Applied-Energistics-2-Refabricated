@@ -1,18 +1,27 @@
 package appeng.client;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.api.util.IConfigurableObject;
+import appeng.blockentity.crafting.MolecularAssemblerAnimationStatus;
+import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
+import appeng.client.gui.me.common.PendingCraftingJobs;
+import appeng.client.gui.me.common.PinnedKeys;
+import appeng.client.gui.me.crafting.CraftingCPUScreen;
+import appeng.client.gui.me.networktool.NetworkStatusScreen;
+import appeng.client.gui.me.patternaccess.PatternAccessTermScreen;
+import appeng.core.AEConfig;
+import appeng.core.AELog;
+import appeng.core.AppEng;
+import appeng.core.network.ClientboundPacket;
+import appeng.core.network.bidirectional.ConfigValuePacket;
+import appeng.core.network.clientbound.*;
+import appeng.core.particles.EnergyParticleData;
+import appeng.core.particles.ParticleTypes;
+import appeng.hooks.CompassManager;
+import appeng.menu.AEBaseMenu;
+import appeng.menu.guisync.LinkStatusAwareMenu;
+import appeng.menu.me.common.MEStorageMenu;
+import appeng.menu.me.crafting.CraftConfirmMenu;
 import io.netty.buffer.Unpooled;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -34,42 +43,16 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.client.network.event.RegisterClientPayloadHandlersEvent;
 import net.neoforged.neoforge.common.SoundActions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.api.util.IConfigurableObject;
-import appeng.blockentity.crafting.MolecularAssemblerAnimationStatus;
-import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
-import appeng.client.gui.me.common.PendingCraftingJobs;
-import appeng.client.gui.me.common.PinnedKeys;
-import appeng.client.gui.me.crafting.CraftingCPUScreen;
-import appeng.client.gui.me.networktool.NetworkStatusScreen;
-import appeng.client.gui.me.patternaccess.PatternAccessTermScreen;
-import appeng.core.AELog;
-import appeng.core.AppEng;
-import appeng.core.network.ClientboundPacket;
-import appeng.core.network.bidirectional.ConfigValuePacket;
-import appeng.core.network.clientbound.BlockTransitionEffectPacket;
-import appeng.core.network.clientbound.ClearPatternAccessTerminalPacket;
-import appeng.core.network.clientbound.CompassResponsePacket;
-import appeng.core.network.clientbound.CraftConfirmPlanPacket;
-import appeng.core.network.clientbound.CraftingJobStatusPacket;
-import appeng.core.network.clientbound.CraftingStatusPacket;
-import appeng.core.network.clientbound.ExportedGridContent;
-import appeng.core.network.clientbound.GuiDataSyncPacket;
-import appeng.core.network.clientbound.ItemTransitionEffectPacket;
-import appeng.core.network.clientbound.MEInventoryUpdatePacket;
-import appeng.core.network.clientbound.MatterCannonPacket;
-import appeng.core.network.clientbound.MockExplosionPacket;
-import appeng.core.network.clientbound.MolecularAssemblerAnimationPacket;
-import appeng.core.network.clientbound.NetworkStatusPacket;
-import appeng.core.network.clientbound.PatternAccessTerminalPacket;
-import appeng.core.network.clientbound.SetLinkStatusPacket;
-import appeng.core.particles.EnergyParticleData;
-import appeng.core.particles.ParticleTypes;
-import appeng.hooks.CompassManager;
-import appeng.menu.AEBaseMenu;
-import appeng.menu.guisync.LinkStatusAwareMenu;
-import appeng.menu.me.common.MEStorageMenu;
-import appeng.menu.me.crafting.CraftConfirmMenu;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AEClientboundPacketHandler {
     public void handleGuiDataSyncPacket(GuiDataSyncPacket packet, Minecraft minecraft, Player player) {

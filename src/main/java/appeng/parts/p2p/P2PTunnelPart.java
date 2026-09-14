@@ -18,23 +18,6 @@
 
 package appeng.parts.p2p;
 
-import java.util.List;
-import java.util.stream.Stream;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.model.data.ModelData;
-import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
 import appeng.api.config.PowerUnit;
@@ -49,6 +32,7 @@ import appeng.api.parts.IPartCollisionHelper;
 import appeng.api.parts.IPartItem;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.util.AECableType;
+import appeng.core.AEConfig;
 import appeng.items.tools.MemoryCardItem;
 import appeng.me.service.P2PService;
 import appeng.parts.AEBasePart;
@@ -56,6 +40,21 @@ import appeng.parts.automation.PartModelData;
 import appeng.util.InteractionUtil;
 import appeng.util.Platform;
 import appeng.util.SettingsFrom;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.model.data.ModelData;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 public abstract class P2PTunnelPart<T extends P2PTunnelPart<T>> extends AEBasePart {
     private boolean output;

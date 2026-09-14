@@ -18,13 +18,15 @@
 
 package appeng.server.services.compass;
 
+import lombok.RequiredArgsConstructor;
+
+import java.io.Serial;
+
+@RequiredArgsConstructor
 public class CompassException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = 8825268683203860877L;
 
     private final Throwable inner;
-
-    public CompassException(Throwable t) {
-        this.inner = t;
-    }
 }

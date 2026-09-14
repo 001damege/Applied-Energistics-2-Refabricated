@@ -18,49 +18,22 @@
 
 package appeng.client.gui.widgets;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.config.*;
+import appeng.client.gui.AEBaseScreen;
+import appeng.core.definitions.AEParts;
+import appeng.core.localization.ButtonToolTips;
+import appeng.util.EnumCycler;
+import appeng.util.Icon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.CondenserOutput;
-import appeng.api.config.CpuSelectionMode;
-import appeng.api.config.FullnessMode;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.InscriberInputCapacity;
-import appeng.api.config.LockCraftingMode;
-import appeng.api.config.OperationMode;
-import appeng.api.config.PowerUnit;
-import appeng.api.config.RedstoneMode;
-import appeng.api.config.RelativeDirection;
-import appeng.api.config.SchedulingMode;
-import appeng.api.config.Setting;
-import appeng.api.config.Settings;
-import appeng.api.config.ShowPatternProviders;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.StorageFilter;
-import appeng.api.config.TerminalStyle;
-import appeng.api.config.ViewItems;
-import appeng.api.config.YesNo;
-import appeng.client.gui.AEBaseScreen;
-import appeng.core.definitions.AEParts;
-import appeng.core.localization.ButtonToolTips;
-import appeng.util.EnumCycler;
-import appeng.util.Icon;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class SettingToggleButton<T extends Enum<T>> extends IconButton {
     private static Map<EnumPair<?>, ButtonAppearance> appearances;

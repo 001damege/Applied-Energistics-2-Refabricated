@@ -18,14 +18,13 @@
 
 package appeng.hooks.ticking;
 
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
-
+import appeng.me.Grid;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 
-import appeng.me.Grid;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * A class to hold data related to ticking networks.

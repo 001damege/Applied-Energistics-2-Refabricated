@@ -18,11 +18,6 @@
 
 package appeng.menu.implementations;
 
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.MenuType;
-
 import appeng.api.config.Settings;
 import appeng.api.util.IConfigManager;
 import appeng.helpers.InterfaceLogicHost;
@@ -30,6 +25,10 @@ import appeng.menu.SlotSemantics;
 import appeng.menu.guisync.ClientActionKey;
 import appeng.menu.slot.AppEngSlot;
 import appeng.menu.slot.FakeSlot;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.MenuType;
 
 /**
  * @see appeng.client.gui.implementations.InterfaceScreen

@@ -18,68 +18,12 @@
 
 package appeng.core.definitions;
 
-import static appeng.block.AEBaseBlock.defaultProps;
-import static appeng.block.AEBaseBlock.glassProps;
-import static appeng.block.AEBaseBlock.metalProps;
-import static appeng.block.AEBaseBlock.stoneProps;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.block.state.BlockBehaviour.StateArgumentPredicate;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
 import appeng.api.ids.AEBlockIds;
 import appeng.block.AEBaseBlock;
 import appeng.block.AEBaseBlockItem;
-import appeng.block.crafting.CraftingBlockItem;
-import appeng.block.crafting.CraftingMonitorBlock;
-import appeng.block.crafting.CraftingUnitBlock;
-import appeng.block.crafting.CraftingUnitType;
-import appeng.block.crafting.MolecularAssemblerBlock;
-import appeng.block.crafting.PatternProviderBlock;
-import appeng.block.misc.CellWorkbenchBlock;
-import appeng.block.misc.ChargerBlock;
-import appeng.block.misc.CondenserBlock;
-import appeng.block.misc.CrankBlock;
-import appeng.block.misc.GrowthAcceleratorBlock;
-import appeng.block.misc.InscriberBlock;
-import appeng.block.misc.InterfaceBlock;
-import appeng.block.misc.LightDetectorBlock;
-import appeng.block.misc.MysteriousCubeBlock;
-import appeng.block.misc.QuartzFixtureBlock;
-import appeng.block.misc.TinyTNTBlock;
-import appeng.block.misc.VibrationChamberBlock;
-import appeng.block.networking.CableBusBlock;
-import appeng.block.networking.ControllerBlock;
-import appeng.block.networking.CreativeEnergyCellBlock;
-import appeng.block.networking.CrystalResonanceGeneratorBlock;
-import appeng.block.networking.EnergyAcceptorBlock;
-import appeng.block.networking.EnergyCellBlock;
-import appeng.block.networking.EnergyCellBlockItem;
-import appeng.block.networking.WirelessAccessPointBlock;
+import appeng.block.crafting.*;
+import appeng.block.misc.*;
+import appeng.block.networking.*;
 import appeng.block.paint.PaintSplotchesBlock;
 import appeng.block.qnb.QuantumLinkChamberBlock;
 import appeng.block.qnb.QuantumRingBlock;
@@ -87,11 +31,7 @@ import appeng.block.spatial.MatrixFrameBlock;
 import appeng.block.spatial.SpatialAnchorBlock;
 import appeng.block.spatial.SpatialIOPortBlock;
 import appeng.block.spatial.SpatialPylonBlock;
-import appeng.block.storage.DriveBlock;
-import appeng.block.storage.IOPortBlock;
-import appeng.block.storage.MEChestBlock;
-import appeng.block.storage.SkyStoneChestBlock;
-import appeng.block.storage.SkyStoneTankBlock;
+import appeng.block.storage.*;
 import appeng.core.AppEng;
 import appeng.core.MainCreativeTab;
 import appeng.debug.CubeGeneratorBlock;
@@ -99,18 +39,32 @@ import appeng.debug.EnergyGeneratorBlock;
 import appeng.debug.ItemGenBlock;
 import appeng.debug.PhantomNodeBlock;
 import appeng.decorative.AEDecorativeBlock;
-import appeng.decorative.solid.BuddingCertusQuartzBlock;
-import appeng.decorative.solid.CertusQuartzClusterBlock;
-import appeng.decorative.solid.NotSoMysteriousCubeBlock;
-import appeng.decorative.solid.QuartzGlassBlock;
-import appeng.decorative.solid.QuartzLampBlock;
+import appeng.decorative.solid.*;
+import com.google.common.base.Preconditions;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.BlockBehaviour.StateArgumentPredicate;
+import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
+import static appeng.block.AEBaseBlock.*;
 
 /**
  * Internal implementation for the API blocks
  */
 public final class AEBlocks {
-    public static final DeferredRegister.Blocks DR = DeferredRegister.createBlocks(AppEng.MOD_ID);
-
     private static final List<BlockDefinition<?>> BLOCKS = new ArrayList<>();
     private static final StateArgumentPredicate<EntityType<?>> NEVER_ALLOW_SPAWN = (p1, p2, p3,
             p4) -> false;

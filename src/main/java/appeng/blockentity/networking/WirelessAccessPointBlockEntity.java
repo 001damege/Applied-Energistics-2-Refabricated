@@ -18,16 +18,6 @@
 
 package appeng.blockentity.networking;
 
-import java.util.EnumSet;
-import java.util.Set;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-
 import appeng.api.implementations.IPowerChannelState;
 import appeng.api.implementations.blockentities.IWirelessAccessPoint;
 import appeng.api.inventories.InternalInventory;
@@ -39,9 +29,19 @@ import appeng.api.orientation.RelativeSide;
 import appeng.api.util.AECableType;
 import appeng.api.util.DimensionalBlockPos;
 import appeng.blockentity.grid.AENetworkedInvBlockEntity;
+import appeng.core.AEConfig;
 import appeng.core.definitions.AEItems;
 import appeng.util.inv.AppEngInternalInventory;
 import appeng.util.inv.filter.AEItemDefinitionFilter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 public class WirelessAccessPointBlockEntity extends AENetworkedInvBlockEntity
         implements IWirelessAccessPoint, IPowerChannelState {

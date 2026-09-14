@@ -1,23 +1,21 @@
 package appeng.client.integrations.jei;
 
-import java.util.Arrays;
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.types.IRecipeType;
-
 import appeng.client.integrations.jei.widgets.View;
 import appeng.client.integrations.jei.widgets.Widget;
 import appeng.client.integrations.jei.widgets.WidgetFactory;
 import appeng.core.AppEng;
 import appeng.core.definitions.AEParts;
 import appeng.core.localization.ItemModText;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class AttunementCategory extends ViewBasedCategory<AttunementDisplay> {
 

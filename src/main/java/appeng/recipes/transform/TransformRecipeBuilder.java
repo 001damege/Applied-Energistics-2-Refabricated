@@ -1,7 +1,5 @@
 package appeng.recipes.transform;
 
-import java.util.Collections;
-
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -10,6 +8,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+
+import java.util.Collections;
 
 public class TransformRecipeBuilder {
 

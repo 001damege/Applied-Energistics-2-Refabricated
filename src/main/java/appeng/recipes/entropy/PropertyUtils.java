@@ -18,15 +18,14 @@
 
 package appeng.recipes.entropy;
 
-import java.util.Map;
-import java.util.Objects;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.StateHolder;
 import net.minecraft.world.level.block.state.properties.Property;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Map;
+import java.util.Objects;
 
 final class PropertyUtils {
     private static final Logger LOG = LoggerFactory.getLogger(PropertyUtils.class);

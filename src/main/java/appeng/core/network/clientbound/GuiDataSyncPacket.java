@@ -1,16 +1,14 @@
 
 package appeng.core.network.clientbound;
 
-import java.util.function.Consumer;
-
+import appeng.core.network.ClientboundPacket;
+import appeng.core.network.CustomAppEngPayload;
 import io.netty.buffer.Unpooled;
-
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
-import appeng.core.network.ClientboundPacket;
-import appeng.core.network.CustomAppEngPayload;
+import java.util.function.Consumer;
 
 /**
  * This packet is used to synchronize menu-fields from server to client.

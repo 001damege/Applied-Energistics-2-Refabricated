@@ -1,17 +1,15 @@
 package appeng.client.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
-
+import appeng.api.util.AEColor;
+import appeng.client.api.model.parts.PartModel;
+import appeng.client.render.CubeBuilder;
+import appeng.core.AppEng;
+import appeng.parts.automation.PartModelData;
+import appeng.util.Platform;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -25,13 +23,13 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.client.model.quad.QuadTransforms;
 import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.util.AEColor;
-import appeng.client.api.model.parts.PartModel;
-import appeng.client.render.CubeBuilder;
-import appeng.core.AppEng;
-import appeng.parts.automation.PartModelData;
-import appeng.util.Platform;
+import javax.naming.spi.Resolver;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public final class P2PFrequencyPartModel implements PartModel {
     private static final Material TEXTURE = new Material(AppEng.makeId("part/p2p_tunnel_frequency"));

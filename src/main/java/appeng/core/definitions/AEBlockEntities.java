@@ -18,21 +18,6 @@
 
 package appeng.core.definitions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-
-import com.google.common.base.Preconditions;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.AEBaseBlockEntity;
 import appeng.blockentity.ClientTickingBlockEntity;
@@ -41,38 +26,31 @@ import appeng.blockentity.crafting.CraftingBlockEntity;
 import appeng.blockentity.crafting.CraftingMonitorBlockEntity;
 import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
 import appeng.blockentity.crafting.PatternProviderBlockEntity;
-import appeng.blockentity.misc.CellWorkbenchBlockEntity;
-import appeng.blockentity.misc.ChargerBlockEntity;
-import appeng.blockentity.misc.CondenserBlockEntity;
-import appeng.blockentity.misc.CrankBlockEntity;
-import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;
-import appeng.blockentity.misc.InscriberBlockEntity;
-import appeng.blockentity.misc.InterfaceBlockEntity;
-import appeng.blockentity.misc.LightDetectorBlockEntity;
-import appeng.blockentity.misc.MysteriousCubeBlockEntity;
-import appeng.blockentity.misc.PaintSplotchesBlockEntity;
-import appeng.blockentity.misc.VibrationChamberBlockEntity;
-import appeng.blockentity.networking.CableBusBlockEntity;
-import appeng.blockentity.networking.ControllerBlockEntity;
-import appeng.blockentity.networking.CreativeEnergyCellBlockEntity;
-import appeng.blockentity.networking.CrystalResonanceGeneratorBlockEntity;
-import appeng.blockentity.networking.EnergyAcceptorBlockEntity;
-import appeng.blockentity.networking.EnergyCellBlockEntity;
-import appeng.blockentity.networking.WirelessAccessPointBlockEntity;
+import appeng.blockentity.misc.*;
+import appeng.blockentity.networking.*;
 import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
 import appeng.blockentity.spatial.SpatialAnchorBlockEntity;
 import appeng.blockentity.spatial.SpatialIOPortBlockEntity;
 import appeng.blockentity.spatial.SpatialPylonBlockEntity;
-import appeng.blockentity.storage.DriveBlockEntity;
-import appeng.blockentity.storage.IOPortBlockEntity;
-import appeng.blockentity.storage.MEChestBlockEntity;
-import appeng.blockentity.storage.SkyStoneChestBlockEntity;
-import appeng.blockentity.storage.SkyStoneTankBlockEntity;
+import appeng.blockentity.storage.*;
 import appeng.core.AppEng;
 import appeng.debug.CubeGeneratorBlockEntity;
 import appeng.debug.EnergyGeneratorBlockEntity;
 import appeng.debug.ItemGenBlockEntity;
 import appeng.debug.PhantomNodeBlockEntity;
+import com.google.common.base.Preconditions;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class AEBlockEntities {
     private static final List<DeferredBlockEntityType<?>> BLOCK_ENTITY_TYPES = new ArrayList<>();

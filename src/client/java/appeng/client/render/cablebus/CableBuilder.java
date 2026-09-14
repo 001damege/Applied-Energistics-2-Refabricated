@@ -18,22 +18,21 @@
 
 package appeng.client.render.cablebus;
 
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Locale;
-import java.util.function.Consumer;
-
+import appeng.api.util.AECableType;
+import appeng.api.util.AEColor;
+import appeng.block.networking.CableCoreType;
+import appeng.client.render.CubeBuilder;
+import appeng.core.AppEng;
 import net.minecraft.client.resources.model.ModelDebugName;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.client.resources.model.sprite.MaterialBaker;
 import net.minecraft.core.Direction;
 
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.block.networking.CableCoreType;
-import appeng.client.render.CubeBuilder;
-import appeng.core.AppEng;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.function.Consumer;
 
 /**
  * A helper class that builds quads for cable connections.

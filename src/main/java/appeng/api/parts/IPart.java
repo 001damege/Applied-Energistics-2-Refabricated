@@ -23,19 +23,16 @@
 
 package appeng.api.parts;
 
-import java.util.List;
-import java.util.Set;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.networking.IGridNode;
+import appeng.api.networking.IManagedGridNode;
+import appeng.api.util.AECableType;
+import appeng.util.SettingsFrom;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Clearable;
@@ -48,11 +45,12 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IManagedGridNode;
-import appeng.api.util.AECableType;
-import appeng.util.SettingsFrom;
+import java.util.List;
+import java.util.Set;
 
 public interface IPart extends ICustomCableConnection, Clearable {
     List<Direction> ATTACHMENT_POINTS = List.of(Direction.values());

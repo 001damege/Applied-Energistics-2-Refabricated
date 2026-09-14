@@ -1,12 +1,11 @@
 package appeng.client.integrations.jei.widgets;
 
-import java.util.List;
-
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import java.util.List;
 
 public interface View {
     default void createWidgets(WidgetFactory factory, List<Widget> widgets) {

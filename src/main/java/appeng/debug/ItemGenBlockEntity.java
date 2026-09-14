@@ -18,9 +18,9 @@
 
 package appeng.debug;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
+import appeng.blockentity.AEBaseBlockEntity;
+import appeng.util.inv.AppEngInternalInventory;
+import appeng.util.inv.InternalInventoryHost;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
@@ -33,9 +33,8 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 
-import appeng.blockentity.AEBaseBlockEntity;
-import appeng.util.inv.AppEngInternalInventory;
-import appeng.util.inv.InternalInventoryHost;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class ItemGenBlockEntity extends AEBaseBlockEntity implements InternalInventoryHost {
 

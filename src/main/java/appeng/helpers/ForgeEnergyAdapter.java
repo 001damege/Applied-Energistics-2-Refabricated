@@ -18,15 +18,14 @@
 
 package appeng.helpers;
 
-import net.neoforged.neoforge.transfer.TransferPreconditions;
-import net.neoforged.neoforge.transfer.energy.EnergyHandler;
-import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerUnit;
 import appeng.blockentity.powersink.IExternalPowerSink;
 import appeng.me.energy.StoredEnergyAmount;
+import net.neoforged.neoforge.transfer.TransferPreconditions;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
 /**
  * Adapts an {@link IExternalPowerSink} to {@link EnergyHandler}, for accepting FE.

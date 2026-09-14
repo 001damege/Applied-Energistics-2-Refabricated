@@ -1,23 +1,5 @@
 package appeng.client.guidebook;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.material.Fluids;
-
-import guideme.siteexport.RecipeExporter;
-import guideme.siteexport.ResourceExporter;
-
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.items.tools.powered.MatterCannonItem;
@@ -27,6 +9,17 @@ import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.mattercannon.MatterCannonAmmo;
 import appeng.recipes.transform.TransformRecipe;
+import guideme.siteexport.RecipeExporter;
+import guideme.siteexport.ResourceExporter;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 public class AERecipeExporter implements RecipeExporter {
     @Override

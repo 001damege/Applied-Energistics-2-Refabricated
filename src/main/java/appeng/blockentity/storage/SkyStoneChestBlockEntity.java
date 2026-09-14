@@ -18,6 +18,11 @@
 
 package appeng.blockentity.storage;
 
+import appeng.api.inventories.InternalInventory;
+import appeng.blockentity.AEBaseInvBlockEntity;
+import appeng.blockentity.ClientTickingBlockEntity;
+import appeng.menu.implementations.SkyStonechestMenu;
+import appeng.util.inv.AppEngInternalInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -32,12 +37,6 @@ import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-
-import appeng.api.inventories.InternalInventory;
-import appeng.blockentity.AEBaseInvBlockEntity;
-import appeng.blockentity.ClientTickingBlockEntity;
-import appeng.menu.implementations.SkyStonechestMenu;
-import appeng.util.inv.AppEngInternalInventory;
 
 @SuppressWarnings("JavadocReference")
 public class SkyStoneChestBlockEntity extends AEBaseInvBlockEntity implements ClientTickingBlockEntity, LidBlockEntity {

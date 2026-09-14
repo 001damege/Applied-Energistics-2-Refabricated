@@ -1,28 +1,5 @@
 package appeng.api.ids;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import net.minecraft.core.Registry;
-
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.item.component.ItemContainerContents;
-
 import appeng.api.components.ExportedUpgrades;
 import appeng.api.config.FuzzyMode;
 import appeng.api.implementations.items.MemoryCardColors;
@@ -37,6 +14,26 @@ import appeng.crafting.pattern.EncodedProcessingPattern;
 import appeng.crafting.pattern.EncodedSmithingTablePattern;
 import appeng.crafting.pattern.EncodedStonecuttingPattern;
 import appeng.items.storage.SpatialPlotInfo;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.ItemContainerContents;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AEComponents {

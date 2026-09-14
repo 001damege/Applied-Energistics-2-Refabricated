@@ -18,11 +18,6 @@
 
 package appeng.client.render.crafting;
 
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.model.data.ModelData;
-
 import appeng.api.orientation.IOrientationStrategy;
 import appeng.api.orientation.RelativeSide;
 import appeng.api.util.AEColor;
@@ -30,6 +25,10 @@ import appeng.block.crafting.CraftingMonitorBlock;
 import appeng.blockentity.crafting.CraftingMonitorModelData;
 import appeng.client.render.CubeBuilder;
 import appeng.client.render.MaterialUtil;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.model.data.ModelData;
 
 /**
  * The baked model for the crafting monitor. Please note that this model doesn't handle the item being displayed. That

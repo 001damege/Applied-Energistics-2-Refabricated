@@ -18,23 +18,21 @@
 
 package appeng.client.render.cablebus;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-
+import appeng.api.parts.IPart;
+import appeng.api.parts.IPartItem;
+import appeng.api.util.AECableType;
+import appeng.api.util.AEColor;
+import appeng.block.networking.CableBusRenderState;
+import appeng.block.networking.CableCoreType;
+import appeng.client.AppEngClient;
+import appeng.client.api.model.parts.PartModel;
+import appeng.client.model.FacingModelState;
+import appeng.core.AppEng;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.Weigher;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
@@ -50,17 +48,12 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartItem;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.block.networking.CableBusRenderState;
-import appeng.block.networking.CableCoreType;
-import appeng.client.AppEngClient;
-import appeng.client.api.model.parts.PartModel;
-import appeng.client.model.FacingModelState;
-import appeng.core.AppEng;
+import javax.naming.spi.Resolver;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 
 /**
  * The built-in model for the cable bus block.

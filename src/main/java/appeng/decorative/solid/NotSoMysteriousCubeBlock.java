@@ -1,16 +1,15 @@
 package appeng.decorative.solid;
 
-import java.util.function.Consumer;
-
+import appeng.block.misc.MysteriousCubeBlock;
+import appeng.core.localization.GuiText;
+import appeng.core.localization.Tooltips;
+import appeng.decorative.AEDecorativeBlock;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
-import appeng.block.misc.MysteriousCubeBlock;
-import appeng.core.localization.GuiText;
-import appeng.core.localization.Tooltips;
-import appeng.decorative.AEDecorativeBlock;
+import java.util.function.Consumer;
 
 public class NotSoMysteriousCubeBlock extends AEDecorativeBlock {
     public NotSoMysteriousCubeBlock(Properties p) {

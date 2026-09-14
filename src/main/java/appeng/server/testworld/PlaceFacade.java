@@ -1,18 +1,16 @@
 package appeng.server.testworld;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.parts.PartHelper;
+import appeng.core.definitions.AEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.parts.PartHelper;
-import appeng.core.definitions.AEItems;
+import java.util.Objects;
 
 record PlaceFacade(BoundingBox bb, ItemStack visual, @Nullable Direction side) implements BlockPlacingBuildAction {
     @Override

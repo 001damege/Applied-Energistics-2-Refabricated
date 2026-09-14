@@ -1,17 +1,16 @@
 package appeng.server.testworld;
 
-import java.util.function.Consumer;
-
+import appeng.api.parts.IPart;
+import appeng.api.parts.PartHelper;
+import appeng.core.definitions.ItemDefinition;
+import appeng.items.parts.PartItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
-import appeng.api.parts.IPart;
-import appeng.api.parts.PartHelper;
-import appeng.core.definitions.ItemDefinition;
-import appeng.items.parts.PartItem;
+import java.util.function.Consumer;
 
 public record PartCustomizer<T extends IPart>(BoundingBox bb,
         Direction side,

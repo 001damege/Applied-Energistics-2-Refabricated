@@ -1,10 +1,9 @@
 package appeng.client.renderer.part;
 
-import net.minecraft.util.FormattedCharSequence;
-
 import appeng.api.orientation.BlockOrientation;
 import appeng.client.api.AEKeyRenderState;
 import appeng.client.api.renderer.parts.PartDynamicRenderState;
+import net.minecraft.util.FormattedCharSequence;
 
 public class MonitorRenderState extends PartDynamicRenderState {
     public BlockOrientation orientation;

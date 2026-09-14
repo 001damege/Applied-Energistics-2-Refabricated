@@ -18,26 +18,6 @@
 
 package appeng.blockentity.spatial;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import com.google.common.collect.Multiset;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.common.world.chunk.ForcedChunkManager;
-
 import appeng.api.config.Setting;
 import appeng.api.config.Settings;
 import appeng.api.config.YesNo;
@@ -50,16 +30,30 @@ import appeng.api.networking.events.statistics.GridChunkEvent.GridChunkRemoved;
 import appeng.api.networking.ticking.IGridTickable;
 import appeng.api.networking.ticking.TickRateModulation;
 import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.DimensionalBlockPos;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigurableObject;
+import appeng.api.util.*;
 import appeng.blockentity.grid.AENetworkedBlockEntity;
 import appeng.core.areaoverlay.AreaOverlayManager;
 import appeng.core.areaoverlay.IAreaOverlayDataSource;
 import appeng.me.service.StatisticsService;
 import appeng.server.services.ChunkLoadingService;
+import com.google.common.collect.Multiset;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.common.world.chunk.ForcedChunkManager;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SpatialAnchorBlockEntity extends AENetworkedBlockEntity
         implements IGridTickable, IConfigurableObject, IAreaOverlayDataSource {

@@ -1,11 +1,10 @@
 
 package appeng.core.network.clientbound;
 
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
 import appeng.core.network.ClientboundPacket;
 import appeng.core.network.CustomAppEngPayload;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 /**
  * Clears all data from the pattern access terminal before a full reset.

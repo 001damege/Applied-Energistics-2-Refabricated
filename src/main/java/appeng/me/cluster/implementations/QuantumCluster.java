@@ -18,17 +18,6 @@
 
 package appeng.me.cluster.implementations;
 
-import java.util.Iterator;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.level.LevelEvent;
-
 import appeng.api.features.Locatables;
 import appeng.api.networking.GridHelper;
 import appeng.api.networking.IGridNode;
@@ -39,6 +28,15 @@ import appeng.me.cluster.IAECluster;
 import appeng.me.cluster.MBCalculator;
 import appeng.me.service.helpers.ConnectionWrapper;
 import appeng.util.iterators.ChainedIterator;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.LevelEvent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Iterator;
 
 public class QuantumCluster implements IAECluster, IActionHost {
 

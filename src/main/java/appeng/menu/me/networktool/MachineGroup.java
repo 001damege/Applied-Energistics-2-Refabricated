@@ -18,12 +18,11 @@
 
 package appeng.menu.me.networktool;
 
-import java.util.Comparator;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-
 import appeng.api.networking.IGridNode;
 import appeng.api.stacks.AEItemKey;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+
+import java.util.Comparator;
 
 /**
  * Represents the status of machines grouped by their {@linkplain IGridNode#getVisualRepresentation() item

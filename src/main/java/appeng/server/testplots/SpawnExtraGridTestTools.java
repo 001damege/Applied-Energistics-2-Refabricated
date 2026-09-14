@@ -1,10 +1,9 @@
 package appeng.server.testplots;
 
-import net.minecraft.resources.Identifier;
-import net.neoforged.bus.api.Event;
-
 import appeng.api.inventories.InternalInventory;
 import appeng.api.networking.IGrid;
+import net.minecraft.resources.Identifier;
+import net.neoforged.bus.api.Event;
 
 /**
  * Triggered to spawn additional testing tools into a container placed next to a spawned AE2 grid.

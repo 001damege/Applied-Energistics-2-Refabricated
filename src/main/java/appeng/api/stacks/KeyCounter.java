@@ -23,22 +23,14 @@
 
 package appeng.api.stacks;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
+import appeng.api.config.FuzzyMode;
 import com.google.common.collect.Iterators;
-
-import org.jetbrains.annotations.Nullable;
-
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.config.FuzzyMode;
+import java.util.*;
 
 /**
  * Associates a generic value of type T with AE keys and makes key/value pairs searchable with fuzzy mode semantics.

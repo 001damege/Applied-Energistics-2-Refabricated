@@ -18,11 +18,10 @@
 
 package appeng.block.storage;
 
+import appeng.blockentity.AEModelData;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.model.data.ModelProperty;
-
-import appeng.blockentity.AEModelData;
 
 public final class DriveModelData {
     public final static ModelProperty<Item[]> STATE = new ModelProperty<>();

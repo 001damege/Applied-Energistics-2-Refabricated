@@ -1,10 +1,9 @@
 package appeng.client.integrations.jei;
 
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
+import appeng.core.AppEng;
+import appeng.core.definitions.AEBlocks;
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.handlers.InscriberRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -15,11 +14,10 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-
-import appeng.core.AppEng;
-import appeng.core.definitions.AEBlocks;
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.handlers.InscriberRecipe;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 class InscriberRecipeCategory implements IRecipeCategory<RecipeHolder<InscriberRecipe>> {
 

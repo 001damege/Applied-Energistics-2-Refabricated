@@ -18,18 +18,17 @@
 
 package appeng.core.stats;
 
-import net.minecraft.resources.Identifier;
+import appeng.core.AppEng;
+import lombok.Getter;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
-import appeng.core.AppEng;
-
 public enum AeStats {
-
     ItemsInserted("items_inserted"),
-
     ItemsExtracted("items_extracted");
 
-    private final Identifier registryName;
+    @Getter
+    private final ResourceLocation registryName;
 
     AeStats(String id) {
         this.registryName = AppEng.makeId(id);
@@ -38,9 +37,4 @@ public enum AeStats {
     public void addToPlayer(Player player, int howMany) {
         player.awardStat(this.registryName, howMany);
     }
-
-    public Identifier getRegistryName() {
-        return registryName;
-    }
-
 }

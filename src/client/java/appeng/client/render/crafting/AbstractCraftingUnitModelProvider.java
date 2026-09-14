@@ -1,9 +1,8 @@
 package appeng.client.render.crafting;
 
+import appeng.block.crafting.ICraftingUnitType;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.resources.model.sprite.MaterialBaker;
-
-import appeng.block.crafting.ICraftingUnitType;
 
 /**
  * Provides material and model information for custom crafting CPU blocks for use with {@link CraftingCubeModel}.

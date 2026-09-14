@@ -1,24 +1,5 @@
 package appeng.crafting.execution;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertSame;
-
-import java.util.ArrayList;
-
-import com.mojang.serialization.JsonOps;
-
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
-
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.GenericStack;
@@ -27,6 +8,19 @@ import appeng.items.misc.WrappedGenericStack;
 import appeng.util.BootstrapMinecraft;
 import appeng.util.CodecTestUtil;
 import appeng.util.RecursiveTagReplace;
+import com.mojang.serialization.JsonOps;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluids;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @BootstrapMinecraft
 class GenericStackTest {

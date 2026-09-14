@@ -18,9 +18,9 @@
 
 package appeng.worldgen.meteorite;
 
-import java.util.List;
-import java.util.stream.Stream;
-
+import appeng.core.AEConfig;
+import appeng.core.definitions.AEBlocks;
+import appeng.worldgen.meteorite.fallout.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.core.Direction;
@@ -38,12 +38,8 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.worldgen.meteorite.fallout.Fallout;
-import appeng.worldgen.meteorite.fallout.FalloutCopy;
-import appeng.worldgen.meteorite.fallout.FalloutMode;
-import appeng.worldgen.meteorite.fallout.FalloutSand;
-import appeng.worldgen.meteorite.fallout.FalloutSnow;
+import java.util.List;
+import java.util.stream.Stream;
 
 public final class MeteoritePlacer {
     public static void place(LevelAccessor level, PlacedMeteoriteSettings settings, BoundingBox boundingBox,

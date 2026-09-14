@@ -1,17 +1,11 @@
 package appeng.client.gui.me.common;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
+import appeng.api.stacks.AEKey;
 import com.google.common.collect.ImmutableSet;
-
 import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.AEKey;
+import java.time.Instant;
+import java.util.*;
 
 public final class PinnedKeys {
     // One rows worth of keys

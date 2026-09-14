@@ -18,23 +18,18 @@
 
 package appeng.items.parts;
 
-import java.util.function.Function;
-
 import appeng.api.parts.IPart;
 import appeng.api.util.AEColor;
+import lombok.Getter;
+
+import java.util.function.Function;
 
 public class ColoredPartItem<T extends IPart> extends PartItem<T> {
-
+    @Getter
     private final AEColor color;
 
-    public ColoredPartItem(Properties properties, Class<T> partClass, Function<ColoredPartItem<T>, T> factory,
-            AEColor color) {
+    public ColoredPartItem(Properties properties, Class<T> partClass, Function<ColoredPartItem<T>, T> factory, AEColor color) {
         super(properties, partClass, item -> factory.apply((ColoredPartItem<T>) item));
         this.color = color;
     }
-
-    public AEColor getColor() {
-        return color;
-    }
-
 }

@@ -18,12 +18,13 @@
 
 package appeng.menu.implementations;
 
-import java.util.function.Function;
-
+import appeng.core.AppEng;
+import appeng.init.InitMenuTypes;
+import appeng.menu.AEBaseMenu;
+import appeng.menu.MenuOpener;
+import appeng.menu.locator.MenuHostLocator;
+import appeng.menu.locator.MenuLocators;
 import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -37,13 +38,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.core.AppEng;
-import appeng.init.InitMenuTypes;
-import appeng.menu.AEBaseMenu;
-import appeng.menu.MenuOpener;
-import appeng.menu.locator.MenuHostLocator;
-import appeng.menu.locator.MenuLocators;
+import java.util.function.Function;
 
 /**
  * Builder that allows creation of menu types which can be opened from multiple types of hosts.

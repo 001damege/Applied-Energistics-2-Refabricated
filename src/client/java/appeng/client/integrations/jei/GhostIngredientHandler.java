@@ -1,27 +1,24 @@
 package appeng.client.integrations.jei;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.handlers.IGhostIngredientHandler;
-import mezz.jei.api.ingredients.IIngredientType;
-import mezz.jei.api.ingredients.ITypedIngredient;
-
 import appeng.api.stacks.GenericStack;
 import appeng.client.gui.AEBaseScreen;
 import appeng.core.network.serverbound.InventoryActionPacket;
 import appeng.helpers.InventoryAction;
 import appeng.menu.slot.AppEngSlot;
 import appeng.menu.slot.FakeSlot;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.handlers.IGhostIngredientHandler;
+import mezz.jei.api.ingredients.IIngredientType;
+import mezz.jei.api.ingredients.ITypedIngredient;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * JEI allows ingredients to be dragged from a JEI panel onto compatible slots to set filters and the like without

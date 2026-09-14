@@ -1,16 +1,10 @@
 package appeng.recipes.transform;
 
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-
+import appeng.core.AppEng;
+import appeng.recipes.AERecipeTypes;
 import com.google.common.collect.Lists;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.HolderSet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -26,12 +20,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.registries.holdersets.OrHolderSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-
-import appeng.core.AppEng;
-import appeng.recipes.AERecipeTypes;
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 
 public final class TransformLogic {
     private static final Logger LOG = LoggerFactory.getLogger(TransformLogic.class);

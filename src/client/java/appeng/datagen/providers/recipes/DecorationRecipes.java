@@ -18,8 +18,10 @@
 
 package appeng.datagen.providers.recipes;
 
-import static appeng.datagen.providers.recipes.RecipeCriteria.criterionName;
-
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.BlockDefinition;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -28,10 +30,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.BlockDefinition;
+import static appeng.datagen.providers.recipes.RecipeCriteria.criterionName;
 
 public class DecorationRecipes extends AE2RecipeProvider {
 

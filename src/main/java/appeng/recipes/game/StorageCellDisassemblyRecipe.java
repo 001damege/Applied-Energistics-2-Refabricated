@@ -1,10 +1,9 @@
 package appeng.recipes.game;
 
-import java.util.List;
-
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.MechanicsRecipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -17,8 +16,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.MechanicsRecipe;
+import java.util.List;
 
 /**
  * Used to handle disassembly of the (Portable) Storage Cells.

@@ -18,11 +18,10 @@
 
 package appeng.hooks;
 
+import appeng.core.definitions.AEBlocks;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ToolMaterial;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-
-import appeng.core.definitions.AEBlocks;
 
 /**
  * This hook is intended to essentially make sky stone blocks found in meteorites minable with iron tools while

@@ -1,21 +1,18 @@
 package appeng.hotkeys;
 
-import static appeng.api.features.HotkeyAction.PORTABLE_FLUID_CELL;
-import static appeng.api.features.HotkeyAction.PORTABLE_ITEM_CELL;
-import static appeng.api.features.HotkeyAction.WIRELESS_TERMINAL;
+import appeng.api.features.HotkeyAction;
+import appeng.core.AppEng;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.ItemDefinition;
+import appeng.items.tools.powered.AbstractPortableCell;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.minecraft.world.level.ItemLike;
-
-import appeng.api.features.HotkeyAction;
-import appeng.core.AppEng;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.ItemDefinition;
-import appeng.items.tools.powered.AbstractPortableCell;
+import static appeng.api.features.HotkeyAction.*;
 
 /**
  * Registry of {@link HotkeyAction}

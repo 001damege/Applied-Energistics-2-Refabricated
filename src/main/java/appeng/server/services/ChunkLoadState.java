@@ -1,77 +1,76 @@
 package appeng.server.services;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
+import appeng.core.AppEng;
+import appeng.core.worlddata.AESavedData;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.LongArrayTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.saveddata.SavedData;
 
-import appeng.core.AppEng;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Implementation detail of {@link ChunkLoadingService} on Fabric, as {@code ForgeChunkManager} is not available there.
  */
-class ChunkLoadState extends SavedData {
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+class ChunkLoadState extends AESavedData {
 
-    private record ForcedChunk(int cx, int cz, List<BlockPos> blocks) {
-        public static final Codec<ForcedChunk> CODEC = RecordCodecBuilder.create(builder -> builder.group(
-                Codec.INT.fieldOf("cx").forGetter(ForcedChunk::cx),
-                Codec.INT.fieldOf("cz").forGetter(ForcedChunk::cz),
-                BlockPos.CODEC.listOf().fieldOf("blocks").forGetter(ForcedChunk::blocks))
-                .apply(builder, ForcedChunk::new));
-    }
-
-    private static final SavedDataType<ChunkLoadState> TYPE = new SavedDataType<>(
-            AppEng.makeId("chunk_load_state"),
-            ChunkLoadState::new,
-            level -> RecordCodecBuilder.create(builder -> builder.group(
-                    ForcedChunk.CODEC.listOf().fieldOf("forcedChunks").forGetter(ChunkLoadState::getForcedChunks))
-                    .apply(builder, data -> new ChunkLoadState(level, data))));
+    public static final String NAME = AppEng.MOD_ID + "_chunk_load_state";
 
     public static ChunkLoadState get(ServerLevel level) {
-        return level.getDataStorage().computeIfAbsent(TYPE);
+        return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(() -> new ChunkLoadState(level), (tag, provider) -> new ChunkLoadState(level, tag), null), NAME);
     }
 
     private final ServerLevel level;
     private final Long2ObjectMap<Set<BlockPos>> forceLoadedChunks = new Long2ObjectOpenHashMap<>();
 
-    private ChunkLoadState(ServerLevel level) {
-        this.level = level;
-    }
-
-    private ChunkLoadState(ServerLevel level, List<ForcedChunk> forcedChunks) {
+    private ChunkLoadState(ServerLevel level, CompoundTag tag) {
         this(level);
+        var forcedChunks = tag.getList("forcedChunks", Tag.TAG_COMPOUND);
+        for (int i = 0; i < forcedChunks.size(); ++i) {
+            var forcedChunk = forcedChunks.getCompound(i);
+            var chunkPos = new ChunkPos(forcedChunk.getInt("cx"), forcedChunk.getInt("cz"));
 
-        for (var forcedChunk : forcedChunks) {
-            var chunkPos = new ChunkPos(forcedChunk.cx, forcedChunk.cz);
-            var blockSet = new HashSet<>(forcedChunk.blocks);
-            forceLoadedChunks.put(chunkPos.pack(), blockSet);
+            var blockSet = new HashSet<BlockPos>();
+            for (long blockPos : forcedChunk.getLongArray("blocks")) {
+                blockSet.add(BlockPos.of(blockPos));
+            }
+
+            forceLoadedChunks.put(chunkPos.toLong(), blockSet);
         }
     }
 
-    private List<ForcedChunk> getForcedChunks() {
-        var result = new ArrayList<ForcedChunk>(forceLoadedChunks.size());
+    @Override
+    public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
+        var forcedChunks = new ListTag();
         for (var entry : forceLoadedChunks.long2ObjectEntrySet()) {
-            var cx = ChunkPos.getX(entry.getLongKey());
-            var cz = ChunkPos.getZ(entry.getLongKey());
-            result.add(new ForcedChunk(cx, cz, List.copyOf(entry.getValue())));
+            var chunkPos = new ChunkPos(entry.getLongKey());
+
+            var forcedChunk = new CompoundTag();
+            forcedChunk.putInt("cx", chunkPos.x);
+            forcedChunk.putInt("cz", chunkPos.z);
+
+            var list = new LongArrayTag(entry.getValue().stream().map(BlockPos::asLong).toList());
+            forcedChunk.put("blocks", list);
+
+            forcedChunks.add(forcedChunk);
         }
-        return result;
+        tag.put("forcedChunks", forcedChunks);
+        return tag;
     }
 
     /**
@@ -79,23 +78,22 @@ class ChunkLoadState extends SavedData {
      * @param sourcePos Source of the chunk load request.
      */
     public void forceChunk(ChunkPos chunkPos, BlockPos sourcePos) {
-        long chunk = chunkPos.pack();
+        long chunk = chunkPos.toLong();
         forceLoadedChunks.computeIfAbsent(chunk, pos -> new HashSet<>()).add(sourcePos.immutable());
-
-        level.setChunkForced(chunkPos.x(), chunkPos.z(), true);
+        level.setChunkForced(chunkPos.x, chunkPos.z, true);
         setDirty();
     }
 
     public void releaseChunk(ChunkPos chunkPos, BlockPos sourcePos) {
-        var map = forceLoadedChunks.get(chunkPos.pack());
+        var map = forceLoadedChunks.get(chunkPos.toLong());
         if (map == null) {
             return;
         }
 
         map.remove(sourcePos);
         if (map.isEmpty()) {
-            forceLoadedChunks.remove(chunkPos.pack());
-            level.setChunkForced(chunkPos.x(), chunkPos.z(), false);
+            forceLoadedChunks.remove(chunkPos.toLong());
+            level.setChunkForced(chunkPos.x, chunkPos.z, false);
         }
         setDirty();
     }
@@ -108,7 +106,7 @@ class ChunkLoadState extends SavedData {
                 .toArray();
 
         for (var chunk : relevantChunks) {
-            releaseChunk(ChunkPos.unpack(chunk), sourcePos);
+            releaseChunk(new ChunkPos(chunk), sourcePos);
         }
     }
 
@@ -123,6 +121,6 @@ class ChunkLoadState extends SavedData {
     }
 
     public boolean isForceLoaded(int cx, int cz) {
-        return forceLoadedChunks.containsKey(ChunkPos.pack(cx, cz));
+        return forceLoadedChunks.containsKey(ChunkPos.asLong(cx, cz));
     }
 }

@@ -23,10 +23,9 @@
 
 package appeng.api.storage;
 
-import org.jetbrains.annotations.Nullable;
-
 import appeng.api.upgrades.IUpgradeableObject;
 import appeng.api.util.IConfigurableObject;
+import org.jetbrains.annotations.Nullable;
 
 public interface ITerminalHost extends IUpgradeableObject, IConfigurableObject, ISubMenuHost {
     /**

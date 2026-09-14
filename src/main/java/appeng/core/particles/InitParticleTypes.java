@@ -18,16 +18,14 @@
 
 package appeng.core.particles;
 
+import appeng.core.AppEng;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 
-import appeng.core.AppEng;
-
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class InitParticleTypes {
-
-    private InitParticleTypes() {
-    }
-
     public static void init(Registry<ParticleType<?>> registry) {
         register(registry, ParticleTypes.CRAFTING, "crafting");
         register(registry, ParticleTypes.ENERGY, "energy_fx");
@@ -40,5 +38,4 @@ public final class InitParticleTypes {
     private static void register(Registry<ParticleType<?>> registry, ParticleType<?> type, String name) {
         Registry.register(registry, AppEng.makeId(name), type);
     }
-
 }

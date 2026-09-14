@@ -18,21 +18,18 @@
 
 package appeng.client.render;
 
+import appeng.api.util.AEColor;
+import appeng.api.util.AEColorVariant;
+import appeng.core.AppEng;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.api.util.AEColor;
-import appeng.api.util.AEColorVariant;
-import appeng.core.AppEng;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Returns the shades of a single AE color for tint indices 0, 1, and 2.

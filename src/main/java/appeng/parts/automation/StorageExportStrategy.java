@@ -1,20 +1,18 @@
 package appeng.parts.automation;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.api.behaviors.StackExportStrategy;
+import appeng.api.behaviors.StackTransferContext;
+import appeng.api.config.Actionable;
+import appeng.api.stacks.AEKey;
+import appeng.api.storage.StorageHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-
-import appeng.api.behaviors.StackExportStrategy;
-import appeng.api.behaviors.StackTransferContext;
-import appeng.api.config.Actionable;
-import appeng.api.stacks.AEKey;
-import appeng.api.storage.StorageHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StorageExportStrategy<T, S> implements StackExportStrategy {
     private static final Logger LOG = LoggerFactory.getLogger(StorageExportStrategy.class);

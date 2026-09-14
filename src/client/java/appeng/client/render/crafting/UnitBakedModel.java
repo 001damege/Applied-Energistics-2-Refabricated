@@ -18,12 +18,11 @@
 
 package appeng.client.render.crafting;
 
+import appeng.client.render.CubeBuilder;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.model.data.ModelData;
-
-import appeng.client.render.CubeBuilder;
 
 /**
  * A simple crafting unit model that uses an un-lit texture for the inner block.

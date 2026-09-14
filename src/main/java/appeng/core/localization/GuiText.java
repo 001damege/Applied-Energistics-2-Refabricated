@@ -18,9 +18,8 @@
 
 package appeng.core.localization;
 
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
 
 public enum GuiText implements LocalizationEnum {
     inventory(null, "container"), // mc's default Inventory localization.
@@ -42,8 +41,7 @@ public enum GuiText implements LocalizationEnum {
     CantStoreItems("Can't Store Contents!"),
     CantFitInsideStorageCell("This item does not fit in other storage cells"),
     CellWorkbench("Cell Workbench"),
-    CertusQuartzObtain(
-            "Certus Quartz is grown by the various Budding Certus Quartz blocks, which can be found in meteors, or crafted from regular Certus Quartz blocks."),
+    CertusQuartzObtain("Certus Quartz is grown by the various Budding Certus Quartz blocks, which can be found in meteors, or crafted from regular Certus Quartz blocks."),
     ChannelEnergyDrain("Channel Passive Drain: %s"),
     Clean("Clean"),
     CompatibleUpgrade("%s (%s)"),
@@ -269,10 +267,8 @@ public enum GuiText implements LocalizationEnum {
     With("with"),
     Yellow("Yellow"),
     Yes("Yes"),
-    inWorldCraftingPresses(
-            "Crafting Presses are obtained by breaking a Mysterious Cube. Mysterious Cubes are in the center of meteorites which can be found in around the world. They can be located by using a meteorite compass."),
-    inWorldSingularity(
-            "To create drop 1 Singularity and 1 Ender Dust and cause an explosion within range of the items.");
+    inWorldCraftingPresses("Crafting Presses are obtained by breaking a Mysterious Cube. Mysterious Cubes are in the center of meteorites which can be found in around the world. They can be located by using a meteorite compass."),
+    inWorldSingularity("To create drop 1 Singularity and 1 Ender Dust and cause an explosion within range of the items.");
 
     private final String root;
 

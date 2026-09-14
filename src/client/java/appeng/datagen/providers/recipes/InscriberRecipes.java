@@ -18,6 +18,12 @@
 
 package appeng.datagen.providers.recipes;
 
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.recipes.handlers.InscriberProcessType;
+import appeng.recipes.handlers.InscriberRecipeBuilder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -26,13 +32,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.recipes.handlers.InscriberProcessType;
-import appeng.recipes.handlers.InscriberRecipeBuilder;
 
 public class InscriberRecipes extends AE2RecipeProvider {
     private final HolderGetter<Item> items;

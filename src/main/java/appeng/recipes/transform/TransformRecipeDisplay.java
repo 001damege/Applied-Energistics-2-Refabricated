@@ -1,16 +1,15 @@
 package appeng.recipes.transform;
 
-import java.util.List;
-
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
+
+import java.util.List;
 
 public record TransformRecipeDisplay(
         List<SlotDisplay> ingredients,

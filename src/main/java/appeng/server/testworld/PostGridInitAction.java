@@ -1,15 +1,14 @@
 package appeng.server.testworld;
 
-import java.util.List;
-import java.util.function.BiConsumer;
-
+import appeng.api.networking.IGrid;
+import appeng.api.networking.IGridNode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
+import java.util.List;
+import java.util.function.BiConsumer;
 
 public record PostGridInitAction(List<BlockPos> positions,
         BiConsumer<IGrid, IGridNode> consumer,

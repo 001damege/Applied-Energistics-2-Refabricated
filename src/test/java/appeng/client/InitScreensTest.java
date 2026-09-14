@@ -18,7 +18,18 @@
 
 package appeng.client;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import appeng.client.gui.MockResourceManager;
+import appeng.client.gui.style.ScreenStyle;
+import appeng.client.gui.style.StyleManager;
+import appeng.client.gui.style.Text;
+import appeng.util.BootstrapMinecraft;
+import appeng.util.LoadTranslations;
+import net.minecraft.locale.Language;
+import net.minecraft.network.chat.contents.TranslatableContents;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.mockito.junit.jupiter.MockitoSettings;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,20 +40,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.mockito.junit.jupiter.MockitoSettings;
-
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-
-import appeng.client.gui.MockResourceManager;
-import appeng.client.gui.style.ScreenStyle;
-import appeng.client.gui.style.StyleManager;
-import appeng.client.gui.style.Text;
-import appeng.util.BootstrapMinecraft;
-import appeng.util.LoadTranslations;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @BootstrapMinecraft
 @LoadTranslations

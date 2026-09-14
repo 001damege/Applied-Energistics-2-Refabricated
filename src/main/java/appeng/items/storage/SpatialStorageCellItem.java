@@ -18,21 +18,6 @@
 
 package appeng.items.storage;
 
-import java.time.Instant;
-import java.util.Locale;
-import java.util.function.Consumer;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-
 import appeng.api.ids.AEComponents;
 import appeng.api.implementations.items.ISpatialStorageCell;
 import appeng.core.AELog;
@@ -43,6 +28,18 @@ import appeng.spatial.SpatialStorageHelper;
 import appeng.spatial.SpatialStoragePlot;
 import appeng.spatial.SpatialStoragePlotManager;
 import appeng.spatial.TransitionInfo;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.Locale;
 
 public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorageCell {
     private static final Logger LOG = LoggerFactory.getLogger(SpatialStorageCellItem.class);
@@ -55,13 +52,11 @@ public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorag
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
-            Consumer<Component> lines,
-            TooltipFlag tooltipFlags) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag advancedTooltip) {
         var plotInfo = stack.get(AEComponents.SPATIAL_PLOT_INFO);
         if (plotInfo == null) {
-            lines.accept(Tooltips.of(GuiText.Unformatted).withStyle(ChatFormatting.ITALIC));
-            lines.accept(Tooltips.of(GuiText.SpatialCapacity, maxRegion, maxRegion, maxRegion));
+            tooltip.add(Tooltips.of(GuiText.Unformatted).withStyle(ChatFormatting.ITALIC));
+            tooltip.add(Tooltips.of(GuiText.SpatialCapacity, maxRegion, maxRegion, maxRegion));
             return;
         }
 
@@ -69,8 +64,8 @@ public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorag
         // Try to make this a little more flavorful.
         String serialNumber = String.format(Locale.ROOT, "SP-%04d", plotInfo.id());
         var size = plotInfo.size();
-        lines.accept(Tooltips.of(GuiText.SerialNumber, serialNumber));
-        lines.accept(Tooltips.of(GuiText.StoredSize, size.getX(), size.getY(), size.getZ()));
+        tooltip.add(Tooltips.of(GuiText.SerialNumber, serialNumber));
+        tooltip.add(Tooltips.of(GuiText.StoredSize, size.getX(), size.getY(), size.getZ()));
     }
 
     @Override
@@ -100,8 +95,7 @@ public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorag
     }
 
     @Override
-    public boolean doSpatialTransition(ItemStack is, ServerLevel level, BlockPos min,
-            BlockPos max, int playerId) {
+    public boolean doSpatialTransition(ItemStack is, ServerLevel level, BlockPos min, BlockPos max, int playerId) {
         final int targetX = max.getX() - min.getX() - 1;
         final int targetY = max.getY() - min.getY() - 1;
         final int targetZ = max.getZ() - min.getZ() - 1;
@@ -132,18 +126,15 @@ public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorag
         }
 
         // Store some information about this transition in the plot
-        TransitionInfo info = new TransitionInfo(level.dimension().identifier(), min, max, Instant.now());
+        TransitionInfo info = new TransitionInfo(level.dimension().location(), min, max, Instant.now());
         manager.setLastTransition(plot.getId(), info);
 
         try {
             ServerLevel cellLevel = manager.getLevel();
-
             BlockPos offset = plot.getOrigin();
 
             this.setStoredDimension(is, plot.getId(), plot.getSize());
-            SpatialStorageHelper.getInstance().swapRegions(level, min.getX() + 1, min.getY() + 1, min.getZ() + 1,
-                    cellLevel,
-                    offset.getX(), offset.getY(), offset.getZ(), targetX - 1, targetY - 1, targetZ - 1);
+            SpatialStorageHelper.getInstance().swapRegions(level, min.getX() + 1, min.getY() + 1, min.getZ() + 1, cellLevel, offset.getX(), offset.getY(), offset.getZ(), targetX - 1, targetY - 1, targetZ - 1);
 
             return true;
         } finally {
@@ -155,7 +146,6 @@ public class SpatialStorageCellItem extends AEBaseItem implements ISpatialStorag
     }
 
     public void setStoredDimension(ItemStack is, int plotId, BlockPos size) {
-        is.set(AEComponents.SPATIAL_PLOT_INFO, new SpatialPlotInfo(
-                plotId, size.immutable()));
+        is.set(AEComponents.SPATIAL_PLOT_INFO, new SpatialPlotInfo(plotId, size.immutable()));
     }
 }

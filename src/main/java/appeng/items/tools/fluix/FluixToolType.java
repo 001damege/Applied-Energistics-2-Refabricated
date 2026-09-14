@@ -1,12 +1,11 @@
 package appeng.items.tools.fluix;
 
+import appeng.core.ConventionTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
-
-import appeng.core.ConventionTags;
 
 public enum FluixToolType {
     FLUIX("fluix", ConventionTags.FLUIX_CRYSTAL),

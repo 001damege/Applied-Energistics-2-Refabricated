@@ -1,18 +1,17 @@
 package appeng.client.gui.widgets;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.ItemLike;
-
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.client.api.AEKeyRendering;
 import appeng.client.gui.style.Blitter;
 import appeng.util.Icon;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InfoBar {
     private final List<Widget> widgets = new ArrayList<>();

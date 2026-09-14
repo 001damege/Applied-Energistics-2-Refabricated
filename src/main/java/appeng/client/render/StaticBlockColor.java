@@ -18,14 +18,13 @@
 
 package appeng.client.render;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
+import appeng.api.util.AEColor;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.level.block.state.BlockState;
 
-import appeng.api.util.AEColor;
+import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * Returns the shades of a single AE color for tint indices 0, 1, and 2.

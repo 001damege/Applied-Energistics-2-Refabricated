@@ -18,8 +18,8 @@
 
 package appeng.block.misc;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.block.AEBaseBlock;
+import appeng.entity.TinyTNTPrimedEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -47,9 +47,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import appeng.block.AEBaseBlock;
-import appeng.entity.TinyTNTPrimedEntity;
+import org.jetbrains.annotations.Nullable;
 
 public class TinyTNTBlock extends AEBaseBlock {
 

@@ -1,32 +1,25 @@
 package appeng.datagen.providers.localization;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.concurrent.CompletableFuture;
-
+import appeng.api.config.PowerUnit;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEEntities;
+import appeng.core.definitions.AEItems;
+import appeng.core.localization.*;
+import appeng.datagen.providers.IAE2DataProvider;
+import appeng.init.InitVillager;
+import appeng.integration.modules.igtooltip.TooltipIds;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
-
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
-import appeng.api.config.PowerUnit;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEEntities;
-import appeng.core.definitions.AEItems;
-import appeng.core.localization.ButtonToolTips;
-import appeng.core.localization.GuiText;
-import appeng.core.localization.InGameTooltip;
-import appeng.core.localization.ItemModText;
-import appeng.core.localization.LocalizationEnum;
-import appeng.core.localization.PlayerMessages;
-import appeng.datagen.providers.IAE2DataProvider;
-import appeng.init.InitVillager;
-import appeng.integration.modules.igtooltip.TooltipIds;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.CompletableFuture;
 
 public class LocalizationProvider implements IAE2DataProvider {
     private final Map<String, String> localizations = new HashMap<>();

@@ -18,18 +18,16 @@
 
 package appeng.core;
 
+import appeng.blockentity.AEBaseBlockEntity;
+import appeng.util.Platform;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.ParameterizedMessage;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-
-import appeng.blockentity.AEBaseBlockEntity;
-import appeng.util.Platform;
 
 public final class AELog {
     private static final String LOGGER_PREFIX = "AE2:";

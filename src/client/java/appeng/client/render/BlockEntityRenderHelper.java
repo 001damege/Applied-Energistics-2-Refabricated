@@ -1,18 +1,15 @@
 package appeng.client.render;
 
+import appeng.api.orientation.BlockOrientation;
+import appeng.client.api.AEKeyRenderState;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.joml.Quaternionf;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.util.Mth;
-
-import appeng.api.orientation.BlockOrientation;
-import appeng.client.api.AEKeyRenderState;
+import org.joml.Quaternionf;
 
 /**
  * Helper methods for rendering block entities.

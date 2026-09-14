@@ -1,28 +1,5 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-
-import com.mojang.datafixers.util.Either;
-
-import org.jspecify.annotations.Nullable;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.helpers.IPlatformFluidHelper;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.types.IRecipeType;
-
 import appeng.client.integrations.jei.widgets.View;
 import appeng.client.integrations.jei.widgets.Widget;
 import appeng.client.integrations.jei.widgets.WidgetFactory;
@@ -33,6 +10,25 @@ import appeng.core.localization.ItemModText;
 import appeng.items.tools.powered.EntropyManipulatorItem;
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.entropy.EntropyRecipe;
+import com.mojang.datafixers.util.Either;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.helpers.IPlatformFluidHelper;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import org.jspecify.annotations.Nullable;
+
+import java.util.List;
 
 public class EntropyManipulatorCategory extends ViewBasedCategory<RecipeHolder<EntropyRecipe>> {
     public static final IRecipeType<RecipeHolder<EntropyRecipe>> TYPE = IRecipeType.create(AERecipeTypes.ENTROPY);

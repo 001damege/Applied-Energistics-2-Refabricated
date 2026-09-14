@@ -18,10 +18,9 @@
 
 package appeng.worldgen.meteorite;
 
+import appeng.worldgen.meteorite.fallout.FalloutMode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-
-import appeng.worldgen.meteorite.fallout.FalloutMode;
 
 public final class PlacedMeteoriteSettings {
 

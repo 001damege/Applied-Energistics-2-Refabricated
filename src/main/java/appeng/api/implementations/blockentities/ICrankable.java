@@ -23,13 +23,11 @@
 
 package appeng.api.implementations.blockentities;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.AECapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
-
-import appeng.api.AECapabilities;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Crank/Crankable API,

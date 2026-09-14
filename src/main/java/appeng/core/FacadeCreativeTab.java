@@ -18,20 +18,15 @@
 
 package appeng.core;
 
-import java.util.Collection;
-import java.util.Set;
-
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.core.Registry;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackLinkedSet;
-import net.minecraft.world.item.Items;
-
 import appeng.api.ids.AECreativeTabIds;
 import appeng.core.definitions.AEItems;
 import appeng.core.localization.GuiText;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.core.Registry;
+import net.minecraft.world.item.*;
+
+import java.util.Collection;
+import java.util.Set;
 
 public final class FacadeCreativeTab {
 

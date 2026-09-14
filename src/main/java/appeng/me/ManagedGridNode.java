@@ -18,18 +18,15 @@
 
 package appeng.me;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Objects;
-import java.util.Set;
-
+import appeng.api.features.IPlayerRegistry;
+import appeng.api.networking.*;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.util.AEColor;
+import appeng.core.AELog;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.MutableClassToInstanceMap;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -38,16 +35,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.features.IPlayerRegistry;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridNodeListener;
-import appeng.api.networking.IGridNodeService;
-import appeng.api.networking.IManagedGridNode;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.util.AEColor;
-import appeng.core.AELog;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Manages the lifecycle of a {@link IGridNode}.

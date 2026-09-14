@@ -18,13 +18,12 @@
 
 package appeng.client.gui.style;
 
+import appeng.api.stacks.AEFluidKey;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
-
-import appeng.api.stacks.AEFluidKey;
 
 /**
  * Creates a {@link Blitter} to draw fluids into the user interface.

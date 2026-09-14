@@ -1,16 +1,5 @@
 package appeng.blockentity.misc;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Map;
-
-import org.junit.jupiter.api.Test;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.transfer.fluid.FluidResource;
-import net.neoforged.neoforge.transfer.transaction.Transaction;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.CondenserOutput;
 import appeng.api.config.Settings;
@@ -22,6 +11,15 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.me.helpers.BaseActionSource;
 import appeng.util.BootstrapMinecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @BootstrapMinecraft
 class CondenserMEStorageTest {

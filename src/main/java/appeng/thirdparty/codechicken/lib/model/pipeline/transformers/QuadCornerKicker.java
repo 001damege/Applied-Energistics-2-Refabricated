@@ -18,14 +18,14 @@
 
 package appeng.thirdparty.codechicken.lib.model.pipeline.transformers;
 
-import static net.minecraft.core.Direction.AxisDirection.NEGATIVE;
-import static net.minecraft.core.Direction.AxisDirection.POSITIVE;
-
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.client.model.quad.MutableQuad;
+
+import static net.minecraft.core.Direction.AxisDirection.NEGATIVE;
+import static net.minecraft.core.Direction.AxisDirection.POSITIVE;
 
 /**
  * This transformer is a little complicated. Basically a Facade / Cover can use this to 'kick' the edges in of quads to

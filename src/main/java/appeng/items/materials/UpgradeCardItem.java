@@ -18,18 +18,6 @@
 
 package appeng.items.materials;
 
-import java.util.function.Consumer;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.SelectedPart;
 import appeng.api.upgrades.IUpgradeInventory;
@@ -39,28 +27,35 @@ import appeng.core.localization.ButtonToolTips;
 import appeng.core.localization.PlayerMessages;
 import appeng.items.AEBaseItem;
 import appeng.util.InteractionUtil;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
+import java.util.List;
 
 public class UpgradeCardItem extends AEBaseItem {
-
     public UpgradeCardItem(Properties properties) {
         super(properties);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
-            Consumer<Component> lines,
-            TooltipFlag tooltipFlags) {
-        super.appendHoverText(stack, context, tooltipDisplay, lines, tooltipFlags);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag advancedTooltip) {
+        super.appendHoverText(stack, context, tooltip, advancedTooltip);
 
         var supportedBy = Upgrades.getTooltipLinesForCard(this);
         if (!supportedBy.isEmpty()) {
-            lines.accept(ButtonToolTips.SupportedBy.text());
-            supportedBy.forEach(lines);
+            tooltip.add(ButtonToolTips.SupportedBy.text());
+            supportedBy.addAll(tooltip);
         }
     }
 
     @Override
-    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
+    public InteractionResult useOn(UseOnContext context) {
         Player player = context.getPlayer();
         InteractionHand hand = context.getHand();
         if (player != null && InteractionUtil.isInAlternateUseMode(player)) {
@@ -87,17 +82,17 @@ public class UpgradeCardItem extends AEBaseItem {
                     }
                 }
                 if (isFull) {
-                    player.sendOverlayMessage(PlayerMessages.MaxUpgradesInstalled.text());
+                    player.sendSystemMessage(PlayerMessages.MaxUpgradesInstalled.text());
                     return InteractionResult.FAIL;
                 }
 
                 var maxInstalled = upgrades.getMaxInstalled(heldStack.getItem());
                 var installed = upgrades.getInstalledUpgrades(heldStack.getItem());
                 if (maxInstalled <= 0) {
-                    player.sendOverlayMessage(PlayerMessages.UnsupportedUpgrade.text());
+                    player.sendSystemMessage(PlayerMessages.UnsupportedUpgrade.text());
                     return InteractionResult.FAIL;
                 } else if (installed >= maxInstalled) {
-                    player.sendOverlayMessage(PlayerMessages.MaxUpgradesOfTypeInstalled.text());
+                    player.sendSystemMessage(PlayerMessages.MaxUpgradesOfTypeInstalled.text());
                     return InteractionResult.FAIL;
                 }
 
@@ -110,6 +105,6 @@ public class UpgradeCardItem extends AEBaseItem {
             }
         }
 
-        return super.onItemUseFirst(stack, context);
+        return super.useOn(context);
     }
 }

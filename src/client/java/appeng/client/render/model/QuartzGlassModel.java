@@ -18,14 +18,11 @@
 
 package appeng.client.render.model;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
+import appeng.core.AppEng;
+import appeng.decorative.solid.GlassState;
+import appeng.decorative.solid.QuartzGlassBlock;
 import com.google.common.base.Strings;
 import com.mojang.serialization.MapCodec;
-
-import org.joml.Vector3f;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
@@ -47,10 +44,11 @@ import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 import net.neoforged.neoforge.client.model.pipeline.QuadBakingVertexConsumer;
 import net.neoforged.neoforge.model.data.ModelProperty;
+import org.joml.Vector3f;
 
-import appeng.core.AppEng;
-import appeng.decorative.solid.GlassState;
-import appeng.decorative.solid.QuartzGlassBlock;
+import javax.naming.spi.Resolver;
+import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * Model class for the connected texture glass model.

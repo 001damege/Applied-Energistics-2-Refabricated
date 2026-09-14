@@ -18,6 +18,7 @@
 
 package appeng.init.worldgen;
 
+import appeng.spatial.SpatialStorageDimensionIds;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.biome.Biome;
@@ -25,8 +26,6 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.neoforged.neoforge.common.world.NeoForgeEnvironmentAttributes;
-
-import appeng.spatial.SpatialStorageDimensionIds;
 
 public final class InitBiomes {
 

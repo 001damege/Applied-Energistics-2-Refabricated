@@ -18,9 +18,8 @@
 
 package appeng.client.gui.widgets;
 
-import java.util.Collections;
-import java.util.List;
-
+import appeng.client.gui.style.Blitter;
+import appeng.util.Icon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -28,8 +27,8 @@ import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
-import appeng.client.gui.style.Blitter;
-import appeng.util.Icon;
+import java.util.Collections;
+import java.util.List;
 
 public class TabButton extends Button implements ITooltip {
     private Style style = Style.BOX;

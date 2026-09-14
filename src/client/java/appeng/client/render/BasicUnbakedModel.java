@@ -18,11 +18,12 @@
 
 package appeng.client.render;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.Identifier;
+
+import javax.naming.spi.Resolver;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An unbaked model that has standard models as a dependency and produces a custom baked model as a result.

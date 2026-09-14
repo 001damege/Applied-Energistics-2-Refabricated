@@ -18,10 +18,6 @@
 
 package appeng.client.gui.me.items;
 
-import java.util.function.Consumer;
-
-import com.google.common.primitives.Longs;
-
 import appeng.api.stacks.GenericStack;
 import appeng.client.gui.AESubScreen;
 import appeng.client.gui.NumberEntryType;
@@ -32,6 +28,9 @@ import appeng.core.localization.GuiText;
 import appeng.menu.SlotSemantics;
 import appeng.menu.me.items.PatternEncodingTermMenu;
 import appeng.util.Icon;
+import com.google.common.primitives.Longs;
+
+import java.util.function.Consumer;
 
 /**
  * Allows precisely setting the amount to use for a processing pattern slot.

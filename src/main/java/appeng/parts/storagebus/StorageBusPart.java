@@ -18,34 +18,9 @@
 
 package appeng.parts.storagebus;
 
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.Map;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.capabilities.ICapabilityInvalidationListener;
-
 import appeng.api.AECapabilities;
 import appeng.api.behaviors.ExternalStorageStrategy;
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.FuzzyMode;
-import appeng.api.config.IncludeExclude;
-import appeng.api.config.Setting;
-import appeng.api.config.Settings;
-import appeng.api.config.StorageFilter;
-import appeng.api.config.YesNo;
+import appeng.api.config.*;
 import appeng.api.features.IPlayerRegistry;
 import appeng.api.ids.AEComponents;
 import appeng.api.networking.IGridNode;
@@ -86,6 +61,23 @@ import appeng.util.ConfigInventory;
 import appeng.util.Platform;
 import appeng.util.SettingsFrom;
 import appeng.util.prioritylist.IPartitionList;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.capabilities.ICapabilityInvalidationListener;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Map;
 
 public class StorageBusPart extends UpgradeablePart
         implements IGridTickable, IStorageProvider, IPriorityHost, IConfigInvHost {

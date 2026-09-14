@@ -1,15 +1,13 @@
 package appeng.client.model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-
+import appeng.client.api.model.parts.PartModel;
+import appeng.client.render.CubeBuilder;
+import appeng.core.AppEng;
+import appeng.parts.automation.PartModelData;
+import appeng.parts.automation.PlaneConnections;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -26,11 +24,12 @@ import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.client.model.quad.QuadTransforms;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.client.api.model.parts.PartModel;
-import appeng.client.render.CubeBuilder;
-import appeng.core.AppEng;
-import appeng.parts.automation.PartModelData;
-import appeng.parts.automation.PlaneConnections;
+import javax.naming.spi.Resolver;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public class PlanePartModel implements PartModel {
 

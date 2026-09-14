@@ -18,10 +18,10 @@
 
 package appeng.blockentity;
 
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.inventories.InternalInventory;
+import appeng.api.stacks.GenericStack;
+import appeng.util.inv.AppEngInternalInventory;
+import appeng.util.inv.InternalInventoryHost;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -32,11 +32,9 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.inventories.InternalInventory;
-import appeng.api.stacks.GenericStack;
-import appeng.util.inv.AppEngInternalInventory;
-import appeng.util.inv.InternalInventoryHost;
+import java.util.List;
 
 public abstract class AEBaseInvBlockEntity extends AEBaseBlockEntity implements InternalInventoryHost {
 

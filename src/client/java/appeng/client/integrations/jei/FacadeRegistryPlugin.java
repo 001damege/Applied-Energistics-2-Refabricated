@@ -1,9 +1,15 @@
 package appeng.client.integrations.jei;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
+import appeng.core.AppEng;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.items.parts.FacadeItem;
+import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.recipe.IFocus;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.advanced.IRecipeManagerPlugin;
+import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -11,25 +17,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraft.world.item.crafting.ShapedRecipePattern;
+import net.minecraft.world.item.crafting.*;
 
-import mezz.jei.api.constants.RecipeTypes;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.recipe.IFocus;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.advanced.IRecipeManagerPlugin;
-import mezz.jei.api.recipe.types.IRecipeType;
-
-import appeng.core.AppEng;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.items.parts.FacadeItem;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * This plugin will dynamically add facade recipes for any item that can be turned into a facade.

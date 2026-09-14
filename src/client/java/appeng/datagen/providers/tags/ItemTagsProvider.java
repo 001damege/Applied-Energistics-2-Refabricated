@@ -18,8 +18,15 @@
 
 package appeng.datagen.providers.tags;
 
-import java.util.concurrent.CompletableFuture;
-
+import appeng.api.features.P2PTunnelAttunement;
+import appeng.api.ids.AETags;
+import appeng.api.util.AEColor;
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.datagen.providers.IAE2DataProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -33,15 +40,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
 
-import appeng.api.features.P2PTunnelAttunement;
-import appeng.api.ids.AETags;
-import appeng.api.util.AEColor;
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.datagen.providers.IAE2DataProvider;
+import java.util.concurrent.CompletableFuture;
 
 public class ItemTagsProvider extends BlockTagCopyingItemTagProvider implements IAE2DataProvider {
     public ItemTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries,

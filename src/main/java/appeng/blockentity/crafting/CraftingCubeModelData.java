@@ -18,13 +18,12 @@
 
 package appeng.blockentity.crafting;
 
-import java.util.EnumSet;
-
+import appeng.blockentity.AEModelData;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.model.data.ModelProperty;
 
-import appeng.blockentity.AEModelData;
+import java.util.EnumSet;
 
 public final class CraftingCubeModelData {
 

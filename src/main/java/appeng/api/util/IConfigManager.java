@@ -23,17 +23,16 @@
 
 package appeng.api.util;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
-
+import appeng.api.config.Setting;
+import appeng.api.ids.AEComponents;
+import appeng.util.ConfigManager;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
-import appeng.api.config.Setting;
-import appeng.api.ids.AEComponents;
-import appeng.util.ConfigManager;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * Used to adjust settings on an object,

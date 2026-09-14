@@ -1,11 +1,10 @@
 package appeng.client.item;
 
+import appeng.client.render.ItemBaseModelWrapper;
+import appeng.core.AppEng;
+import appeng.items.tools.powered.ColorApplicatorItem;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4fc;
-
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.ItemModelResolver;
@@ -16,10 +15,8 @@ import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.client.render.ItemBaseModelWrapper;
-import appeng.core.AppEng;
-import appeng.items.tools.powered.ColorApplicatorItem;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4fc;
 
 public class ColorApplicatorItemModel implements ItemModel {
     private final ItemBaseModelWrapper uncoloredModel;

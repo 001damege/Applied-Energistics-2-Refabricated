@@ -18,8 +18,9 @@
 
 package appeng.datagen.providers.loot;
 
-import java.util.function.BiConsumer;
-
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.init.InitVillager;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
@@ -28,9 +29,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.init.InitVillager;
+import java.util.function.BiConsumer;
 
 public class RaidHeroGiftLootProvider implements LootTableSubProvider {
     public RaidHeroGiftLootProvider(HolderLookup.Provider lookupProvider) {

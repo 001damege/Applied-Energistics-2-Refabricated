@@ -1,16 +1,13 @@
 package appeng.api.stacks;
 
+import appeng.util.BootstrapMinecraft;
+import appeng.util.CodecTestUtil;
 import com.google.gson.JsonPrimitive;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
-
-import org.junit.jupiter.api.Test;
-
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.StringTag;
-
-import appeng.util.BootstrapMinecraft;
-import appeng.util.CodecTestUtil;
+import org.junit.jupiter.api.Test;
 
 @BootstrapMinecraft
 class AEKeyTypeTest {

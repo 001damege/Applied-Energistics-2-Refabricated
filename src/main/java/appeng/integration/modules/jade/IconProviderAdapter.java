@@ -1,18 +1,15 @@
 package appeng.integration.modules.jade;
 
-import org.jspecify.annotations.Nullable;
-
+import appeng.api.integrations.igtooltip.providers.IconProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntity;
-
+import org.jspecify.annotations.Nullable;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.Element;
 import snownee.jade.api.ui.JadeUI;
-
-import appeng.api.integrations.igtooltip.providers.IconProvider;
 
 class IconProviderAdapter<T extends BlockEntity> extends BaseProvider implements IBlockComponentProvider {
     private final IconProvider<? super T> iconProvider;

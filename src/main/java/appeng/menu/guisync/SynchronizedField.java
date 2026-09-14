@@ -18,14 +18,8 @@
 
 package appeng.menu.guisync;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
+import appeng.api.stacks.GenericStack;
+import appeng.util.AECodecs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -37,8 +31,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
-import appeng.api.stacks.GenericStack;
-import appeng.util.AECodecs;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class is responsible for synchronizing menu-fields from server to client.

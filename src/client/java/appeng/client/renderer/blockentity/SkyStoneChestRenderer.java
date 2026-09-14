@@ -18,11 +18,11 @@
 
 package appeng.client.renderer.blockentity;
 
+import appeng.block.storage.SkyStoneChestBlock;
+import appeng.block.storage.SkyStoneChestBlock.Type;
+import appeng.blockentity.storage.SkyStoneChestBlockEntity;
+import appeng.core.AppEng;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Quaternionf;
-
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -39,11 +39,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.block.storage.SkyStoneChestBlock;
-import appeng.block.storage.SkyStoneChestBlock.Type;
-import appeng.blockentity.storage.SkyStoneChestBlockEntity;
-import appeng.core.AppEng;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Quaternionf;
 
 // This is mostly a copy&paste job of the vanilla chest TESR
 public class SkyStoneChestRenderer implements BlockEntityRenderer<SkyStoneChestBlockEntity, SkyStoneChestRenderState> {

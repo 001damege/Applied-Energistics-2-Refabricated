@@ -18,15 +18,14 @@
 
 package appeng.crafting;
 
+import appeng.api.crafting.IPatternDetails;
+import appeng.util.Platform;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-
-import appeng.api.crafting.IPatternDetails;
-import appeng.util.Platform;
 
 public class CraftingEvent {
 

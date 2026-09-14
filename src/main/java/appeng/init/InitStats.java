@@ -18,12 +18,11 @@
 
 package appeng.init;
 
+import appeng.core.stats.AeStats;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
-
-import appeng.core.stats.AeStats;
 
 public final class InitStats {
 

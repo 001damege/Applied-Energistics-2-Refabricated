@@ -18,14 +18,13 @@
 
 package appeng.blockentity.crafting;
 
-import java.util.EnumSet;
-import java.util.Objects;
-
+import appeng.api.util.AEColor;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.model.data.ModelProperty;
 
-import appeng.api.util.AEColor;
+import java.util.EnumSet;
+import java.util.Objects;
 
 public final class CraftingMonitorModelData {
     public static final ModelProperty<AEColor> COLOR = new ModelProperty<>();

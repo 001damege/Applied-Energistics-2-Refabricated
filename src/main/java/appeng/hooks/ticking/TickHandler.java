@@ -18,27 +18,18 @@
 
 package appeng.hooks.ticking;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-
+import appeng.blockentity.AEBaseBlockEntity;
+import appeng.core.AEConfig;
+import appeng.core.AELog;
+import appeng.crafting.CraftingCalculation;
+import appeng.me.Grid;
+import appeng.me.GridNode;
+import appeng.util.ILevelRunnable;
+import appeng.util.Platform;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.CrashReport;
 import net.minecraft.ReportedException;
 import net.minecraft.network.chat.Component;
@@ -53,14 +44,12 @@ import net.neoforged.neoforge.event.level.ChunkEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.blockentity.AEBaseBlockEntity;
-import appeng.core.AELog;
-import appeng.crafting.CraftingCalculation;
-import appeng.me.Grid;
-import appeng.me.GridNode;
-import appeng.util.ILevelRunnable;
-import appeng.util.Platform;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class TickHandler {
     private static final Logger LOG = LoggerFactory.getLogger(TickHandler.class);

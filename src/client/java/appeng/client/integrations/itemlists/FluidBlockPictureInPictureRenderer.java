@@ -3,11 +3,6 @@ package appeng.client.integrations.itemlists;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix3x2f;
-import org.joml.Quaternionf;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.render.pip.PictureInPictureRenderer;
@@ -20,6 +15,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.client.model.pipeline.VertexConsumerWrapper;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix3x2f;
+import org.joml.Quaternionf;
 
 public class FluidBlockPictureInPictureRenderer
         extends PictureInPictureRenderer<FluidBlockPictureInPictureRenderer.State> {

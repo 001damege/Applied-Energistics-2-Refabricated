@@ -19,20 +19,17 @@
 
 package appeng.util;
 
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-
+import appeng.api.config.AccessRestriction;
+import appeng.api.config.PowerUnit;
+import appeng.api.config.SortOrder;
+import appeng.api.implementations.items.IAEItemPowerStorage;
+import appeng.api.util.DimensionalBlockPos;
+import appeng.core.AEConfig;
+import appeng.hooks.VisualStateSaving;
+import appeng.hooks.ticking.TickHandler;
+import appeng.util.helpers.P2PHelper;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.authlib.GameProfile;
-
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -60,15 +57,16 @@ import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.util.thread.SidedThreadGroups;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.fluids.FluidStack;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.api.config.AccessRestriction;
-import appeng.api.config.PowerUnit;
-import appeng.api.config.SortOrder;
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.api.util.DimensionalBlockPos;
-import appeng.hooks.VisualStateSaving;
-import appeng.hooks.ticking.TickHandler;
-import appeng.util.helpers.P2PHelper;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 public class Platform {
 

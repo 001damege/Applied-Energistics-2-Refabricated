@@ -1,19 +1,16 @@
 package appeng.client.integrations.jei.widgets;
 
+import appeng.client.integrations.jei.JEIPlugin;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
-
-import appeng.client.integrations.jei.JEIPlugin;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
 public final class WidgetFactory {
     private final IGuiHelper guiHelper;

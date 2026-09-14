@@ -18,15 +18,16 @@
 
 package appeng.client.gui;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
+import appeng.client.Point;
+import appeng.client.gui.style.ScreenStyle;
+import appeng.client.gui.style.WidgetStyle;
+import appeng.client.gui.widgets.*;
+import appeng.core.localization.GuiText;
+import appeng.core.network.ServerboundPacket;
+import appeng.core.network.serverbound.SwitchGuisPacket;
+import appeng.menu.implementations.PriorityMenu;
+import appeng.util.Icon;
 import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -34,23 +35,12 @@ import net.minecraft.client.gui.components.Button.OnPress;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.client.Point;
-import appeng.client.gui.style.ScreenStyle;
-import appeng.client.gui.style.WidgetStyle;
-import appeng.client.gui.widgets.AE2Button;
-import appeng.client.gui.widgets.AECheckbox;
-import appeng.client.gui.widgets.AETextField;
-import appeng.client.gui.widgets.BackgroundPanel;
-import appeng.client.gui.widgets.IResizableWidget;
-import appeng.client.gui.widgets.NumberEntryWidget;
-import appeng.client.gui.widgets.Scrollbar;
-import appeng.client.gui.widgets.TabButton;
-import appeng.core.localization.GuiText;
-import appeng.core.network.ServerboundPacket;
-import appeng.core.network.serverbound.SwitchGuisPacket;
-import appeng.menu.implementations.PriorityMenu;
-import appeng.util.Icon;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * This utility class helps with positioning commonly used Minecraft {@link AbstractWidget} instances on a screen

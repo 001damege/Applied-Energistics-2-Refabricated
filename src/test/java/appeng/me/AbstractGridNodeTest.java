@@ -1,17 +1,5 @@
 package appeng.me;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Set;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
-
-import net.minecraft.server.level.ServerLevel;
-
 import appeng.api.networking.GridFlags;
 import appeng.api.networking.IGrid;
 import appeng.api.networking.IGridNode;
@@ -23,6 +11,16 @@ import appeng.api.networking.ticking.TickingRequest;
 import appeng.me.service.EnergyService;
 import appeng.util.BootstrapMinecraft;
 import appeng.util.Platform;
+import net.minecraft.server.level.ServerLevel;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
+
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 @BootstrapMinecraft

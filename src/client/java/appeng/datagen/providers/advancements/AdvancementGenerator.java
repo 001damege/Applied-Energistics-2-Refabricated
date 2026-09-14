@@ -36,8 +36,14 @@ package appeng.datagen.providers.advancements;
  * along with Applied Energistics 2.  If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-import java.util.function.Consumer;
-
+import appeng.api.util.AEColor;
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.core.stats.AdvancementTriggers;
+import appeng.datagen.providers.localization.LocalizationProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
@@ -49,14 +55,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.world.item.Items;
 
-import appeng.api.util.AEColor;
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.core.stats.AdvancementTriggers;
-import appeng.datagen.providers.localization.LocalizationProvider;
+import java.util.function.Consumer;
 
 public class AdvancementGenerator implements AdvancementSubProvider {
     private final LocalizationProvider localization;

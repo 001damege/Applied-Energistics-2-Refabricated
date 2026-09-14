@@ -18,17 +18,6 @@
 
 package appeng.parts.automation;
 
-import java.util.Set;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.config.RedstoneMode;
 import appeng.api.config.Setting;
@@ -55,6 +44,15 @@ import appeng.menu.locator.MenuLocators;
 import appeng.util.ConfigInventory;
 import appeng.util.Platform;
 import appeng.util.prioritylist.IPartitionList;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Set;
 
 public abstract class IOBusPart extends UpgradeablePart implements IGridTickable, IConfigInvHost, ISubMenuHost {
     private final ConfigInventory config;

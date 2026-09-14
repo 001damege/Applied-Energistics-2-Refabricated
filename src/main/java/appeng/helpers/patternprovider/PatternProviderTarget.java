@@ -18,19 +18,6 @@
 
 package appeng.helpers.patternprovider;
 
-import java.util.IdentityHashMap;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.util.concurrent.Runnables;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
 import appeng.api.AECapabilities;
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
@@ -39,6 +26,16 @@ import appeng.api.stacks.AEKeyType;
 import appeng.api.storage.MEStorage;
 import appeng.me.storage.CompositeStorage;
 import appeng.parts.automation.StackWorldBehaviors;
+import com.google.common.util.concurrent.Runnables;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
+import javax.annotation.Nullable;
+import java.util.IdentityHashMap;
+import java.util.Set;
 
 /**
  * Wrapper used by the pattern provider logic to interact with adjacent inventories.

@@ -1,10 +1,9 @@
 package appeng.client;
 
-import net.minecraft.client.KeyMapping;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import appeng.core.network.ServerboundPacket;
 import appeng.core.network.serverbound.HotkeyPacket;
+import net.minecraft.client.KeyMapping;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 public record Hotkey(String name, KeyMapping mapping) {
     public void check() {

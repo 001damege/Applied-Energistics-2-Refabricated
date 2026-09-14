@@ -1,17 +1,5 @@
 package appeng.me.cells;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Objects;
-
-import org.junit.jupiter.api.Test;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
-
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.stacks.AEFluidKey;
@@ -22,6 +10,16 @@ import appeng.api.storage.cells.CellState;
 import appeng.core.definitions.AEItems;
 import appeng.me.helpers.BaseActionSource;
 import appeng.util.BootstrapMinecraft;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluids;
+import org.junit.jupiter.api.Test;
+
+import java.util.Objects;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @BootstrapMinecraft
 public class BasicInventoryTest {

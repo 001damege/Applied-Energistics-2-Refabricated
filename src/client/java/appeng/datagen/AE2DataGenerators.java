@@ -18,11 +18,20 @@
 
 package appeng.datagen;
 
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-
+import appeng.core.AppEng;
+import appeng.core.definitions.AEDamageTypes;
+import appeng.datagen.providers.AE2ParticleDescriptionProvider;
+import appeng.datagen.providers.advancements.AdvancementGenerator;
+import appeng.datagen.providers.datamaps.RaidHeroGiftsProvider;
+import appeng.datagen.providers.localization.LocalizationProvider;
+import appeng.datagen.providers.loot.AE2LootTableProvider;
+import appeng.datagen.providers.models.*;
+import appeng.datagen.providers.recipes.AE2RecipeProvider;
+import appeng.datagen.providers.tags.*;
+import appeng.init.InitVillager;
+import appeng.init.worldgen.InitBiomes;
+import appeng.init.worldgen.InitDimensionTypes;
+import appeng.init.worldgen.InitStructures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -35,30 +44,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import appeng.core.AppEng;
-import appeng.core.definitions.AEDamageTypes;
-import appeng.datagen.providers.AE2ParticleDescriptionProvider;
-import appeng.datagen.providers.advancements.AdvancementGenerator;
-import appeng.datagen.providers.datamaps.RaidHeroGiftsProvider;
-import appeng.datagen.providers.localization.LocalizationProvider;
-import appeng.datagen.providers.loot.AE2LootTableProvider;
-import appeng.datagen.providers.models.AE2ModelProvider;
-import appeng.datagen.providers.models.BlockModelProvider;
-import appeng.datagen.providers.models.DecorationModelProvider;
-import appeng.datagen.providers.models.ItemModelProvider;
-import appeng.datagen.providers.models.PartModelProvider;
-import appeng.datagen.providers.recipes.AE2RecipeProvider;
-import appeng.datagen.providers.tags.BiomeTagsProvider;
-import appeng.datagen.providers.tags.BlockTagsProvider;
-import appeng.datagen.providers.tags.DataComponentTypeTagProvider;
-import appeng.datagen.providers.tags.FluidTagsProvider;
-import appeng.datagen.providers.tags.ItemTagsProvider;
-import appeng.datagen.providers.tags.PoiTypeTagsProvider;
-import appeng.datagen.providers.tags.VillagerTradeTagsProvider;
-import appeng.init.InitVillager;
-import appeng.init.worldgen.InitBiomes;
-import appeng.init.worldgen.InitDimensionTypes;
-import appeng.init.worldgen.InitStructures;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
 
 @EventBusSubscriber(modid = AppEng.MOD_ID)
 public class AE2DataGenerators {

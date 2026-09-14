@@ -1,16 +1,5 @@
 package appeng.me.service.helpers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
-import java.util.Set;
-
-import org.junit.jupiter.api.Test;
-
-import net.minecraft.world.item.Items;
-
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.crafting.ICraftingProvider;
@@ -20,6 +9,15 @@ import appeng.api.stacks.GenericStack;
 import appeng.api.stacks.KeyCounter;
 import appeng.crafting.simulation.helpers.ProcessingPatternBuilder;
 import appeng.util.BootstrapMinecraft;
+import net.minecraft.world.item.Items;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @BootstrapMinecraft
 class NetworkCraftingProvidersTest {

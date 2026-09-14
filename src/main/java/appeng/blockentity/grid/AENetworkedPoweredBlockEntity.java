@@ -18,13 +18,6 @@
 
 package appeng.blockentity.grid;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerUnit;
 import appeng.api.implementations.blockentities.ICrankable;
@@ -37,6 +30,12 @@ import appeng.blockentity.misc.CrankBlockEntity;
 import appeng.blockentity.powersink.AEBasePoweredBlockEntity;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public abstract class AENetworkedPoweredBlockEntity extends AEBasePoweredBlockEntity
         implements IGridConnectedBlockEntity {

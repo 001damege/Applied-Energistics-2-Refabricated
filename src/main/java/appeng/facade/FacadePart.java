@@ -18,8 +18,12 @@
 
 package appeng.facade;
 
-import java.util.Objects;
-
+import appeng.api.ids.AEComponents;
+import appeng.api.parts.IFacadePart;
+import appeng.api.parts.IPartCollisionHelper;
+import appeng.core.definitions.AEItems;
+import appeng.core.localization.PlayerMessages;
+import appeng.util.InteractionUtil;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,12 +35,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import appeng.api.ids.AEComponents;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.core.definitions.AEItems;
-import appeng.core.localization.PlayerMessages;
-import appeng.util.InteractionUtil;
+import java.util.Objects;
 
 public class FacadePart implements IFacadePart {
 

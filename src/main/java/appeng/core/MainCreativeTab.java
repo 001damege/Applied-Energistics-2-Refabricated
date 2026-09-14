@@ -18,17 +18,6 @@
 
 package appeng.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
-
 import appeng.api.ids.AECreativeTabIds;
 import appeng.block.AEBaseBlock;
 import appeng.block.AEBaseBlockItem;
@@ -36,8 +25,17 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.ItemDefinition;
 import appeng.core.localization.GuiText;
 import appeng.items.AEBaseItem;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.world.item.CreativeModeTab.Output;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class MainCreativeTab {
     private static final Multimap<ResourceKey<CreativeModeTab>, ItemDefinition<?>> externalItemDefs = HashMultimap.create();

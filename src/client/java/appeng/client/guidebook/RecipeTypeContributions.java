@@ -1,21 +1,5 @@
 package appeng.client.guidebook;
 
-import java.util.List;
-
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-
-import guideme.compiler.tags.RecipeTypeMappingSupplier;
-import guideme.document.LytRect;
-import guideme.document.block.LytBlock;
-import guideme.document.block.LytSlotGrid;
-import guideme.document.block.recipes.LytStandardRecipeBox;
-import guideme.layout.LayoutContext;
-import guideme.render.RenderContext;
-
 import appeng.core.definitions.AEBlocks;
 import appeng.core.localization.GuiText;
 import appeng.recipes.AERecipeTypes;
@@ -23,6 +7,20 @@ import appeng.recipes.handlers.ChargerRecipe;
 import appeng.recipes.handlers.InscriberRecipe;
 import appeng.recipes.transform.TransformRecipe;
 import appeng.util.Platform;
+import guideme.compiler.tags.RecipeTypeMappingSupplier;
+import guideme.document.LytRect;
+import guideme.document.block.LytBlock;
+import guideme.document.block.LytSlotGrid;
+import guideme.document.block.recipes.LytStandardRecipeBox;
+import guideme.layout.LayoutContext;
+import guideme.render.RenderContext;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+
+import java.util.List;
 
 public class RecipeTypeContributions implements RecipeTypeMappingSupplier {
     @Override

@@ -1,8 +1,8 @@
 package appeng.datagen.providers.recipes;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.core.AppEng;
+import appeng.core.definitions.*;
+import appeng.recipes.game.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,17 +12,8 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 
-import appeng.core.AppEng;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.core.definitions.BlockDefinition;
-import appeng.core.definitions.ItemDefinition;
-import appeng.recipes.game.AddItemUpgradeRecipe;
-import appeng.recipes.game.CraftingUnitTransformRecipe;
-import appeng.recipes.game.RemoveItemUpgradeRecipe;
-import appeng.recipes.game.StorageCellDisassemblyRecipe;
-import appeng.recipes.game.StorageCellUpgradeRecipe;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UpgradeRecipes extends AE2RecipeProvider {
     public UpgradeRecipes(HolderLookup.Provider registries, RecipeOutput output) {

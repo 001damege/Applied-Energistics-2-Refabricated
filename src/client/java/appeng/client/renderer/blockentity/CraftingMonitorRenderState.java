@@ -1,10 +1,9 @@
 package appeng.client.renderer.blockentity;
 
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.util.FormattedCharSequence;
-
 import appeng.api.orientation.BlockOrientation;
 import appeng.client.api.AEKeyRenderState;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
+import net.minecraft.util.FormattedCharSequence;
 
 public class CraftingMonitorRenderState extends BlockEntityRenderState {
     public BlockOrientation orientation;

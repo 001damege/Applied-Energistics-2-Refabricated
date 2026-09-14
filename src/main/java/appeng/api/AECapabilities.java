@@ -18,19 +18,17 @@
 
 package appeng.api;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.Direction;
-import net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup;
-
 import appeng.api.behaviors.GenericInternalInventory;
 import appeng.api.implementations.blockentities.ICraftingMachine;
 import appeng.api.implementations.blockentities.ICrankable;
 import appeng.api.networking.IInWorldGridNodeHost;
 import appeng.api.storage.MEStorage;
 import appeng.core.AppEng;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup;
+import net.minecraft.core.Direction;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Utility class that holds the capabilities provided by AE2.

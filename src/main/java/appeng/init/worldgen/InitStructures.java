@@ -18,9 +18,9 @@
 
 package appeng.init.worldgen;
 
-import java.util.List;
-import java.util.Map;
-
+import appeng.core.AppEng;
+import appeng.worldgen.meteorite.MeteoriteStructure;
+import appeng.worldgen.meteorite.MeteoriteStructurePiece;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
@@ -34,9 +34,8 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import appeng.core.AppEng;
-import appeng.worldgen.meteorite.MeteoriteStructure;
-import appeng.worldgen.meteorite.MeteoriteStructurePiece;
+import java.util.List;
+import java.util.Map;
 
 public final class InitStructures {
     public static final DeferredRegister<StructureType<?>> STRUCTURE_TYPES = DeferredRegister

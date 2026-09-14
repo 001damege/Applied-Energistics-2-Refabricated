@@ -1,20 +1,11 @@
 package appeng.api.upgrades;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.sun.nio.sctp.Association;
-
+import appeng.core.localization.GuiText;
+import appeng.core.localization.Tooltips;
+import appeng.items.materials.EnergyCardItem;
+import appeng.items.materials.UpgradeCardItem;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -22,11 +13,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.core.localization.GuiText;
-import appeng.core.localization.Tooltips;
-import appeng.items.materials.EnergyCardItem;
-import appeng.items.materials.UpgradeCardItem;
+import java.util.*;
 
 /**
  * Manages available upgrades for AE machines, parts and items.

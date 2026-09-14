@@ -1,11 +1,10 @@
 package appeng.datagen.providers;
 
+import appeng.core.AppEng;
+import appeng.core.particles.ParticleTypes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.data.ParticleDescriptionProvider;
-
-import appeng.core.AppEng;
-import appeng.core.particles.ParticleTypes;
 
 public class AE2ParticleDescriptionProvider extends ParticleDescriptionProvider {
     public AE2ParticleDescriptionProvider(PackOutput output) {

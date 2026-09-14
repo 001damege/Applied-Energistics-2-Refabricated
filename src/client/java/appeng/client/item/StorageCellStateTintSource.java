@@ -1,20 +1,17 @@
 package appeng.client.item;
 
+import appeng.api.implementations.items.IAEItemPowerStorage;
+import appeng.api.storage.StorageCells;
+import appeng.api.storage.cells.CellState;
+import appeng.core.AppEng;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.api.implementations.items.IAEItemPowerStorage;
-import appeng.api.storage.StorageCells;
-import appeng.api.storage.cells.CellState;
-import appeng.core.AppEng;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Provides the color representing the storage cell state as a color for item model tinting. If the item also implements

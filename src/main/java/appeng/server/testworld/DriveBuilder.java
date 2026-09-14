@@ -1,13 +1,5 @@
 package appeng.server.testworld;
 
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
-
 import appeng.api.config.Actionable;
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
@@ -18,6 +10,12 @@ import appeng.core.definitions.AEItems;
 import appeng.me.cells.BasicCellInventory;
 import appeng.me.helpers.BaseActionSource;
 import appeng.util.ConfigInventory;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 /**
  * A helper class for quickly and succintly building the contents of a drive for test plots and tests.

@@ -1,10 +1,5 @@
 package appeng.integration.modules.igtooltip.blocks;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
 import appeng.api.implementations.IPowerChannelState;
 import appeng.api.integrations.igtooltip.TooltipBuilder;
 import appeng.api.integrations.igtooltip.TooltipContext;
@@ -12,6 +7,10 @@ import appeng.api.integrations.igtooltip.providers.BodyProvider;
 import appeng.api.integrations.igtooltip.providers.ServerDataProvider;
 import appeng.integration.modules.igtooltip.GridNodeState;
 import appeng.me.helpers.IGridConnectedBlockEntity;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 /**
  * Provide info about the grid connection status of a machine.

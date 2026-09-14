@@ -1,14 +1,10 @@
 package appeng.datagen.providers.models;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.implementations.parts.ICablePart;
+import appeng.api.parts.IPartItem;
+import appeng.client.api.model.parts.ClientPart;
+import appeng.client.api.model.parts.PartModel;
+import appeng.datagen.providers.IAE2DataProvider;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -18,12 +14,14 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.implementations.parts.ICablePart;
-import appeng.api.parts.IPartItem;
-import appeng.client.api.model.parts.ClientPart;
-import appeng.client.api.model.parts.PartModel;
-import appeng.datagen.providers.IAE2DataProvider;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public final class AE2ModelProvider extends ModelProvider implements IAE2DataProvider {
     private final PackOutput.PathProvider partModelOutput;

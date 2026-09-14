@@ -1,11 +1,9 @@
 package appeng.client.api.renderer.parts;
 
+import appeng.api.parts.IPart;
 import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
-
-import appeng.api.parts.IPart;
 
 /**
  * Allows dynamic rendering of geometry for parts to attached to a cable bus.

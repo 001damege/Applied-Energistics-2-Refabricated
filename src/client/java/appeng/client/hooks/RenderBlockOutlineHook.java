@@ -1,10 +1,17 @@
 package appeng.client.hooks;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.api.implementations.items.IFacadeItem;
+import appeng.api.parts.IFacadePart;
+import appeng.api.parts.IPart;
+import appeng.api.parts.IPartHost;
+import appeng.api.parts.IPartItem;
+import appeng.client.render.AERenderTypes;
+import appeng.core.AEConfig;
+import appeng.core.definitions.AEParts;
+import appeng.items.parts.FacadeItem;
+import appeng.parts.BusCollisionHelper;
+import appeng.parts.PartPlacement;
 import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.ShapeRenderer;
@@ -23,16 +30,8 @@ import net.neoforged.neoforge.client.CustomBlockOutlineRenderer;
 import net.neoforged.neoforge.client.event.ExtractBlockOutlineRenderStateEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
-import appeng.api.implementations.items.IFacadeItem;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.client.render.AERenderTypes;
-import appeng.core.definitions.AEParts;
-import appeng.items.parts.FacadeItem;
-import appeng.parts.BusCollisionHelper;
-import appeng.parts.PartPlacement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RenderBlockOutlineHook {
     private static final float PREVIEW_LINE_WIDTH = 7F;

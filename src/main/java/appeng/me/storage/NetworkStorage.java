@@ -18,24 +18,17 @@
 
 package appeng.me.storage;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NavigableMap;
-import java.util.TreeMap;
-
-import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.KeyCounter;
 import appeng.api.storage.MEStorage;
 import appeng.core.localization.GuiText;
+import com.google.common.base.Preconditions;
+import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 /**
  * Manages all available {@link MEStorage} on the network.

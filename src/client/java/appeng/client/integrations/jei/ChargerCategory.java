@@ -1,16 +1,5 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.types.IRecipeType;
-
 import appeng.blockentity.misc.ChargerBlockEntity;
 import appeng.blockentity.misc.CrankBlockEntity;
 import appeng.client.integrations.jei.widgets.View;
@@ -19,6 +8,15 @@ import appeng.client.integrations.jei.widgets.WidgetFactory;
 import appeng.core.definitions.AEBlocks;
 import appeng.recipes.AERecipeTypes;
 import appeng.recipes.handlers.ChargerRecipe;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.crafting.RecipeHolder;
+
+import java.util.List;
 
 public class ChargerCategory extends ViewBasedCategory<RecipeHolder<ChargerRecipe>> {
 

@@ -18,17 +18,6 @@
 
 package appeng.items.storage;
 
-import java.util.Optional;
-import java.util.function.Consumer;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.GenericStack;
@@ -41,6 +30,15 @@ import appeng.items.AEBaseItem;
 import appeng.items.contents.CellConfig;
 import appeng.me.cells.CreativeCellHandler;
 import appeng.util.ConfigInventory;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+
+import java.util.List;
+import java.util.Optional;
 
 public class CreativeCellItem extends AEBaseItem implements ICellWorkbenchItem {
     public CreativeCellItem(Properties props) {
@@ -62,20 +60,18 @@ public class CreativeCellItem extends AEBaseItem implements ICellWorkbenchItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
-            Consumer<Component> lines,
-            TooltipFlag tooltipFlags) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag advancedTooltip) {
         var inventory = StorageCells.getCellInventory(stack, null);
 
         if (inventory != null) {
             var cc = getConfigInventory(stack);
             if (!cc.isEmpty()) {
-                if (tooltipFlags.hasShiftDown()) {
+                if (advancedTooltip.isAdvanced()) {
                     for (var key : cc.keySet()) {
-                        lines.accept(Tooltips.of(key.getDisplayName()));
+                        tooltip.add(Tooltips.of(key.getDisplayName()));
                     }
                 } else {
-                    lines.accept(Tooltips.of(GuiText.PressShiftForFullList));
+                    tooltip.add(Tooltips.of(GuiText.PressShiftForFullList));
                 }
             }
         }

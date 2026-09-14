@@ -1,8 +1,8 @@
 package appeng.client.api.integrations.emi;
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableList;
+
+import java.util.List;
 
 /**
  * Register your {@link EmiStackConverter} instances for JEI here.

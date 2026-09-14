@@ -18,19 +18,12 @@
 
 package appeng.client.render.model;
 
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-
+import appeng.api.client.StorageCellModels;
+import appeng.block.storage.DriveModelData;
+import appeng.client.model.SpinnableVariant;
+import appeng.core.AppEng;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.SharedConstants;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
@@ -49,11 +42,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.ComposedModelState;
 import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.api.client.StorageCellModels;
-import appeng.block.storage.DriveModelData;
-import appeng.client.model.SpinnableVariant;
-import appeng.core.AppEng;
+import javax.naming.spi.Resolver;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DriveModel implements DynamicBlockStateModel {
     private static final Logger LOG = LoggerFactory.getLogger(DriveModel.class);

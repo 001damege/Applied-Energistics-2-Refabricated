@@ -18,17 +18,15 @@
 
 package appeng.block.networking;
 
-import java.util.EnumMap;
-import java.util.Locale;
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
-
-import net.minecraft.client.resources.model.sprite.Material;
-
 import appeng.api.util.AECableType;
 import appeng.api.util.AEColor;
 import appeng.core.AppEng;
+import com.google.common.collect.ImmutableMap;
+import net.minecraft.client.resources.model.sprite.Material;
+
+import java.util.EnumMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * AE can render the core of a cable (the core that connections are made to, in case the cable is not a straight line)

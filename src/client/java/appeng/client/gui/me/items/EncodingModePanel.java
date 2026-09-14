@@ -1,13 +1,12 @@
 package appeng.client.gui.me.items;
 
-import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.network.chat.Component;
-
 import appeng.client.Point;
 import appeng.client.gui.ICompositeWidget;
 import appeng.client.gui.WidgetContainer;
 import appeng.menu.me.items.PatternEncodingTermMenu;
 import appeng.util.Icon;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.network.chat.Component;
 
 public abstract class EncodingModePanel implements ICompositeWidget {
     protected final PatternEncodingTermScreen<?> screen;

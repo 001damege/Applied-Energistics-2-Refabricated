@@ -18,12 +18,12 @@
 
 package appeng.util;
 
-import java.util.EnumSet;
-import java.util.Set;
-
 import com.google.common.base.Preconditions;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Simple utility class to help with select the "next" or "previous" value in a list of options represented by an

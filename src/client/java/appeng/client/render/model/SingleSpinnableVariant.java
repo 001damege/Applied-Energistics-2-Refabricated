@@ -1,10 +1,9 @@
 package appeng.client.render.model;
 
-import java.util.List;
-
+import appeng.client.model.SpinnableVariant;
+import appeng.core.AppEng;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
@@ -18,8 +17,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 
-import appeng.client.model.SpinnableVariant;
-import appeng.core.AppEng;
+import java.util.List;
 
 // TODO 26.1: Remove in favor of native vanilla Z rotations
 public class SingleSpinnableVariant implements BlockStateModel {

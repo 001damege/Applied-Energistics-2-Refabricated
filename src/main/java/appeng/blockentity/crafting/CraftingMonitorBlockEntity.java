@@ -18,10 +18,9 @@
 
 package appeng.blockentity.crafting;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.implementations.blockentities.IColorableBlockEntity;
+import appeng.api.stacks.GenericStack;
+import appeng.api.util.AEColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -31,10 +30,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.implementations.blockentities.IColorableBlockEntity;
-import appeng.api.stacks.GenericStack;
-import appeng.api.util.AEColor;
+import java.util.Objects;
 
 public class CraftingMonitorBlockEntity extends CraftingBlockEntity implements IColorableBlockEntity {
 

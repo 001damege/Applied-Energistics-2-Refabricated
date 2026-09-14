@@ -1,10 +1,10 @@
 package appeng.datagen.providers.tags;
 
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-
+import appeng.api.ids.AEComponents;
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.datagen.providers.localization.LocalizationProvider;
+import appeng.items.tools.MemoryCardItem;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,11 +13,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.resources.ResourceKey;
 
-import appeng.api.ids.AEComponents;
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.datagen.providers.localization.LocalizationProvider;
-import appeng.items.tools.MemoryCardItem;
+import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 public class DataComponentTypeTagProvider extends KeyTagProvider<DataComponentType<?>> {
     private final LocalizationProvider localization;

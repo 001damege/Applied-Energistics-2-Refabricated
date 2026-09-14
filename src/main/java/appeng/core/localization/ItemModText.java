@@ -1,10 +1,14 @@
 package appeng.core.localization;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Locale;
 
 /**
  * Texts for the integrations with item-mods like REI or JEI.
  */
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum ItemModText implements LocalizationEnum {
     // Recipe transfer handling
     MISSING_ID("Cannot identify recipe"),
@@ -37,12 +41,9 @@ public enum ItemModText implements LocalizationEnum {
     BUDDING_QUARTZ_DECAYS_WHEN_BROKEN("Budding quartz decays when broken."),
     SILK_TOUCH_PREVENTS_DECAY_FOR_IMPERFECT("Silk touch prevents decay for imperfect budding quartz."),
     SPATIAL_IO_NEVER_CAUSES_ANY_DECAY("Spatial I/O never causes any decay."),
-    BUDDING_QUARTZ_CREATION_AND_WORLDGEN(
-            "Budding quartz can be found in meteorites, or be regenerated using charged quartz in water."),
-    FLAWLESS_BUDDING_QUARTZ_DESCRIPTION(
-            "Flawless budding quartz never decays when growing buds. It may only be found in meteorites."),
-    CRYSTAL_GROWTH_ACCELERATORS_EFFECT(
-            "Powered crystal growth accelerators speed up the growth of adjacent budding quartz."),
+    BUDDING_QUARTZ_CREATION_AND_WORLDGEN("Budding quartz can be found in meteorites, or be regenerated using charged quartz in water."),
+    FLAWLESS_BUDDING_QUARTZ_DESCRIPTION("Flawless budding quartz never decays when growing buds. It may only be found in meteorites."),
+    CRYSTAL_GROWTH_ACCELERATORS_EFFECT("Powered crystal growth accelerators speed up the growth of adjacent budding quartz."),
 
     ENTROPY_MANIPULATOR_HEAT("Heat (%d AE)"),
     ENTROPY_MANIPULATOR_COOL("Cool (%d AE)"),
@@ -55,10 +56,6 @@ public enum ItemModText implements LocalizationEnum {
     ;
 
     private final String englishText;
-
-    ItemModText(String englishText) {
-        this.englishText = englishText;
-    }
 
     @Override
     public String getEnglishText() {

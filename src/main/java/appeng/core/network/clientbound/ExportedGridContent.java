@@ -1,13 +1,12 @@
 package appeng.core.network.clientbound;
 
+import appeng.core.network.ClientboundPacket;
+import appeng.core.network.CustomAppEngPayload;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
-
-import appeng.core.network.ClientboundPacket;
-import appeng.core.network.CustomAppEngPayload;
 
 /**
  * Contains data produced by {@link appeng.server.subcommands.GridsCommand}

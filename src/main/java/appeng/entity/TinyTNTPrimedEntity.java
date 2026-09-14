@@ -18,11 +18,11 @@
 
 package appeng.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.core.AEConfig;
+import appeng.core.AppEng;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEEntities;
+import appeng.core.network.clientbound.MockExplosionPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -48,11 +48,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import net.neoforged.neoforge.event.EventHooks;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.core.AppEng;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEEntities;
-import appeng.core.network.clientbound.MockExplosionPacket;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class TinyTNTPrimedEntity extends PrimedTnt implements IEntityWithComplexSpawn {
 

@@ -18,22 +18,16 @@
 
 package appeng.block.networking;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.util.AECableType;
+import appeng.api.util.AEColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.model.data.ModelProperty;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
+import java.util.*;
 
 /**
  * This class captures the entire rendering state needed for a cable bus and transports it to the rendering thread for

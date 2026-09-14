@@ -1,16 +1,15 @@
 package appeng.me;
 
+import appeng.api.networking.IGridNodeListener;
+import appeng.me.service.PathingService;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.reset;
-
-import java.util.ArrayList;
-
-import org.junit.jupiter.api.Test;
-
-import appeng.api.networking.IGridNodeListener;
-import appeng.me.service.PathingService;
 
 class GridNodeTest extends AbstractGridNodeTest {
     /**

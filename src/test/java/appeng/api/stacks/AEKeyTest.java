@@ -1,12 +1,9 @@
 package appeng.api.stacks;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import appeng.util.BootstrapMinecraft;
+import appeng.util.CodecTestUtil;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
-
-import org.junit.jupiter.api.Test;
-
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -17,9 +14,9 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
 import net.neoforged.neoforge.fluids.FluidStack;
+import org.junit.jupiter.api.Test;
 
-import appeng.util.BootstrapMinecraft;
-import appeng.util.CodecTestUtil;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @BootstrapMinecraft
 class AEKeyTest {

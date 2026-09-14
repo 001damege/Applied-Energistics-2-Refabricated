@@ -1,16 +1,15 @@
 package appeng.core.network.serverbound;
 
-import java.util.List;
-
+import appeng.core.network.CustomAppEngPayload;
+import appeng.core.network.ServerboundPacket;
+import appeng.menu.implementations.PatternAccessTermMenu;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 
-import appeng.core.network.CustomAppEngPayload;
-import appeng.core.network.ServerboundPacket;
-import appeng.menu.implementations.PatternAccessTermMenu;
+import java.util.List;
 
 /**
  * Used for the pattern access terminal when the client shift-clicks an item in the player inventory.

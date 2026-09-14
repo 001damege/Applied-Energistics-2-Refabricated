@@ -1,17 +1,16 @@
 package appeng.client.render;
 
+import appeng.api.stacks.AmountFormat;
+import appeng.client.api.AEKeyRendering;
+import appeng.client.gui.me.common.StackSizeRenderer;
+import appeng.core.localization.GuiText;
+import appeng.items.storage.StorageCellTooltipComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.api.stacks.AmountFormat;
-import appeng.client.api.AEKeyRendering;
-import appeng.client.gui.me.common.StackSizeRenderer;
-import appeng.core.localization.GuiText;
-import appeng.items.storage.StorageCellTooltipComponent;
 
 public class StorageCellClientTooltipComponent implements ClientTooltipComponent {
     private final StorageCellTooltipComponent tooltipComponent;

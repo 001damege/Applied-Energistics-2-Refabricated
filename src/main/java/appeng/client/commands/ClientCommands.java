@@ -1,12 +1,12 @@
 package appeng.client.commands;
 
-import java.util.List;
-
+import appeng.core.AEConfig;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+
+import java.util.List;
 
 public final class ClientCommands {
 

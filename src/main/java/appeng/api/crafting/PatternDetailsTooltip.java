@@ -1,12 +1,10 @@
 package appeng.api.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.GenericStack;
+import appeng.core.localization.GuiText;
+import appeng.util.AECodecs;
 import lombok.Getter;
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
@@ -14,11 +12,11 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Recipe;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.GenericStack;
-import appeng.core.localization.GuiText;
-import appeng.util.AECodecs;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Properties shown in the tooltip of an encoded pattern. Used for both valid and invalid encoded patterns. For invalid

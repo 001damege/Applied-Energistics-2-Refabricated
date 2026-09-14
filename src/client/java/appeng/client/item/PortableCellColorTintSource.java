@@ -1,18 +1,15 @@
 package appeng.client.item;
 
+import appeng.core.AppEng;
+import appeng.items.tools.powered.AbstractPortableCell;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.core.AppEng;
-import appeng.items.tools.powered.AbstractPortableCell;
+import org.jetbrains.annotations.Nullable;
 
 public record PortableCellColorTintSource() implements ItemTintSource {
     public static final Identifier ID = AppEng.makeId("portable_cell_color");

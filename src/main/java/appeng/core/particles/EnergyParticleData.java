@@ -21,7 +21,6 @@ package appeng.core.particles;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
@@ -59,7 +58,6 @@ public record EnergyParticleData(boolean forItem, Direction direction) implement
         level.addParticle(
                 EnergyParticleData.FOR_BLOCK,
                 false,
-                true,
                 center.x() + xOff,
                 center.y() + yOff,
                 center.z() + zOff,

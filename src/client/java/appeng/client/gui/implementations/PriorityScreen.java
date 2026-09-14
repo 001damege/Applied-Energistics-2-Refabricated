@@ -18,20 +18,17 @@
 
 package appeng.client.gui.implementations;
 
-import java.util.OptionalInt;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-
-import guideme.PageAnchor;
-
 import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.NumberEntryType;
 import appeng.client.gui.style.ScreenStyle;
 import appeng.client.gui.widgets.NumberEntryWidget;
 import appeng.menu.implementations.PriorityMenu;
+import guideme.PageAnchor;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.OptionalInt;
 
 public class PriorityScreen extends AEBaseScreen<PriorityMenu> {
 

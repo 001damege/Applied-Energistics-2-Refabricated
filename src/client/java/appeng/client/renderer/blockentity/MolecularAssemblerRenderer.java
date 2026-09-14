@@ -18,10 +18,10 @@
 
 package appeng.client.renderer.blockentity;
 
+import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
+import appeng.core.AEConfig;
+import appeng.core.particles.ParticleTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -35,9 +35,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
-import appeng.core.particles.ParticleTypes;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Renders the item currently being crafted by the molecular assembler, as well as the light strip when it's powered.

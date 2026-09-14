@@ -23,18 +23,17 @@
 
 package appeng.api.util;
 
-import java.util.Arrays;
-import java.util.List;
-
 import appeng.util.AECodecs;
 import com.mojang.serialization.Codec;
-
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.DyeColor;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * List of all colors supported by AE, their names, and various colors for display.

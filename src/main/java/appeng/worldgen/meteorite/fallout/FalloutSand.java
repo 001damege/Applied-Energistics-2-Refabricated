@@ -18,13 +18,12 @@
 
 package appeng.worldgen.meteorite.fallout;
 
+import appeng.worldgen.meteorite.MeteoriteBlockPutter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-
-import appeng.worldgen.meteorite.MeteoriteBlockPutter;
 
 public class FalloutSand extends FalloutCopy {
     private static final float GLASS_THRESHOLD = 0.66f;

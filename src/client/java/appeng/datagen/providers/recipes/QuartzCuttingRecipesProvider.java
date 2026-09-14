@@ -1,7 +1,9 @@
 package appeng.datagen.providers.recipes;
 
-import java.util.List;
-
+import appeng.api.ids.AETags;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEParts;
+import appeng.recipes.quartzcutting.QuartzCuttingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
@@ -9,10 +11,7 @@ import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 
-import appeng.api.ids.AETags;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEParts;
-import appeng.recipes.quartzcutting.QuartzCuttingRecipe;
+import java.util.List;
 
 public class QuartzCuttingRecipesProvider extends AE2RecipeProvider {
 

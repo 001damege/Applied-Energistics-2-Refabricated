@@ -18,6 +18,10 @@
 
 package appeng.core.localization;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum ButtonToolTips implements LocalizationEnum {
     Amount("Amount: %d"),
     ActiveOnPulse("Activate once per pulse"),
@@ -192,10 +196,6 @@ public enum ButtonToolTips implements LocalizationEnum {
 
     private final String englishText;
 
-    ButtonToolTips(String englishText) {
-        this.englishText = englishText;
-    }
-
     @Override
     public String getTranslationKey() {
         return "gui.tooltips.ae2." + name();
@@ -205,5 +205,4 @@ public enum ButtonToolTips implements LocalizationEnum {
     public String getEnglishText() {
         return englishText;
     }
-
 }

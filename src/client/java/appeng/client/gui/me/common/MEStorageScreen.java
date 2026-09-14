@@ -18,45 +18,8 @@
 
 package appeng.client.gui.me.common;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.platform.InputConstants;
-
-import org.jetbrains.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
-import guideme.color.ConstantColor;
-import guideme.document.LytRect;
-import guideme.render.SimpleRenderContext;
-
 import appeng.api.behaviors.ContainerItemStrategies;
-import appeng.api.config.ActionItems;
-import appeng.api.config.Settings;
-import appeng.api.config.SortDir;
-import appeng.api.config.SortOrder;
-import appeng.api.config.ViewItems;
+import appeng.api.config.*;
 import appeng.api.implementations.blockentities.IMEChest;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKeyType;
@@ -74,15 +37,8 @@ import appeng.client.gui.AESubScreen;
 import appeng.client.gui.style.Blitter;
 import appeng.client.gui.style.ScreenStyle;
 import appeng.client.gui.style.TerminalStyle;
-import appeng.client.gui.widgets.AETextField;
-import appeng.client.gui.widgets.ActionButton;
-import appeng.client.gui.widgets.ISortSource;
-import appeng.client.gui.widgets.KeyTypeSelectionButton;
-import appeng.client.gui.widgets.Scrollbar;
-import appeng.client.gui.widgets.SettingToggleButton;
-import appeng.client.gui.widgets.TabButton;
-import appeng.client.gui.widgets.ToolboxPanel;
-import appeng.client.gui.widgets.UpgradesPanel;
+import appeng.client.gui.widgets.*;
+import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.AppEng;
 import appeng.core.localization.ButtonToolTips;
@@ -102,6 +58,30 @@ import appeng.menu.me.crafting.CraftingStatusMenu;
 import appeng.util.Icon;
 import appeng.util.Platform;
 import appeng.util.prioritylist.IPartitionList;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.platform.InputConstants;
+import guideme.color.ConstantColor;
+import guideme.document.LytRect;
+import guideme.render.SimpleRenderContext;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.data.AtlasIds;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.jetbrains.annotations.Nullable;
+import org.lwjgl.glfw.GLFW;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
 
 public class MEStorageScreen<C extends MEStorageMenu>
         extends AEBaseScreen<C> implements ISortSource {

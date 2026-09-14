@@ -20,11 +20,11 @@ package appeng.items.misc;
 
 import appeng.api.util.AEColor;
 import appeng.items.AEBaseItem;
+import lombok.Getter;
 
+@Getter
 public class PaintBallItem extends AEBaseItem {
-
     private final AEColor color;
-
     private final boolean lumen;
 
     public PaintBallItem(Properties properties, AEColor color, boolean lumen) {
@@ -32,13 +32,4 @@ public class PaintBallItem extends AEBaseItem {
         this.color = color;
         this.lumen = lumen;
     }
-
-    public AEColor getColor() {
-        return color;
-    }
-
-    public boolean isLumen() {
-        return lumen;
-    }
-
 }

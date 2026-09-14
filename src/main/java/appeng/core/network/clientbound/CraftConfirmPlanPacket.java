@@ -1,13 +1,12 @@
 
 package appeng.core.network.clientbound;
 
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
 import appeng.core.network.ClientboundPacket;
 import appeng.core.network.CustomAppEngPayload;
 import appeng.menu.me.crafting.CraftConfirmMenu;
 import appeng.menu.me.crafting.CraftingPlanSummary;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 /**
  * Transfers a {@link CraftingPlanSummary} to the client for a {@link CraftConfirmMenu}

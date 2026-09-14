@@ -1,37 +1,27 @@
 package appeng.datagen.providers.models;
 
-import static appeng.core.AppEng.makeId;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import net.minecraft.client.color.item.Constant;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.ItemLike;
-
 import appeng.api.util.AEColor;
 import appeng.api.util.AEColorVariant;
 import appeng.client.api.model.parts.StaticPartModel;
-import appeng.client.model.CableAnchorPartModel;
-import appeng.client.model.LevelEmitterPartModel;
-import appeng.client.model.LockableMonitorPartModel;
-import appeng.client.model.P2PFrequencyPartModel;
-import appeng.client.model.PlanePartModel;
-import appeng.client.model.StatusIndicatorPartModel;
+import appeng.client.model.*;
 import appeng.client.render.AEColorItemTintSource;
 import appeng.core.definitions.AEParts;
 import appeng.core.definitions.ColoredItemDefinition;
 import appeng.core.definitions.ItemDefinition;
 import appeng.items.parts.ColoredPartItem;
 import appeng.items.parts.PartItem;
+import net.minecraft.client.color.item.Constant;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static appeng.core.AppEng.makeId;
 
 public class PartModelProvider extends ModelSubProvider {
 

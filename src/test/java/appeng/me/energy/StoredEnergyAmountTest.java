@@ -1,14 +1,13 @@
 package appeng.me.energy;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import appeng.api.networking.events.GridPowerStorageStateChanged;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import appeng.api.networking.events.GridPowerStorageStateChanged;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StoredEnergyAmountTest {
     private final List<GridPowerStorageStateChanged.PowerEventType> emittedEvents = new ArrayList<>();

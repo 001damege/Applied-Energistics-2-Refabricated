@@ -1,35 +1,35 @@
 package appeng.core.localization;
 
-import java.text.DecimalFormat;
-import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import com.mojang.blaze3d.platform.InputConstants;
-
-import org.jetbrains.annotations.NotNull;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.behaviors.EmptyingAction;
 import appeng.api.config.PowerUnit;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AmountFormat;
 import appeng.api.stacks.GenericStack;
+import com.mojang.blaze3d.platform.InputConstants;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+
+import java.text.DecimalFormat;
+import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Static utilities for constructing tooltips in various places.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Tooltips {
-
     private static final char SEP;
+
     static {
         var format = (DecimalFormat) DecimalFormat.getInstance();
         var symbols = format.getDecimalFormatSymbols();
@@ -46,9 +46,6 @@ public final class Tooltips {
     public static final Style RED = Style.EMPTY.withColor(ChatFormatting.RED);
     public static final Style GREEN = Style.EMPTY.withColor(ChatFormatting.GREEN);
 
-    private Tooltips() {
-    }
-
     public static List<Component> slotTooltip(MutableComponent text) {
         return List.of(text.withStyle(MUTED_COLOR));
     }
@@ -56,17 +53,13 @@ public final class Tooltips {
     public static List<Component> inputSlot(Side... sides) {
         var sidesText = Arrays.stream(sides).map(Tooltips::side).toList();
 
-        return List.of(
-                ButtonToolTips.CanInsertFrom.text(conjunction(sidesText))
-                        .withStyle(MUTED_COLOR));
+        return List.of(ButtonToolTips.CanInsertFrom.text(conjunction(sidesText)).withStyle(MUTED_COLOR));
     }
 
     public static List<Component> outputSlot(Side... sides) {
         var sidesText = Arrays.stream(sides).map(Tooltips::side).toList();
 
-        return List.of(
-                ButtonToolTips.CanExtractFrom.text(conjunction(sidesText))
-                        .withStyle(MUTED_COLOR));
+        return List.of(ButtonToolTips.CanExtractFrom.text(conjunction(sidesText)).withStyle(MUTED_COLOR));
     }
 
     public static Component side(Side side) {
@@ -112,12 +105,10 @@ public final class Tooltips {
                 current = current.copy().append(", ").append(lastJoiner.text()).append(" ").append(components.get(i));
             }
         }
-
         return current;
     }
 
-    public static List<Component> getEmptyingTooltip(ButtonToolTips baseAction, ItemStack carried,
-            EmptyingAction emptyingAction) {
+    public static List<Component> getEmptyingTooltip(ButtonToolTips baseAction, ItemStack carried, EmptyingAction emptyingAction) {
         return List.of(
                 baseAction.text(
                         getMouseButtonText(InputConstants.MOUSE_BUTTON_LEFT),
@@ -147,7 +138,7 @@ public final class Tooltips {
     public static boolean shouldShowAmountTooltip(AEKey what, long amount) {
         // TODO: Now that we can show fractional numbers, this approach of detecting whether the formatted amount has
         // been abbreviated or rounded no longer works
-        var bigNumber = AEConfig.instance().isUseLargeFonts() ? 999L : 9999L;
+        var bigNumber = 9999L;
         return amount > bigNumber * what.getAmountPerUnit()
                 // Unit symbols are never shown in slots and must be shown in the tooltip instead
                 || what.getUnitSymbol() != null
@@ -180,8 +171,7 @@ public final class Tooltips {
                         .withStyle(NUMBER_TEXT)
                         .append(ButtonToolTips.DurationFormatSeconds.text(0));
             } else {
-                return ButtonToolTips.DurationFormatSeconds.text(0)
-                        .withStyle(NUMBER_TEXT);
+                return ButtonToolTips.DurationFormatSeconds.text(0).withStyle(NUMBER_TEXT);
             }
         }
 
@@ -199,20 +189,15 @@ public final class Tooltips {
         if (seconds > 0) {
             durationStr.append(Long.toString(seconds)).append("s");
         }
-
         return durationStr.withStyle(NUMBER_TEXT);
     }
 
     public static final String[] units = new String[] { "k", "M", "G", "T", "P", "E" };
-    public static final long[] DECIMAL_NUMS = new long[] { 1000L, 1000_000L, 1000_000_000L, 1000_000_000_000L,
-            1000_000_000_000_000L,
-            1000_000_000_000_000_000L };
-    public static final long[] BYTE_NUMS = new long[] { 1024L, 1024 * 1024L, 1024 * 1024 * 1024L,
-            1024 * 1024 * 1024 * 1024L };
+    public static final long[] DECIMAL_NUMS = new long[] { 1000L, 1000_000L, 1000_000_000L, 1000_000_000_000L, 1000_000_000_000_000L, 1000_000_000_000_000_000L };
+    public static final long[] BYTE_NUMS = new long[] { 1024L, 1024 * 1024L, 1024 * 1024 * 1024L, 1024 * 1024 * 1024 * 1024L };
 
     public static Component ofAmount(GenericStack stack) {
-        return Component.literal(stack.what().formatAmount(stack.amount(), AmountFormat.FULL))
-                .withStyle(NUMBER_TEXT);
+        return Component.literal(stack.what().formatAmount(stack.amount(), AmountFormat.FULL)).withStyle(NUMBER_TEXT);
     }
 
     public static String getAmount(double amount, long num) {
@@ -312,16 +297,11 @@ public final class Tooltips {
     }
 
     public static MutableComponent of(GuiText guiText, Style style, Object... args) {
-
-        if (args.length > 0 && args[0] instanceof Integer) {
-            return guiText.text(Arrays.stream(args).map((o) -> ofUnformattedNumber((Integer) o)).toArray()).copy()
-                    .withStyle(style);
-        } else if (args.length > 0 && args[0] instanceof Long) {
-            return guiText.text(Arrays.stream(args).map((o) -> ofUnformattedNumber((Long) o)).toArray()).copy()
-                    .withStyle(style);
-        }
-        return guiText.text(args).copy().withStyle(style);
-
+        return switch (args[0]) {
+            case Integer ignored -> guiText.text(Arrays.stream(args).map(o -> ofUnformattedNumber((Integer) o)).toArray()).copy().withStyle(style);
+            case Long ignored -> guiText.text(Arrays.stream(args).map(o -> ofUnformattedNumber((Long) o)).toArray()).copy().withStyle(style);
+            case null, default -> guiText.text(args).copy().withStyle(style);
+        };
     }
 
     public static MutableComponent of(String s) {
@@ -333,13 +313,11 @@ public final class Tooltips {
     }
 
     public static MutableComponent ofPercent(double percent, boolean oneIsGreen) {
-        return Component.literal(MessageFormat.format("{0,number,#.##%}", percent))
-                .withStyle(colorFromRatio(percent, oneIsGreen));
+        return Component.literal(MessageFormat.format("{0,number,#.##%}", percent)).withStyle(colorFromRatio(percent, oneIsGreen));
     }
 
     public static Style colorFromRatio(double ratio, boolean oneIsGreen) {
         double p = ratio;
-
         if (!oneIsGreen) {
             p = 1 - p;
         }
@@ -347,13 +325,11 @@ public final class Tooltips {
         int r = (int) (255d * (Math.max(0, Math.min(2 - 2 * p, 1))));
         int g = (int) (255d * (Math.max(0, Math.min(2 * p, 1))));
         int rgb = 0xFF000000 + (r << 16) + (g << 8);
-
         return Style.EMPTY.withItalic(false).withColor(TextColor.fromRgb(rgb));
     }
 
     public static MutableComponent ofPercent(double percent) {
         return ofPercent(percent, true);
-
     }
 
     public static MutableComponent ofUnformattedNumber(long number) {
@@ -396,8 +372,7 @@ public final class Tooltips {
     private static MutableComponent ofNumber(MaxedAmount number) {
         boolean numberUnit = !number.digit().equals("0");
         return Component.literal(number.digit() + (numberUnit ? number.unit() : "")).withStyle(NUMBER_TEXT)
-                .append(Component.literal("/")
-                        .withStyle(NORMAL_TOOLTIP_TEXT))
+                .append(Component.literal("/").withStyle(NORMAL_TOOLTIP_TEXT))
                 .append(number.maxDigit() + number.unit()).withStyle(NUMBER_TEXT);
     }
 
@@ -442,5 +417,4 @@ public final class Tooltips {
                 of(" "),
                 of(GuiText.Types));
     }
-
 }

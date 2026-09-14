@@ -18,20 +18,6 @@
 
 package appeng.items.misc;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.config.Actionable;
 import appeng.api.ids.AEComponents;
@@ -39,6 +25,18 @@ import appeng.api.stacks.AEKey;
 import appeng.api.stacks.GenericStack;
 import appeng.core.definitions.AEItems;
 import appeng.items.AEBaseItem;
+import net.minecraft.world.entity.SlotAccess;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
 
 /**
  * Wraps a {@link GenericStack} in an {@link ItemStack}. Even stacks that actually represent vanilla {@link Item items}
@@ -58,7 +56,6 @@ public class WrappedGenericStack extends AEBaseItem {
 
     public static ItemStack wrap(AEKey what, long amount) {
         Objects.requireNonNull(what, "what");
-
         return wrap(new GenericStack(what, amount));
     }
 
@@ -73,12 +70,7 @@ public class WrappedGenericStack extends AEBaseItem {
         }
 
         var wrapped = stack.get(AEComponents.WRAPPED_STACK);
-
-        if (wrapped == null) {
-            return null;
-        }
-
-        return wrapped.what();
+        return wrapped == null ? null : wrapped.what();
     }
 
     public long unwrapAmount(ItemStack stack) {
@@ -87,12 +79,7 @@ public class WrappedGenericStack extends AEBaseItem {
         }
 
         var wrapped = stack.get(AEComponents.WRAPPED_STACK);
-
-        if (wrapped == null) {
-            return 0;
-        }
-
-        return wrapped.amount();
+        return wrapped == null ? 0 : wrapped.amount();
     }
 
     /**
@@ -110,7 +97,7 @@ public class WrappedGenericStack extends AEBaseItem {
         // When trying to stack onto degenerate wrapped stacks, delete them
         var what = unwrapWhat(itemInSlot);
         if (what == null && slot.getItem() == itemInSlot) {
-            LOG.error("Removing a broken wrapped generic stack from player {} slot {}", player, slot.getSlotIndex());
+            LOG.error("Removing a broken wrapped generic stack from player {} slot {}", player, slot.index);
             slot.setByPlayer(ItemStack.EMPTY, itemInSlot);
             return true;
         }

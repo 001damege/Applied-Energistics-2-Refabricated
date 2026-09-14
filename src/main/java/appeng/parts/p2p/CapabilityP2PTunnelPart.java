@@ -18,13 +18,12 @@
 
 package appeng.parts.p2p;
 
-import java.util.Objects;
-
+import appeng.api.parts.IPartItem;
+import appeng.parts.PartAdjacentApi;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 
-import appeng.api.parts.IPartItem;
-import appeng.parts.PartAdjacentApi;
+import java.util.Objects;
 
 /**
  * Base class for simple capability-based p2p tunnels. Don't forget to set the 3 handlers in the constructor of the

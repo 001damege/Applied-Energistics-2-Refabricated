@@ -23,12 +23,10 @@
 
 package appeng.api.crafting;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.stacks.AEItemKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import appeng.api.stacks.AEItemKey;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Allows mod to decode their {@link IPatternDetails} from their item stacks. This is required for custom patterns,

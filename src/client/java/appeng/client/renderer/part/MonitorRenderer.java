@@ -1,18 +1,16 @@
 package appeng.client.renderer.part;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.network.chat.Component;
-
 import appeng.api.orientation.BlockOrientation;
 import appeng.api.stacks.AmountFormat;
 import appeng.client.api.renderer.parts.PartRenderer;
 import appeng.client.render.BlockEntityRenderHelper;
 import appeng.parts.reporting.AbstractMonitorPart;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.network.chat.Component;
 
 public class MonitorRenderer implements PartRenderer<AbstractMonitorPart, MonitorRenderState> {
     private final Font font;

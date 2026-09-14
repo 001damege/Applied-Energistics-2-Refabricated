@@ -1,17 +1,14 @@
 package appeng.mixins.client;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-
+import appeng.client.AppEngClient;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-
-import org.spongepowered.asm.mixin.Mixin;
-
 import net.minecraft.client.resources.model.BlockStateModelLoader;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.spongepowered.asm.mixin.Mixin;
 
-import appeng.client.AppEngClient;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 @Mixin(BlockStateModelLoader.class)
 public class PartModelLoaderMixin {

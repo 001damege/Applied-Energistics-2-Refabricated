@@ -1,20 +1,14 @@
 package appeng.server.testworld;
 
-import java.util.Optional;
-import java.util.function.BiConsumer;
-
+import appeng.server.testplots.TestPlots;
+import appeng.util.Platform;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.gametest.framework.StructureUtils;
-import net.minecraft.gametest.framework.TestData;
-import net.minecraft.gametest.framework.TestEnvironmentDefinition;
+import net.minecraft.gametest.framework.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.ListTag;
@@ -26,8 +20,8 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
-import appeng.server.testplots.TestPlots;
-import appeng.util.Platform;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
 public class GameTestPlotAdapter extends GameTestInstance {
 

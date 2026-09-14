@@ -1,13 +1,10 @@
 package appeng.client.api;
 
+import appeng.api.stacks.AEKey;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.world.level.Level;
-
-import appeng.api.stacks.AEKey;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Similar in purpose to {@link net.minecraft.client.renderer.item.ItemStackRenderState}, but used to render arbitrary

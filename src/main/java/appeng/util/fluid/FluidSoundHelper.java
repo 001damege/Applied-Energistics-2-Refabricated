@@ -18,17 +18,15 @@
 
 package appeng.util.fluid;
 
+import appeng.api.stacks.AEFluidKey;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributes;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
-
-import appeng.api.stacks.AEFluidKey;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Helps with playing fill/empty sounds for fluids to players.

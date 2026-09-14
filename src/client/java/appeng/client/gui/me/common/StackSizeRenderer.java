@@ -18,6 +18,7 @@
 
 package appeng.client.gui.me.common;
 
+import appeng.core.AEConfig;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 

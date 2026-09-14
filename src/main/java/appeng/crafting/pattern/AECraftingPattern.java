@@ -18,48 +18,24 @@
 
 package appeng.crafting.pattern;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraft.world.level.Level;
-
 import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.crafting.PatternDetailsTooltip;
 import appeng.api.ids.AEComponents;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.stacks.GenericStack;
-import appeng.api.stacks.KeyCounter;
+import appeng.api.stacks.*;
 import appeng.blockentity.crafting.IMolecularAssemblerSupportedPattern;
 import appeng.core.localization.GuiText;
 import appeng.crafting.RecipeAccess;
+import com.google.common.base.Preconditions;
+import net.minecraft.core.Holder;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
+import java.util.stream.Stream;
 
 public class AECraftingPattern implements IPatternDetails, IMolecularAssemblerSupportedPattern {
     public static final int CRAFTING_GRID_DIMENSION = 3;

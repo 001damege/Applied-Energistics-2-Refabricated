@@ -1,9 +1,5 @@
 package appeng.server.testplots;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-
 import appeng.api.stacks.AEItemKey;
 import appeng.block.misc.GrowthAcceleratorBlock;
 import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;
@@ -13,6 +9,9 @@ import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.server.testworld.PlotBuilder;
 import appeng.server.testworld.PlotTestHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @TestPlotClass
 public class ExternalEnergyTestPlots {

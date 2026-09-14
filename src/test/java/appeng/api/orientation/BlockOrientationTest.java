@@ -1,11 +1,10 @@
 package appeng.api.orientation;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import net.minecraft.core.Direction;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import net.minecraft.core.Direction;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BlockOrientationTest {
 

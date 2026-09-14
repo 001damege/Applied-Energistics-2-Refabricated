@@ -18,12 +18,6 @@
 
 package appeng.menu.implementations;
 
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.config.InscriberInputCapacity;
 import appeng.api.config.Settings;
 import appeng.api.config.YesNo;
@@ -40,6 +34,11 @@ import appeng.menu.interfaces.IProgressProvider;
 import appeng.menu.slot.AppEngSlot;
 import appeng.menu.slot.OutputSlot;
 import appeng.util.Icon;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 /**
  * @see appeng.client.gui.implementations.InscriberScreen

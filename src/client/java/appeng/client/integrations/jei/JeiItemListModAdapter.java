@@ -1,10 +1,8 @@
 package appeng.client.integrations.jei;
 
-import com.google.common.base.Strings;
-
-import mezz.jei.api.runtime.IJeiRuntime;
-
 import appeng.integration.abstraction.ItemListModAdapter;
+import com.google.common.base.Strings;
+import mezz.jei.api.runtime.IJeiRuntime;
 
 class JeiItemListModAdapter implements ItemListModAdapter {
 

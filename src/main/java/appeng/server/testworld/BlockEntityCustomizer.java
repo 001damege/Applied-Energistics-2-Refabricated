@@ -1,13 +1,13 @@
 package appeng.server.testworld;
 
-import java.util.function.Consumer;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+
+import java.util.function.Consumer;
 
 /**
  * Calls a customization function on each placed block entity of the given type in the bounding box. Blocks that do not

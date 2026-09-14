@@ -18,12 +18,10 @@
 
 package appeng.util.helpers;
 
+import appeng.api.util.AEColor;
 import com.google.common.base.Preconditions;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-
-import appeng.api.util.AEColor;
 
 public class P2PHelper {
     public AEColor[] toColors(short frequency) {

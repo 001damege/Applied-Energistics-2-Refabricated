@@ -18,16 +18,15 @@
 
 package appeng.menu;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import appeng.core.AELog;
+import appeng.menu.implementations.MenuTypeBuilder;
+import appeng.menu.locator.MenuHostLocator;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
 
-import appeng.core.AELog;
-import appeng.menu.implementations.MenuTypeBuilder;
-import appeng.menu.locator.MenuHostLocator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Forwards a menu open request to the {@link MenuTypeBuilder} that was used to build a {@link MenuType}.

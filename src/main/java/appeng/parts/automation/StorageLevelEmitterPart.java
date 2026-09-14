@@ -18,16 +18,6 @@
 
 package appeng.parts.automation;
 
-import java.util.List;
-import java.util.Set;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.config.Settings;
 import appeng.api.config.YesNo;
@@ -48,6 +38,14 @@ import appeng.menu.MenuOpener;
 import appeng.menu.implementations.StorageLevelEmitterMenu;
 import appeng.menu.locator.MenuLocators;
 import appeng.util.ConfigInventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * Abstract level emitter logic for storage-based level emitters (item and fluid).

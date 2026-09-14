@@ -1,17 +1,13 @@
 package appeng.client.integrations.jei;
 
-import com.google.common.primitives.Ints;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.item.ItemStack;
-
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.ingredients.IIngredientType;
-
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.GenericStack;
 import appeng.client.api.integrations.jei.IngredientConverter;
+import com.google.common.primitives.Ints;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.ingredients.IIngredientType;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public class ItemIngredientConverter implements IngredientConverter<ItemStack> {
     @Override

@@ -1,7 +1,5 @@
 package appeng.recipes.handlers;
 
-import java.util.Optional;
-
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -11,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+
+import java.util.Optional;
 
 public class InscriberRecipeBuilder {
     private final Ingredient middleInput;

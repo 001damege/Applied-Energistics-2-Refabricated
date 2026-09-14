@@ -18,22 +18,6 @@
 
 package appeng.items.storage;
 
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.ids.AEComponents;
 import appeng.api.stacks.AEKeyType;
@@ -49,6 +33,21 @@ import appeng.recipes.game.StorageCellDisassemblyRecipe;
 import appeng.util.ConfigInventory;
 import appeng.util.InteractionUtil;
 import appeng.util.Platform;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AEToolItem {
     protected final double idleDrain;
@@ -57,12 +56,8 @@ public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AETo
     protected final int totalTypes;
     private final AEKeyType keyType;
 
-    public BasicStorageCell(Properties properties,
-            double idleDrain,
-            int kilobytes,
-            int bytesPerType,
-            int totalTypes,
-            AEKeyType keyType) {
+    public BasicStorageCell(Properties properties, double idleDrain, int kilobytes, int bytesPerType, int totalTypes,
+AEKeyType keyType) {
         super(properties);
         this.idleDrain = idleDrain;
         this.totalBytes = kilobytes * 1024;
@@ -72,10 +67,7 @@ public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AETo
     }
 
     @Override
-    public void appendHoverText(ItemStack stack,
-            TooltipContext context,
-            TooltipDisplay tooltipDisplay, Consumer<Component> lines,
-            TooltipFlag tooltipFlags) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag tooltipFlags) {
         if (Platform.isClient()) {
             addCellInformationToTooltip(stack, lines);
         }
@@ -132,11 +124,11 @@ public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AETo
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (level instanceof ServerLevel serverLevel) {
             this.disassembleDrive(player.getItemInHand(hand), serverLevel, player);
         }
-        return InteractionResult.SUCCESS;
+        return new InteractionResultHolder<>(InteractionResult.sidedSuccess(level.isClientSide), player.getItemInHand(hand));
     }
 
     private boolean disassembleDrive(ItemStack stack, ServerLevel level, Player player) {
@@ -150,17 +142,17 @@ public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AETo
         }
 
         var playerInventory = player.getInventory();
-        if (playerInventory.getSelectedItem() != stack) {
+        if (playerInventory.getSelected() != stack) {
             return false;
         }
 
         var inv = StorageCells.getCellInventory(stack, null);
         if (inv != null && !inv.getAvailableStacks().isEmpty()) {
-            player.sendOverlayMessage(PlayerMessages.OnlyEmptyCellsCanBeDisassembled.text());
+            player.sendSystemMessage(PlayerMessages.OnlyEmptyCellsCanBeDisassembled.text());
             return false;
         }
 
-        playerInventory.setItem(playerInventory.getSelectedSlot(), ItemStack.EMPTY);
+        playerInventory.setItem(playerInventory.selected, ItemStack.EMPTY);
 
         // Drop items from the recipe.
         for (var disassembledStack : disassembledStacks) {
@@ -174,11 +166,8 @@ public class BasicStorageCell extends AEBaseItem implements IBasicCellItem, AETo
     }
 
     @Override
-    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
-        if (context.getLevel() instanceof ServerLevel serverLevel
-                && this.disassembleDrive(stack, serverLevel, context.getPlayer())) {
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.PASS;
+    public InteractionResult useOn(UseOnContext context) {
+        var stack = context.getItemInHand();
+        return context.getLevel() instanceof ServerLevel serverLevel && this.disassembleDrive(stack, serverLevel, context.getPlayer()) ? InteractionResult.SUCCESS : InteractionResult.PASS;
     }
 }

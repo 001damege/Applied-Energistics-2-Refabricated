@@ -18,20 +18,6 @@
 
 package appeng.parts.automation;
 
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.model.data.ModelData;
-
 import appeng.api.config.RedstoneMode;
 import appeng.api.config.Setting;
 import appeng.api.config.Settings;
@@ -44,6 +30,18 @@ import appeng.api.util.IConfigManager;
 import appeng.api.util.IConfigManagerBuilder;
 import appeng.util.Platform;
 import appeng.util.SettingsFrom;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractLevelEmitterPart extends UpgradeablePart {
     private boolean prevState;

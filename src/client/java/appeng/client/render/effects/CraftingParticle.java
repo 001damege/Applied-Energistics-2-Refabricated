@@ -18,8 +18,7 @@
 
 package appeng.client.render.effects;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.util.AEColor;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -39,8 +38,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.api.util.AEColor;
+import org.jetbrains.annotations.Nullable;
 
 public class CraftingParticle extends SingleQuadParticle {
 

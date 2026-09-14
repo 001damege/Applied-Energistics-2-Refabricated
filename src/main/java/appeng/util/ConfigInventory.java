@@ -1,31 +1,19 @@
 package appeng.util;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
-
 import appeng.api.config.Actionable;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.stacks.AEKeyTypes;
-import appeng.api.stacks.GenericStack;
+import appeng.api.stacks.*;
 import appeng.api.storage.AEKeySlotFilter;
 import appeng.helpers.externalstorage.GenericStackInv;
 import appeng.me.helpers.BaseActionSource;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 /**
  * Configuration inventories contain a set of {@link AEKey} references that configure how certain aspects of a machine

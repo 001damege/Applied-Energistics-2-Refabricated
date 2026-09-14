@@ -18,6 +18,8 @@
 
 package appeng.block.spatial;
 
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.spatial.SpatialPylonBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -27,9 +29,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.spatial.SpatialPylonBlockEntity;
 
 public class SpatialPylonBlock extends AEBaseEntityBlock<SpatialPylonBlockEntity> {
 

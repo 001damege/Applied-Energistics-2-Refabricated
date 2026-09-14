@@ -1,13 +1,11 @@
 package appeng.client.api.model.parts;
 
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.ApiStatus;
-
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ExtraCodecs;
 import net.neoforged.bus.api.Event;
 import net.neoforged.fml.event.IModBusEvent;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * Subscribe to this event on your mod event bus to register part model types with AE2.

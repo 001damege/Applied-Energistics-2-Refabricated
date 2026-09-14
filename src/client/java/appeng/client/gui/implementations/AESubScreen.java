@@ -18,17 +18,15 @@
 
 package appeng.client.gui.implementations;
 
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import appeng.client.gui.WidgetContainer;
 import appeng.client.gui.widgets.TabButton;
 import appeng.core.network.ServerboundPacket;
 import appeng.core.network.serverbound.SwitchGuisPacket;
 import appeng.menu.ISubMenu;
 import appeng.util.Icon;
+import net.minecraft.network.chat.Component;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Utility class for sub-screens of other menus that allow returning to the primary menu UI.

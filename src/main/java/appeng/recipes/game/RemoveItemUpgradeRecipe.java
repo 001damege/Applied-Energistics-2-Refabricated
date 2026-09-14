@@ -1,9 +1,7 @@
 package appeng.recipes.game;
 
+import appeng.api.upgrades.IUpgradeableItem;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -12,8 +10,7 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
-
-import appeng.api.upgrades.IUpgradeableItem;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Allows adding upgrades to upgradable items.

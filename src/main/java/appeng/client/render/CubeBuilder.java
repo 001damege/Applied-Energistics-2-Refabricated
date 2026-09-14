@@ -18,19 +18,17 @@
 
 package appeng.client.render;
 
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.function.Consumer;
-
 import com.google.common.base.Preconditions;
-
-import org.joml.Vector4f;
-
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.client.model.quad.MutableQuad;
+import org.joml.Vector4f;
+
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.function.Consumer;
 
 /**
  * Builds the quads for a cube.

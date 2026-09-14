@@ -1,7 +1,6 @@
 package appeng.items.tools.fluix;
 
-import java.util.function.Consumer;
-
+import appeng.core.localization.GuiText;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -9,7 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 
-import appeng.core.localization.GuiText;
+import java.util.function.Consumer;
 
 final class IntrinsicEnchantment {
     private final ResourceKey<Enchantment> enchantment;

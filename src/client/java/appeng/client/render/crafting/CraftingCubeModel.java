@@ -18,12 +18,14 @@
 
 package appeng.client.render.crafting;
 
-import java.util.EnumSet;
-import java.util.List;
-
+import appeng.block.crafting.CraftingUnitType;
+import appeng.blockentity.crafting.CraftingCubeModelData;
+import appeng.client.render.CubeBuilder;
+import appeng.client.render.MaterialUtil;
+import appeng.core.AppEng;
+import appeng.util.Platform;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
@@ -42,12 +44,9 @@ import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.block.crafting.CraftingUnitType;
-import appeng.blockentity.crafting.CraftingCubeModelData;
-import appeng.client.render.CubeBuilder;
-import appeng.client.render.MaterialUtil;
-import appeng.core.AppEng;
-import appeng.util.Platform;
+import javax.naming.spi.Resolver;
+import java.util.EnumSet;
+import java.util.List;
 
 /**
  * The base model for baked models used by components of the crafting cube multi-block in it's formed state. Primarily

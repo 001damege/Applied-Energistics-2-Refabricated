@@ -1,16 +1,14 @@
 package appeng.helpers.externalstorage;
 
-import com.google.common.primitives.Ints;
-
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.TransferPreconditions;
-import net.neoforged.neoforge.transfer.resource.Resource;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
 import appeng.api.behaviors.GenericInternalInventory;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.stacks.GenericStack;
 import appeng.helpers.ResourceConversion;
+import com.google.common.primitives.Ints;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.TransferPreconditions;
+import net.neoforged.neoforge.transfer.resource.Resource;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
 /**
  * Adapts a {@link GenericStackInv} as {@link ResourceHandler} of the appropriate type.

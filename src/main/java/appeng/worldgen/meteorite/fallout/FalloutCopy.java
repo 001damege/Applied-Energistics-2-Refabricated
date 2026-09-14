@@ -18,6 +18,7 @@
 
 package appeng.worldgen.meteorite.fallout;
 
+import appeng.worldgen.meteorite.MeteoriteBlockPutter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.RandomSource;
@@ -25,8 +26,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.Tags;
-
-import appeng.worldgen.meteorite.MeteoriteBlockPutter;
 
 public class FalloutCopy extends Fallout {
     private static final float SPECIFIED_BLOCK_THRESHOLD = 0.9f;

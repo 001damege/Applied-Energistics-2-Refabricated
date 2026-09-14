@@ -18,10 +18,6 @@
 
 package appeng.client.gui.implementations;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import appeng.api.config.LockCraftingMode;
 import appeng.api.config.Settings;
 import appeng.api.config.YesNo;
@@ -35,6 +31,9 @@ import appeng.core.network.ServerboundPacket;
 import appeng.core.network.serverbound.ConfigButtonPacket;
 import appeng.menu.implementations.PatternProviderMenu;
 import appeng.util.Icon;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 public class PatternProviderScreen<C extends PatternProviderMenu> extends AEBaseScreen<C> {
 

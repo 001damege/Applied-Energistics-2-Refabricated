@@ -1,5 +1,12 @@
 package appeng.hooks;
 
+import appeng.api.orientation.BlockOrientation;
+import appeng.api.orientation.IOrientationStrategy;
+import appeng.api.orientation.RelativeSide;
+import appeng.api.util.DimensionalBlockPos;
+import appeng.blockentity.AEBaseBlockEntity;
+import appeng.util.InteractionUtil;
+import appeng.util.Platform;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -9,14 +16,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
-import appeng.api.orientation.BlockOrientation;
-import appeng.api.orientation.IOrientationStrategy;
-import appeng.api.orientation.RelativeSide;
-import appeng.api.util.DimensionalBlockPos;
-import appeng.blockentity.AEBaseBlockEntity;
-import appeng.util.InteractionUtil;
-import appeng.util.Platform;
 
 /**
  * This hooks listens for items that match a wrench tag being used on our blocks while shift is held to disassemble, and

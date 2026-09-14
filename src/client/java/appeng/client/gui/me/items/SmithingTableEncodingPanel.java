@@ -1,16 +1,5 @@
 package appeng.client.gui.me.items;
 
-import java.util.List;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SmithingRecipeInput;
-
 import appeng.api.config.ActionItems;
 import appeng.client.Point;
 import appeng.client.gui.WidgetContainer;
@@ -22,6 +11,16 @@ import appeng.core.localization.GuiText;
 import appeng.crafting.RecipeAccess;
 import appeng.menu.SlotSemantics;
 import appeng.util.Icon;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmithingRecipeInput;
+
+import java.util.List;
 
 public class SmithingTableEncodingPanel extends EncodingModePanel {
     private static final Blitter BG = Blitter.texture("guis/pattern_modes.png").src(128, 70, 124, 66);

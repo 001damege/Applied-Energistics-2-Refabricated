@@ -18,42 +18,29 @@
 
 package appeng.server;
 
-import static net.minecraft.commands.Commands.literal;
-
+import appeng.core.AppEng;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-
 import net.minecraft.commands.CommandSourceStack;
 
-import appeng.core.AppEng;
+import static net.minecraft.commands.Commands.literal;
 
 public final class AECommand {
-
     public void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-
         var builder = literal("ae2");
         for (var command : Commands.values()) {
             add(builder, command);
         }
-
         dispatcher.register(builder);
     }
 
     private void add(LiteralArgumentBuilder<CommandSourceStack> builder, Commands subCommand) {
-        var subCommandBuilder = literal(subCommand.literal())
-                .requires(src -> {
-                    if (subCommand.test && !AEConfig.instance().isDebugToolsEnabled()) {
-                        return false;
-                    }
-                    return subCommand.requiredPermission.check(src.permissions());
-                });
+        var subCommandBuilder = literal(subCommand.literal()).requires(src -> !subCommand.test && src.hasPermission(subCommand.level));
         subCommand.command.addArguments(subCommandBuilder);
         subCommandBuilder.executes(ctx -> {
             subCommand.command.call(AppEng.instance().getCurrentServer(), ctx, ctx.getSource());
             return 1;
         });
         builder.then(subCommandBuilder);
-
     }
-
 }

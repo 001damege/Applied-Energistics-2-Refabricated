@@ -1,9 +1,8 @@
 package appeng.client.guidebook;
 
+import appeng.core.AppEng;
 import guideme.render.GuiAssets;
 import guideme.render.GuiSprite;
-
-import appeng.core.AppEng;
 
 public final class AE2GuideAssets {
     private AE2GuideAssets() {

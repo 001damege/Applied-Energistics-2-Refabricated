@@ -1,9 +1,7 @@
 package appeng.client.api.model.parts;
 
-import java.util.List;
-
+import appeng.api.parts.IPart;
 import com.mojang.serialization.MapCodec;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -14,7 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.api.parts.IPart;
+import java.util.List;
 
 public interface PartModel {
     /**

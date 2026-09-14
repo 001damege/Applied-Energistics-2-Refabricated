@@ -1,12 +1,12 @@
 package appeng.server.testworld;
 
-import java.util.List;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+
+import java.util.List;
 
 public interface BuildAction {
     BoundingBox getBoundingBox();

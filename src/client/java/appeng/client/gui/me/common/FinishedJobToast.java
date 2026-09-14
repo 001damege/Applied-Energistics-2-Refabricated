@@ -1,7 +1,8 @@
 package appeng.client.gui.me.common;
 
-import java.util.List;
-
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.AmountFormat;
+import appeng.core.localization.GuiText;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -11,9 +12,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AmountFormat;
-import appeng.core.localization.GuiText;
+import java.util.List;
 
 /**
  * A Minecraft toast for a finished crafting job.

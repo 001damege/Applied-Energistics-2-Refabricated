@@ -1,10 +1,8 @@
 package appeng.items.tools.fluix;
 
-import java.util.function.Consumer;
-
+import appeng.hooks.IntrinsicEnchantItem;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
@@ -13,7 +11,7 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 
-import appeng.hooks.IntrinsicEnchantItem;
+import java.util.function.Consumer;
 
 public class FluixSpadeItem extends ShovelItem implements IntrinsicEnchantItem {
     private final IntrinsicEnchantment intrinsicEnchantment = new IntrinsicEnchantment(Enchantments.FORTUNE, 1);

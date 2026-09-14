@@ -18,8 +18,13 @@
 
 package appeng.block.storage;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.orientation.IOrientationStrategy;
+import appeng.api.orientation.OrientationStrategies;
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.storage.IOPortBlockEntity;
+import appeng.menu.MenuOpener;
+import appeng.menu.implementations.IOPortMenu;
+import appeng.menu.locator.MenuLocators;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -30,14 +35,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
-
-import appeng.api.orientation.IOrientationStrategy;
-import appeng.api.orientation.OrientationStrategies;
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.storage.IOPortBlockEntity;
-import appeng.menu.MenuOpener;
-import appeng.menu.implementations.IOPortMenu;
-import appeng.menu.locator.MenuLocators;
+import org.jetbrains.annotations.Nullable;
 
 public class IOPortBlock extends AEBaseEntityBlock<IOPortBlockEntity> {
 

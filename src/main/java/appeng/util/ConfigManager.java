@@ -18,11 +18,10 @@
 
 package appeng.util;
 
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
-
+import appeng.api.config.Setting;
+import appeng.api.util.IConfigManager;
+import appeng.api.util.IConfigManagerListener;
+import appeng.api.util.UnsupportedSettingException;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -30,10 +29,10 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import appeng.api.config.Setting;
-import appeng.api.util.IConfigManager;
-import appeng.api.util.IConfigManagerListener;
-import appeng.api.util.UnsupportedSettingException;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public final class ConfigManager implements IConfigManager {
     private static final Logger LOG = LoggerFactory.getLogger(ConfigManager.class);

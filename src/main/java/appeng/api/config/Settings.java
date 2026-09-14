@@ -23,13 +23,13 @@
 
 package appeng.api.config;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.common.base.Preconditions;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Settings {

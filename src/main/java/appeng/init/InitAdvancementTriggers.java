@@ -18,11 +18,10 @@
 
 package appeng.init;
 
-import net.minecraft.advancements.CriterionTrigger;
-import net.minecraft.core.Registry;
-
 import appeng.core.AppEng;
 import appeng.core.stats.AdvancementTriggers;
+import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.core.Registry;
 
 public final class InitAdvancementTriggers {
 

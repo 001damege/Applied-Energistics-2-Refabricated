@@ -18,9 +18,8 @@
 
 package appeng.thirdparty.codechicken.lib.model.pipeline.transformers;
 
-import net.neoforged.neoforge.client.model.quad.MutableQuad;
-
 import appeng.thirdparty.codechicken.lib.math.InterpHelper;
+import net.neoforged.neoforge.client.model.quad.MutableQuad;
 
 /**
  * This transformer Re-Interpolates the Color, UV's and LightMaps. Use this after all transformations that translate

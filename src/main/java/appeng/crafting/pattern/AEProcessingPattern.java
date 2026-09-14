@@ -18,15 +18,6 @@
 
 package appeng.crafting.pattern;
 
-import java.util.List;
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.crafting.PatternDetailsTooltip;
 import appeng.api.ids.AEComponents;
@@ -34,6 +25,13 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.GenericStack;
 import appeng.api.stacks.KeyCounter;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Objects;
 
 public class AEProcessingPattern implements IPatternDetails {
     public static final int MAX_INPUT_SLOTS = 9 * 9;

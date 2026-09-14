@@ -18,38 +18,25 @@
 
 package appeng.helpers.externalstorage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
-import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
-
-import it.unimi.dsi.fastutil.objects.Reference2LongArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2LongMap;
-
 import appeng.api.behaviors.GenericInternalInventory;
 import appeng.api.behaviors.GenericSlotCapacities;
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.stacks.AEKeyTypes;
-import appeng.api.stacks.GenericStack;
-import appeng.api.stacks.KeyCounter;
+import appeng.api.stacks.*;
 import appeng.api.storage.AEKeySlotFilter;
 import appeng.api.storage.MEStorage;
 import appeng.core.AELog;
 import appeng.util.ConfigMenuInventory;
+import com.google.common.base.Preconditions;
+import it.unimi.dsi.fastutil.objects.Reference2LongArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2LongMap;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 public class GenericStackInv extends SnapshotJournal<GenericStack[]> implements MEStorage, GenericInternalInventory {
     protected final GenericStack[] stacks;

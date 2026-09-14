@@ -18,17 +18,6 @@
 
 package appeng.parts.automation;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.behaviors.StackExportStrategy;
 import appeng.api.behaviors.StackTransferContext;
 import appeng.api.config.Actionable;
@@ -50,6 +39,14 @@ import appeng.core.settings.TickRates;
 import appeng.helpers.MultiCraftingTracker;
 import appeng.menu.implementations.IOBusMenu;
 import appeng.util.prioritylist.DefaultPriorityList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Generalized base class for export buses that move stacks from network storage to an adjacent block using a non-AE

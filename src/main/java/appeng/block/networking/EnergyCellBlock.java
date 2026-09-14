@@ -18,6 +18,9 @@
 
 package appeng.block.networking;
 
+import appeng.api.ids.AEComponents;
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.networking.EnergyCellBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -28,10 +31,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-
-import appeng.api.ids.AEComponents;
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.networking.EnergyCellBlockEntity;
 
 public class EnergyCellBlock extends AEBaseEntityBlock<EnergyCellBlockEntity> {
 

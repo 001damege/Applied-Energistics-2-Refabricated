@@ -1,17 +1,16 @@
 package appeng.server.testplots;
 
-import java.util.function.Consumer;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
 import appeng.block.qnb.QuantumBaseBlock;
 import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.server.testworld.PlotBuilder;
 import appeng.server.testworld.PlotTestHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
+
+import java.util.function.Consumer;
 
 @TestPlotClass
 public final class QnbTestPlots {

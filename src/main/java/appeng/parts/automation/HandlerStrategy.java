@@ -1,9 +1,12 @@
 package appeng.parts.automation;
 
-import javax.annotation.Nullable;
-
+import appeng.api.config.Actionable;
+import appeng.api.stacks.AEFluidKey;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.AEKeyType;
+import appeng.me.storage.ExternalStorageFacade;
 import com.google.common.primitives.Ints;
-
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.transfer.ResourceHandler;
@@ -11,12 +14,7 @@ import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-import appeng.api.config.Actionable;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.me.storage.ExternalStorageFacade;
+import javax.annotation.Nullable;
 
 public abstract class HandlerStrategy<C, S> {
     private final AEKeyType keyType;

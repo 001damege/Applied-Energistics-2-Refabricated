@@ -1,6 +1,14 @@
 
 package appeng.datagen.providers.recipes;
 
+import appeng.api.stacks.AEKeyType;
+import appeng.api.util.AEColor;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.core.definitions.ItemDefinition;
+import appeng.items.tools.powered.PortableCellItem;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -16,15 +24,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.crafting.DifferenceIngredient;
-
-import appeng.api.stacks.AEKeyType;
-import appeng.api.util.AEColor;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.core.definitions.ItemDefinition;
-import appeng.items.tools.powered.PortableCellItem;
 
 public class CraftingRecipes extends AE2RecipeProvider {
 

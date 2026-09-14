@@ -1,12 +1,11 @@
 package appeng.core.network.clientbound;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
 import appeng.api.stacks.AEKey;
 import appeng.core.network.ClientboundPacket;
 import appeng.core.network.CustomAppEngPayload;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 public record MolecularAssemblerAnimationPacket(BlockPos pos, byte rate, AEKey what) implements ClientboundPacket {
 

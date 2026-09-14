@@ -1,10 +1,9 @@
 package appeng.crafting.pattern;
 
-import java.util.List;
-
+import appeng.core.definitions.AEItems;
+import appeng.util.AECodecs;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -13,8 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 
-import appeng.core.definitions.AEItems;
-import appeng.util.AECodecs;
+import java.util.List;
 
 public record EncodedCraftingPattern(
         List<ItemStack> inputs,

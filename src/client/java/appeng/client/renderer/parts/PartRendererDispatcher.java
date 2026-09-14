@@ -1,22 +1,20 @@
 package appeng.client.renderer.parts;
 
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.parts.IPart;
+import appeng.client.api.renderer.parts.PartRenderer;
+import appeng.client.api.renderer.parts.RegisterPartRendererEvent;
+import appeng.core.AppEng;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.neoforged.fml.ModLoader;
 import net.neoforged.fml.ModWorkManager;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.parts.IPart;
-import appeng.client.api.renderer.parts.PartRenderer;
-import appeng.client.api.renderer.parts.RegisterPartRendererEvent;
-import appeng.core.AppEng;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Registration facility for associating {@link PartRenderer} with {@link IPart} classes.

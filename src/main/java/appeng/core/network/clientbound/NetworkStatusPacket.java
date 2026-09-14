@@ -1,12 +1,11 @@
 
 package appeng.core.network.clientbound;
 
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
 import appeng.core.network.ClientboundPacket;
 import appeng.core.network.CustomAppEngPayload;
 import appeng.menu.me.networktool.NetworkStatus;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 public record NetworkStatusPacket(NetworkStatus status) implements ClientboundPacket {
     public static final StreamCodec<RegistryFriendlyByteBuf, NetworkStatusPacket> STREAM_CODEC = StreamCodec.ofMember(

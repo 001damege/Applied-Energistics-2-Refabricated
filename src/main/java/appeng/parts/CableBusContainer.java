@@ -18,13 +18,26 @@
 
 package appeng.parts;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.config.YesNo;
+import appeng.api.implementations.parts.ICablePart;
+import appeng.api.networking.GridHelper;
+import appeng.api.networking.IGridNode;
+import appeng.api.parts.*;
+import appeng.api.util.AECableType;
+import appeng.api.util.AEColor;
+import appeng.api.util.DimensionalBlockPos;
+import appeng.block.networking.CableBusRenderState;
+import appeng.block.networking.CableCoreType;
+import appeng.block.networking.PartRenderState;
+import appeng.core.AELog;
+import appeng.facade.FacadeContainer;
+import appeng.helpers.AEMultiBlockEntity;
+import appeng.hooks.VisualStateSaving;
+import appeng.hooks.ticking.TickHandler;
+import appeng.items.parts.FacadeItem;
+import appeng.me.InWorldGridNode;
+import appeng.parts.networking.CablePart;
+import appeng.util.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -50,35 +63,12 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.config.YesNo;
-import appeng.api.implementations.parts.ICablePart;
-import appeng.api.networking.GridHelper;
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.CableRenderMode;
-import appeng.api.parts.IFacadeContainer;
-import appeng.api.parts.IFacadePart;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.api.parts.PartHelper;
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AECableType;
-import appeng.api.util.AEColor;
-import appeng.api.util.DimensionalBlockPos;
-import appeng.block.networking.CableBusRenderState;
-import appeng.block.networking.CableCoreType;
-import appeng.block.networking.PartRenderState;
-import appeng.core.AELog;
-import appeng.facade.FacadeContainer;
-import appeng.helpers.AEMultiBlockEntity;
-import appeng.hooks.VisualStateSaving;
-import appeng.hooks.ticking.TickHandler;
-import appeng.items.parts.FacadeItem;
-import appeng.me.InWorldGridNode;
-import appeng.parts.networking.CablePart;
-import appeng.util.Platform;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.List;
 
 public class CableBusContainer implements AEMultiBlockEntity, ICableBusContainer {
 

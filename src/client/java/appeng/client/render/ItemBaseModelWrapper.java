@@ -1,16 +1,6 @@
 package appeng.client.render;
 
-import static net.minecraft.client.renderer.item.CuboidItemModelWrapper.computeExtents;
-
-import java.util.List;
-import java.util.function.Supplier;
-
 import com.google.common.base.Suppliers;
-
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-
 import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.item.ModelRenderProperties;
@@ -18,6 +8,14 @@ import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Vector3fc;
+
+import java.util.List;
+import java.util.function.Supplier;
+
+import static net.minecraft.client.renderer.item.CuboidItemModelWrapper.computeExtents;
 
 public record ItemBaseModelWrapper(
         List<BakedQuad> quads,

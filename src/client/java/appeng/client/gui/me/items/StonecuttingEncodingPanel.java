@@ -1,9 +1,13 @@
 package appeng.client.gui.me.items;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.client.Point;
+import appeng.client.gui.Tooltip;
+import appeng.client.gui.WidgetContainer;
+import appeng.client.gui.style.Blitter;
+import appeng.client.gui.widgets.Scrollbar;
+import appeng.core.localization.GuiText;
+import appeng.menu.SlotSemantics;
+import appeng.util.Icon;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.Rect2i;
@@ -14,15 +18,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.client.Point;
-import appeng.client.gui.Tooltip;
-import appeng.client.gui.WidgetContainer;
-import appeng.client.gui.style.Blitter;
-import appeng.client.gui.widgets.Scrollbar;
-import appeng.core.localization.GuiText;
-import appeng.menu.SlotSemantics;
-import appeng.util.Icon;
+import java.util.Objects;
 
 /**
  * Implements the panel for encoding stonecutting recipes.

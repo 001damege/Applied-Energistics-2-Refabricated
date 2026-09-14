@@ -1,15 +1,14 @@
 package appeng.datagen.providers.datamaps;
 
-import static net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps.RAID_HERO_GIFTS;
-
-import java.util.concurrent.CompletableFuture;
-
+import appeng.init.InitVillager;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.RaidHeroGift;
 
-import appeng.init.InitVillager;
+import java.util.concurrent.CompletableFuture;
+
+import static net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps.RAID_HERO_GIFTS;
 
 public class RaidHeroGiftsProvider extends DataMapProvider {
     public RaidHeroGiftsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {

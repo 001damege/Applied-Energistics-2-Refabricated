@@ -18,15 +18,6 @@
 
 package appeng.core.definitions;
 
-import static appeng.core.definitions.AEItems.item;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-
 import appeng.api.ids.AEPartIds;
 import appeng.api.parts.IPart;
 import appeng.api.parts.IPartItem;
@@ -34,41 +25,25 @@ import appeng.api.util.AEColor;
 import appeng.core.AppEng;
 import appeng.items.parts.ColoredPartItem;
 import appeng.items.parts.PartItem;
-import appeng.parts.automation.AnnihilationPlanePart;
-import appeng.parts.automation.AnnihilationPlanePartItem;
-import appeng.parts.automation.EnergyLevelEmitterPart;
-import appeng.parts.automation.ExportBusPart;
-import appeng.parts.automation.FormationPlanePart;
-import appeng.parts.automation.ImportBusPart;
-import appeng.parts.automation.StorageLevelEmitterPart;
+import appeng.parts.automation.*;
 import appeng.parts.crafting.PatternProviderPart;
 import appeng.parts.encoding.PatternEncodingTerminalPart;
 import appeng.parts.misc.CableAnchorPart;
 import appeng.parts.misc.InterfacePart;
 import appeng.parts.misc.InvertedToggleBusPart;
 import appeng.parts.misc.ToggleBusPart;
-import appeng.parts.networking.CoveredCablePart;
-import appeng.parts.networking.CoveredDenseCablePart;
-import appeng.parts.networking.EnergyAcceptorPart;
-import appeng.parts.networking.GlassCablePart;
-import appeng.parts.networking.QuartzFiberPart;
-import appeng.parts.networking.SmartCablePart;
-import appeng.parts.networking.SmartDenseCablePart;
-import appeng.parts.p2p.FEP2PTunnelPart;
-import appeng.parts.p2p.FluidP2PTunnelPart;
-import appeng.parts.p2p.ItemP2PTunnelPart;
-import appeng.parts.p2p.LightP2PTunnelPart;
-import appeng.parts.p2p.MEP2PTunnelPart;
-import appeng.parts.p2p.RedstoneP2PTunnelPart;
-import appeng.parts.reporting.ConversionMonitorPart;
-import appeng.parts.reporting.CraftingTerminalPart;
-import appeng.parts.reporting.DarkPanelPart;
-import appeng.parts.reporting.PanelPart;
-import appeng.parts.reporting.PatternAccessTerminalPart;
-import appeng.parts.reporting.SemiDarkPanelPart;
-import appeng.parts.reporting.StorageMonitorPart;
-import appeng.parts.reporting.TerminalPart;
+import appeng.parts.networking.*;
+import appeng.parts.p2p.*;
+import appeng.parts.reporting.*;
 import appeng.parts.storagebus.StorageBusPart;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+
+import static appeng.core.definitions.AEItems.item;
 
 /**
  * Internal implementation for the API parts
@@ -113,43 +88,26 @@ public final class AEParts {
     public static final ItemDefinition<PartItem<LightP2PTunnelPart>> LIGHT_P2P_TUNNEL = createPart("Light P2P Tunnel", AEPartIds.LIGHT_P2P_TUNNEL, LightP2PTunnelPart.class, LightP2PTunnelPart::new);
     // spotless:on
 
-    private static <T extends IPart> ItemDefinition<PartItem<T>> createPart(
-            String englishName,
-            Identifier id,
-            Class<T> partClass,
-            Function<IPartItem<T>, T> factory) {
-
+    private static <T extends IPart> ItemDefinition<PartItem<T>> createPart(String englishName, ResourceLocation id, Class<T> partClass, Function<IPartItem<T>, T> factory) {
         return item(englishName, id, props -> new PartItem<>(props, partClass, factory));
     }
 
-    private static <T extends IPart> ItemDefinition<PartItem<T>> createCustomPartItem(
-            String englishName,
-            Identifier id,
-            Class<T> partClass,
-            Function<Item.Properties, PartItem<T>> factory) {
-
+    private static <T extends IPart> ItemDefinition<PartItem<T>> createCustomPartItem(String englishName, ResourceLocation id, Class<T> partClass, Function<Item.Properties, PartItem<T>> factory) {
         return item(englishName, id, factory);
     }
 
-    private static <T extends IPart> ColoredItemDefinition<ColoredPartItem<T>> constructColoredDefinition(
-            String nameSuffix,
-            String idSuffix,
-            Class<T> partClass,
-            Function<ColoredPartItem<T>, T> factory) {
+    private static <T extends IPart> ColoredItemDefinition<ColoredPartItem<T>> constructColoredDefinition(String nameSuffix, String idSuffix, Class<T> partClass, Function<ColoredPartItem<T>, T> factory) {
 
         var definition = new ColoredItemDefinition<ColoredPartItem<T>>();
         for (AEColor color : AEColor.values()) {
             var id = color.registryPrefix + '_' + idSuffix;
             var name = color.englishName + " " + nameSuffix;
 
-            var itemDef = item(name, AppEng.makeId(id),
-                    props -> new ColoredPartItem<>(props, partClass, factory, color));
-
+            var itemDef = item(name, AppEng.makeId(id), props -> new ColoredPartItem<>(props, partClass, factory, color));
             definition.add(color, AppEng.makeId(id), itemDef);
         }
 
         COLORED_PARTS.add(definition);
-
         return definition;
     }
 

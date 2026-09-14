@@ -18,6 +18,9 @@
 
 package appeng.parts;
 
+import appeng.api.parts.SelectedPart;
+import appeng.api.util.AEColor;
+import appeng.block.networking.CableBusRenderState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -30,10 +33,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.api.parts.SelectedPart;
-import appeng.api.util.AEColor;
-import appeng.block.networking.CableBusRenderState;
 
 public class NullCableBusContainer implements ICableBusContainer {
 

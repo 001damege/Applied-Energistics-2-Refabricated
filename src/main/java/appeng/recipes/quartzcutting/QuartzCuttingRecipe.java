@@ -1,13 +1,9 @@
 package appeng.recipes.quartzcutting;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEItems;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -15,13 +11,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.NormalCraftingRecipe;
-import net.minecraft.world.item.crafting.PlacementInfo;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
@@ -29,9 +19,10 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.common.util.RecipeMatcher;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEItems;
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuartzCuttingRecipe extends NormalCraftingRecipe {
     public static final MapCodec<QuartzCuttingRecipe> CODEC = RecordCodecBuilder.mapCodec((builder) -> builder.group(

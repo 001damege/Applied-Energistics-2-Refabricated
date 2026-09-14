@@ -18,13 +18,17 @@
 
 package appeng.blockentity.spatial;
 
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-
+import appeng.api.networking.GridFlags;
+import appeng.api.networking.IGridMultiblock;
+import appeng.api.networking.IGridNode;
+import appeng.api.networking.IGridNodeListener;
+import appeng.api.orientation.BlockOrientation;
+import appeng.blockentity.grid.AENetworkedBlockEntity;
+import appeng.me.cluster.IAEMultiBlock;
+import appeng.me.cluster.implementations.SpatialPylonCalculator;
+import appeng.me.cluster.implementations.SpatialPylonCluster;
+import appeng.util.iterators.ChainedIterator;
 import com.google.common.collect.Iterators;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,16 +41,10 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.model.data.ModelProperty;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridMultiblock;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridNodeListener;
-import appeng.api.orientation.BlockOrientation;
-import appeng.blockentity.grid.AENetworkedBlockEntity;
-import appeng.me.cluster.IAEMultiBlock;
-import appeng.me.cluster.implementations.SpatialPylonCalculator;
-import appeng.me.cluster.implementations.SpatialPylonCluster;
-import appeng.util.iterators.ChainedIterator;
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 
 public class SpatialPylonBlockEntity extends AENetworkedBlockEntity implements IAEMultiBlock<SpatialPylonCluster> {
 

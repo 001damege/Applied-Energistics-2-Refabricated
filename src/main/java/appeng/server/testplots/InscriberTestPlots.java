@@ -1,7 +1,9 @@
 package appeng.server.testplots;
 
-import org.jspecify.annotations.Nullable;
-
+import appeng.api.ids.AEComponents;
+import appeng.blockentity.misc.InscriberBlockEntity;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -11,11 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-
-import appeng.api.ids.AEComponents;
-import appeng.blockentity.misc.InscriberBlockEntity;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
+import org.jspecify.annotations.Nullable;
 
 @TestPlotClass
 public final class InscriberTestPlots {

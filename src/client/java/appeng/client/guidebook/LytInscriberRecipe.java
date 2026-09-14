@@ -1,13 +1,12 @@
 
 package appeng.client.guidebook;
 
+import appeng.recipes.handlers.InscriberRecipe;
 import guideme.document.LytRect;
 import guideme.document.block.LytBox;
 import guideme.document.block.LytSlot;
 import guideme.layout.LayoutContext;
 import guideme.render.RenderContext;
-
-import appeng.recipes.handlers.InscriberRecipe;
 
 public class LytInscriberRecipe extends LytBox {
     private final LytSlot topSlot;

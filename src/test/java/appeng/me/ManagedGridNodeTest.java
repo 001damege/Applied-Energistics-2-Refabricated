@@ -1,20 +1,18 @@
 package appeng.me;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertSame;
-
-import org.assertj.core.data.Offset;
-import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Test;
-
+import appeng.api.config.Actionable;
+import appeng.api.config.PowerMultiplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
+import org.assertj.core.data.Offset;
+import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Test;
 
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerMultiplier;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class ManagedGridNodeTest extends AbstractGridNodeTest {
     public static final Offset<Double> TOLERANCE = Offset.offset(0.1);

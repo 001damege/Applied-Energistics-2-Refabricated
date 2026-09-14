@@ -18,17 +18,16 @@
 
 package appeng.crafting;
 
-import java.util.UUID;
-
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.config.Actionable;
 import appeng.api.networking.crafting.ICraftingCPU;
 import appeng.api.networking.crafting.ICraftingLink;
 import appeng.api.networking.crafting.ICraftingRequester;
 import appeng.api.stacks.AEKey;
+import net.minecraft.core.UUIDUtil;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+
+import java.util.UUID;
 
 public class CraftingLink implements ICraftingLink {
 

@@ -18,13 +18,12 @@
 
 package appeng.init;
 
-import net.minecraft.world.level.block.DispenserBlock;
-
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.hooks.BlockToolDispenseItemBehavior;
 import appeng.hooks.MatterCannonDispenseItemBehavior;
 import appeng.hooks.TinyTNTDispenseItemBehavior;
+import net.minecraft.world.level.block.DispenserBlock;
 
 /**
  * Registers custom {@link DispenserBlock} behaviors for our items.

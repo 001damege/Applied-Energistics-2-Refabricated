@@ -18,14 +18,6 @@
 
 package appeng.client.gui.me.crafting;
 
-import java.text.NumberFormat;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-
 import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.StackWithBounds;
 import appeng.client.gui.style.ScreenStyle;
@@ -33,6 +25,13 @@ import appeng.client.gui.widgets.Scrollbar;
 import appeng.core.localization.GuiText;
 import appeng.menu.me.crafting.CraftConfirmMenu;
 import appeng.menu.me.crafting.CraftingPlanSummary;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+
+import java.text.NumberFormat;
 
 /**
  * This screen shows the computed crafting plan and allows the player to select a CPU on which it should be scheduled

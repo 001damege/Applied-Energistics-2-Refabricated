@@ -1,16 +1,15 @@
 package appeng.menu.guisync;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import appeng.core.AppEng;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
-import appeng.core.AppEng;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public record ClientboundInitialGuiSyncData(int containerId,
         Map<Integer, SynchronizedFieldHeader> fields) implements CustomPacketPayload {

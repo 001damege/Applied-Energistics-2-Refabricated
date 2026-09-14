@@ -18,6 +18,10 @@
 
 package appeng.core.localization;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum PlayerMessages implements LocalizationEnum {
     AmmoDepleted("Ammo Depleted."),
     ChestCannotReadStorageCell("ME Chest cannot read storage cell."),
@@ -77,14 +81,9 @@ public enum PlayerMessages implements LocalizationEnum {
     UnknownHotkey("Unknown Hotkey: "),
     SpecialThanks("Special thanks to %s"),
     FacadePropertySelected("Now cycling through property '%s'."),
-    FacadePropertyWrapped(
-            "Wrapped around to the first value of '%s'. You can change properties by hitting the facade.");
+    FacadePropertyWrapped("Wrapped around to the first value of '%s'. You can change properties by hitting the facade.");
 
     private final String englishText;
-
-    PlayerMessages(String englishText) {
-        this.englishText = englishText;
-    }
 
     @Override
     public String getEnglishText() {

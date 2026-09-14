@@ -1,5 +1,8 @@
 package appeng.client.gui.widgets;
 
+import appeng.client.gui.style.Blitter;
+import appeng.client.gui.style.PaletteColor;
+import appeng.client.gui.style.ScreenStyle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractButton;
@@ -7,10 +10,6 @@ import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.input.InputWithModifiers;
 import net.minecraft.network.chat.Component;
-
-import appeng.client.gui.style.Blitter;
-import appeng.client.gui.style.PaletteColor;
-import appeng.client.gui.style.ScreenStyle;
 
 public class AECheckbox extends AbstractButton {
     public static final int SIZE = 14;

@@ -18,11 +18,10 @@
 
 package appeng.thirdparty.codechicken.lib.model.pipeline.transformers;
 
-import org.joml.Vector3f;
-
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.client.model.quad.MutableQuad;
+import org.joml.Vector3f;
 
 /**
  * This transformer simply clamps the vertices inside the provided box. You probably want to Re-Interpolate the UV's,

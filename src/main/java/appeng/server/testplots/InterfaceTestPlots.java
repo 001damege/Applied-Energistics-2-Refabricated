@@ -1,5 +1,16 @@
 package appeng.server.testplots;
 
+import appeng.api.config.Actionable;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.GenericStack;
+import appeng.api.stacks.KeyCounter;
+import appeng.blockentity.misc.InterfaceBlockEntity;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.me.helpers.BaseActionSource;
+import appeng.parts.misc.InterfacePart;
+import appeng.server.testworld.PlotBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -12,18 +23,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.item.ItemResource;
-
-import appeng.api.config.Actionable;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.GenericStack;
-import appeng.api.stacks.KeyCounter;
-import appeng.blockentity.misc.InterfaceBlockEntity;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.me.helpers.BaseActionSource;
-import appeng.parts.misc.InterfacePart;
-import appeng.server.testworld.PlotBuilder;
 
 @TestPlotClass
 public class InterfaceTestPlots {

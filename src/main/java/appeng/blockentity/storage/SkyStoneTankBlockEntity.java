@@ -1,5 +1,6 @@
 package appeng.blockentity.storage;
 
+import appeng.blockentity.AEBaseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.util.ProblemReporter;
@@ -17,8 +18,6 @@ import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.fluid.FluidStacksResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
-
-import appeng.blockentity.AEBaseBlockEntity;
 
 public class SkyStoneTankBlockEntity extends AEBaseBlockEntity {
 

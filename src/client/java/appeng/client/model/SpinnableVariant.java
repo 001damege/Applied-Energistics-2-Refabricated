@@ -1,19 +1,10 @@
 package appeng.client.model;
 
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Map;
-
 import com.mojang.math.Quadrant;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-
 import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -24,6 +15,13 @@ import net.minecraft.core.BlockMath;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Quaternionf;
+
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Map;
 
 /**
  * Extends Vanillas {@link net.minecraft.client.renderer.block.dispatch.Variant} with rotation around the Z-axis. TODO

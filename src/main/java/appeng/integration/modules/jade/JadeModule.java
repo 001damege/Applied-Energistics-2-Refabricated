@@ -1,22 +1,16 @@
 package appeng.integration.modules.jade;
 
+import appeng.api.integrations.igtooltip.ClientRegistration;
+import appeng.api.integrations.igtooltip.CommonRegistration;
+import appeng.api.integrations.igtooltip.providers.*;
+import appeng.integration.modules.igtooltip.TooltipProviders;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
-
-import appeng.api.integrations.igtooltip.ClientRegistration;
-import appeng.api.integrations.igtooltip.CommonRegistration;
-import appeng.api.integrations.igtooltip.providers.BodyProvider;
-import appeng.api.integrations.igtooltip.providers.IconProvider;
-import appeng.api.integrations.igtooltip.providers.ModNameProvider;
-import appeng.api.integrations.igtooltip.providers.NameProvider;
-import appeng.api.integrations.igtooltip.providers.ServerDataProvider;
-import appeng.integration.modules.igtooltip.TooltipProviders;
 
 @WailaPlugin
 public class JadeModule implements IWailaPlugin {

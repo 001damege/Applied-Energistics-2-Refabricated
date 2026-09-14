@@ -1,5 +1,8 @@
 package appeng.server.testplots;
 
+import appeng.core.definitions.AEParts;
+import appeng.server.testworld.PlotBuilder;
+import appeng.util.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -8,10 +11,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.core.definitions.AEParts;
-import appeng.server.testworld.PlotBuilder;
-import appeng.util.Platform;
 
 @TestPlotClass
 public class AnnihilationPlaneTests {

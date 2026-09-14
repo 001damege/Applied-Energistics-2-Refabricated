@@ -1,9 +1,7 @@
 package appeng.init.worldgen;
 
-import java.util.Optional;
-
-import org.jetbrains.annotations.NotNull;
-
+import appeng.spatial.SpatialStorageChunkGenerator;
+import appeng.spatial.SpatialStorageDimensionIds;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.BlockTags;
@@ -14,9 +12,9 @@ import net.minecraft.world.attribute.EnvironmentAttributeMap;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.dimension.DimensionType;
+import org.jetbrains.annotations.NotNull;
 
-import appeng.spatial.SpatialStorageChunkGenerator;
-import appeng.spatial.SpatialStorageDimensionIds;
+import java.util.Optional;
 
 public final class InitDimensionTypes {
     private InitDimensionTypes() {

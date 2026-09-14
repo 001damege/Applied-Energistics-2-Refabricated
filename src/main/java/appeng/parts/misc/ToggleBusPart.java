@@ -18,8 +18,13 @@
 
 package appeng.parts.misc;
 
-import java.util.EnumSet;
-
+import appeng.api.networking.*;
+import appeng.api.parts.IPartCollisionHelper;
+import appeng.api.parts.IPartHost;
+import appeng.api.parts.IPartItem;
+import appeng.api.util.AECableType;
+import appeng.parts.AEBasePart;
+import appeng.parts.automation.PartModelData;
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -28,17 +33,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.GridHelper;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IManagedGridNode;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.api.util.AECableType;
-import appeng.parts.AEBasePart;
-import appeng.parts.automation.PartModelData;
+import java.util.EnumSet;
 
 public class ToggleBusPart extends AEBasePart {
     private final IManagedGridNode outerNode = GridHelper

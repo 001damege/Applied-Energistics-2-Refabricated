@@ -18,24 +18,19 @@
 
 package appeng.me.cells;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.config.IncludeExclude;
 import appeng.api.stacks.GenericStack;
 import appeng.api.storage.cells.ICellHandler;
 import appeng.api.storage.cells.ISaveProvider;
+import appeng.core.AEConfig;
 import appeng.core.localization.GuiText;
 import appeng.core.localization.Tooltips;
 import appeng.items.storage.StorageCellTooltipComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.*;
 
 /**
  * Cell handler that manages all normal storage cells (items, fluids).
@@ -53,26 +48,22 @@ public class BasicCellHandler implements ICellHandler {
         return BasicCellInventory.createInventory(is, container);
     }
 
-    public void addCellInformationToTooltip(ItemStack is, Consumer<Component> lines) {
+    public void addCellInformationToTooltip(ItemStack is, List<Component> tooltip) {
         var handler = getCellInventory(is, null);
         if (handler == null) {
             return;
         }
 
-        lines.accept(Tooltips.bytesUsed(handler.getUsedBytes(), handler.getTotalBytes()));
-        lines.accept(Tooltips.typesUsed(handler.getStoredItemTypes(), handler.getTotalItemTypes()));
+        tooltip.add(Tooltips.bytesUsed(handler.getUsedBytes(), handler.getTotalBytes()));
+        tooltip.add(Tooltips.typesUsed(handler.getStoredItemTypes(), handler.getTotalItemTypes()));
 
         if (handler.isPreformatted()) {
-            var list = (handler.getPartitionListMode() == IncludeExclude.WHITELIST ? GuiText.Included
-                    : GuiText.Excluded)
-                    .text();
+            var list = (handler.getPartitionListMode() == IncludeExclude.WHITELIST ? GuiText.Included : GuiText.Excluded).text();
 
             if (handler.isFuzzy()) {
-                lines.accept(
-                        GuiText.Partitioned.withSuffix(" - ").append(list).append(" ").append(GuiText.Fuzzy.text()));
+                tooltip.add(GuiText.Partitioned.withSuffix(" - ").append(list).append(" ").append(GuiText.Fuzzy.text()));
             } else {
-                lines.accept(
-                        GuiText.Partitioned.withSuffix(" - ").append(list).append(" ").append(GuiText.Precise.text()));
+                tooltip.add(GuiText.Partitioned.withSuffix(" - ").append(list).append(" ").append(GuiText.Precise.text()));
             }
         }
     }
@@ -132,10 +123,6 @@ public class BasicCellHandler implements ICellHandler {
             content = Collections.emptyList();
         }
 
-        return Optional.of(new StorageCellTooltipComponent(
-                upgradeStacks,
-                content,
-                hasMoreContent,
-                true));
+        return Optional.of(new StorageCellTooltipComponent(upgradeStacks, content, hasMoreContent, true));
     }
 }

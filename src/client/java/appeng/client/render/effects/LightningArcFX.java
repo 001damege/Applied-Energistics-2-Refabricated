@@ -18,6 +18,7 @@
 
 package appeng.client.render.effects;
 
+import appeng.core.particles.LightningArcParticleData;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -25,8 +26,6 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-
-import appeng.core.particles.LightningArcParticleData;
 
 public class LightningArcFX extends LightningFX {
 

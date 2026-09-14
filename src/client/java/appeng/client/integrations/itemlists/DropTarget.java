@@ -1,8 +1,7 @@
 package appeng.client.integrations.itemlists;
 
-import net.minecraft.client.renderer.Rect2i;
-
 import appeng.api.stacks.GenericStack;
+import net.minecraft.client.renderer.Rect2i;
 
 public interface DropTarget {
     Rect2i area();

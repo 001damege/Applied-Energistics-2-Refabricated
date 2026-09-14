@@ -18,6 +18,9 @@
 
 package appeng.parts.p2p;
 
+import appeng.api.networking.IGridNodeListener;
+import appeng.api.parts.IPartItem;
+import appeng.util.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -26,10 +29,6 @@ import net.minecraft.world.level.block.RedStoneWireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-
-import appeng.api.networking.IGridNodeListener;
-import appeng.api.parts.IPartItem;
-import appeng.util.Platform;
 
 public class RedstoneP2PTunnelPart extends P2PTunnelPart<RedstoneP2PTunnelPart> {
     private int power;

@@ -1,20 +1,18 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.stacks.GenericStack;
+import appeng.client.api.integrations.jei.IngredientConverter;
+import appeng.client.api.integrations.jei.IngredientConverters;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.runtime.IIngredientManager;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.GenericStack;
-import appeng.client.api.integrations.jei.IngredientConverter;
-import appeng.client.api.integrations.jei.IngredientConverters;
+import java.util.List;
+import java.util.Objects;
 
 public final class GenericEntryStackHelper {
     private GenericEntryStackHelper() {

@@ -1,20 +1,18 @@
 package appeng.core.network.bidirectional;
 
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerPlayer;
-
 import appeng.api.config.Setting;
 import appeng.api.util.IConfigManager;
 import appeng.api.util.IConfigurableObject;
 import appeng.core.network.ClientboundPacket;
 import appeng.core.network.CustomAppEngPayload;
 import appeng.core.network.ServerboundPacket;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
-public record ConfigValuePacket(String name, String value) implements ClientboundPacket, ServerboundPacket {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ConfigValuePacket> STREAM_CODEC = StreamCodec.ofMember(
-            ConfigValuePacket::write,
-            ConfigValuePacket::decode);
+public record ConfigValuePacket(String name, String value) implements ClientboundPacket<ConfigValuePacket>, ServerboundPacket<ConfigValuePacket> {
+    public static final StreamCodec<RegistryFriendlyByteBuf, ConfigValuePacket> STREAM_CODEC = StreamCodec.ofMember(ConfigValuePacket::write, ConfigValuePacket::decode);
 
     public static final Type<ConfigValuePacket> TYPE = CustomAppEngPayload.createType("config_value");
 
@@ -46,7 +44,16 @@ public record ConfigValuePacket(String name, String value) implements Clientboun
     }
 
     @Override
-    public void handleOnServer(ServerPlayer player) {
+    public void receive(ConfigValuePacket payload, ClientPlayNetworking.Context context) {
+        var player = context.player();
+        if (player.containerMenu instanceof IConfigurableObject configurableObject) {
+            loadSetting(configurableObject);
+        }
+    }
+
+    @Override
+    public void receive(ConfigValuePacket payload, ServerPlayNetworking.Context context) {
+        var player = context.player();
         if (player.containerMenu instanceof IConfigurableObject configurableObject) {
             loadSetting(configurableObject);
         }
@@ -62,5 +69,4 @@ public record ConfigValuePacket(String name, String value) implements Clientboun
             }
         }
     }
-
 }

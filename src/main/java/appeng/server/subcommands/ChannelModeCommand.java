@@ -1,21 +1,20 @@
 package appeng.server.subcommands;
 
-import static net.minecraft.commands.Commands.literal;
-
-import java.util.Locale;
-
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.server.MinecraftServer;
-
 import appeng.api.networking.pathing.ChannelMode;
+import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.localization.PlayerMessages;
 import appeng.hooks.ticking.TickHandler;
 import appeng.me.Grid;
 import appeng.server.ISubCommand;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.MinecraftServer;
+
+import java.util.Locale;
+
+import static net.minecraft.commands.Commands.literal;
 
 /**
  * Command to easily change {@link AEConfig#getChannelMode()} at runtime.

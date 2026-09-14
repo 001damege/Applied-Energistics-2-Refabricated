@@ -19,7 +19,6 @@
 package appeng.recipes.handlers;
 
 import com.mojang.serialization.Codec;
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;

@@ -1,8 +1,8 @@
 package appeng.client.integrations.jei.widgets;
 
-import java.util.List;
-
 import net.minecraft.network.chat.Component;
+
+import java.util.List;
 
 public abstract class AbstractWidget implements Widget {
     public List<Component> tooltipLines = List.of();

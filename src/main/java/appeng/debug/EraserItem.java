@@ -18,12 +18,10 @@
 
 package appeng.debug;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-
+import appeng.core.AEConfig;
+import appeng.core.AELog;
+import appeng.items.AEBaseItem;
+import appeng.util.InteractionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -37,9 +35,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-import appeng.core.AELog;
-import appeng.items.AEBaseItem;
-import appeng.util.InteractionUtil;
+import java.util.*;
 
 public class EraserItem extends AEBaseItem {
 

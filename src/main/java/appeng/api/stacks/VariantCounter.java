@@ -1,14 +1,13 @@
 package appeng.api.stacks;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
+import appeng.api.config.FuzzyMode;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongMaps;
 import it.unimi.dsi.fastutil.objects.Object2LongSortedMap;
 
-import appeng.api.config.FuzzyMode;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Tallies a negative or positive amount for sub-variants of a {@link AEKey}.

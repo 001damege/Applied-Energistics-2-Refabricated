@@ -1,14 +1,9 @@
 package appeng.me.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.function.Consumer;
-
-import org.assertj.core.data.Offset;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.junit.jupiter.api.Test;
-
+import appeng.api.config.Actionable;
+import appeng.me.AbstractGridNodeTest;
+import appeng.me.GridConnection;
+import appeng.me.ManagedGridNode;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.ProblemReporter;
@@ -16,11 +11,14 @@ import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.assertj.core.data.Offset;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.junit.jupiter.api.Test;
 
-import appeng.api.config.Actionable;
-import appeng.me.AbstractGridNodeTest;
-import appeng.me.GridConnection;
-import appeng.me.ManagedGridNode;
+import java.util.function.Consumer;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class EnergyServiceTest extends AbstractGridNodeTest {
     public static final Offset<Double> TOLERANCE = Offset.offset(0.1);

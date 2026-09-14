@@ -18,8 +18,10 @@
 
 package appeng.server.subcommands;
 
+import appeng.core.AEConfig;
+import appeng.core.AELog;
+import appeng.server.ISubCommand;
 import com.mojang.brigadier.context.CommandContext;
-
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -29,9 +31,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.ChunkEvent;
-
-import appeng.core.AELog;
-import appeng.server.ISubCommand;
 
 public class ChunkLogger implements ISubCommand {
 

@@ -23,29 +23,22 @@
 
 package appeng.api.crafting;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CopyOnWriteArrayList;
-
+import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.GenericStack;
+import appeng.core.definitions.AEItems;
+import appeng.crafting.pattern.*;
 import com.google.common.base.Function;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.GenericStack;
-import appeng.core.definitions.AEItems;
-import appeng.crafting.pattern.AECraftingPattern;
-import appeng.crafting.pattern.AEPatternDecoder;
-import appeng.crafting.pattern.AEProcessingPattern;
-import appeng.crafting.pattern.AESmithingTablePattern;
-import appeng.crafting.pattern.AEStonecuttingPattern;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class PatternDetailsHelper {
     private static final List<IPatternDetailsDecoder> DECODERS = new CopyOnWriteArrayList<>();

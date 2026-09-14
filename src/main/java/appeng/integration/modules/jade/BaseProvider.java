@@ -1,7 +1,6 @@
 package appeng.integration.modules.jade;
 
 import net.minecraft.resources.Identifier;
-
 import snownee.jade.api.IJadeProvider;
 
 public class BaseProvider implements IJadeProvider {

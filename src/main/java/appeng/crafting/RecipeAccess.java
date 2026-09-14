@@ -1,18 +1,16 @@
 package appeng.crafting;
 
-import java.util.Collection;
-import java.util.stream.Stream;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.core.AppEng;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.core.AppEng;
+import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * Utility class for accessing recipes.

@@ -1,14 +1,12 @@
 package appeng.items.storage;
 
+import appeng.spatial.SpatialStoragePlot;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-
-import appeng.spatial.SpatialStoragePlot;
 
 /**
  * @param id   The {@linkplain SpatialStoragePlot#getId() plot id}.
@@ -17,7 +15,8 @@ import appeng.spatial.SpatialStoragePlot;
 public record SpatialPlotInfo(int id, BlockPos size) {
     public static final Codec<SpatialPlotInfo> CODEC = RecordCodecBuilder.create(builder -> builder.group(
             Codec.INT.fieldOf("id").forGetter(SpatialPlotInfo::id),
-            BlockPos.CODEC.fieldOf("size").forGetter(SpatialPlotInfo::size)).apply(builder, SpatialPlotInfo::new));
+            BlockPos.CODEC.fieldOf("size").forGetter(SpatialPlotInfo::size))
+            .apply(builder, SpatialPlotInfo::new));
 
     public static final StreamCodec<FriendlyByteBuf, SpatialPlotInfo> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.VAR_INT,

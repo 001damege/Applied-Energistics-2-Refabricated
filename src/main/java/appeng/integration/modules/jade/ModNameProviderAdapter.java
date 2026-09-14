@@ -1,16 +1,14 @@
 package appeng.integration.modules.jade;
 
+import appeng.api.integrations.igtooltip.providers.ModNameProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.JadeIds;
 import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.config.IWailaConfig;
-
-import appeng.api.integrations.igtooltip.providers.ModNameProvider;
 
 class ModNameProviderAdapter<T> extends BaseProvider implements IBlockComponentProvider {
     private final ModNameProvider<? super T> provider;

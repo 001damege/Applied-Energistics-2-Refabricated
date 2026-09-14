@@ -18,49 +18,10 @@
 
 package appeng.client;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-
-import com.google.common.annotations.VisibleForTesting;
-
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.MenuAccess;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-
 import appeng.client.gui.AEBaseScreen;
-import appeng.client.gui.implementations.CellWorkbenchScreen;
-import appeng.client.gui.implementations.CondenserScreen;
-import appeng.client.gui.implementations.DriveScreen;
-import appeng.client.gui.implementations.EnergyLevelEmitterScreen;
-import appeng.client.gui.implementations.FormationPlaneScreen;
-import appeng.client.gui.implementations.IOBusScreen;
-import appeng.client.gui.implementations.IOPortScreen;
-import appeng.client.gui.implementations.InscriberScreen;
-import appeng.client.gui.implementations.InterfaceScreen;
-import appeng.client.gui.implementations.MEChestScreen;
-import appeng.client.gui.implementations.MolecularAssemblerScreen;
-import appeng.client.gui.implementations.PatternProviderScreen;
-import appeng.client.gui.implementations.PriorityScreen;
-import appeng.client.gui.implementations.QNBScreen;
-import appeng.client.gui.implementations.QuartzKnifeScreen;
-import appeng.client.gui.implementations.SkyStoneChestScreen;
-import appeng.client.gui.implementations.SpatialAnchorScreen;
-import appeng.client.gui.implementations.SpatialIOPortScreen;
-import appeng.client.gui.implementations.StorageBusScreen;
-import appeng.client.gui.implementations.StorageLevelEmitterScreen;
-import appeng.client.gui.implementations.VibrationChamberScreen;
-import appeng.client.gui.implementations.WirelessAccessPointScreen;
+import appeng.client.gui.implementations.*;
 import appeng.client.gui.me.common.MEStorageScreen;
-import appeng.client.gui.me.crafting.CraftAmountScreen;
-import appeng.client.gui.me.crafting.CraftConfirmScreen;
-import appeng.client.gui.me.crafting.CraftingCPUScreen;
-import appeng.client.gui.me.crafting.CraftingStatusScreen;
-import appeng.client.gui.me.crafting.SetStockAmountScreen;
+import appeng.client.gui.me.crafting.*;
 import appeng.client.gui.me.items.CraftingTermScreen;
 import appeng.client.gui.me.items.PatternEncodingTermScreen;
 import appeng.client.gui.me.networktool.NetworkStatusScreen;
@@ -69,30 +30,7 @@ import appeng.client.gui.me.patternaccess.PatternAccessTermScreen;
 import appeng.client.gui.style.ScreenStyle;
 import appeng.client.gui.style.StyleManager;
 import appeng.menu.AEBaseMenu;
-import appeng.menu.implementations.CellWorkbenchMenu;
-import appeng.menu.implementations.CondenserMenu;
-import appeng.menu.implementations.DriveMenu;
-import appeng.menu.implementations.EnergyLevelEmitterMenu;
-import appeng.menu.implementations.FormationPlaneMenu;
-import appeng.menu.implementations.IOBusMenu;
-import appeng.menu.implementations.IOPortMenu;
-import appeng.menu.implementations.InscriberMenu;
-import appeng.menu.implementations.InterfaceMenu;
-import appeng.menu.implementations.MEChestMenu;
-import appeng.menu.implementations.MolecularAssemblerMenu;
-import appeng.menu.implementations.PatternAccessTermMenu;
-import appeng.menu.implementations.PatternProviderMenu;
-import appeng.menu.implementations.PriorityMenu;
-import appeng.menu.implementations.QNBMenu;
-import appeng.menu.implementations.QuartzKnifeMenu;
-import appeng.menu.implementations.SetStockAmountMenu;
-import appeng.menu.implementations.SkyStonechestMenu;
-import appeng.menu.implementations.SpatialAnchorMenu;
-import appeng.menu.implementations.SpatialIOPortMenu;
-import appeng.menu.implementations.StorageBusMenu;
-import appeng.menu.implementations.StorageLevelEmitterMenu;
-import appeng.menu.implementations.VibrationChamberMenu;
-import appeng.menu.implementations.WirelessAccessPointMenu;
+import appeng.menu.implementations.*;
 import appeng.menu.me.common.MEStorageMenu;
 import appeng.menu.me.crafting.CraftAmountMenu;
 import appeng.menu.me.crafting.CraftConfirmMenu;
@@ -104,6 +42,18 @@ import appeng.menu.me.items.PatternEncodingTermMenu;
 import appeng.menu.me.items.WirelessCraftingTermMenu;
 import appeng.menu.me.networktool.NetworkStatusMenu;
 import appeng.menu.me.networktool.NetworkToolMenu;
+import com.google.common.annotations.VisibleForTesting;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+
+import java.util.IdentityHashMap;
+import java.util.Map;
 
 /**
  * The server sends the client a menu identifier, which the client then maps onto a screen using {@link MenuScreens}.

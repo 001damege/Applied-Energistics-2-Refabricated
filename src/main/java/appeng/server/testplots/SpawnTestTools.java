@@ -1,15 +1,14 @@
 package appeng.server.testplots;
 
-import java.util.List;
-
-import net.minecraft.core.GlobalPos;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-
 import appeng.api.config.Actionable;
 import appeng.api.features.GridLinkables;
 import appeng.blockentity.networking.WirelessAccessPointBlockEntity;
 import appeng.core.definitions.AEItems;
+import net.minecraft.core.GlobalPos;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+
+import java.util.List;
 
 @EventBusSubscriber
 public final class SpawnTestTools {

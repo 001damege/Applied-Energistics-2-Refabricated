@@ -18,30 +18,28 @@
 
 package appeng.blockentity;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
+import appeng.api.ids.AEComponents;
+import appeng.api.inventories.ISegmentedInventory;
+import appeng.api.inventories.InternalInventory;
+import appeng.api.networking.GridHelper;
+import appeng.api.networking.IGridNode;
+import appeng.api.orientation.BlockOrientation;
+import appeng.api.orientation.RelativeSide;
+import appeng.block.AEBaseEntityBlock;
+import appeng.core.AELog;
+import appeng.hooks.VisualStateSaving;
+import appeng.hooks.ticking.TickHandler;
+import appeng.items.tools.MemoryCardItem;
+import appeng.util.IDebugExportable;
+import appeng.util.JsonStreamUtil;
+import appeng.util.Platform;
+import appeng.util.SettingsFrom;
+import appeng.util.helpers.ItemComparisonHelper;
 import com.google.gson.stream.JsonWriter;
 import com.mojang.serialization.JsonOps;
-
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.netty.buffer.Unpooled;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import net.minecraft.core.*;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -72,26 +70,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.util.FriendlyByteBufUtil;
 import net.neoforged.neoforge.model.data.ModelData;
 import net.neoforged.neoforge.network.connection.ConnectionType;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-
-import appeng.api.ids.AEComponents;
-import appeng.api.inventories.ISegmentedInventory;
-import appeng.api.inventories.InternalInventory;
-import appeng.api.networking.GridHelper;
-import appeng.api.networking.IGridNode;
-import appeng.api.orientation.BlockOrientation;
-import appeng.api.orientation.RelativeSide;
-import appeng.block.AEBaseEntityBlock;
-import appeng.core.AELog;
-import appeng.hooks.VisualStateSaving;
-import appeng.hooks.ticking.TickHandler;
-import appeng.items.tools.MemoryCardItem;
-import appeng.util.IDebugExportable;
-import appeng.util.JsonStreamUtil;
-import appeng.util.Platform;
-import appeng.util.SettingsFrom;
-import appeng.util.helpers.ItemComparisonHelper;
+import java.io.IOException;
+import java.util.*;
 
 public class AEBaseBlockEntity extends BlockEntity
         implements Nameable, ISegmentedInventory, Clearable, IDebugExportable {

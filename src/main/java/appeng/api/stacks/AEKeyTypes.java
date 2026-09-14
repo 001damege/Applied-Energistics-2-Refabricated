@@ -23,12 +23,12 @@
 
 package appeng.api.stacks;
 
-import java.util.Objects;
-import java.util.Set;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * AE2's registry of all known {@link AEKeyType key types}.

@@ -1,16 +1,15 @@
 package appeng.datagen.providers.tags;
 
-import java.util.concurrent.CompletableFuture;
-
+import appeng.api.ids.AETags;
+import appeng.core.AppEng;
+import appeng.init.InitVillager;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.world.item.trading.VillagerTrade;
 
-import appeng.api.ids.AETags;
-import appeng.core.AppEng;
-import appeng.init.InitVillager;
+import java.util.concurrent.CompletableFuture;
 
 public class VillagerTradeTagsProvider extends KeyTagProvider<VillagerTrade> {
     public VillagerTradeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {

@@ -1,14 +1,13 @@
 package appeng.client.integrations.jei;
 
-import java.util.Arrays;
-import java.util.List;
-
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.ItemLike;
 
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.helpers.IGuiHelper;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A renderer that cycles through a list of item stacks.

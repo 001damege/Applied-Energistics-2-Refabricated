@@ -18,40 +18,6 @@
 
 package appeng.parts;
 
-import java.io.IOException;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-
-import com.google.gson.stream.JsonWriter;
-
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.model.data.ModelData;
-
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-
 import appeng.api.ids.AEComponents;
 import appeng.api.implementations.IPowerChannelState;
 import appeng.api.implementations.items.IMemoryCard;
@@ -78,6 +44,36 @@ import appeng.util.IDebugExportable;
 import appeng.util.InteractionUtil;
 import appeng.util.JsonStreamUtil;
 import appeng.util.SettingsFrom;
+import com.google.gson.stream.JsonWriter;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import net.minecraft.CrashReportCategory;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.Nameable;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.IOException;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
 
 public abstract class AEBasePart
         implements IPart, IActionHost, ISegmentedInventory, IPowerChannelState, Nameable, IDebugExportable {

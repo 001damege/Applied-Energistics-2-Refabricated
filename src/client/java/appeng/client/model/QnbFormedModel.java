@@ -18,12 +18,13 @@
 
 package appeng.client.model;
 
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
+import appeng.block.qnb.QnbFormedState;
+import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
+import appeng.client.render.CubeBuilder;
+import appeng.client.render.MaterialUtil;
+import appeng.core.AppEng;
+import appeng.core.definitions.AEBlocks;
 import com.mojang.serialization.MapCodec;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
@@ -44,12 +45,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 
-import appeng.block.qnb.QnbFormedState;
-import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
-import appeng.client.render.CubeBuilder;
-import appeng.client.render.MaterialUtil;
-import appeng.core.AppEng;
-import appeng.core.definitions.AEBlocks;
+import javax.naming.spi.Resolver;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 public class QnbFormedModel implements DynamicBlockStateModel {
     private static final Identifier MODEL_RING = AppEng.makeId("block/quantum_ring");

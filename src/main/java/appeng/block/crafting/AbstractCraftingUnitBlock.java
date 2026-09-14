@@ -18,9 +18,15 @@
 
 package appeng.block.crafting;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.crafting.CraftingBlockEntity;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.localization.PlayerMessages;
+import appeng.menu.MenuOpener;
+import appeng.menu.locator.MenuLocators;
+import appeng.menu.me.crafting.CraftingCPUMenu;
+import appeng.recipes.game.CraftingUnitTransformRecipe;
+import appeng.util.InteractionUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -41,16 +47,8 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.crafting.CraftingBlockEntity;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.localization.PlayerMessages;
-import appeng.menu.MenuOpener;
-import appeng.menu.locator.MenuLocators;
-import appeng.menu.me.crafting.CraftingCPUMenu;
-import appeng.recipes.game.CraftingUnitTransformRecipe;
-import appeng.util.InteractionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractCraftingUnitBlock<T extends CraftingBlockEntity> extends AEBaseEntityBlock<T> {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractCraftingUnitBlock.class);

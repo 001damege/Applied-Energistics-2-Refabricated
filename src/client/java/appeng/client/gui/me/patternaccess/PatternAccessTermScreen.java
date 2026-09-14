@@ -18,43 +18,6 @@
 
 package appeng.client.gui.me.patternaccess;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.WeakHashMap;
-
-import com.google.common.collect.HashMultimap;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
-import guideme.color.ConstantColor;
-import guideme.document.LytRect;
-import guideme.render.SimpleRenderContext;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-
 import appeng.api.config.Settings;
 import appeng.api.config.ShowPatternProviders;
 import appeng.api.config.TerminalStyle;
@@ -68,12 +31,35 @@ import appeng.client.gui.widgets.AETextField;
 import appeng.client.gui.widgets.Scrollbar;
 import appeng.client.gui.widgets.ServerSettingToggleButton;
 import appeng.client.gui.widgets.SettingToggleButton;
+import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
 import appeng.core.network.serverbound.InventoryActionPacket;
 import appeng.core.network.serverbound.QuickMovePatternPacket;
 import appeng.helpers.InventoryAction;
 import appeng.menu.implementations.PatternAccessTermMenu;
+import com.google.common.collect.HashMultimap;
+import guideme.color.ConstantColor;
+import guideme.document.LytRect;
+import guideme.render.SimpleRenderContext;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.locale.Language;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FormattedText;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
 
 public class PatternAccessTermScreen<C extends PatternAccessTermMenu> extends AEBaseScreen<C> {
     private static final Logger LOG = LoggerFactory.getLogger(PatternAccessTermScreen.class);

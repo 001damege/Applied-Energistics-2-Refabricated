@@ -1,11 +1,11 @@
 package appeng.init;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
+import appeng.api.ids.AETags;
+import appeng.core.AppEng;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
 import com.google.common.collect.ImmutableSet;
-
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -27,12 +27,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-
-import appeng.api.ids.AETags;
-import appeng.core.AppEng;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public class InitVillager {
     private InitVillager() {

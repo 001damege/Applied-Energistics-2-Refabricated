@@ -18,11 +18,10 @@
 
 package appeng.parts.reporting;
 
-import net.minecraft.resources.Identifier;
-
 import appeng.api.parts.IPartItem;
 import appeng.api.util.AEColor;
 import appeng.core.AppEng;
+import net.minecraft.resources.Identifier;
 
 /**
  * A very simple part for emitting light.

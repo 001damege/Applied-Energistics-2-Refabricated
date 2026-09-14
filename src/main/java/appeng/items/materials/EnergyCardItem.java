@@ -1,9 +1,10 @@
 package appeng.items.materials;
 
 import com.google.common.base.Preconditions;
+import lombok.Getter;
 
 public class EnergyCardItem extends UpgradeCardItem {
-
+    @Getter
     private final int energyMultiplier;
 
     public EnergyCardItem(Properties properties, int energyMultiplier) {
@@ -11,9 +12,5 @@ public class EnergyCardItem extends UpgradeCardItem {
 
         Preconditions.checkArgument(energyMultiplier > 0, "energyMultiplier must be > 0");
         this.energyMultiplier = energyMultiplier;
-    }
-
-    public int getEnergyMultiplier() {
-        return this.energyMultiplier;
     }
 }

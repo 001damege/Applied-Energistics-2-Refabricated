@@ -18,6 +18,10 @@
 
 package appeng.datagen.providers.recipes;
 
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEItems;
+import appeng.recipes.mattercannon.MatterCannonAmmo;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -25,11 +29,6 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEItems;
-import appeng.recipes.mattercannon.MatterCannonAmmo;
 
 public class MatterCannonAmmoProvider extends AE2RecipeProvider {
     private final HolderGetter<Item> items;

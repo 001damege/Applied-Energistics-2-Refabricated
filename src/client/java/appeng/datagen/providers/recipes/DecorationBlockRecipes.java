@@ -18,8 +18,8 @@
 
 package appeng.datagen.providers.recipes;
 
-import static appeng.datagen.providers.recipes.RecipeCriteria.criterionName;
-
+import appeng.core.ConventionTags;
+import appeng.core.definitions.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -29,12 +29,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.AEParts;
-import appeng.core.definitions.BlockDefinition;
-import appeng.core.definitions.ItemDefinition;
+import static appeng.datagen.providers.recipes.RecipeCriteria.criterionName;
 
 public class DecorationBlockRecipes extends AE2RecipeProvider {
     public DecorationBlockRecipes(HolderLookup.Provider registries, RecipeOutput output) {

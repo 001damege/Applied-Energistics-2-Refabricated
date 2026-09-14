@@ -18,10 +18,10 @@
 
 package appeng.decorative.solid;
 
+import net.minecraft.core.Direction;
+
 import java.util.Arrays;
 import java.util.Objects;
-
-import net.minecraft.core.Direction;
 
 /**
  * Immutable (and thus thread-safe) class that encapsulates the rendering state required for a connected texture glass

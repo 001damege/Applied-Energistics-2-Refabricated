@@ -18,21 +18,13 @@
 
 package appeng.client.render.model;
 
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-
+import appeng.client.render.ItemBaseModelWrapper;
+import appeng.core.AppEng;
+import appeng.hooks.CompassManager;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.QuadInstance;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-import org.joml.Vector2f;
-import org.joml.Vector3fc;
-
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -50,10 +42,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.model.quad.QuadTransforms;
+import org.jetbrains.annotations.Nullable;
+import org.joml.*;
 
-import appeng.client.render.ItemBaseModelWrapper;
-import appeng.core.AppEng;
-import appeng.hooks.CompassManager;
+import javax.naming.spi.Resolver;
+import java.lang.Math;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
 /**
  * This baked model combines the quads of a compass base and the quads of a compass pointer, which will be rotated

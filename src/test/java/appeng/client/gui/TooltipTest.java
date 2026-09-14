@@ -18,14 +18,12 @@
 
 package appeng.client.gui;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.jupiter.api.Test;
-
+import appeng.util.LoadTranslations;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import org.junit.jupiter.api.Test;
 
-import appeng.util.LoadTranslations;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @LoadTranslations
 class TooltipTest {

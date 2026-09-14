@@ -1,39 +1,5 @@
 package appeng.datagen.providers.models;
 
-import static appeng.core.AppEng.makeId;
-import static net.minecraft.client.data.models.BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING;
-import static net.minecraft.client.data.models.BlockModelGenerators.plainModel;
-import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-
-import com.mojang.math.Quadrant;
-
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.blockstates.ConditionBuilder;
-import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.client.renderer.block.dispatch.VariantMutator;
-import net.minecraft.client.renderer.item.EmptyModel;
-import net.minecraft.client.renderer.item.RangeSelectItemModel;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
-
 import appeng.api.orientation.BlockOrientation;
 import appeng.block.crafting.AbstractCraftingUnitBlock;
 import appeng.block.crafting.CraftingUnitType;
@@ -62,6 +28,30 @@ import appeng.client.render.model.QuartzGlassModel;
 import appeng.core.AppEng;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.BlockDefinition;
+import com.mojang.math.Quadrant;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.blockstates.ConditionBuilder;
+import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.client.renderer.item.EmptyModel;
+import net.minecraft.client.renderer.item.RangeSelectItemModel;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+
+import static appeng.core.AppEng.makeId;
+import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 public class BlockModelProvider extends ModelSubProvider {
 

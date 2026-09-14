@@ -18,8 +18,7 @@
 
 package appeng.client.render.effects;
 
-import org.joml.Quaternionf;
-
+import appeng.core.particles.EnergyParticleData;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -30,8 +29,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-
-import appeng.core.particles.EnergyParticleData;
+import org.joml.Quaternionf;
 
 public class EnergyFx extends SingleQuadParticle {
 

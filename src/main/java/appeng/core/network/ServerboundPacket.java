@@ -1,16 +1,10 @@
 package appeng.core.network;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking.Context;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking.PlayPayloadHandler;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
-public interface ServerboundPacket extends CustomAppEngPayload {
-    default void handleOnServer(IPayloadContext context) {
-        context.enqueueWork(() -> {
-            if (context.player() instanceof ServerPlayer serverPlayer) {
-                handleOnServer(serverPlayer);
-            }
-        });
-    }
-
-    void handleOnServer(ServerPlayer player);
+public interface ServerboundPacket<T extends CustomPacketPayload> extends CustomAppEngPayload, PlayPayloadHandler<T> {
+    @Override
+    void receive(T payload, Context context);
 }

@@ -1,5 +1,10 @@
 package appeng.client.block.cablebus;
 
+import appeng.block.networking.CableBusBlock;
+import appeng.block.networking.CableBusRenderState;
+import appeng.client.render.cablebus.CableBusBreakingParticle;
+import appeng.client.render.cablebus.CableBusModel;
+import appeng.parts.ICableBusContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
@@ -10,12 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
-
-import appeng.block.networking.CableBusBlock;
-import appeng.block.networking.CableBusRenderState;
-import appeng.client.render.cablebus.CableBusBreakingParticle;
-import appeng.client.render.cablebus.CableBusModel;
-import appeng.parts.ICableBusContainer;
 
 public class CableBusBlockClientExtensions implements IClientBlockExtensions {
 

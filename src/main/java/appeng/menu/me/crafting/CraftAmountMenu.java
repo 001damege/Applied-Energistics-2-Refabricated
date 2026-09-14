@@ -18,16 +18,6 @@
 
 package appeng.menu.me.crafting;
 
-import java.util.Objects;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import appeng.api.networking.crafting.CalculationStrategy;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.GenericStack;
@@ -43,6 +33,14 @@ import appeng.menu.locator.MenuHostLocator;
 import appeng.menu.slot.AppEngSlot;
 import appeng.menu.slot.InaccessibleSlot;
 import appeng.util.inv.AppEngInternalInventory;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 /**
  * @see appeng.client.gui.me.crafting.CraftAmountScreen

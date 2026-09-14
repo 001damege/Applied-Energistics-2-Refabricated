@@ -1,9 +1,9 @@
 package appeng.client.integrations.jei.widgets;
 
-import java.util.List;
-
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
+
+import java.util.List;
 
 public interface Widget {
     void draw(GuiGraphicsExtractor guiGraphics);

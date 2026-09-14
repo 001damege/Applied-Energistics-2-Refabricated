@@ -1,9 +1,8 @@
 package appeng.util;
 
+import net.minecraft.world.item.ItemStack;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mockito;
-
-import net.minecraft.world.item.ItemStack;
 
 public class ItemStackMatcher implements ArgumentMatcher<ItemStack> {
     private final ItemStack stack;

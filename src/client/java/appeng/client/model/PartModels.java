@@ -1,19 +1,13 @@
 package appeng.client.model;
 
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-
+import appeng.api.implementations.parts.ICablePart;
+import appeng.api.parts.IPartItem;
+import appeng.client.api.model.parts.ClientPart;
+import appeng.client.api.model.parts.PartModel;
+import appeng.client.api.model.parts.RegisterPartModelsEvent;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.minecraft.client.resources.model.ResolvableModel;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.FileToIdConverter;
@@ -22,12 +16,15 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.ExtraCodecs;
 import net.neoforged.fml.ModLoader;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.api.implementations.parts.ICablePart;
-import appeng.api.parts.IPartItem;
-import appeng.client.api.model.parts.ClientPart;
-import appeng.client.api.model.parts.PartModel;
-import appeng.client.api.model.parts.RegisterPartModelsEvent;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 public final class PartModels {
     private static final Logger LOG = LoggerFactory.getLogger(PartModels.class);

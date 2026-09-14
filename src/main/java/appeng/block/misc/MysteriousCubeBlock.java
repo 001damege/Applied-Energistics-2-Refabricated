@@ -1,7 +1,10 @@
 package appeng.block.misc;
 
-import java.util.function.Consumer;
-
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.misc.MysteriousCubeBlockEntity;
+import appeng.core.localization.GuiText;
+import appeng.core.localization.Tooltips;
+import appeng.server.services.compass.ServerCompassService;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -12,11 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.misc.MysteriousCubeBlockEntity;
-import appeng.core.localization.GuiText;
-import appeng.core.localization.Tooltips;
-import appeng.server.services.compass.ServerCompassService;
+import java.util.function.Consumer;
 
 public class MysteriousCubeBlock extends AEBaseEntityBlock<MysteriousCubeBlockEntity> {
     // Not a redstone conductor to prevent using it as a facade.

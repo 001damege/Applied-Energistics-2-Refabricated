@@ -18,22 +18,20 @@
 
 package appeng.api.stacks;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
+import appeng.api.config.FuzzyMode;
+import appeng.util.BootstrapMinecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import appeng.api.config.FuzzyMode;
-import appeng.util.BootstrapMinecraft;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @BootstrapMinecraft
 public class FuzzySearchTest {

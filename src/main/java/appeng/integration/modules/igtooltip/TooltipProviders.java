@@ -1,16 +1,6 @@
 package appeng.integration.modules.igtooltip;
 
-import java.util.Locale;
-import java.util.ServiceLoader;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import appeng.api.integrations.igtooltip.BaseClassRegistration;
-import appeng.api.integrations.igtooltip.ClientRegistration;
-import appeng.api.integrations.igtooltip.CommonRegistration;
-import appeng.api.integrations.igtooltip.PartTooltips;
-import appeng.api.integrations.igtooltip.TooltipProvider;
+import appeng.api.integrations.igtooltip.*;
 import appeng.api.parts.IPart;
 import appeng.block.AEBaseEntityBlock;
 import appeng.block.crafting.CraftingMonitorBlock;
@@ -26,23 +16,18 @@ import appeng.blockentity.networking.CableBusBlockEntity;
 import appeng.blockentity.networking.CrystalResonanceGeneratorBlockEntity;
 import appeng.core.AppEng;
 import appeng.helpers.patternprovider.PatternProviderLogicHost;
-import appeng.integration.modules.igtooltip.blocks.ChargerDataProvider;
-import appeng.integration.modules.igtooltip.blocks.CraftingMonitorDataProvider;
-import appeng.integration.modules.igtooltip.blocks.CrystalResonanceGeneratorProvider;
-import appeng.integration.modules.igtooltip.blocks.GridNodeStateDataProvider;
-import appeng.integration.modules.igtooltip.blocks.PatternProviderDataProvider;
-import appeng.integration.modules.igtooltip.blocks.PowerStorageDataProvider;
-import appeng.integration.modules.igtooltip.parts.AnnihilationPlaneDataProvider;
-import appeng.integration.modules.igtooltip.parts.ChannelDataProvider;
-import appeng.integration.modules.igtooltip.parts.GridNodeStateProvider;
-import appeng.integration.modules.igtooltip.parts.P2PStateDataProvider;
-import appeng.integration.modules.igtooltip.parts.PartHostTooltips;
-import appeng.integration.modules.igtooltip.parts.StorageMonitorDataProvider;
+import appeng.integration.modules.igtooltip.blocks.*;
+import appeng.integration.modules.igtooltip.parts.*;
 import appeng.parts.AEBasePart;
 import appeng.parts.automation.AnnihilationPlanePart;
 import appeng.parts.networking.IUsedChannelProvider;
 import appeng.parts.p2p.P2PTunnelPart;
 import appeng.parts.reporting.AbstractMonitorPart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Locale;
+import java.util.ServiceLoader;
 
 public final class TooltipProviders implements TooltipProvider {
 

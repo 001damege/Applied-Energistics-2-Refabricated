@@ -18,34 +18,23 @@
 
 package appeng.client.renderer.spatialstorage;
 
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-
+import appeng.client.render.AERenderPipelines;
+import appeng.client.render.AERenderTypes;
 import com.mojang.blaze3d.buffers.GpuBuffer;
 import com.mojang.blaze3d.buffers.GpuBufferSlice;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
-
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-
+import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.state.level.LevelRenderState;
 import net.minecraft.client.renderer.state.level.SkyRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.client.CustomSkyboxRenderer;
+import org.joml.*;
 
-import appeng.client.render.AERenderPipelines;
-import appeng.client.render.AERenderTypes;
+import java.lang.Math;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 
 public class SpatialStorageSkyRenderer implements CustomSkyboxRenderer, AutoCloseable {
 

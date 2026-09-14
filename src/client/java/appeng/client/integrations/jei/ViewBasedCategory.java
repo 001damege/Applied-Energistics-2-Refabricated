@@ -1,14 +1,13 @@
 package appeng.client.integrations.jei;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.client.integrations.jei.widgets.View;
+import appeng.client.integrations.jei.widgets.Widget;
+import appeng.client.integrations.jei.widgets.WidgetFactory;
+import appeng.util.Icon;
+import appeng.util.Platform;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -17,12 +16,10 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import appeng.client.integrations.jei.widgets.View;
-import appeng.client.integrations.jei.widgets.Widget;
-import appeng.client.integrations.jei.widgets.WidgetFactory;
-import appeng.util.Icon;
-import appeng.util.Platform;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ViewBasedCategory<T> implements IRecipeCategory<T> {
     private final WidgetFactory widgetFactory;

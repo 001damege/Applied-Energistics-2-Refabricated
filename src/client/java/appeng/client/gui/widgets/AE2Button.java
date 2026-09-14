@@ -1,5 +1,6 @@
 package appeng.client.gui.widgets;
 
+import appeng.core.AppEng;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -11,8 +12,6 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
-
-import appeng.core.AppEng;
 
 public class AE2Button extends Button {
     protected static final WidgetSprites SPRITES = new WidgetSprites(

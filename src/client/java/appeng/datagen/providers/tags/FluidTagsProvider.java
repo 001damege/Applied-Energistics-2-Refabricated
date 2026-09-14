@@ -18,14 +18,13 @@
 
 package appeng.datagen.providers.tags;
 
-import java.util.concurrent.CompletableFuture;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
-
 import appeng.api.ids.AETags;
 import appeng.core.AppEng;
 import appeng.datagen.providers.IAE2DataProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+
+import java.util.concurrent.CompletableFuture;
 
 public class FluidTagsProvider extends net.minecraft.data.tags.FluidTagsProvider implements IAE2DataProvider {
 

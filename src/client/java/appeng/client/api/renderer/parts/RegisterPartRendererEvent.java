@@ -1,12 +1,10 @@
 package appeng.client.api.renderer.parts;
 
-import org.jetbrains.annotations.ApiStatus;
-
+import appeng.api.parts.IPart;
 import net.neoforged.fml.DeferredWorkQueue;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.ParallelDispatchEvent;
-
-import appeng.api.parts.IPart;
+import org.jetbrains.annotations.ApiStatus;
 
 public class RegisterPartRendererEvent extends ParallelDispatchEvent {
     private final PartRegistrationSink delegate;

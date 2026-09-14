@@ -1,12 +1,11 @@
 package appeng.datagen.providers.recipes;
 
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.world.item.Items;
-
 import appeng.core.AppEng;
 import appeng.core.definitions.AEItems;
 import appeng.recipes.handlers.ChargerRecipeBuilder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.world.item.Items;
 
 public class ChargerRecipes extends AE2RecipeProvider {
     public ChargerRecipes(HolderLookup.Provider registries, RecipeOutput output) {

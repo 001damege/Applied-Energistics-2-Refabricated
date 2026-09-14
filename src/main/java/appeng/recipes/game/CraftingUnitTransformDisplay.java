@@ -1,8 +1,8 @@
 package appeng.recipes.game;
 
+import appeng.core.definitions.AEBlocks;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -10,8 +10,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.block.Block;
-
-import appeng.core.definitions.AEBlocks;
 
 public record CraftingUnitTransformDisplay(
         Block upgradedBlock,

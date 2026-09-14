@@ -18,11 +18,8 @@
 
 package appeng.client.gui.widgets;
 
-import java.util.Collections;
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.client.gui.style.Blitter;
+import appeng.util.Icon;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.Rect2i;
@@ -30,9 +27,10 @@ import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.client.gui.style.Blitter;
-import appeng.util.Icon;
+import java.util.Collections;
+import java.util.List;
 
 public abstract class IconButton extends Button implements ITooltip {
 

@@ -19,18 +19,17 @@
 package appeng.core.particles;
 
 import com.mojang.serialization.MapCodec;
-
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ParticleTypes {
-
-    private ParticleTypes() {
-    }
-
     public static final ParticleType<ItemParticleOption> CRAFTING = new ParticleType<>(false) {
         @Override
         public MapCodec<ItemParticleOption> codec() {
@@ -42,6 +41,7 @@ public final class ParticleTypes {
             return ItemParticleOption.streamCodec(this);
         }
     };
+
     public static final ParticleType<EnergyParticleData> ENERGY = new ParticleType<>(false) {
         @Override
         public MapCodec<EnergyParticleData> codec() {
@@ -53,6 +53,7 @@ public final class ParticleTypes {
             return EnergyParticleData.STREAM_CODEC;
         }
     };
+
     public static final ParticleType<LightningArcParticleData> LIGHTNING_ARC = new ParticleType<>(false) {
         @Override
         public MapCodec<LightningArcParticleData> codec() {
@@ -64,8 +65,8 @@ public final class ParticleTypes {
             return LightningArcParticleData.STREAM_CODEC;
         }
     };
-    public static final SimpleParticleType LIGHTNING = new SimpleParticleType(false);
-    public static final SimpleParticleType MATTER_CANNON = new SimpleParticleType(false);
-    public static final SimpleParticleType VIBRANT = new SimpleParticleType(false);
 
+    public static final SimpleParticleType LIGHTNING = FabricParticleTypes.simple();
+    public static final SimpleParticleType MATTER_CANNON = FabricParticleTypes.simple();
+    public static final SimpleParticleType VIBRANT = FabricParticleTypes.simple();
 }

@@ -18,16 +18,14 @@
 
 package appeng.client.gui.widgets;
 
-import java.util.function.Consumer;
-import java.util.regex.Pattern;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-
 import appeng.api.config.ActionItems;
 import appeng.core.localization.ButtonToolTips;
 import appeng.util.Icon;
+import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Consumer;
+import java.util.regex.Pattern;
 
 public class ActionButton extends IconButton {
     private static final Pattern PATTERN_NEW_LINE = Pattern.compile("\\n", Pattern.LITERAL);

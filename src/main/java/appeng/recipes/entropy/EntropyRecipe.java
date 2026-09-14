@@ -18,17 +18,13 @@
 
 package appeng.recipes.entropy;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
+import appeng.items.tools.powered.EntropyManipulatorItem;
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.MechanicsRecipe;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
@@ -46,10 +42,11 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.items.tools.powered.EntropyManipulatorItem;
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.MechanicsRecipe;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * A special recipe used for the {@link EntropyManipulatorItem}.

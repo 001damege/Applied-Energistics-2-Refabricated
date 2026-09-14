@@ -18,16 +18,14 @@
 
 package appeng.spatial;
 
-import java.util.Locale;
-import java.util.Optional;
-
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Locale;
+import java.util.Optional;
 
 /**
  * A plot inside the storage cell level that is assigned to a specific storage cell.

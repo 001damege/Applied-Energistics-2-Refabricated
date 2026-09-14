@@ -18,10 +18,17 @@
 
 package appeng.block.misc;
 
-import java.util.List;
-
-import org.joml.Vector3f;
-
+import appeng.api.orientation.BlockOrientation;
+import appeng.api.orientation.IOrientationStrategy;
+import appeng.api.orientation.OrientationStrategies;
+import appeng.api.orientation.RelativeSide;
+import appeng.api.util.AEAxisAlignedBB;
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.misc.ChargerBlockEntity;
+import appeng.blockentity.misc.ChargerRecipes;
+import appeng.core.AEConfig;
+import appeng.core.particles.LightningArcParticleData;
+import appeng.util.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -38,17 +45,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.joml.Vector3f;
 
-import appeng.api.orientation.BlockOrientation;
-import appeng.api.orientation.IOrientationStrategy;
-import appeng.api.orientation.OrientationStrategies;
-import appeng.api.orientation.RelativeSide;
-import appeng.api.util.AEAxisAlignedBB;
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.misc.ChargerBlockEntity;
-import appeng.blockentity.misc.ChargerRecipes;
-import appeng.core.particles.LightningArcParticleData;
-import appeng.util.Platform;
+import java.util.List;
 
 public class ChargerBlock extends AEBaseEntityBlock<ChargerBlockEntity> {
 

@@ -1,17 +1,15 @@
 package appeng.recipes.entropy;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Optional;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
-
-import org.junit.jupiter.api.Test;
-
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
+import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EntropyRecipeSerializerTest {
     @Test

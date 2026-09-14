@@ -18,13 +18,12 @@
 
 package appeng.client.model;
 
-import java.util.Arrays;
-import java.util.List;
-
+import appeng.block.paint.PaintSplotches;
+import appeng.blockentity.misc.PaintSplotchesBlockEntity;
+import appeng.client.render.CubeBuilder;
+import appeng.core.AppEng;
+import appeng.helpers.Splotch;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -43,12 +42,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.DynamicBlockStateModel;
 import net.neoforged.neoforge.client.model.block.CustomUnbakedBlockStateModel;
 import net.neoforged.neoforge.model.data.ModelData;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.block.paint.PaintSplotches;
-import appeng.blockentity.misc.PaintSplotchesBlockEntity;
-import appeng.client.render.CubeBuilder;
-import appeng.core.AppEng;
-import appeng.helpers.Splotch;
+import javax.naming.spi.Resolver;
+import java.util.Arrays;
+import java.util.List;
 
 public class PaintSplotchesModel implements DynamicBlockStateModel {
     private static final Material TEXTURE_PAINT1 = new Material(AppEng.makeId("block/paint1"));

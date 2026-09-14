@@ -1,17 +1,14 @@
 package appeng.client.item;
 
+import appeng.block.networking.EnergyCellBlockItem;
+import appeng.core.AppEng;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.block.networking.EnergyCellBlockItem;
-import appeng.core.AppEng;
+import org.jetbrains.annotations.Nullable;
 
 public class EnergyFillLevelProperty implements RangeSelectItemModelProperty {
     public static final Identifier ID = AppEng.makeId("energy_fill_level");

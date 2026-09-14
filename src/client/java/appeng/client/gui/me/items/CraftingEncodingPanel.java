@@ -1,12 +1,5 @@
 package appeng.client.gui.me.items;
 
-import java.util.List;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.Slot;
-
 import appeng.api.config.ActionItems;
 import appeng.client.Point;
 import appeng.client.gui.WidgetContainer;
@@ -17,6 +10,12 @@ import appeng.core.localization.ButtonToolTips;
 import appeng.core.localization.GuiText;
 import appeng.menu.SlotSemantics;
 import appeng.util.Icon;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.inventory.Slot;
+
+import java.util.List;
 
 public class CraftingEncodingPanel extends EncodingModePanel {
     private static final Blitter BG = Blitter.texture("guis/pattern_modes.png").src(0, 0, 124, 66);

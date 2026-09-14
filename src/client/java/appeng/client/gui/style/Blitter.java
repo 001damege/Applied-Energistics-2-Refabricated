@@ -18,13 +18,10 @@
 
 package appeng.client.gui.style;
 
-import java.util.Objects;
-
+import appeng.core.AppEng;
+import appeng.util.Icon;
 import com.mojang.blaze3d.pipeline.ColorTargetState;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
-
-import org.joml.Matrix3x2f;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.render.TextureSetup;
@@ -37,9 +34,9 @@ import net.minecraft.data.AtlasIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import org.joml.Matrix3x2f;
 
-import appeng.core.AppEng;
-import appeng.util.Icon;
+import java.util.Objects;
 
 /**
  * Utility class for drawing rectangular textures in the UI.

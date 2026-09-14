@@ -18,19 +18,18 @@
 
 package appeng.parts.encoding;
 
-import java.util.List;
-
+import appeng.api.parts.IPartItem;
+import appeng.helpers.IPatternTerminalLogicHost;
+import appeng.helpers.IPatternTerminalMenuHost;
+import appeng.menu.me.items.PatternEncodingTermMenu;
+import appeng.parts.reporting.AbstractTerminalPart;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
-import appeng.api.parts.IPartItem;
-import appeng.helpers.IPatternTerminalLogicHost;
-import appeng.helpers.IPatternTerminalMenuHost;
-import appeng.menu.me.items.PatternEncodingTermMenu;
-import appeng.parts.reporting.AbstractTerminalPart;
+import java.util.List;
 
 public class PatternEncodingTerminalPart extends AbstractTerminalPart
         implements IPatternTerminalLogicHost, IPatternTerminalMenuHost {

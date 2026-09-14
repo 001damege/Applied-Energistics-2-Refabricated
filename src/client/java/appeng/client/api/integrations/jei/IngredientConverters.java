@@ -1,15 +1,13 @@
 package appeng.client.api.integrations.jei;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import mezz.jei.api.ingredients.IIngredientType;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-
-import org.jetbrains.annotations.Nullable;
-
-import mezz.jei.api.ingredients.IIngredientType;
 
 /**
  * Register your {@link IngredientConverter} instances for JEI here.

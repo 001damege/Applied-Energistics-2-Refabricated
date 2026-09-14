@@ -1,13 +1,11 @@
 package appeng.mixins;
 
+import appeng.hooks.VisualStateSaving;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-
-import appeng.hooks.VisualStateSaving;
 
 /**
  * This Mixin allows us to save additional data in block entity NBT when we're saved as part of a structure file. We

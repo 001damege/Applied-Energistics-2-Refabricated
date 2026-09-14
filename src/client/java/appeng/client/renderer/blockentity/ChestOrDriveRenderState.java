@@ -1,14 +1,12 @@
 package appeng.client.renderer.blockentity;
 
-import java.util.EnumMap;
-
-import org.joml.Vector3f;
-
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-
 import appeng.api.implementations.blockentities.IChestOrDrive;
 import appeng.api.orientation.BlockOrientation;
 import appeng.api.storage.cells.CellState;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
+import org.joml.Vector3f;
+
+import java.util.EnumMap;
 
 public class ChestOrDriveRenderState extends BlockEntityRenderState {
     private static final EnumMap<CellState, Vector3f> STATE_COLORS;

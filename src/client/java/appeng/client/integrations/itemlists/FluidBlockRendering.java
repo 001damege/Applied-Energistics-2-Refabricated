@@ -1,10 +1,9 @@
 package appeng.client.integrations.itemlists;
 
-import org.joml.Matrix3x2f;
-
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.world.level.material.Fluid;
+import org.joml.Matrix3x2f;
 
 public final class FluidBlockRendering {
     private FluidBlockRendering() {

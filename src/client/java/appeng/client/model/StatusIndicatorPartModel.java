@@ -1,12 +1,11 @@
 package appeng.client.model;
 
-import java.util.List;
-import java.util.Objects;
-
+import appeng.client.api.model.parts.PartModel;
+import appeng.core.AppEng;
+import appeng.parts.automation.PartModelData;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -18,9 +17,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.client.api.model.parts.PartModel;
-import appeng.core.AppEng;
-import appeng.parts.automation.PartModelData;
+import javax.naming.spi.Resolver;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Adds model parts based on the status of the parts main grid node.

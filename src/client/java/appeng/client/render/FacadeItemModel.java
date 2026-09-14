@@ -18,19 +18,14 @@
 
 package appeng.client.render;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-
+import appeng.api.implementations.items.IFacadeItem;
+import appeng.client.render.cablebus.FacadeBuilder;
+import appeng.core.AppEng;
+import appeng.items.parts.FacadeItem;
+import appeng.util.Platform;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.QuadInstance;
 import com.mojang.serialization.MapCodec;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -50,12 +45,14 @@ import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4fc;
+import org.joml.Vector3fc;
 
-import appeng.api.implementations.items.IFacadeItem;
-import appeng.client.render.cablebus.FacadeBuilder;
-import appeng.core.AppEng;
-import appeng.items.parts.FacadeItem;
-import appeng.util.Platform;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * The model class for facades. Since facades wrap existing models, they don't declare any dependencies here other than

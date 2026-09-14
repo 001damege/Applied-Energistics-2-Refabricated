@@ -1,19 +1,5 @@
 package appeng.crafting.simulation;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Map;
-import java.util.Objects;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.networking.crafting.CalculationStrategy;
 import appeng.api.networking.crafting.ICraftingPlan;
@@ -26,6 +12,18 @@ import appeng.crafting.inv.CraftingSimulationState;
 import appeng.crafting.simulation.helpers.ProcessingPatternBuilder;
 import appeng.crafting.simulation.helpers.SimulationEnv;
 import appeng.util.BootstrapMinecraft;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+import java.util.Objects;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @BootstrapMinecraft
 public class CraftingSimulationTest {

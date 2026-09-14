@@ -1,15 +1,13 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-
+import appeng.client.integrations.itemlists.FluidBlockRendering;
+import mezz.jei.api.ingredients.IIngredientRenderer;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-import mezz.jei.api.ingredients.IIngredientRenderer;
-
-import appeng.client.integrations.itemlists.FluidBlockRendering;
+import java.util.List;
 
 public class FluidBlockRenderer implements IIngredientRenderer<FluidStack> {
     @Override

@@ -1,16 +1,8 @@
 package appeng.mixins.spatial;
 
-import java.util.Map;
-import java.util.concurrent.Executor;
-
+import appeng.spatial.SpatialStorageChunkGenerator;
+import appeng.spatial.SpatialStorageDimensionIds;
 import com.google.common.collect.ImmutableList;
-
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import net.minecraft.core.LayeredRegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -26,9 +18,14 @@ import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.WorldData;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.LevelEvent;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import appeng.spatial.SpatialStorageChunkGenerator;
-import appeng.spatial.SpatialStorageDimensionIds;
+import java.util.Map;
+import java.util.concurrent.Executor;
 
 /**
  * Since our spatial dimension has to be available in EVERY world regardless of Worldgen settings or world preset, we

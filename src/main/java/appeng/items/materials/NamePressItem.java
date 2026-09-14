@@ -18,15 +18,13 @@
 
 package appeng.items.materials;
 
-import java.util.function.Consumer;
-
+import appeng.api.ids.AEComponents;
+import appeng.items.AEBaseItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 
-import appeng.api.ids.AEComponents;
-import appeng.items.AEBaseItem;
+import java.util.List;
 
 public class NamePressItem extends AEBaseItem {
     public NamePressItem(Properties properties) {
@@ -34,14 +32,12 @@ public class NamePressItem extends AEBaseItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
-            Consumer<Component> lines,
-            TooltipFlag tooltipFlags) {
-        super.appendHoverText(stack, context, tooltipDisplay, lines, tooltipFlags);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag advancedTooltip) {
+        super.appendHoverText(stack, context, tooltip, advancedTooltip);
 
         var inscribedName = stack.get(AEComponents.NAME_PRESS_NAME);
         if (inscribedName != null) {
-            lines.accept(inscribedName);
+            tooltip.add(inscribedName);
         }
     }
 }

@@ -1,16 +1,5 @@
 package appeng.client.integrations.jei;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.types.IRecipeType;
-
 import appeng.client.integrations.jei.widgets.View;
 import appeng.client.integrations.jei.widgets.Widget;
 import appeng.client.integrations.jei.widgets.WidgetFactory;
@@ -19,6 +8,15 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.localization.ItemModText;
 import appeng.decorative.solid.BuddingCertusQuartzBlock;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 /**
  * Displays information about growing quartz from {@link appeng.decorative.solid.BuddingCertusQuartzBlock}.

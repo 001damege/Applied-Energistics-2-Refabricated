@@ -18,15 +18,12 @@
 
 package appeng.client.renderer.blockentity;
 
-import java.util.List;
-import java.util.function.Function;
-
+import appeng.api.client.StorageCellModels;
+import appeng.api.orientation.BlockOrientation;
+import appeng.blockentity.storage.MEChestBlockEntity;
+import appeng.client.render.AERenderTypes;
+import appeng.util.Platform;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -44,12 +41,12 @@ import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.model.quad.QuadTransforms;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
-import appeng.api.client.StorageCellModels;
-import appeng.api.orientation.BlockOrientation;
-import appeng.blockentity.storage.MEChestBlockEntity;
-import appeng.client.render.AERenderTypes;
-import appeng.util.Platform;
+import java.util.List;
+import java.util.function.Function;
 
 /**
  * The block entity renderer for ME chests takes care of rendering the right model for the inserted cell, as well as the

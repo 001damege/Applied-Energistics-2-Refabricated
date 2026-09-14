@@ -18,19 +18,6 @@
 
 package appeng.items.tools.powered;
 
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.ids.AEComponents;
 import appeng.api.stacks.AEKeyType;
@@ -42,6 +29,18 @@ import appeng.core.AppEng;
 import appeng.items.contents.CellConfig;
 import appeng.items.storage.StorageTier;
 import appeng.util.ConfigInventory;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
 
 public class PortableCellItem extends AbstractPortableCell implements IBasicCellItem {
 

@@ -1,11 +1,10 @@
 package appeng.parts.automation;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.behaviors.PlacementStrategy;
+import appeng.api.config.Actionable;
+import appeng.api.stacks.AEFluidKey;
+import appeng.api.stacks.AEKey;
+import appeng.util.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -24,12 +23,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.behaviors.PlacementStrategy;
-import appeng.api.config.Actionable;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEKey;
-import appeng.util.Platform;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 public class FluidPlacementStrategy implements PlacementStrategy {
     private final ServerLevel level;

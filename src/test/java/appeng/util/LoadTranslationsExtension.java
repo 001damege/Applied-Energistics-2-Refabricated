@@ -18,16 +18,14 @@
 
 package appeng.util;
 
-import java.util.List;
-
+import appeng.client.gui.MockResourceManager;
+import net.minecraft.client.resources.language.ClientLanguage;
+import net.minecraft.locale.Language;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-import net.minecraft.client.resources.language.ClientLanguage;
-import net.minecraft.locale.Language;
-
-import appeng.client.gui.MockResourceManager;
+import java.util.List;
 
 public class LoadTranslationsExtension implements Extension, BeforeAllCallback {
     @Override

@@ -23,18 +23,16 @@
 
 package appeng.api.storage.cells;
 
-import java.util.Optional;
-import java.util.function.Consumer;
-
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.AEKeyType;
+import appeng.me.cells.BasicCellHandler;
 import com.google.common.base.Preconditions;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.me.cells.BasicCellHandler;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Implement this on any item to register a "basic cell", which is a cell that works similarly to AE2's own item and
@@ -116,7 +114,7 @@ public interface IBasicCellItem extends ICellWorkbenchItem {
     /**
      * Convenient helper to append useful tooltip information.
      */
-    default void addCellInformationToTooltip(ItemStack is, Consumer<Component> lines) {
+    default void addCellInformationToTooltip(ItemStack is, List<Component> lines) {
         Preconditions.checkArgument(is.getItem() == this);
         BasicCellHandler.INSTANCE.addCellInformationToTooltip(is, lines);
     }

@@ -18,8 +18,12 @@
 
 package appeng.block.networking;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.networking.ControllerBlockEntity;
+import appeng.core.definitions.AEBlocks;
+import appeng.menu.MenuOpener;
+import appeng.menu.locator.MenuLocators;
+import appeng.menu.me.networktool.NetworkStatusMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -35,13 +39,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
-
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.networking.ControllerBlockEntity;
-import appeng.core.definitions.AEBlocks;
-import appeng.menu.MenuOpener;
-import appeng.menu.locator.MenuLocators;
-import appeng.menu.me.networktool.NetworkStatusMenu;
+import org.jetbrains.annotations.Nullable;
 
 public class ControllerBlock extends AEBaseEntityBlock<ControllerBlockEntity> {
 

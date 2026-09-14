@@ -1,11 +1,11 @@
 package appeng.me.storage;
 
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
+import appeng.api.config.Actionable;
+import appeng.api.networking.security.IActionSource;
+import appeng.api.stacks.*;
+import appeng.api.storage.MEStorage;
+import appeng.core.localization.GuiText;
 import com.google.common.primitives.Ints;
-
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
@@ -13,16 +13,8 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.resource.Resource;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.stacks.GenericStack;
-import appeng.api.stacks.KeyCounter;
-import appeng.api.storage.MEStorage;
-import appeng.core.localization.GuiText;
+import javax.annotation.Nullable;
+import java.util.Set;
 
 /**
  * Adapts external platform storage to behave like an {@link MEStorage}.

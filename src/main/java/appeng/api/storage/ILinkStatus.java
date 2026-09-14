@@ -1,12 +1,10 @@
 package appeng.api.storage;
 
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-
 import appeng.api.networking.IManagedGridNode;
 import appeng.core.localization.GuiText;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Describes the current connection status of a {@link ITerminalHost} to the grid.

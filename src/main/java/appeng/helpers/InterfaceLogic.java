@@ -18,21 +18,6 @@
 
 package appeng.helpers;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-
-import com.google.common.collect.ImmutableSet;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.FuzzyMode;
 import appeng.api.config.Settings;
@@ -63,6 +48,18 @@ import appeng.core.settings.TickRates;
 import appeng.me.helpers.MachineSource;
 import appeng.me.storage.DelegatingMEInventory;
 import appeng.util.ConfigInventory;
+import com.google.common.collect.ImmutableSet;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Contains behavior for interface blocks and parts, which is independent of the storage channel.

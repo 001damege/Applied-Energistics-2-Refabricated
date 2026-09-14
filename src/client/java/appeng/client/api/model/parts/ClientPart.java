@@ -1,10 +1,9 @@
 package appeng.client.api.model.parts;
 
+import appeng.client.model.PartModels;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import appeng.client.model.PartModels;
 
 /**
  * Describes the rendering of an AE2 part.

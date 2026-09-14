@@ -1,18 +1,17 @@
 package appeng.util;
 
-import java.io.IOException;
-import java.util.Map;
-
 import com.google.common.math.StatsAccumulator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.stream.JsonWriter;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.level.ChunkPos;
+
+import java.io.IOException;
+import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class JsonStreamUtil {

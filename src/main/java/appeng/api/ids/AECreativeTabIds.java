@@ -1,12 +1,11 @@
 package appeng.api.ids;
 
+import appeng.core.AppEng;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
-
-import appeng.core.AppEng;
 
 /**
  * IDs of the AE2 creative tabs.

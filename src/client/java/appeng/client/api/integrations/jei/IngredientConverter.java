@@ -1,10 +1,8 @@
 package appeng.client.api.integrations.jei;
 
-import org.jetbrains.annotations.Nullable;
-
-import mezz.jei.api.ingredients.IIngredientType;
-
 import appeng.api.stacks.GenericStack;
+import mezz.jei.api.ingredients.IIngredientType;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Implement this interface to provide AE2s JEI integration with a new ingredient type converter for use in:

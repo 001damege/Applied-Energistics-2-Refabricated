@@ -1,18 +1,14 @@
 package appeng.helpers.patternprovider;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
-
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
+import appeng.api.config.Actionable;
+import appeng.api.networking.security.IActionSource;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.AEKeyType;
+import appeng.api.stacks.GenericStack;
+import appeng.helpers.externalstorage.GenericStackInv;
+import appeng.me.helpers.BaseActionSource;
+import appeng.util.BootstrapMinecraft;
+import appeng.util.ConfigInventory;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -23,16 +19,14 @@ import net.minecraft.world.level.storage.TagValueInput;
 import net.minecraft.world.level.storage.TagValueOutput;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.stacks.GenericStack;
-import appeng.helpers.externalstorage.GenericStackInv;
-import appeng.me.helpers.BaseActionSource;
-import appeng.util.BootstrapMinecraft;
-import appeng.util.ConfigInventory;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @BootstrapMinecraft
 class GenericStackInvTest {

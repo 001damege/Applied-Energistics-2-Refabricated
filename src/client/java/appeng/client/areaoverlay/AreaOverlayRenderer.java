@@ -18,15 +18,12 @@
 
 package appeng.client.areaoverlay;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import appeng.client.render.AERenderTypes;
+import appeng.core.AppEng;
+import appeng.core.areaoverlay.AreaOverlayManager;
+import appeng.core.areaoverlay.IAreaOverlayDataSource;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
-import org.joml.Matrix4f;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -37,11 +34,11 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ExtractLevelRenderStateEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import org.joml.Matrix4f;
 
-import appeng.client.render.AERenderTypes;
-import appeng.core.AppEng;
-import appeng.core.areaoverlay.AreaOverlayManager;
-import appeng.core.areaoverlay.IAreaOverlayDataSource;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * This is based on the area render of https://github.com/TeamPneumatic/pnc-repressurized/

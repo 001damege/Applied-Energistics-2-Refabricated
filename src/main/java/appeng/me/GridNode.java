@@ -18,50 +18,8 @@
 
 package appeng.me;
 
-import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ClassToInstanceMap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.MutableClassToInstanceMap;
-import com.google.gson.stream.JsonWriter;
-
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-
 import appeng.api.features.IPlayerRegistry;
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridConnection;
-import appeng.api.networking.IGridConnectionVisitor;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridNodeListener;
-import appeng.api.networking.IGridNodeService;
-import appeng.api.networking.IGridVisitor;
+import appeng.api.networking.*;
 import appeng.api.networking.events.GridPowerIdleChange;
 import appeng.api.networking.pathing.ChannelMode;
 import appeng.api.parts.IPart;
@@ -72,6 +30,28 @@ import appeng.core.AELog;
 import appeng.me.pathfinding.IPathItem;
 import appeng.util.IDebugExportable;
 import appeng.util.JsonStreamUtil;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ClassToInstanceMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.MutableClassToInstanceMap;
+import com.google.gson.stream.JsonWriter;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import net.minecraft.CrashReportCategory;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.*;
 
 public class GridNode implements IGridNode, IPathItem, IDebugExportable {
     private static final Logger LOG = LoggerFactory.getLogger(GridNode.class);

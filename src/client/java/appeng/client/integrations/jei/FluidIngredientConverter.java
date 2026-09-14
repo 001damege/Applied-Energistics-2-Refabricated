@@ -1,17 +1,13 @@
 package appeng.client.integrations.jei;
 
-import com.google.common.primitives.Ints;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.neoforged.neoforge.fluids.FluidStack;
-
-import mezz.jei.api.ingredients.IIngredientType;
-import mezz.jei.api.neoforge.NeoForgeTypes;
-
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.GenericStack;
 import appeng.client.api.integrations.jei.IngredientConverter;
+import com.google.common.primitives.Ints;
+import mezz.jei.api.ingredients.IIngredientType;
+import mezz.jei.api.neoforge.NeoForgeTypes;
+import net.neoforged.neoforge.fluids.FluidStack;
+import org.jetbrains.annotations.Nullable;
 
 public class FluidIngredientConverter implements IngredientConverter<FluidStack> {
     @Override

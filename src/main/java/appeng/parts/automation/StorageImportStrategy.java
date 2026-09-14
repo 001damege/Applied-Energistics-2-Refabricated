@@ -1,16 +1,15 @@
 package appeng.parts.automation;
 
+import appeng.api.behaviors.StackImportStrategy;
+import appeng.api.behaviors.StackTransferContext;
+import appeng.api.config.Actionable;
+import appeng.core.AELog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-
-import appeng.api.behaviors.StackImportStrategy;
-import appeng.api.behaviors.StackTransferContext;
-import appeng.api.config.Actionable;
-import appeng.core.AELog;
 
 /**
  * Strategy for efficiently importing stacks from external storage into an internal

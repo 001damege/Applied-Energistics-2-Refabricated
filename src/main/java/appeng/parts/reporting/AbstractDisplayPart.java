@@ -18,10 +18,9 @@
 
 package appeng.parts.reporting;
 
-import net.minecraft.resources.Identifier;
-
 import appeng.api.parts.IPartItem;
 import appeng.core.AppEng;
+import net.minecraft.resources.Identifier;
 
 /**
  * A more sophisticated part overlapping all 3 textures.

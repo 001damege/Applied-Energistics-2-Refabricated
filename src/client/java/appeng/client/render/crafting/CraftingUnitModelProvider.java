@@ -1,12 +1,11 @@
 package appeng.client.render.crafting;
 
+import appeng.block.crafting.CraftingUnitType;
+import appeng.core.AppEng;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.resources.model.ModelDebugName;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.client.resources.model.sprite.MaterialBaker;
-
-import appeng.block.crafting.CraftingUnitType;
-import appeng.core.AppEng;
 
 public class CraftingUnitModelProvider extends AbstractCraftingUnitModelProvider<CraftingUnitType>
         implements ModelDebugName {

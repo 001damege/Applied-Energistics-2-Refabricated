@@ -23,32 +23,29 @@
 
 package appeng.api.stacks;
 
-import java.text.NumberFormat;
-import java.util.stream.Stream;
-
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-import lombok.Getter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.core.Registry;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
 import appeng.api.storage.AEKeyFilter;
 import appeng.core.AELog;
 import appeng.core.AppEng;
 import appeng.util.ReadableNumberConverter;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import lombok.Getter;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import org.jetbrains.annotations.Nullable;
+
+import java.text.NumberFormat;
+import java.util.stream.Stream;
 
 /**
  * Defines the properties of a specific subclass of {@link AEKey}. I.e. for {@link AEItemKey}, there is

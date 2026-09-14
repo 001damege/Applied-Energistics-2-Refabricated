@@ -1,15 +1,13 @@
 package appeng.client.guidebook;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import net.minecraft.resources.Identifier;
-
+import appeng.core.AppEng;
 import guideme.Guide;
 import guideme.siteexport.AdditionalResourceExporter;
 import guideme.siteexport.ResourceExporter;
+import net.minecraft.resources.Identifier;
 
-import appeng.core.AppEng;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AEAdditionalExportData implements AdditionalResourceExporter {
     static final Identifier DEFAULT_CONFIG_VALUES = AppEng.makeId("default-config-values");

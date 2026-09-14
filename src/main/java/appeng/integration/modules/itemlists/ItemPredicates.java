@@ -1,13 +1,13 @@
 package appeng.integration.modules.itemlists;
 
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.ids.AEComponents;
 import appeng.api.util.AEColor;
+import appeng.core.AEConfig;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.items.parts.FacadeItem;
+import net.minecraft.world.item.ItemStack;
 
 public final class ItemPredicates {
     private ItemPredicates() {

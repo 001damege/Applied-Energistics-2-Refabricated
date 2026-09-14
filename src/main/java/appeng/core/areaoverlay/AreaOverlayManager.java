@@ -18,19 +18,15 @@
 
 package appeng.core.areaoverlay;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import appeng.api.util.DimensionalBlockPos;
+
+import java.util.*;
 
 /**
  * This is based on the area render of https://github.com/TeamPneumatic/pnc-repressurized/
  */
 public class AreaOverlayManager {
-    private final static AreaOverlayManager INSTANCE = new AreaOverlayManager();
+    private static final AreaOverlayManager INSTANCE = new AreaOverlayManager();
 
     private final Map<DimensionalBlockPos, IAreaOverlayDataSource> visibleAreaOverlays = new HashMap<>();
 

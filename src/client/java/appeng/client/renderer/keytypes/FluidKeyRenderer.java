@@ -1,12 +1,10 @@
 package appeng.client.renderer.keytypes;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.api.stacks.AEFluidKey;
+import appeng.client.api.AEKeyRenderer;
+import appeng.client.gui.style.FluidBlitter;
+import appeng.util.Platform;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -16,11 +14,10 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.AEFluidKey;
-import appeng.client.api.AEKeyRenderer;
-import appeng.client.gui.style.FluidBlitter;
-import appeng.util.Platform;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FluidKeyRenderer implements AEKeyRenderer<AEFluidKey, FluidKeyRenderer.RenderState> {
     @Override

@@ -18,6 +18,13 @@
 
 package appeng.block.misc;
 
+import appeng.api.orientation.IOrientationStrategy;
+import appeng.api.orientation.OrientationStrategies;
+import appeng.block.AEBaseEntityBlock;
+import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;
+import appeng.core.AEConfig;
+import appeng.core.particles.ParticleTypes;
+import appeng.util.Platform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -26,13 +33,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-import appeng.api.orientation.IOrientationStrategy;
-import appeng.api.orientation.OrientationStrategies;
-import appeng.block.AEBaseEntityBlock;
-import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;
-import appeng.core.particles.ParticleTypes;
-import appeng.util.Platform;
 
 public class GrowthAcceleratorBlock extends AEBaseEntityBlock<GrowthAcceleratorBlockEntity> {
 

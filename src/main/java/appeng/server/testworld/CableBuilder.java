@@ -1,11 +1,5 @@
 package appeng.server.testworld;
 
-import java.util.function.Consumer;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
-
 import appeng.api.config.Settings;
 import appeng.api.config.YesNo;
 import appeng.api.parts.IPart;
@@ -16,6 +10,11 @@ import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.core.definitions.ItemDefinition;
 import appeng.items.parts.PartItem;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+
+import java.util.function.Consumer;
 
 public class CableBuilder {
     private final PlotBuilder plotBuilder;

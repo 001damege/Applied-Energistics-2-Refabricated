@@ -23,22 +23,15 @@
 
 package appeng.client.api;
 
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.AEKeyType;
 import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
+import java.util.*;
 
 /**
  * Registry for {@link AEKeyRenderer}. Also contains convenience functions to render a stack without having to query the

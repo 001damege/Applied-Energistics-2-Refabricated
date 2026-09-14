@@ -18,11 +18,10 @@
 
 package appeng.client.renderer.blockentity;
 
+import appeng.blockentity.storage.SkyStoneTankBlockEntity;
+import appeng.client.render.CubeBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.QuadInstance;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -32,9 +31,7 @@ import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.blockentity.storage.SkyStoneTankBlockEntity;
-import appeng.client.render.CubeBuilder;
+import org.jetbrains.annotations.Nullable;
 
 public final class SkyStoneTankRenderer
         implements BlockEntityRenderer<SkyStoneTankBlockEntity, SkyStoneTankRenderState> {

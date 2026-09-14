@@ -18,13 +18,27 @@
 
 package appeng.items.tools;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.components.ExportedUpgrades;
+import appeng.api.ids.AEComponents;
+import appeng.api.implementations.items.IMemoryCard;
+import appeng.api.implementations.items.MemoryCardMessages;
+import appeng.api.inventories.InternalInventory;
+import appeng.api.upgrades.IUpgradeableObject;
+import appeng.api.util.IConfigurableObject;
+import appeng.core.ConventionTags;
+import appeng.core.localization.GuiText;
+import appeng.core.localization.InGameTooltip;
+import appeng.core.localization.PlayerMessages;
+import appeng.core.localization.Tooltips;
+import appeng.helpers.IConfigInvHost;
+import appeng.helpers.IPriorityHost;
+import appeng.items.AEBaseItem;
+import appeng.util.InteractionUtil;
+import appeng.util.Platform;
+import appeng.util.inv.PlayerInternalInventory;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
@@ -44,29 +58,12 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import org.jetbrains.annotations.Nullable;
 
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-
-import appeng.api.components.ExportedUpgrades;
-import appeng.api.ids.AEComponents;
-import appeng.api.implementations.items.IMemoryCard;
-import appeng.api.implementations.items.MemoryCardMessages;
-import appeng.api.inventories.InternalInventory;
-import appeng.api.upgrades.IUpgradeableObject;
-import appeng.api.util.IConfigurableObject;
-import appeng.core.ConventionTags;
-import appeng.core.localization.GuiText;
-import appeng.core.localization.InGameTooltip;
-import appeng.core.localization.PlayerMessages;
-import appeng.core.localization.Tooltips;
-import appeng.helpers.IConfigInvHost;
-import appeng.helpers.IPriorityHost;
-import appeng.items.AEBaseItem;
-import appeng.util.InteractionUtil;
-import appeng.util.Platform;
-import appeng.util.inv.PlayerInternalInventory;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
 public class MemoryCardItem extends AEBaseItem implements IMemoryCard {
     private static final int DEFAULT_BASE_COLOR = 0x9cd3ff;

@@ -18,11 +18,11 @@
 
 package appeng.worldgen.meteorite;
 
-import java.util.Optional;
-
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.worldgen.meteorite.fallout.FalloutMode;
 import com.google.common.math.StatsAccumulator;
 import com.mojang.serialization.MapCodec;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -38,9 +38,7 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.worldgen.meteorite.fallout.FalloutMode;
+import java.util.Optional;
 
 public class MeteoriteStructure extends Structure {
 

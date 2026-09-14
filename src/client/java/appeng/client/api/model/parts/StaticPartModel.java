@@ -1,10 +1,9 @@
 package appeng.client.api.model.parts;
 
-import java.util.List;
-
+import appeng.api.util.AEColor;
+import appeng.core.AppEng;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.block.dispatch.ModelState;
@@ -16,8 +15,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.model.data.ModelData;
 
-import appeng.api.util.AEColor;
-import appeng.core.AppEng;
+import javax.naming.spi.Resolver;
+import java.util.List;
 
 /**
  * <dl>

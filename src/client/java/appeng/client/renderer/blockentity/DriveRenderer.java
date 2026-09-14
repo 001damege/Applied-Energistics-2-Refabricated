@@ -18,22 +18,19 @@
 
 package appeng.client.renderer.blockentity;
 
+import appeng.api.orientation.BlockOrientation;
+import appeng.blockentity.storage.DriveBlockEntity;
+import appeng.client.render.AERenderTypes;
+import appeng.client.render.model.DriveModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
-
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.world.phys.Vec3;
-
-import appeng.api.orientation.BlockOrientation;
-import appeng.blockentity.storage.DriveBlockEntity;
-import appeng.client.render.AERenderTypes;
-import appeng.client.render.model.DriveModel;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 /**
  * Renders the drive cell status indicators.

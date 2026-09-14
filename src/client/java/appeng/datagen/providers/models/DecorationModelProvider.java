@@ -18,17 +18,10 @@
 
 package appeng.datagen.providers.models;
 
-import static net.minecraft.client.data.models.BlockModelGenerators.createAxisAlignedPillarBlock;
-import static net.minecraft.client.data.models.BlockModelGenerators.createSimpleBlock;
-import static net.minecraft.client.data.models.BlockModelGenerators.createSlab;
-import static net.minecraft.client.data.models.BlockModelGenerators.createStairs;
-import static net.minecraft.client.data.models.BlockModelGenerators.createWall;
-import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
-
-import java.util.Map;
-
+import appeng.block.misc.QuartzFixtureBlock;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.BlockDefinition;
 import com.mojang.math.Quadrant;
-
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
@@ -45,9 +38,9 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 
-import appeng.block.misc.QuartzFixtureBlock;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.BlockDefinition;
+import java.util.Map;
+
+import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 public class DecorationModelProvider extends ModelSubProvider {
     public DecorationModelProvider(BlockModelGenerators blockModels, ItemModelGenerators itemModels,

@@ -1,11 +1,9 @@
 package appeng.client.integrations.jei;
 
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-
-import mezz.jei.api.gui.drawable.IDrawable;
-
 import appeng.client.gui.style.Blitter;
 import appeng.util.Icon;
+import mezz.jei.api.gui.drawable.IDrawable;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 
 /**
  * Creates {@link IDrawable} from {@link Icon}

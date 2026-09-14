@@ -1,5 +1,8 @@
 package appeng.parts.p2p;
 
+import appeng.api.parts.IPartItem;
+import appeng.api.stacks.AEKeyType;
+import appeng.util.InsertionOnlyResourceHandler;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.transfer.EmptyResourceHandler;
@@ -7,10 +10,6 @@ import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.TransferPreconditions;
 import net.neoforged.neoforge.transfer.resource.Resource;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
-import appeng.api.parts.IPartItem;
-import appeng.api.stacks.AEKeyType;
-import appeng.util.InsertionOnlyResourceHandler;
 
 public abstract class ResourceHandlerP2PTunnelPart<P extends ResourceHandlerP2PTunnelPart<P, T>, T extends Resource>
         extends CapabilityP2PTunnelPart<P, ResourceHandler<T>> {

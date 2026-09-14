@@ -18,12 +18,6 @@
 
 package appeng.items.contents;
 
-import com.google.common.primitives.Ints;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.entity.player.Player;
-
 import appeng.api.config.Actionable;
 import appeng.api.implementations.menuobjects.ItemMenuHost;
 import appeng.api.inventories.InternalInventory;
@@ -33,6 +27,9 @@ import appeng.api.stacks.AEKey;
 import appeng.items.tools.NetworkToolItem;
 import appeng.menu.locator.ItemMenuHostLocator;
 import appeng.util.inv.SupplierInternalInventory;
+import com.google.common.primitives.Ints;
+import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.Nullable;
 
 public class NetworkToolMenuHost<T extends NetworkToolItem> extends ItemMenuHost<T> {
     @Nullable
@@ -40,12 +37,10 @@ public class NetworkToolMenuHost<T extends NetworkToolItem> extends ItemMenuHost
 
     private final SupplierInternalInventory<InternalInventory> supplierInv;
 
-    public NetworkToolMenuHost(T item, Player player, ItemMenuHostLocator locator,
-            @Nullable IInWorldGridNodeHost host) {
+    public NetworkToolMenuHost(T item, Player player, ItemMenuHostLocator locator, @Nullable IInWorldGridNodeHost host) {
         super(item, player, locator);
         this.host = host;
-        this.supplierInv = new SupplierInternalInventory<>(
-                new StackDependentSupplier<>(this::getItemStack, NetworkToolItem::getInventory));
+        this.supplierInv = new SupplierInternalInventory<>(new StackDependentSupplier<>(this::getItemStack, NetworkToolItem::getInventory));
     }
 
     @Override
@@ -55,7 +50,6 @@ public class NetworkToolMenuHost<T extends NetworkToolItem> extends ItemMenuHost
             var overflow = getInventory().addItems(stack, mode.isSimulate());
             return stack.getCount() - overflow.getCount();
         }
-
         return 0;
     }
 

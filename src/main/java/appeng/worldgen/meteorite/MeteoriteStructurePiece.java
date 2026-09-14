@@ -17,6 +17,8 @@
  */
 package appeng.worldgen.meteorite;
 
+import appeng.server.services.compass.ServerCompassService;
+import appeng.worldgen.meteorite.fallout.FalloutMode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
@@ -28,9 +30,6 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-
-import appeng.server.services.compass.ServerCompassService;
-import appeng.worldgen.meteorite.fallout.FalloutMode;
 
 public class MeteoriteStructurePiece extends StructurePiece {
 

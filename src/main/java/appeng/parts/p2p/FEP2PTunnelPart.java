@@ -18,14 +18,13 @@
 
 package appeng.parts.p2p;
 
+import appeng.api.config.PowerUnit;
+import appeng.api.parts.IPartItem;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.transfer.TransferPreconditions;
 import net.neoforged.neoforge.transfer.energy.EmptyEnergyHandler;
 import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
-import appeng.api.config.PowerUnit;
-import appeng.api.parts.IPartItem;
 
 public class FEP2PTunnelPart extends CapabilityP2PTunnelPart<FEP2PTunnelPart, EnergyHandler> {
     public FEP2PTunnelPart(IPartItem<?> partItem) {

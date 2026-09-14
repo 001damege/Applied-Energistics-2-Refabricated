@@ -18,14 +18,12 @@
 
 package appeng.recipes.handlers;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
+import appeng.core.definitions.AEBlocks;
+import appeng.recipes.AERecipeTypes;
+import appeng.recipes.MechanicsRecipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStackTemplate;
@@ -37,9 +35,9 @@ import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.recipes.AERecipeTypes;
-import appeng.recipes.MechanicsRecipe;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class InscriberRecipe extends MechanicsRecipe<RecipeInput> {
 

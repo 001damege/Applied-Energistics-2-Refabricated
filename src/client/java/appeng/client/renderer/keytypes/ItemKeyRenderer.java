@@ -1,12 +1,8 @@
 package appeng.client.renderer.keytypes;
 
-import java.util.List;
-
+import appeng.api.stacks.AEItemKey;
+import appeng.client.api.AEKeyRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -21,9 +17,10 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4f;
 
-import appeng.api.stacks.AEItemKey;
-import appeng.client.api.AEKeyRenderer;
+import java.util.List;
 
 public class ItemKeyRenderer implements AEKeyRenderer<AEItemKey, ItemStackRenderState> {
     private final ItemModelResolver itemModelResolver;

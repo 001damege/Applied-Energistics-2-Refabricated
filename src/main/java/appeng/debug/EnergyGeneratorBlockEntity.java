@@ -18,8 +18,9 @@
 
 package appeng.debug;
 
+import appeng.blockentity.AEBaseBlockEntity;
+import appeng.blockentity.ServerTickingBlockEntity;
 import com.google.common.math.IntMath;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -32,9 +33,6 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
-
-import appeng.blockentity.AEBaseBlockEntity;
-import appeng.blockentity.ServerTickingBlockEntity;
 
 public class EnergyGeneratorBlockEntity extends AEBaseBlockEntity implements ServerTickingBlockEntity, EnergyHandler {
     /**

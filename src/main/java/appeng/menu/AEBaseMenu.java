@@ -18,48 +18,6 @@
 
 package appeng.menu;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.HexFormat;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ArrayListMultimap;
-
-import org.jetbrains.annotations.MustBeInvokedByOverriders;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import io.netty.buffer.Unpooled;
-
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-import net.neoforged.neoforge.network.connection.ConnectionType;
-
-import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-
 import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.config.Actionable;
 import appeng.api.implementations.menuobjects.ItemMenuHost;
@@ -80,14 +38,39 @@ import appeng.me.helpers.PlayerSource;
 import appeng.menu.guisync.ClientActionKey;
 import appeng.menu.guisync.DataSynchronization;
 import appeng.menu.locator.MenuHostLocator;
-import appeng.menu.slot.AppEngSlot;
-import appeng.menu.slot.CraftingMatrixSlot;
-import appeng.menu.slot.CraftingTermSlot;
-import appeng.menu.slot.DisabledSlot;
-import appeng.menu.slot.FakeSlot;
-import appeng.menu.slot.RestrictedInputSlot;
+import appeng.menu.slot.*;
 import appeng.parts.AEBasePart;
 import appeng.util.ConfigMenuInventory;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ArrayListMultimap;
+import io.netty.buffer.Unpooled;
+import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
+import net.neoforged.neoforge.network.connection.ConnectionType;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public abstract class AEBaseMenu extends AbstractContainerMenu {
     private static final Logger LOG = LoggerFactory.getLogger(AEBaseMenu.class);

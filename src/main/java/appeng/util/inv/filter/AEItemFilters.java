@@ -18,11 +18,10 @@
 
 package appeng.util.inv.filter;
 
+import appeng.api.inventories.InternalInventory;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.api.inventories.InternalInventory;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AEItemFilters {

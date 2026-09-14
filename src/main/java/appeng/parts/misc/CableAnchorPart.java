@@ -18,21 +18,15 @@
 
 package appeng.parts.misc;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.networking.IGridNode;
+import appeng.api.parts.*;
+import appeng.api.util.AECableType;
+import appeng.parts.automation.PartModelData;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.model.data.ModelData;
-
-import appeng.api.networking.IGridNode;
-import appeng.api.parts.BusSupport;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.IPartItem;
-import appeng.api.util.AECableType;
-import appeng.parts.automation.PartModelData;
+import org.jetbrains.annotations.Nullable;
 
 public class CableAnchorPart implements IPart {
     private final IPartItem<CableAnchorPart> partItem;

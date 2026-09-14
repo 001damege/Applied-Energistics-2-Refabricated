@@ -1,19 +1,16 @@
 package appeng.api.stacks;
 
-import java.util.Comparator;
-import java.util.SortedMap;
-
+import appeng.api.config.FuzzyMode;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
-
+import it.unimi.dsi.fastutil.objects.Object2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.item.ItemStack;
 
-import it.unimi.dsi.fastutil.objects.Object2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMap;
-
-import appeng.api.config.FuzzyMode;
+import java.util.Comparator;
+import java.util.SortedMap;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 final class FuzzySearch {

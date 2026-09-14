@@ -1,12 +1,10 @@
 package appeng.menu.locator;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.core.AELog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
-
-import appeng.core.AELog;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Locates a {@link net.minecraft.world.level.block.entity.BlockEntity} that hosts a menu.

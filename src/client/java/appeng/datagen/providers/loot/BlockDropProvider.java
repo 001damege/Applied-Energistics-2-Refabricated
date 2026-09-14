@@ -18,14 +18,12 @@
 
 package appeng.datagen.providers.loot;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-
+import appeng.core.AppEng;
+import appeng.core.ConventionTags;
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.BlockDefinition;
 import com.google.common.collect.ImmutableMap;
-
-import org.jetbrains.annotations.NotNull;
-
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -46,12 +44,11 @@ import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import org.jetbrains.annotations.NotNull;
 
-import appeng.core.AppEng;
-import appeng.core.ConventionTags;
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import appeng.core.definitions.BlockDefinition;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 
 public class BlockDropProvider extends BlockLootSubProvider {
     private final Map<Block, Function<Block, LootTable.Builder>> overrides = createOverrides();

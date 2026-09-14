@@ -18,13 +18,12 @@
 
 package appeng.client.render.cablebus;
 
-import java.util.Arrays;
-
+import appeng.core.AppEng;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.client.resources.model.sprite.MaterialBaker;
 import net.minecraft.resources.Identifier;
 
-import appeng.core.AppEng;
+import java.util.Arrays;
 
 /**
  * Manages the channel textures for smart cables.

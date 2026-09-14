@@ -1,11 +1,10 @@
 package appeng.client.gui.widgets;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
-
 import appeng.core.localization.ButtonToolTips;
 import appeng.util.Icon;
+import net.minecraft.network.chat.Component;
+
+import java.util.List;
 
 public class OpenGuideButton extends IconButton {
     public OpenGuideButton(OnPress onPress) {

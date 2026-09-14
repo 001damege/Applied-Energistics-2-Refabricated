@@ -1,25 +1,5 @@
 package appeng.datagen.providers.models;
 
-import java.util.List;
-import java.util.Optional;
-
-import net.minecraft.client.color.item.Constant;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.renderer.item.CompositeModel;
-import net.minecraft.client.renderer.item.EmptyModel;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.ItemLike;
-
 import appeng.api.util.AEColor;
 import appeng.client.item.ColorApplicatorItemModel;
 import appeng.client.item.PortableCellColorTintSource;
@@ -31,6 +11,20 @@ import appeng.core.AppEng;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.ItemDefinition;
+import net.minecraft.client.color.item.Constant;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.CompositeModel;
+import net.minecraft.client.renderer.item.EmptyModel;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ItemModelProvider extends ModelSubProvider {
     public ItemModelProvider(BlockModelGenerators blockModels, ItemModelGenerators itemModels,

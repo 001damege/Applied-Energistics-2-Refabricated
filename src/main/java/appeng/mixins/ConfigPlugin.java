@@ -1,15 +1,14 @@
 package appeng.mixins;
 
-import java.util.List;
-import java.util.Set;
-
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.moddiscovery.ModInfo;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.fml.loading.moddiscovery.ModInfo;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Disables the Create compatibility mixin if create isn't loaded.

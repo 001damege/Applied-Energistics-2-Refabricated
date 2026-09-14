@@ -18,23 +18,6 @@
 
 package appeng.me.service;
 
-import java.util.IdentityHashMap;
-import java.util.LongSummaryStatistics;
-import java.util.Map;
-import java.util.Objects;
-import java.util.PriorityQueue;
-import java.util.concurrent.TimeUnit;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.collect.Iterators;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.CrashReport;
-import net.minecraft.ReportedException;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.Level;
-
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.IGridServiceProvider;
 import appeng.api.networking.ticking.IGridTickable;
@@ -42,6 +25,16 @@ import appeng.api.networking.ticking.ITickManager;
 import appeng.api.networking.ticking.TickRateModulation;
 import appeng.me.GridNode;
 import appeng.me.service.helpers.TickTracker;
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Iterators;
+import net.minecraft.CrashReport;
+import net.minecraft.ReportedException;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class TickManagerService implements ITickManager, IGridServiceProvider {
 

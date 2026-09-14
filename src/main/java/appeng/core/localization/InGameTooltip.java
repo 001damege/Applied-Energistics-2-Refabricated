@@ -18,9 +18,13 @@
 
 package appeng.core.localization;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+
 /**
  * Texts used for in-game tooltip mods like WAILA, TOP, Jade, WTHIT, etc.
  */
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum InGameTooltip implements LocalizationEnum {
     Channels("%1$d Channels"),
     ChannelsOf("%1$d of %2$d Channels"),
@@ -53,10 +57,6 @@ public enum InGameTooltip implements LocalizationEnum {
 
     private final String englishText;
 
-    InGameTooltip(String englishText) {
-        this.englishText = englishText;
-    }
-
     @Override
     public String getTranslationKey() {
         return "waila.ae2." + name();
@@ -66,5 +66,4 @@ public enum InGameTooltip implements LocalizationEnum {
     public String getEnglishText() {
         return englishText;
     }
-
 }

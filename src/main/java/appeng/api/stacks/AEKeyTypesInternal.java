@@ -1,16 +1,14 @@
 package appeng.api.stacks;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.google.common.base.Preconditions;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import net.minecraft.core.Registry;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.core.Registry;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Manages the registry used to synchronize key spaces to the client.

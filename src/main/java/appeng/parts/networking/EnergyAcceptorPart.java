@@ -18,8 +18,6 @@
 
 package appeng.parts.networking;
 
-import net.neoforged.neoforge.transfer.energy.EnergyHandler;
-
 import appeng.api.config.AccessRestriction;
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
@@ -30,6 +28,7 @@ import appeng.api.util.AECableType;
 import appeng.blockentity.powersink.IExternalPowerSink;
 import appeng.helpers.ForgeEnergyAdapter;
 import appeng.parts.AEBasePart;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 public class EnergyAcceptorPart extends AEBasePart implements IExternalPowerSink {
     private EnergyHandler forgeEnergyAdapter;

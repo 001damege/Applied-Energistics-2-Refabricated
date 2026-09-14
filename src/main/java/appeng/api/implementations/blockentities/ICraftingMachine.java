@@ -23,16 +23,14 @@
 
 package appeng.api.implementations.blockentities;
 
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.AECapabilities;
+import appeng.api.crafting.IPatternDetails;
+import appeng.api.stacks.KeyCounter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-
-import appeng.api.AECapabilities;
-import appeng.api.crafting.IPatternDetails;
-import appeng.api.stacks.KeyCounter;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Provides crafting services to adjacent pattern providers for automatic crafting. Can be provided via capability on

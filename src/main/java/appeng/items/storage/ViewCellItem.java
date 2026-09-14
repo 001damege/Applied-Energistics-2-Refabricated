@@ -18,11 +18,6 @@
 
 package appeng.items.storage;
 
-import java.util.Collection;
-
-import net.minecraft.world.item.Item.Properties;
-import net.minecraft.world.item.ItemStack;
-
 import appeng.api.config.FuzzyMode;
 import appeng.api.ids.AEComponents;
 import appeng.api.stacks.AEItemKey;
@@ -39,6 +34,9 @@ import appeng.util.prioritylist.FuzzyPriorityList;
 import appeng.util.prioritylist.IPartitionList;
 import appeng.util.prioritylist.MergedPriorityList;
 import appeng.util.prioritylist.PrecisePriorityList;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.Collection;
 
 public class ViewCellItem extends AEBaseItem implements ICellWorkbenchItem {
     public ViewCellItem(Properties properties) {
@@ -53,8 +51,7 @@ public class ViewCellItem extends AEBaseItem implements ICellWorkbenchItem {
         return createFilter(AEItemKey.filter(), list);
     }
 
-    public static IPartitionList createFilter(AEKeyFilter filter,
-            Collection<ItemStack> list) {
+    public static IPartitionList createFilter(AEKeyFilter filter, Collection<ItemStack> list) {
         IPartitionList myPartitionList = null;
 
         final MergedPriorityList myMergedList = new MergedPriorityList();

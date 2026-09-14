@@ -18,15 +18,13 @@
 
 package appeng.menu.guisync;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import appeng.core.AELog;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-
-import appeng.core.AELog;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Helper class for synchronizing fields from server-side menus to client-side menus. Fields need to be annotated with

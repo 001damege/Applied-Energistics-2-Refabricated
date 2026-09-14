@@ -18,10 +18,8 @@
 
 package appeng.client.renderer.entity;
 
+import appeng.entity.TinyTNTPrimedEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import org.joml.Quaternionf;
-
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockModelResolver;
 import net.minecraft.client.renderer.block.model.BlockDisplayContext;
@@ -31,8 +29,7 @@ import net.minecraft.client.renderer.entity.TntMinecartRenderer;
 import net.minecraft.client.renderer.entity.state.TntRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.util.Mth;
-
-import appeng.entity.TinyTNTPrimedEntity;
+import org.joml.Quaternionf;
 
 public class TinyTNTPrimedRenderer extends EntityRenderer<TinyTNTPrimedEntity, TntRenderState> {
     private static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();

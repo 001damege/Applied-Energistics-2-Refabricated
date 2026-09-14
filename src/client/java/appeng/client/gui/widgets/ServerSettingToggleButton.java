@@ -18,11 +18,10 @@
 
 package appeng.client.gui.widgets;
 
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
 import appeng.api.config.Setting;
 import appeng.core.network.ServerboundPacket;
 import appeng.core.network.serverbound.ConfigButtonPacket;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 /**
  * Convenience button that automatically sends settings changes to the server.

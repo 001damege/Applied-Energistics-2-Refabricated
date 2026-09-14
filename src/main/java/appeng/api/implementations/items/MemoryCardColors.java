@@ -1,13 +1,11 @@
 package appeng.api.implementations.items;
 
-import java.util.List;
-
+import appeng.api.util.AEColor;
 import com.mojang.serialization.Codec;
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
-import appeng.api.util.AEColor;
+import java.util.List;
 
 /**
  * Describes the custom colors to show o n a memory card item.

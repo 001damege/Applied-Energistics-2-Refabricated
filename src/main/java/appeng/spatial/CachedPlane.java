@@ -18,12 +18,14 @@
 
 package appeng.spatial;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.api.ids.AETags;
+import appeng.api.movable.BlockEntityMoveStrategies;
+import appeng.api.movable.IBlockEntityMoveStrategy;
+import appeng.core.AELog;
+import appeng.core.definitions.AEBlocks;
+import appeng.server.services.compass.ServerCompassService;
+import appeng.util.Platform;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -43,16 +45,11 @@ import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.ticks.LevelChunkTicks;
 import net.minecraft.world.ticks.ScheduledTick;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-
-import appeng.api.ids.AETags;
-import appeng.api.movable.BlockEntityMoveStrategies;
-import appeng.api.movable.IBlockEntityMoveStrategy;
-import appeng.core.AELog;
-import appeng.core.definitions.AEBlocks;
-import appeng.server.services.compass.ServerCompassService;
-import appeng.util.Platform;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CachedPlane {
     private static final Logger LOG = LoggerFactory.getLogger(CachedPlane.class);

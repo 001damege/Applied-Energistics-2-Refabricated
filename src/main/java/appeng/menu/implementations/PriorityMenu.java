@@ -18,14 +18,13 @@
 
 package appeng.menu.implementations;
 
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.MenuType;
-
 import appeng.helpers.IPriorityHost;
 import appeng.menu.AEBaseMenu;
 import appeng.menu.ISubMenu;
 import appeng.menu.guisync.ClientActionKey;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.MenuType;
 
 /**
  * @see appeng.client.gui.implementations.PriorityScreen

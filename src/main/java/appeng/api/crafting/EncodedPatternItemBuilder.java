@@ -1,12 +1,10 @@
 package appeng.api.crafting;
 
-import java.util.Objects;
-
+import appeng.crafting.pattern.EncodedPatternItem;
+import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.world.item.Item;
-
-import appeng.crafting.pattern.EncodedPatternItem;
+import java.util.Objects;
 
 public final class EncodedPatternItemBuilder<T extends IPatternDetails> {
     private final EncodedPatternDecoder<? extends T> decoder;

@@ -18,13 +18,12 @@
 
 package appeng.util;
 
+import appeng.core.ConventionTags;
+import appeng.items.tools.NetworkToolItem;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-
-import appeng.core.ConventionTags;
-import appeng.items.tools.NetworkToolItem;
 
 /**
  * Utility functions revolving around using or placing items.

@@ -1,15 +1,13 @@
 package appeng.menu.locator;
 
-import java.util.Optional;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.integration.modules.curios.CuriosIntegration;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.integration.modules.curios.CuriosIntegration;
+import java.util.Optional;
 
 /**
  * Implements {@link ItemMenuHostLocator} for items equipped in curios slots.

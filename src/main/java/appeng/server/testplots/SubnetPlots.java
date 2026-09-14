@@ -1,9 +1,5 @@
 package appeng.server.testplots;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.Items;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
 import appeng.api.networking.security.IActionSource;
@@ -12,6 +8,9 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEParts;
 import appeng.me.service.EnergyService;
 import appeng.server.testworld.PlotBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.Items;
 
 /**
  * Test plot that sets up a working area for working on Guidebook structures.

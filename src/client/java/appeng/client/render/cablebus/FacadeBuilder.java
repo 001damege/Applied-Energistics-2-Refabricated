@@ -18,17 +18,15 @@
 
 package appeng.client.render.cablebus;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.parts.IPart;
+import appeng.api.parts.PartHelper;
+import appeng.api.util.AEAxisAlignedBB;
+import appeng.block.networking.CableBusBlock;
+import appeng.block.networking.CableBusRenderState;
+import appeng.client.model.FacingModelState;
+import appeng.core.AppEng;
+import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.*;
+import appeng.util.Platform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
@@ -48,20 +46,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.SingleThreadedRandomSource;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.client.model.quad.MutableQuad;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.parts.IPart;
-import appeng.api.parts.PartHelper;
-import appeng.api.util.AEAxisAlignedBB;
-import appeng.block.networking.CableBusBlock;
-import appeng.block.networking.CableBusRenderState;
-import appeng.client.model.FacingModelState;
-import appeng.core.AppEng;
-import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.QuadClamper;
-import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.QuadCornerKicker;
-import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.QuadFaceStripper;
-import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.QuadReInterpolator;
-import appeng.thirdparty.codechicken.lib.model.pipeline.transformers.QuadTinter;
-import appeng.util.Platform;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * The FacadeBuilder builds for facades..

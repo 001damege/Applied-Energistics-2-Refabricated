@@ -18,15 +18,14 @@
 
 package appeng.util.inv;
 
-import java.util.Iterator;
-import java.util.function.Supplier;
-
+import appeng.api.inventories.InternalInventory;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 
-import appeng.api.inventories.InternalInventory;
+import java.util.Iterator;
+import java.util.function.Supplier;
 
 /**
  * Wraps another {@link InternalInventory} in such a way that the underlying inventory is queried from a supplier, which

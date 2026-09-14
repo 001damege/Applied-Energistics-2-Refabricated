@@ -1,14 +1,12 @@
 package appeng.core.network.serverbound;
 
-import org.jetbrains.annotations.NotNull;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerPlayer;
-
 import appeng.core.definitions.AEAttachmentTypes;
 import appeng.core.network.CustomAppEngPayload;
 import appeng.core.network.ServerboundPacket;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.server.level.ServerPlayer;
+import org.jetbrains.annotations.NotNull;
 
 public record UpdateHoldingCtrlPacket(boolean keyDown) implements ServerboundPacket {
     public static final StreamCodec<RegistryFriendlyByteBuf, UpdateHoldingCtrlPacket> STREAM_CODEC = StreamCodec

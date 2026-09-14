@@ -18,9 +18,7 @@
 
 package appeng.datagen.providers.recipes;
 
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
+import appeng.core.AppEng;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -31,7 +29,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 
-import appeng.core.AppEng;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class AE2RecipeProvider extends RecipeProvider {
     protected final HolderGetter<Item> items;
