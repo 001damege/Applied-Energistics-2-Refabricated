@@ -18,23 +18,20 @@
 
 package appeng.util.inv;
 
+import appeng.api.inventories.InternalInventory;
+import lombok.RequiredArgsConstructor;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.item.PlayerInventoryStorage;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-import net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper;
-
-import appeng.api.inventories.InternalInventory;
 
 /**
  * Exposes the main player inventory and hotbar as an {@link InternalInventory}.
  */
+@RequiredArgsConstructor
 public class PlayerInternalInventory implements InternalInventory {
     private final Inventory inventory;
-
-    public PlayerInternalInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
 
     @Override
     public int size() {
@@ -55,7 +52,7 @@ public class PlayerInternalInventory implements InternalInventory {
     }
 
     @Override
-    public ResourceHandler<ItemResource> toResourceHandler() {
-        return PlayerInventoryWrapper.of(inventory);
+    public Storage<ItemVariant> toResourceHandler() {
+        return PlayerInventoryStorage.of(inventory);
     }
 }

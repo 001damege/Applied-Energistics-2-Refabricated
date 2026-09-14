@@ -18,6 +18,8 @@
 
 package appeng.util.helpers;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.nbt.CompoundTag;
@@ -29,11 +31,8 @@ import appeng.api.config.FuzzyMode;
 /**
  * A helper class for comparing {@link Item}, {@link ItemStack} or NBT
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ItemComparisonHelper {
-
-    private ItemComparisonHelper() {
-    }
-
     /**
      * Compare the two {@link ItemStack}s based on the same {@link Item} and damage value.
      * <p>
@@ -60,16 +59,7 @@ public final class ItemComparisonHelper {
 
         final boolean isLeftEmpty = left == null || left.isEmpty();
         final boolean isRightEmpty = right == null || right.isEmpty();
-
-        if (isLeftEmpty && isRightEmpty) {
-            return true;
-        }
-
-        if (isLeftEmpty != isRightEmpty) {
-            return false;
-        }
-
-        return left.equals(right);
+        return isLeftEmpty && isRightEmpty || isLeftEmpty == isRightEmpty && left.equals(right);
     }
 
     /**
@@ -101,8 +91,6 @@ public final class ItemComparisonHelper {
                 return percentDamagedOfA > mode.breakPoint == percentDamagedOfB > mode.breakPoint;
             }
         }
-
         return ItemStack.isSameItem(a, b);
     }
-
 }

@@ -31,7 +31,9 @@ public class BlockUpdate implements ILevelRunnable {
     @SuppressWarnings("deprecation")
     @Override
     public void call(Level level) throws Exception {
-        assert level != null;
+        if (level == null) {
+            throw new AssertionError();
+        }
         if (level.hasChunkAt(this.pos)) {
             level.updateNeighborsAt(this.pos, Blocks.AIR);
         }

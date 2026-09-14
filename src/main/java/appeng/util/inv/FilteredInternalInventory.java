@@ -52,20 +52,12 @@ public class FilteredInternalInventory extends BaseInternalInventory {
 
     @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (!this.filter.allowInsert(this.delegate, slot, stack)) {
-            return stack;
-        }
-
-        return this.delegate.insertItem(slot, stack, simulate);
+        return !this.filter.allowInsert(this.delegate, slot, stack) ? stack : this.delegate.insertItem(slot, stack, simulate);
     }
 
     @Override
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        if (!this.filter.allowExtract(this.delegate, slot, amount)) {
-            return ItemStack.EMPTY;
-        }
-
-        return this.delegate.extractItem(slot, amount, simulate);
+        return !this.filter.allowExtract(this.delegate, slot, amount) ? ItemStack.EMPTY : this.delegate.extractItem(slot, amount, simulate);
     }
 
     @Override
@@ -75,10 +67,7 @@ public class FilteredInternalInventory extends BaseInternalInventory {
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-        if (!this.filter.allowInsert(this.delegate, slot, stack)) {
-            return false;
-        }
-        return this.delegate.isItemValid(slot, stack);
+        return this.filter.allowInsert(this.delegate, slot, stack) && this.delegate.isItemValid(slot, stack);
     }
 
     @Override

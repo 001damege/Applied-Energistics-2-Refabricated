@@ -1,62 +1,18 @@
 package appeng.util;
 
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.resource.Resource;
-import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
+import lombok.RequiredArgsConstructor;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.TransferVariant;
+import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
 
-public abstract class InsertionOnlyResourceHandlerWithJournal<T extends Resource, S> extends SnapshotJournal<S>
-        implements ResourceHandler<T> {
+@RequiredArgsConstructor
+public abstract class InsertionOnlyResourceHandlerWithJournal<T extends TransferVariant<?>, S> extends SnapshotParticipant<S> implements Storage<T> {
     private final T emptyResource;
     protected S pendingSideEffect;
 
-    public InsertionOnlyResourceHandlerWithJournal(T emptyResource) {
-        this.emptyResource = emptyResource;
-    }
-
     @Override
-    public int size() {
-        return 1; // Has to have 1 slot at least so that people pointlessly doing size() checks will still work
-    }
-
-    @Override
-    public final T getResource(int index) {
-        return emptyResource;
-    }
-
-    @Override
-    public final long getAmountAsLong(int index) {
-        return 0L; // Always appears empty
-    }
-
-    @Override
-    public final long getCapacityAsLong(int index, T resource) {
-        return getCapacity(resource);
-    }
-
-    protected long getCapacity(T resource) {
-        return Long.MAX_VALUE;
-    }
-
-    @Override
-    public final boolean isValid(int index, T resource) {
-        return isValid(resource);
-    }
-
-    protected boolean isValid(T resource) {
-        return true;
-    }
-
-    @Override
-    public final int insert(int index, T resource, int amount, TransactionContext transaction) {
-        return insert(resource, amount, transaction);
-    }
-
-    public abstract int insert(T resource, int amount, TransactionContext transaction);
-
-    @Override
-    public final int extract(int index, T resource, int amount, TransactionContext transaction) {
-        return 0;
+    public boolean supportsExtraction() {
+        return false;
     }
 
     @Override
@@ -65,7 +21,7 @@ public abstract class InsertionOnlyResourceHandlerWithJournal<T extends Resource
     }
 
     @Override
-    protected void revertToSnapshot(S snapshot) {
-        this.pendingSideEffect = snapshot;
+    protected void readSnapshot(S snapshot) {
+        pendingSideEffect = snapshot;
     }
 }

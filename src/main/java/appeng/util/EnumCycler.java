@@ -22,16 +22,15 @@ import java.util.EnumSet;
 import java.util.Set;
 
 import com.google.common.base.Preconditions;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
  * Simple utility class to help with select the "next" or "previous" value in a list of options represented by an
  * enumeration.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class EnumCycler {
-
-    private EnumCycler() {
-    }
-
     public static <T extends Enum<T>> T rotateEnum(T ce, boolean backwards, Set<T> validOptions) {
         Preconditions.checkArgument(!validOptions.isEmpty());
 
@@ -43,7 +42,6 @@ public final class EnumCycler {
             int pLoc = Math.floorMod(ce.ordinal() + direction, values.length);
             ce = values[pLoc];
         } while (!validOptions.contains(ce));
-
         return ce;
     }
 

@@ -18,6 +18,8 @@
 
 package appeng.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -27,11 +29,8 @@ import appeng.items.tools.NetworkToolItem;
 /**
  * Utility functions revolving around using or placing items.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class InteractionUtil {
-
-    private InteractionUtil() {
-    }
-
     /**
      * Checks if the given tool is a wrench capable of disassembling.
      */
@@ -44,11 +43,7 @@ public final class InteractionUtil {
      */
     public static boolean canWrenchRotate(ItemStack tool) {
         // Special case to stop the network tool from rotating things instead of opening the appropriate UI
-        if (tool.getItem() instanceof NetworkToolItem) {
-            return false;
-        }
-
-        return tool.is(ConventionTags.WRENCH);
+        return !(tool.getItem() instanceof NetworkToolItem) && tool.is(ConventionTags.WRENCH);
     }
 
     /**
@@ -63,8 +58,7 @@ public final class InteractionUtil {
     public static LookDirection getPlayerRay(Player playerIn, double reachDistance) {
         var eyePosition = playerIn.getEyePosition(1);
         var viewVector = playerIn.getViewVector(1);
-        var rayEnd = eyePosition.add(viewVector.x * reachDistance, viewVector.y * reachDistance,
-                viewVector.z * reachDistance);
+        var rayEnd = eyePosition.add(viewVector.x * reachDistance, viewVector.y * reachDistance, viewVector.z * reachDistance);
         return new LookDirection(eyePosition, rayEnd);
     }
 }

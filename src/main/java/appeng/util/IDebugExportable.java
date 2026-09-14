@@ -14,7 +14,5 @@ import appeng.api.networking.IGridNode;
  * Interface for objects that allow themselves to be exported to a debug export.
  */
 public interface IDebugExportable {
-    void debugExport(JsonWriter writer, HolderLookup.Provider registries, Reference2IntMap<Object> machineIds,
-            Reference2IntMap<IGridNode> nodeIds)
-            throws IOException;
+    void debugExport(JsonWriter writer, HolderLookup.Provider registries, Reference2IntMap<Object> machineIds, Reference2IntMap<IGridNode> nodeIds) throws IOException;
 }

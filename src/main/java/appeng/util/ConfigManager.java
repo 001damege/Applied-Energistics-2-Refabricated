@@ -66,7 +66,6 @@ public final class ConfigManager implements IConfigManager {
         if (oldValue == null) {
             throw new UnsupportedSettingException("Setting " + setting.getName() + " is not supported.");
         }
-
         return setting.getEnumClass().cast(oldValue);
     }
 

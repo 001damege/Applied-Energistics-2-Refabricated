@@ -18,13 +18,15 @@
 
 package appeng.util;
 
-import net.minecraft.resources.Identifier;
-
 import appeng.core.AppEng;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import net.minecraft.resources.ResourceLocation;
 
 /**
  * Edit in {@code assets/ae2/textures/guis/states.png}.
  */
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum Icon {
     // ROW 0
     REDSTONE_LOW(0, 0),
@@ -215,7 +217,7 @@ public enum Icon {
     S_TERMINAL(192, 224, 10, 10),
     S_MACHINE(192, 234, 10, 10);
 
-    public static final Identifier TEXTURE = AppEng.makeId("textures/guis/states.png");
+    public static final ResourceLocation TEXTURE = AppEng.makeId("textures/guis/states.png");
     public static final int TEXTURE_WIDTH = 256;
     public static final int TEXTURE_HEIGHT = 256;
 
@@ -226,12 +228,5 @@ public enum Icon {
 
     Icon(int x, int y) {
         this(x, y, 16, 16);
-    }
-
-    Icon(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
     }
 }

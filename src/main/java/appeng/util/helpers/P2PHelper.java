@@ -26,16 +26,13 @@ import net.minecraft.network.chat.MutableComponent;
 import appeng.api.util.AEColor;
 
 public class P2PHelper {
-
     public AEColor[] toColors(short frequency) {
         final AEColor[] colors = new AEColor[4];
 
         for (int i = 0; i < 4; i++) {
             int nibble = getFrequencyNibble(frequency, i);
-
             colors[i] = AEColor.values()[nibble];
         }
-
         return colors;
     }
 
@@ -47,13 +44,10 @@ public class P2PHelper {
         Preconditions.checkArgument(colors.length == 4);
 
         int t = 0;
-
         for (int i = 0; i < 4; i++) {
             int code = colors[3 - i].ordinal() << 4 * i;
-
             t |= code;
         }
-
         return (short) (t & 0xFFFF);
     }
 
@@ -65,20 +59,15 @@ public class P2PHelper {
         return String.format("%04X", frequency);
     }
 
-    private static final String[] HEX_DIGITS = {
-            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"
-    };
+    private static final String[] HEX_DIGITS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
 
     public MutableComponent toColoredHexString(short frequency) {
         var parent = Component.empty();
 
         for (var i = 0; i < 4; i++) {
             var nibble = getFrequencyNibble(frequency, i);
-            parent.append(Component.literal(HEX_DIGITS[nibble])
-                    .withColor(AEColor.values()[nibble].whiteVariant));
+            parent.append(Component.literal(HEX_DIGITS[nibble]).withColor(AEColor.values()[nibble].whiteVariant));
         }
-
         return parent;
     }
-
 }

@@ -18,16 +18,14 @@
 
 package appeng.util.inv;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.CombinedResourceHandler;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-
 import appeng.api.inventories.BaseInternalInventory;
 import appeng.api.inventories.InternalInventory;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.base.CombinedStorage;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayList;
 
 /**
  * Exposes several internal inventories as one larger internal inventory.
@@ -63,17 +61,11 @@ public class CombinedInternalInventory extends BaseInternalInventory {
     }
 
     private InternalInventory getHandlerFromIndex(int index) {
-        if (index < 0 || index >= this.inventories.length) {
-            return InternalInventory.empty();
-        }
-        return this.inventories[index];
+        return index < 0 || index >= this.inventories.length ? InternalInventory.empty() : this.inventories[index];
     }
 
     private int getSlotFromIndex(int slot, int index) {
-        if (index <= 0 || index >= this.baseIndex.length) {
-            return slot;
-        }
-        return slot - this.baseIndex[index - 1];
+        return index <= 0 || index >= this.baseIndex.length ? slot : slot - this.baseIndex[index - 1];
     }
 
     @Override
@@ -137,15 +129,12 @@ public class CombinedInternalInventory extends BaseInternalInventory {
         handler.sendChangeNotification(targetSlot);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    protected ResourceHandler<ItemResource> createResourceHandler() {
-        List<ResourceHandler<ItemResource>> parts = new ArrayList<>(this.inventories.length);
-
-        for (InternalInventory inventory : this.inventories) {
+    public Storage<ItemVariant> toResourceHandler() {
+        var parts = new ArrayList<Storage<ItemVariant>>(inventories.length);
+        for (var inventory : inventories) {
             parts.add(inventory.toResourceHandler());
         }
-
-        return new CombinedResourceHandler<>(parts.toArray(ResourceHandler[]::new));
+        return new CombinedStorage<>(parts);
     }
 }

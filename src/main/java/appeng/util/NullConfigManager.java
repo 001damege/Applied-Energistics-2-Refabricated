@@ -1,14 +1,13 @@
 package appeng.util;
 
+import appeng.api.config.Setting;
+import appeng.api.util.IConfigManager;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
-
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-import appeng.api.config.Setting;
-import appeng.api.util.IConfigManager;
 
 public final class NullConfigManager implements IConfigManager {
     public static final NullConfigManager INSTANCE = new NullConfigManager();
@@ -29,11 +28,11 @@ public final class NullConfigManager implements IConfigManager {
     }
 
     @Override
-    public void writeToNBT(ValueOutput output) {
+    public void writeToNBT(CompoundTag destination, HolderLookup.Provider registries) {
     }
 
     @Override
-    public boolean readFromNBT(ValueInput input) {
+    public boolean readFromNBT(CompoundTag src, HolderLookup.Provider registries) {
         return false;
     }
 

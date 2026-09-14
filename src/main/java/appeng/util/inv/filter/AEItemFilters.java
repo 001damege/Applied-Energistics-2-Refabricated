@@ -18,16 +18,16 @@
 
 package appeng.util.inv.filter;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.item.ItemStack;
 
 import appeng.api.inventories.InternalInventory;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AEItemFilters {
     public static final IAEItemFilter INSERT_ONLY = new InsertOnlyFilter();
     public static final IAEItemFilter EXTRACT_ONLY = new ExtractOnlyFilter();
-
-    private AEItemFilters() {
-    }
 
     private static class InsertOnlyFilter implements IAEItemFilter {
         @Override

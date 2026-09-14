@@ -1,21 +1,18 @@
 package appeng.util;
 
-import java.util.Objects;
-
-import com.google.common.primitives.Ints;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-
 import appeng.api.inventories.InternalInventory;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.stacks.GenericStack;
 import appeng.helpers.externalstorage.GenericStackInv;
+import com.google.common.primitives.Ints;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 /**
  * Wraps this configuration inventory as an {@link ItemStack} based inventory for use in a menu. It will automatically
@@ -34,7 +31,7 @@ public class ConfigMenuInventory implements InternalInventory {
     }
 
     @Override
-    public ResourceHandler<ItemResource> toResourceHandler() {
+    public Storage<ItemVariant> toResourceHandler() {
         throw new UnsupportedOperationException();
     }
 

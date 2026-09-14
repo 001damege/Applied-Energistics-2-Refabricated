@@ -20,14 +20,11 @@ package appeng.util.prioritylist;
 
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.KeyCounter;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class PrecisePriorityList implements IPartitionList {
-
     private final KeyCounter list;
-
-    public PrecisePriorityList(KeyCounter in) {
-        this.list = in;
-    }
 
     @Override
     public boolean isListed(AEKey input) {

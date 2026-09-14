@@ -24,7 +24,6 @@ import java.util.Collection;
 import appeng.api.stacks.AEKey;
 
 public final class MergedPriorityList implements IPartitionList {
-
     private final Collection<IPartitionList> positive = new ArrayList<>();
     private final Collection<IPartitionList> negative = new ArrayList<>();
 
@@ -50,10 +49,8 @@ public final class MergedPriorityList implements IPartitionList {
                     return true;
                 }
             }
-
             return false;
         }
-
         return true;
     }
 

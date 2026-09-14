@@ -1,5 +1,7 @@
 package appeng.util;
 
+import lombok.Getter;
+
 import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -11,6 +13,8 @@ import java.util.function.IntFunction;
  */
 public class CowMap<K, V> {
     private final IntFunction<? extends Map<K, V>> mapSupplier;
+    @Getter
+    // eturn the current unmodifiable map. Further additions will not be reflected in the returned object.
     private volatile Map<K, V> map;
 
     public CowMap(IntFunction<? extends Map<K, V>> mapSupplier) {
@@ -38,12 +42,5 @@ public class CowMap<K, V> {
             newMap.put(key, value);
             map = Collections.unmodifiableMap(newMap);
         }
-    }
-
-    /**
-     * Return the current unmodifiable map. Further additions will not be reflected in the returned object.
-     */
-    public Map<K, V> getMap() {
-        return map;
     }
 }

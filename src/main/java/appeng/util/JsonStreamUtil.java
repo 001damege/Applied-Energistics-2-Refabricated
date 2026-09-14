@@ -10,15 +10,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.stream.JsonWriter;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.level.ChunkPos;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class JsonStreamUtil {
     private static final Gson GSON = new GsonBuilder()
             .serializeSpecialFloatingPointValues()
             .create();
-
-    private JsonStreamUtil() {
-    }
 
     /**
      * Writes the entries of the given map as object properties. Assumes an object is currently open on the writer.
@@ -32,17 +32,13 @@ public final class JsonStreamUtil {
 
     public static JsonElement toJson(ChunkPos pos) {
         var jsonPos = new JsonArray(2);
-        jsonPos.add(pos.x());
-        jsonPos.add(pos.z());
+        jsonPos.add(pos.x);
+        jsonPos.add(pos.z);
         return jsonPos;
     }
 
     public static Map<String, ?> toMap(StatsAccumulator stats) {
-        if (stats.count() == 0) {
-            return Map.of("count", 0);
-        }
-
-        return Map.of(
+        return stats.count() == 0 ? Map.of("count", 0) : Map.of(
                 "count", stats.count(),
                 "min", stats.min(),
                 "max", stats.max(),

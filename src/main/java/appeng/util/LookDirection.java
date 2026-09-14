@@ -18,23 +18,13 @@
 
 package appeng.util;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.world.phys.Vec3;
 
+@RequiredArgsConstructor
+@Getter
 public class LookDirection {
-
     private final Vec3 a;
     private final Vec3 b;
-
-    public LookDirection(Vec3 a, Vec3 b) {
-        this.a = a;
-        this.b = b;
-    }
-
-    public Vec3 getA() {
-        return this.a;
-    }
-
-    public Vec3 getB() {
-        return this.b;
-    }
 }
