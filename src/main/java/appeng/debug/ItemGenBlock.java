@@ -29,7 +29,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 import appeng.block.AEBaseEntityBlock;
-import appeng.core.AEConfig;
 
 public class ItemGenBlock extends AEBaseEntityBlock<ItemGenBlockEntity> {
 

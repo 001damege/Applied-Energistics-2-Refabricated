@@ -33,7 +33,6 @@ import appeng.api.config.IncludeExclude;
 import appeng.api.stacks.GenericStack;
 import appeng.api.storage.cells.ICellHandler;
 import appeng.api.storage.cells.ISaveProvider;
-import appeng.core.AEConfig;
 import appeng.core.localization.GuiText;
 import appeng.core.localization.Tooltips;
 import appeng.items.storage.StorageCellTooltipComponent;

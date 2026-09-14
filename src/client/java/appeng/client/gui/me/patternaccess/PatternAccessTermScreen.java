@@ -68,7 +68,6 @@ import appeng.client.gui.widgets.AETextField;
 import appeng.client.gui.widgets.Scrollbar;
 import appeng.client.gui.widgets.ServerSettingToggleButton;
 import appeng.client.gui.widgets.SettingToggleButton;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
 import appeng.core.network.serverbound.InventoryActionPacket;

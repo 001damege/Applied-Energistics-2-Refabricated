@@ -48,7 +48,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import appeng.api.orientation.RelativeSide;
 import appeng.block.AEBaseBlock;
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 
 public class QuartzFixtureBlock extends AEBaseBlock implements SimpleWaterloggedBlock {

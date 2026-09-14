@@ -44,7 +44,6 @@ import appeng.api.networking.GridHelper;
 import appeng.api.networking.IGrid;
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.spatial.ISpatialService;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.items.AEBaseItem;
 import appeng.util.InteractionUtil;

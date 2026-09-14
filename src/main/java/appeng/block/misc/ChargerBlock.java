@@ -47,7 +47,6 @@ import appeng.api.util.AEAxisAlignedBB;
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.misc.ChargerBlockEntity;
 import appeng.blockentity.misc.ChargerRecipes;
-import appeng.core.AEConfig;
 import appeng.core.particles.LightningArcParticleData;
 import appeng.util.Platform;
 

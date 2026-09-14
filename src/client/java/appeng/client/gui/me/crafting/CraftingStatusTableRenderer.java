@@ -28,7 +28,6 @@ import appeng.api.stacks.AmountFormat;
 import appeng.api.util.AEColor;
 import appeng.client.api.AEKeyRendering;
 import appeng.client.gui.AEBaseScreen;
-import appeng.core.AEConfig;
 import appeng.core.localization.GuiText;
 import appeng.menu.me.crafting.CraftingStatusEntry;
 

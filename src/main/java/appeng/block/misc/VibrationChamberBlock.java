@@ -34,7 +34,6 @@ import appeng.api.orientation.IOrientationStrategy;
 import appeng.api.orientation.OrientationStrategies;
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.misc.VibrationChamberBlockEntity;
-import appeng.core.AEConfig;
 import appeng.menu.MenuOpener;
 import appeng.menu.implementations.VibrationChamberMenu;
 import appeng.menu.locator.MenuLocators;

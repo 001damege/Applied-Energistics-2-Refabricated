@@ -25,7 +25,6 @@ import appeng.api.config.ActionItems;
 import appeng.client.gui.me.common.MEStorageScreen;
 import appeng.client.gui.style.ScreenStyle;
 import appeng.client.gui.widgets.ActionButton;
-import appeng.core.AEConfig;
 import appeng.menu.me.items.CraftingTermMenu;
 
 /**

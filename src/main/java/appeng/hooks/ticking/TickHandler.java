@@ -55,7 +55,6 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import appeng.blockentity.AEBaseBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.crafting.CraftingCalculation;
 import appeng.me.Grid;

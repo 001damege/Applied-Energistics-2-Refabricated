@@ -56,7 +56,6 @@ import net.minecraft.world.phys.HitResult.Type;
 import appeng.api.config.Actionable;
 import appeng.api.util.DimensionalBlockPos;
 import appeng.block.misc.TinyTNTBlock;
-import appeng.core.AEConfig;
 import appeng.hooks.IBlockTool;
 import appeng.items.tools.powered.powersink.AEBasePoweredItem;
 import appeng.recipes.AERecipeTypes;

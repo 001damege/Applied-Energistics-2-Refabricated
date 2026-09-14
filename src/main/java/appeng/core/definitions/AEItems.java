@@ -46,7 +46,6 @@ import appeng.api.ids.AEItemIds;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.upgrades.Upgrades;
 import appeng.api.util.AEColor;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.ConventionTags;
 import appeng.core.MainCreativeTab;

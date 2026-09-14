@@ -11,7 +11,6 @@ import net.minecraft.server.level.ChunkMap;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 
-import appeng.core.AEConfig;
 import appeng.server.services.ChunkLoadingService;
 
 /**

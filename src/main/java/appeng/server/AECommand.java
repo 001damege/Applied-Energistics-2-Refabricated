@@ -25,7 +25,6 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 import net.minecraft.commands.CommandSourceStack;
 
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 
 public final class AECommand {

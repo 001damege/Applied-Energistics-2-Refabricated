@@ -18,23 +18,19 @@
 
 package appeng.core;
 
-import java.util.Collection;
-
-import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.crafting.RecipeMap;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
-
 import appeng.api.ids.AEConstants;
 import appeng.api.parts.CableRenderMode;
 import appeng.core.network.ClientboundPacket;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Collection;
 
 public interface AppEng {
     String MOD_ID = AEConstants.MOD_ID;
@@ -43,8 +39,8 @@ public interface AppEng {
         return AppEngBase.INSTANCE;
     }
 
-    static Identifier makeId(String id) {
-        return Identifier.fromNamespaceAndPath(MOD_ID, id);
+    static ResourceLocation makeId(String id) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
     }
 
     /**
@@ -98,6 +94,4 @@ public interface AppEng {
      * Shows a system chat message to the player
      */
     void sendSystemMessage(Player player, Component text);
-
-    RecipeMap getRecipeMapForType(Level level, RecipeType<?> recipeType);
 }

@@ -25,7 +25,6 @@ import net.minecraft.world.item.ItemStack;
 
 import appeng.api.features.GridLinkables;
 import appeng.blockentity.networking.WirelessAccessPointBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.localization.ButtonToolTips;
 import appeng.core.localization.Tooltips;
 import appeng.menu.AEBaseMenu;

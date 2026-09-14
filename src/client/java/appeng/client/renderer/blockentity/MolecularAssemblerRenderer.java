@@ -37,7 +37,6 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.phys.Vec3;
 
 import appeng.blockentity.crafting.MolecularAssemblerBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 
 /**

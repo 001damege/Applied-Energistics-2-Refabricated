@@ -41,7 +41,6 @@ import appeng.client.gui.me.common.StackSizeRenderer;
 import appeng.client.gui.style.ScreenStyle;
 import appeng.client.gui.widgets.ActionButton;
 import appeng.client.gui.widgets.TabButton;
-import appeng.core.AEConfig;
 import appeng.core.localization.ButtonToolTips;
 import appeng.core.localization.Tooltips;
 import appeng.core.network.ServerboundPacket;

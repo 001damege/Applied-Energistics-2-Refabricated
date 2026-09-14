@@ -23,7 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 
 import appeng.api.config.Actionable;
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 import appeng.items.tools.powered.powersink.AEBasePoweredItem;
 

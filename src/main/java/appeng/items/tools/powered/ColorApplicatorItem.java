@@ -79,7 +79,6 @@ import appeng.api.util.DimensionalBlockPos;
 import appeng.block.networking.CableBusBlock;
 import appeng.block.paint.PaintSplotchesBlock;
 import appeng.blockentity.misc.PaintSplotchesBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.ConventionTags;
 import appeng.core.definitions.AEItems;
 import appeng.core.localization.GuiText;

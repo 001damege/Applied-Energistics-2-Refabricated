@@ -45,7 +45,6 @@ import appeng.api.util.IConfigManager;
 import appeng.api.util.KeyTypeSelection;
 import appeng.api.util.KeyTypeSelectionHost;
 import appeng.blockentity.networking.WirelessAccessPointBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.localization.GuiText;
 import appeng.core.localization.PlayerMessages;
 import appeng.items.contents.StackDependentSupplier;

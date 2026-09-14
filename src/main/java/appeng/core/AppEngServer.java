@@ -18,21 +18,15 @@
 
 package appeng.core;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
 
 /**
  * Contains mod functionality specific to a dedicated server.
  */
-@Mod(value = AppEng.MOD_ID, dist = Dist.DEDICATED_SERVER)
+@Environment(EnvType.SERVER)
 public class AppEngServer extends AppEngBase {
-    public AppEngServer(IEventBus modEventBus, ModContainer container) {
-        super(modEventBus, container);
-    }
-
     @Override
     public Level getClientLevel() {
         return null;

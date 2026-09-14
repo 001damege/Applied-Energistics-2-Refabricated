@@ -43,7 +43,6 @@ import appeng.client.gui.me.common.PinnedKeys;
 import appeng.client.gui.me.crafting.CraftingCPUScreen;
 import appeng.client.gui.me.networktool.NetworkStatusScreen;
 import appeng.client.gui.me.patternaccess.PatternAccessTermScreen;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.AppEng;
 import appeng.core.network.ClientboundPacket;

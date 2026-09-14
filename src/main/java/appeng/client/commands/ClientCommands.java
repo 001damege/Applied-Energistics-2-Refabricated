@@ -8,8 +8,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 
-import appeng.core.AEConfig;
-
 public final class ClientCommands {
 
     public static final List<CommandBuilder> DEBUG_COMMANDS = List.of(

@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 import appeng.recipes.transform.TransformCircumstance;
 import appeng.recipes.transform.TransformLogic;

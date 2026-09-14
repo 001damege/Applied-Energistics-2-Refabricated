@@ -54,7 +54,6 @@ import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.implementations.InscriberScreen;
 import appeng.client.integrations.jei.transfer.EncodePatternTransferHandler;
 import appeng.client.integrations.jei.transfer.UseCraftingRecipeTransfer;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.FacadeCreativeTab;
 import appeng.core.definitions.AEBlocks;

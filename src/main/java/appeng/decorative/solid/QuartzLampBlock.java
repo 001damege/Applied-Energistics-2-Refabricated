@@ -23,7 +23,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 
 public class QuartzLampBlock extends QuartzGlassBlock {

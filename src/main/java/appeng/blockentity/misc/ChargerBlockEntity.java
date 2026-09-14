@@ -47,7 +47,6 @@ import appeng.api.orientation.RelativeSide;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.util.AECableType;
 import appeng.blockentity.grid.AENetworkedPoweredBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.settings.TickRates;
 import appeng.util.Platform;
 import appeng.util.inv.AppEngInternalInventory;

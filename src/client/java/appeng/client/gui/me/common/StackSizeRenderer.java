@@ -21,8 +21,6 @@ package appeng.client.gui.me.common;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-import appeng.core.AEConfig;
-
 public class StackSizeRenderer {
     public static void renderSizeLabel(GuiGraphicsExtractor guiGraphics, Font fontRenderer, float xPos, float yPos,
             String text) {

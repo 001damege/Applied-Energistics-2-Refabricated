@@ -32,24 +32,18 @@ import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import appeng.blockentity.spatial.SpatialAnchorBlockEntity;
 import appeng.core.AppEng;
 
-public class ChunkLoadingService implements LoadingValidationCallback {
+public class ChunkLoadingService {
 
     private static final ChunkLoadingService INSTANCE = new ChunkLoadingService();
 
     // Flag to ignore a server after it is stopping as grid nodes might reevaluate their grids during a shutdown.
     private boolean running = true;
 
-    private final TicketController controller = new TicketController(AppEng.makeId("default"), this);
-
-    public void register(RegisterTicketControllersEvent event) {
-        event.register(controller);
-    }
-
-    public void onServerAboutToStart(ServerAboutToStartEvent evt) {
+    public void onServerAboutToStart() {
         this.running = true;
     }
 
-    public void onServerStopping(ServerStoppingEvent event) {
+    public void onServerStopping() {
         this.running = false;
     }
 
@@ -57,26 +51,6 @@ public class ChunkLoadingService implements LoadingValidationCallback {
         return INSTANCE;
     }
 
-    @Override
-    public void validateTickets(ServerLevel level, TicketHelper ticketHelper) {
-        // Iterate over all blockpos registered as chunk loader to initialize them
-        ticketHelper.getBlockTickets().forEach((blockPos, chunks) -> {
-            BlockEntity blockEntity = level.getBlockEntity(blockPos);
-
-            // Add all persisted chunks to the list of handled ones by each anchor.
-            // Or remove all in case the anchor no longer exists.
-            if (blockEntity instanceof SpatialAnchorBlockEntity anchor) {
-                for (Long chunk : chunks.normal()) {
-                    anchor.registerChunk(ChunkPos.unpack(chunk));
-                }
-                for (Long chunk : chunks.naturalSpawning()) {
-                    anchor.registerChunk(ChunkPos.unpack(chunk));
-                }
-            } else {
-                ticketHelper.removeAllTickets(blockPos);
-            }
-        });
-    }
 
     public boolean forceChunk(ServerLevel level, BlockPos owner, ChunkPos position) {
         if (running) {

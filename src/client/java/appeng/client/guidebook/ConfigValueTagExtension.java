@@ -9,8 +9,6 @@ import guideme.compiler.tags.FlowTagCompiler;
 import guideme.document.flow.LytFlowParent;
 import guideme.libs.mdast.mdx.model.MdxJsxElementFields;
 
-import appeng.core.AEConfig;
-
 /**
  * Provides access to AE2 config values in guide content.
  */

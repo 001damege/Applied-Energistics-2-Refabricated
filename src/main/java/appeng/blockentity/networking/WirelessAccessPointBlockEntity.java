@@ -39,7 +39,6 @@ import appeng.api.orientation.RelativeSide;
 import appeng.api.util.AECableType;
 import appeng.api.util.DimensionalBlockPos;
 import appeng.blockentity.grid.AENetworkedInvBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.definitions.AEItems;
 import appeng.util.inv.AppEngInternalInventory;
 import appeng.util.inv.filter.AEItemDefinitionFilter;

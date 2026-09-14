@@ -32,7 +32,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import appeng.blockentity.qnb.QuantumBridgeBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.particles.EnergyParticleData;
 import appeng.menu.MenuOpener;
 import appeng.menu.implementations.QNBMenu;

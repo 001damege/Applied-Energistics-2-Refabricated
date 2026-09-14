@@ -34,7 +34,6 @@ import appeng.api.orientation.BlockOrientation;
 import appeng.api.orientation.RelativeSide;
 import appeng.api.util.AECableType;
 import appeng.blockentity.grid.AENetworkedBlockEntity;
-import appeng.core.AEConfig;
 
 public class CrystalResonanceGeneratorBlockEntity extends AENetworkedBlockEntity {
     // This needs to be synchronized to allow visual indication / Jade tooltips

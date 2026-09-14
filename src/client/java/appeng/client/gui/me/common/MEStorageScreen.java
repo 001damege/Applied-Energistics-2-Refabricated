@@ -83,7 +83,6 @@ import appeng.client.gui.widgets.SettingToggleButton;
 import appeng.client.gui.widgets.TabButton;
 import appeng.client.gui.widgets.ToolboxPanel;
 import appeng.client.gui.widgets.UpgradesPanel;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.AppEng;
 import appeng.core.localization.ButtonToolTips;

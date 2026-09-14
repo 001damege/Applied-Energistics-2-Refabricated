@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8.3",
+  "package": "appeng.mixins",
+  "compatibilityLevel": "JAVA_11",
+  "plugin": "appeng.mixins.ConfigPlugin",
+  "client": [
+    "client.AbstractContainerScreenMixin",
+    "client.GuiGraphicsMixin",
+    "client.PartModelLoaderMixin",
+    "client.PickColorMixin",
+    "client.PonderWorldMixin",
+    "client.WrappedGenericStackTooltipModIdMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

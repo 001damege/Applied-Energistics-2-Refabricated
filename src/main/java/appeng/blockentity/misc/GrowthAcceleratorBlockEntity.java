@@ -42,7 +42,6 @@ import appeng.api.orientation.RelativeSide;
 import appeng.api.util.AECableType;
 import appeng.block.misc.GrowthAcceleratorBlock;
 import appeng.blockentity.grid.AENetworkedPoweredBlockEntity;
-import appeng.core.AEConfig;
 
 public class GrowthAcceleratorBlockEntity extends AENetworkedPoweredBlockEntity implements IPowerChannelState {
 

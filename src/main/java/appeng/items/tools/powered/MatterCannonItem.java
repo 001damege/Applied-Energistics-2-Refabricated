@@ -73,7 +73,6 @@ import appeng.api.upgrades.Upgrades;
 import appeng.api.util.AEColor;
 import appeng.api.util.DimensionalBlockPos;
 import appeng.blockentity.misc.PaintSplotchesBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEDamageTypes;

@@ -21,7 +21,6 @@ package appeng.debug;
 import net.minecraft.world.item.CreativeModeTab;
 
 import appeng.block.AEBaseEntityBlock;
-import appeng.core.AEConfig;
 
 public class EnergyGeneratorBlock extends AEBaseEntityBlock<EnergyGeneratorBlockEntity> {
 

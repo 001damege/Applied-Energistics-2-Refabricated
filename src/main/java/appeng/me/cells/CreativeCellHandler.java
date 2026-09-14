@@ -30,7 +30,6 @@ import appeng.api.stacks.GenericStack;
 import appeng.api.storage.cells.ICellHandler;
 import appeng.api.storage.cells.ISaveProvider;
 import appeng.api.storage.cells.StorageCell;
-import appeng.core.AEConfig;
 import appeng.items.contents.CellConfig;
 import appeng.items.storage.CreativeCellItem;
 import appeng.items.storage.StorageCellTooltipComponent;

@@ -24,10 +24,10 @@ import java.util.List;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 import appeng.api.ids.AECreativeTabIds;
 import appeng.block.AEBaseBlock;
@@ -36,26 +36,20 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.ItemDefinition;
 import appeng.core.localization.GuiText;
 import appeng.items.AEBaseItem;
+import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
+import net.minecraft.world.item.CreativeModeTab.Output;
 
 public final class MainCreativeTab {
-
-    private static final Multimap<ResourceKey<CreativeModeTab>, ItemDefinition<?>> externalItemDefs = HashMultimap
-            .create();
+    private static final Multimap<ResourceKey<CreativeModeTab>, ItemDefinition<?>> externalItemDefs = HashMultimap.create();
     private static final List<ItemDefinition<?>> itemDefs = new ArrayList<>();
 
     public static void init(Registry<CreativeModeTab> registry) {
-        var tab = CreativeModeTab.builder()
+        var tab = FabricItemGroup.builder()
                 .title(GuiText.CreativeTab.text())
                 .icon(() -> AEBlocks.CONTROLLER.stack(1))
                 .displayItems(MainCreativeTab::buildDisplayItems)
                 .build();
         Registry.register(registry, AECreativeTabIds.MAIN, tab);
-    }
-
-    public static void initExternal(BuildCreativeModeTabContentsEvent contents) {
-        for (var itemDefinition : externalItemDefs.get(contents.getTabKey())) {
-            contents.accept(itemDefinition);
-        }
     }
 
     public static void add(ItemDefinition<?> itemDef) {
@@ -66,19 +60,15 @@ public final class MainCreativeTab {
         externalItemDefs.put(tab, itemDef);
     }
 
-    private static void buildDisplayItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters,
-            CreativeModeTab.Output output) {
+    private static void buildDisplayItems(ItemDisplayParameters itemDisplayParameters, Output output) {
         for (var itemDef : itemDefs) {
             var item = itemDef.asItem();
 
             // For block items, the block controls the creative tab
-            if (item instanceof AEBaseBlockItem baseItem
-                    && baseItem.getBlock() instanceof AEBaseBlock baseBlock) {
-                baseBlock.addToMainCreativeTab(itemDisplayParameters, output);
-            } else if (item instanceof AEBaseItem baseItem) {
-                baseItem.addToMainCreativeTab(itemDisplayParameters, output);
-            } else {
-                output.accept(itemDef);
+            switch (item) {
+                case AEBaseBlockItem baseItem when baseItem.getBlock() instanceof AEBaseBlock baseBlock -> baseBlock.addToMainCreativeTab(itemDisplayParameters, output);
+                case AEBaseItem baseItem -> baseItem.addToMainCreativeTab(itemDisplayParameters, output);
+                default -> output.accept(itemDef);
             }
         }
     }

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "ae2",
+  "version": "${version}",
+  "name": "Applied Energistics 2",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/ae2/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "io.github.damege.appeng.datagen.AE2DataGenerators"
+    ],
+    "client": [
+      "io.github.damege.appeng.client.AppEngClient"
+    ],
+    "main": [
+      "io.github.damege.appeng.core.AppEngBase"
+    ]
+  },
+  "mixins": [
+    "ae2.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

@@ -41,7 +41,6 @@ import appeng.api.networking.pathing.ChannelMode;
 import appeng.api.networking.pathing.ControllerState;
 import appeng.api.networking.pathing.IPathingService;
 import appeng.blockentity.networking.ControllerBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.stats.AdvancementTriggers;
 import appeng.me.Grid;

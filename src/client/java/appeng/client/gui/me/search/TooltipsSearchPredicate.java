@@ -9,7 +9,6 @@ import net.minecraft.ChatFormatting;
 
 import appeng.api.stacks.AEKey;
 import appeng.client.api.AEKeyRendering;
-import appeng.core.AEConfig;
 import appeng.menu.me.common.GridInventoryEntry;
 import appeng.util.Platform;
 

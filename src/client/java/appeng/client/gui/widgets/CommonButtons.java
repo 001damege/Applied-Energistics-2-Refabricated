@@ -20,7 +20,6 @@ package appeng.client.gui.widgets;
 
 import appeng.api.config.PowerUnit;
 import appeng.api.config.Settings;
-import appeng.core.AEConfig;
 
 public final class CommonButtons {
 

@@ -9,7 +9,6 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import appeng.api.stacks.AEKey;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.network.clientbound.CraftingJobStatusPacket;
 import appeng.items.tools.powered.WirelessTerminalItem;

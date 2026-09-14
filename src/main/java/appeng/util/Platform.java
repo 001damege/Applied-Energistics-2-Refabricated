@@ -66,7 +66,6 @@ import appeng.api.config.PowerUnit;
 import appeng.api.config.SortOrder;
 import appeng.api.implementations.items.IAEItemPowerStorage;
 import appeng.api.util.DimensionalBlockPos;
-import appeng.core.AEConfig;
 import appeng.hooks.VisualStateSaving;
 import appeng.hooks.ticking.TickHandler;
 import appeng.util.helpers.P2PHelper;

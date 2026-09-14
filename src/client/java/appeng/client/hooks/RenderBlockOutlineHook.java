@@ -29,7 +29,6 @@ import appeng.api.parts.IPart;
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.IPartItem;
 import appeng.client.render.AERenderTypes;
-import appeng.core.AEConfig;
 import appeng.core.definitions.AEParts;
 import appeng.items.parts.FacadeItem;
 import appeng.parts.BusCollisionHelper;

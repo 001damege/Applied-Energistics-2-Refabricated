@@ -22,7 +22,6 @@ import appeng.api.upgrades.IUpgradeInventory;
 import appeng.api.upgrades.UpgradeInventories;
 import appeng.api.upgrades.Upgrades;
 import appeng.block.networking.EnergyCellBlockItem;
-import appeng.core.AEConfig;
 import appeng.core.localization.PlayerMessages;
 import appeng.items.contents.PortableCellMenuHost;
 import appeng.menu.MenuOpener;

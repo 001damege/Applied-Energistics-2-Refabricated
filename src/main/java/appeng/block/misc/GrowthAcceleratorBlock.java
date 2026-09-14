@@ -31,7 +31,6 @@ import appeng.api.orientation.IOrientationStrategy;
 import appeng.api.orientation.OrientationStrategies;
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.particles.ParticleTypes;
 import appeng.util.Platform;
 

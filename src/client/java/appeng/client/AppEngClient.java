@@ -164,7 +164,6 @@ import appeng.client.renderer.parts.PartRendererDispatcher;
 import appeng.client.renderer.spatialstorage.SpatialStorageCloudsRenderer;
 import appeng.client.renderer.spatialstorage.SpatialStorageSkyRenderer;
 import appeng.client.renderer.spatialstorage.SpatialStorageWeatherEffectsRenderer;
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.core.AppEngBase;
 import appeng.core.definitions.AEAttachmentTypes;

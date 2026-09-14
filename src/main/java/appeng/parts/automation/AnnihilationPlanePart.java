@@ -50,7 +50,6 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.storage.StorageHelper;
 import appeng.api.util.AECableType;
-import appeng.core.AEConfig;
 import appeng.core.definitions.AEItems;
 import appeng.core.settings.TickRates;
 import appeng.me.helpers.MachineSource;

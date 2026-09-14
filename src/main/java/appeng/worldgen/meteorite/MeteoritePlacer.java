@@ -38,7 +38,6 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 
-import appeng.core.AEConfig;
 import appeng.core.definitions.AEBlocks;
 import appeng.worldgen.meteorite.fallout.Fallout;
 import appeng.worldgen.meteorite.fallout.FalloutCopy;

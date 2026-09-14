@@ -23,7 +23,6 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.api.stacks.AmountFormat;
 import appeng.api.stacks.GenericStack;
-import appeng.core.AEConfig;
 
 /**
  * Static utilities for constructing tooltips in various places.

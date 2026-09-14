@@ -87,7 +87,6 @@ import appeng.client.gui.widgets.ITickingWidget;
 import appeng.client.gui.widgets.ITooltip;
 import appeng.client.gui.widgets.OpenGuideButton;
 import appeng.client.gui.widgets.VerticalButtonBar;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.AppEng;
 import appeng.core.localization.ButtonToolTips;

@@ -25,7 +25,6 @@ import appeng.api.behaviors.PlacementStrategy;
 import appeng.api.config.Actionable;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
-import appeng.core.AEConfig;
 import appeng.util.Platform;
 
 public class ItemPlacementStrategy implements PlacementStrategy {

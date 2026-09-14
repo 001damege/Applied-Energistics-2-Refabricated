@@ -49,7 +49,6 @@ import appeng.api.parts.IPartCollisionHelper;
 import appeng.api.parts.IPartItem;
 import appeng.api.stacks.AEKeyType;
 import appeng.api.util.AECableType;
-import appeng.core.AEConfig;
 import appeng.items.tools.MemoryCardItem;
 import appeng.me.service.P2PService;
 import appeng.parts.AEBasePart;

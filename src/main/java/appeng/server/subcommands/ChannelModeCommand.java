@@ -11,7 +11,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
 
 import appeng.api.networking.pathing.ChannelMode;
-import appeng.core.AEConfig;
 import appeng.core.AELog;
 import appeng.core.localization.PlayerMessages;
 import appeng.hooks.ticking.TickHandler;

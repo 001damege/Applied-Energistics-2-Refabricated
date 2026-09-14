@@ -18,6 +18,8 @@
 
 package appeng.core;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,8 +43,34 @@ public final class AELog {
 
     private static final String DEFAULT_EXCEPTION_MESSAGE = "Exception: ";
 
+    /**
+     * -- GETTER --
+     *  Use to check for an enabled crafting log.
+     *  <p>
+     *  Can be used to prevent the execution of unneeded logic.
+     */
+    @Setter
+    @Getter
     private static boolean craftingLogEnabled;
+
+    /**
+     * -- GETTER --
+     *  Use to check for an enabled debug log.
+     *  <p>
+     *  Can be used to prevent the execution of debug logic.
+     */
+    @Setter
+    @Getter
     private static boolean debugLogEnabled;
+
+    /**
+     * -- GETTER --
+     *  Use to check for an enabled grid log.
+     *  <p>
+     *  Can be used to prevent the execution of unneeded logic.
+     */
+    @Setter
+    @Getter
     private static boolean gridLogEnabled;
 
     private AELog() {
@@ -101,17 +129,6 @@ public final class AELog {
         }
     }
 
-    /**
-     * Use to check for an enabled debug log.
-     * <p>
-     * Can be used to prevent the execution of debug logic.
-     *
-     * @return true when the debug log is enabled.
-     */
-    public static boolean isDebugLogEnabled() {
-        return debugLogEnabled;
-    }
-
     //
     // Specialized handlers
     //
@@ -128,17 +145,6 @@ public final class AELog {
         if (AEConfig.instance().isBlockUpdateLogEnabled()) {
             info(BLOCK_UPDATE, blockEntity.getClass().getName(), pos, currentState, newState);
         }
-    }
-
-    /**
-     * Use to check for an enabled crafting log.
-     * <p>
-     * Can be used to prevent the execution of unneeded logic.
-     *
-     * @return true when the crafting log is enabled.
-     */
-    public static boolean isCraftingLogEnabled() {
-        return craftingLogEnabled;
     }
 
     /**
@@ -179,17 +185,6 @@ public final class AELog {
     }
 
     /**
-     * Use to check for an enabled grid log.
-     * <p>
-     * Can be used to prevent the execution of unneeded logic.
-     *
-     * @return true when the grid log is enabled.
-     */
-    public static boolean isGridLogEnabled() {
-        return gridLogEnabled;
-    }
-
-    /**
      * Logging for grid and grid node structure changes.
      * <p>
      * Off by default, can be enabled inside the configuration file.
@@ -200,17 +195,5 @@ public final class AELog {
         if (AELog.isGridLogEnabled()) {
             log(Level.INFO, "[AE2 Grid Log] " + message, params);
         }
-    }
-
-    public static void setCraftingLogEnabled(boolean newValue) {
-        craftingLogEnabled = newValue;
-    }
-
-    public static void setDebugLogEnabled(boolean newValue) {
-        debugLogEnabled = newValue;
-    }
-
-    public static void setGridLogEnabled(boolean newValue) {
-        gridLogEnabled = newValue;
     }
 }

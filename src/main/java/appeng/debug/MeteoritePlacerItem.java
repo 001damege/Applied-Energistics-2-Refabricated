@@ -35,7 +35,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
-import appeng.core.AEConfig;
 import appeng.core.AppEng;
 import appeng.items.AEBaseItem;
 import appeng.util.InteractionUtil;

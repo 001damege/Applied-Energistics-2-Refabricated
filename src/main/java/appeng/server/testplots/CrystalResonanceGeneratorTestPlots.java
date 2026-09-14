@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import appeng.blockentity.networking.CrystalResonanceGeneratorBlockEntity;
 import appeng.blockentity.networking.EnergyCellBlockEntity;
-import appeng.core.AEConfig;
 import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEParts;
 import appeng.server.testworld.PlotBuilder;
