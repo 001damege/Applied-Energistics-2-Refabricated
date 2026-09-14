@@ -26,7 +26,9 @@ package appeng.api.stacks;
 import java.util.Objects;
 import java.util.Set;
 
-import net.minecraft.resources.Identifier;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.minecraft.resources.ResourceLocation;
 
 /**
  * AE2's registry of all known {@link AEKeyType key types}.
@@ -34,10 +36,8 @@ import net.minecraft.resources.Identifier;
  * AE2 has built-in {@link AEKeyType#items() item} and {@link AEKeyType#fluids() fluid} key types. Addons can register
  * additional key types during initialization using {@link #register(AEKeyType)}.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AEKeyTypes {
-    private AEKeyTypes() {
-    }
-
     /**
      * Register a new storage channel.
      * <p>
@@ -66,8 +66,8 @@ public final class AEKeyTypes {
      * @throws IllegalArgumentException when fetching an unregistered channel.
      */
 
-    public static AEKeyType get(Identifier id) {
-        var result = AEKeyTypesInternal.getRegistry().getValue(id);
+    public static AEKeyType get(ResourceLocation id) {
+        var result = AEKeyTypesInternal.getRegistry().get(id);
         if (result == null) {
             throw new IllegalArgumentException("No key type registered for id " + id);
         }

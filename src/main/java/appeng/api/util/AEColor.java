@@ -26,14 +26,15 @@ package appeng.api.util;
 import java.util.Arrays;
 import java.util.List;
 
+import appeng.util.AECodecs;
 import com.mojang.serialization.Codec;
 
-import net.minecraft.client.resources.model.geometry.BakedQuad;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.DyeColor;
-import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
 /**
  * List of all colors supported by AE, their names, and various colors for display.
@@ -41,12 +42,12 @@ import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
  * Should be the same order as Dyes, excluding Transparent.
  */
 
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 // TODO (RID): Sorted the colours according to the colour wheel
 public enum AEColor implements StringRepresentable {
     // TODO (Rid): Sorted the colours based on the colour wheel.
     WHITE("White", "gui.ae2.White", "white", DyeColor.WHITE, 0xb4b4b4, 0xe0e0e0, 0xf9f9f9, 0x000000),
-    LIGHT_GRAY("Light Gray", "gui.ae2.LightGray", "light_gray", DyeColor.LIGHT_GRAY, 0x7e7e7e, 0xa09fa0, 0xc4c4c4,
-            0x000000),
+    LIGHT_GRAY("Light Gray", "gui.ae2.LightGray", "light_gray", DyeColor.LIGHT_GRAY, 0x7e7e7e, 0xa09fa0, 0xc4c4c4, 0x000000),
     GRAY("Gray", "gui.ae2.Gray", "gray", DyeColor.GRAY, 0x4f4f4f, 0x6c6b6c, 0x949294, 0x000000),
     BLACK("Black", "gui.ae2.Black", "black", DyeColor.BLACK, 0x131313, 0x272727, 0x3b3b3b, 0xFFFFFF),
     LIME("Lime", "gui.ae2.Lime", "lime", DyeColor.LIME, 0x4ec04e, 0x70e259, 0xb3f86d, 0x000000),
@@ -58,51 +59,47 @@ public enum AEColor implements StringRepresentable {
     MAGENTA("Magenta", "gui.ae2.Magenta", "magenta", DyeColor.MAGENTA, 0xc15189, 0xd5719c, 0xe69ebf, 0x000000),
     PURPLE("Purple", "gui.ae2.Purple", "purple", DyeColor.PURPLE, 0x6e5cb8, 0x915dcd, 0xb06fdd, 0x000000),
     BLUE("Blue", "gui.ae2.Blue", "blue", DyeColor.BLUE, 0x337ff0, 0x3894ff, 0x40c1ff, 0x000000),
-    LIGHT_BLUE("Light Blue", "gui.ae2.LightBlue", "light_blue", DyeColor.LIGHT_BLUE, 0x69b9ff, 0x70d2ff, 0x80f7ff,
-            0x000000),
+    LIGHT_BLUE("Light Blue", "gui.ae2.LightBlue", "light_blue", DyeColor.LIGHT_BLUE, 0x69b9ff, 0x70d2ff, 0x80f7ff, 0x000000),
     CYAN("Cyan", "gui.ae2.Cyan", "cyan", DyeColor.CYAN, 0x22b0ae, 0x2fccb7, 0x65e8c9, 0x000000),
     GREEN("Green", "gui.ae2.Green", "green", DyeColor.GREEN, 0x079b6b, 0x17b86d, 0x32d850, 0x000000),
     TRANSPARENT("Fluix", "gui.ae2.Fluix", "fluix", null, 0x5a479e, 0x915dcd, 0xe2a3e3, 0x000000);
 
     public static final Codec<AEColor> CODEC = StringRepresentable.fromEnum(AEColor::values);
 
-    public static final StreamCodec<FriendlyByteBuf, AEColor> STREAM_CODEC = NeoForgeStreamCodecs
-            .enumCodec(AEColor.class);
+    public static final StreamCodec<FriendlyByteBuf, AEColor> STREAM_CODEC = AECodecs.enumCodec(AEColor.class);
 
     // TODO (RID): Sorted the colours according to the colour wheel
-    public static final List<AEColor> VALID_COLORS = Arrays.asList(WHITE, LIGHT_GRAY, GRAY, BLACK, LIME, YELLOW,
-            ORANGE, BROWN, RED, PINK, MAGENTA, PURPLE, BLUE, LIGHT_BLUE, CYAN, GREEN);
+    public static final List<AEColor> VALID_COLORS = Arrays.asList(WHITE, LIGHT_GRAY, GRAY, BLACK, LIME, YELLOW, ORANGE, BROWN, RED, PINK, MAGENTA, PURPLE, BLUE, LIGHT_BLUE, CYAN, GREEN);
 
     private static final AEColor[] BY_ORDINAL = values();
 
-    /**
-     * The {@link BakedQuad#tintIndex() tint index} that can normally be used to get the {@link #blackVariant dark
-     * variant} of the apprioriate AE color.
-     */
     public static final int TINTINDEX_DARK = 1;
 
-    /**
-     * The {@link BakedQuad#tintIndex() tint index} that can normally be used to get the {@link #mediumVariant medium
-     * variant} of the apprioriate AE color.
-     */
     public static final int TINTINDEX_MEDIUM = 2;
 
-    /**
-     * The {@link BakedQuad#tintIndex() tint index} that can normally be used to get the {@link #whiteVariant bright
-     * variant} of the apprioriate AE color.
-     */
     public static final int TINTINDEX_BRIGHT = 3;
 
-    /**
-     * The {@link BakedQuad#tintIndex() tint index} that can normally be used to get a color between the
-     * {@link #mediumVariant medium} and {@link #whiteVariant bright variant} of the apprioriate AE color.
-     */
     public static final int TINTINDEX_MEDIUM_BRIGHT = 4;
+
+    /**
+     * English name of this color.
+     */
+    public final String englishName;
 
     /**
      * Unlocalized name for color.
      */
     public final String translationKey;
+
+    /**
+     * A convenient ID prefix for use with registering color variants of items and blocks.
+     */
+    public final String registryPrefix;
+
+    /**
+     * Vanilla Dye Equivilient
+     */
+    public final DyeColor dye;
 
     /**
      * Darkest Variant of the color, nearly black; as a RGB HEX Integer
@@ -120,36 +117,9 @@ public enum AEColor implements StringRepresentable {
     public final int whiteVariant;
 
     /**
-     * Vanilla Dye Equivilient
-     */
-    public final DyeColor dye;
-
-    /**
-     * A convenient ID prefix for use with registering color variants of items and blocks.
-     */
-    public final String registryPrefix;
-
-    /**
-     * English name of this color.
-     */
-    public final String englishName;
-
-    /**
      * Text color that has good contrast with the medium version of this color.
      */
     public final int contrastTextColor;
-
-    AEColor(String englishName, String translationKey, String registryPrefix, DyeColor dye, int blackHex,
-            int medHex, int whiteHex, int contrastTextColor) {
-        this.englishName = englishName;
-        this.translationKey = translationKey;
-        this.registryPrefix = registryPrefix;
-        this.blackVariant = blackHex;
-        this.mediumVariant = medHex;
-        this.whiteVariant = whiteHex;
-        this.contrastTextColor = contrastTextColor;
-        this.dye = dye;
-    }
 
     public static AEColor fromDye(DyeColor vanillaDye) {
         for (var value : values()) {

@@ -1,36 +1,34 @@
 package appeng.api.stacks;
 
-import java.util.List;
-
+import appeng.api.storage.AEKeyFilter;
+import appeng.core.AELog;
 import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-import org.jetbrains.annotations.Nullable;
-
+import lombok.Getter;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.transfer.item.ItemResource;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.storage.AEKeyFilter;
-import appeng.core.AELog;
+import java.util.List;
 
 public final class AEItemKey extends AEKey {
 
@@ -40,7 +38,7 @@ public final class AEItemKey extends AEKey {
                             item -> item.is(Items.AIR.builtInRegistryHolder())
                                     ? DataResult.error(() -> "Item must not be minecraft:air")
                                     : DataResult.success(item))
-                            .fieldOf("id").forGetter(key -> key.stack.typeHolder()),
+                            .fieldOf("id").forGetter(key -> key.stack.getItem().builtInRegistryHolder()),
                     DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY)
                             .forGetter(key -> key.stack.getComponentsPatch()))
                     .apply(builder, (item, componentPatch) -> new AEItemKey(new ItemStack(item, 1, componentPatch))));
@@ -48,6 +46,7 @@ public final class AEItemKey extends AEKey {
 
     private final ItemStack stack;
     private final int hashCode;
+    @Getter
     private final int maxStackSize;
     private final int damage;
     private final int maxDamage;
@@ -62,30 +61,13 @@ public final class AEItemKey extends AEKey {
     }
 
     @Nullable
-    public static AEItemKey of(@Nullable ItemStackTemplate stack) {
-        if (stack == null) {
-            return null;
-        }
-
-        return new AEItemKey(stack.create());
-    }
-
-    @Nullable
     public static AEItemKey of(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return null;
-        }
-
-        return new AEItemKey(stack.copy());
+        return stack.isEmpty() ? null : new AEItemKey(stack.copy());
     }
 
     @Nullable
-    public static AEItemKey of(ItemResource resource) {
-        if (resource.isEmpty()) {
-            return null;
-        }
-
-        return new AEItemKey(resource.toStack());
+    public static AEItemKey of(ItemVariant resource) {
+        return resource.isBlank() ? null : new AEItemKey(resource.toStack());
     }
 
     public static boolean matches(AEKey what, ItemStack itemStack) {
@@ -112,10 +94,12 @@ public final class AEItemKey extends AEKey {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        } else if (o == null || getClass() != o.getClass()) {
             return false;
+        }
+
         AEItemKey aeItemKey = (AEItemKey) o;
         // The hash code comparison is a fast-fail cheap check
         return this.hashCode == aeItemKey.hashCode && ItemStack.isSameItemSameComponents(stack, aeItemKey.stack);
@@ -149,8 +133,8 @@ public final class AEItemKey extends AEKey {
         return stack;
     }
 
-    public ItemResource toResource() {
-        return ItemResource.of(stack);
+    public ItemVariant toResource() {
+        return ItemVariant.of(stack);
     }
 
     public ItemStack toStack() {
@@ -158,11 +142,7 @@ public final class AEItemKey extends AEKey {
     }
 
     public ItemStack toStack(int count) {
-        if (count <= 0) {
-            return ItemStack.EMPTY;
-        }
-
-        return stack.copyWithCount(count);
+        return count <= 0 ? ItemStack.EMPTY : stack.copyWithCount(count);
     }
 
     public Item getItem() {
@@ -170,13 +150,20 @@ public final class AEItemKey extends AEKey {
     }
 
     @Nullable
-    public static AEItemKey fromTag(ValueInput input) {
-        return input.read(MAP_CODEC).orElse(null);
+    public static AEItemKey fromTag(HolderLookup.Provider registries, CompoundTag tag) {
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
+        try {
+            return CODEC.decode(ops, tag).getOrThrow().getFirst();
+        } catch (Exception e) {
+            AELog.debug("Tried to load an invalid item key from NBT: %s", tag, e);
+            return null;
+        }
     }
 
     @Override
-    public void toTag(ValueOutput output) {
-        output.store(MAP_CODEC, this);
+    public CompoundTag toTag(HolderLookup.Provider registries) {
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
+        return (CompoundTag) CODEC.encodeStart(ops, this).getOrThrow();
     }
 
     @Override
@@ -201,7 +188,7 @@ public final class AEItemKey extends AEKey {
     }
 
     @Override
-    public Identifier getId() {
+    public ResourceLocation getId() {
         return BuiltInRegistries.ITEM.getKey(stack.getItem());
     }
 
@@ -243,7 +230,7 @@ public final class AEItemKey extends AEKey {
 
     @Override
     public boolean hasComponents() {
-        return !stack.isComponentsPatchEmpty();
+        return !stack.getComponents().isEmpty();
     }
 
     /**
@@ -251,10 +238,6 @@ public final class AEItemKey extends AEKey {
      */
     public boolean isDamaged() {
         return damage > 0;
-    }
-
-    public int getMaxStackSize() {
-        return maxStackSize;
     }
 
     @Override
@@ -270,8 +253,7 @@ public final class AEItemKey extends AEKey {
     @Override
     public String toString() {
         var id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-        String idString = id != BuiltInRegistries.ITEM.getDefaultKey() ? id.toString()
-                : stack.getItem().getClass().getName() + "(unregistered)";
-        return stack.isComponentsPatchEmpty() ? idString : idString + " (with patches)";
+        String idString = id != BuiltInRegistries.ITEM.getDefaultKey() ? id.toString() : stack.getItem().getClass().getName() + "(unregistered)";
+        return stack.getComponents().isEmpty() ? idString : idString + " (with patches)";
     }
 }

@@ -34,9 +34,6 @@ public final class EncodedPatternItemBuilder<T extends IPatternDetails> {
      * </ul>
      */
     public Item build(Item.Properties p) {
-        return new EncodedPatternItem<>(
-                p.stacksTo(1),
-                decoder,
-                invalidPatternDescription);
+        return new EncodedPatternItem<>(p.stacksTo(1), decoder, invalidPatternDescription);
     }
 }

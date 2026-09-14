@@ -32,7 +32,6 @@ import net.minecraft.world.item.ItemStack;
  * Implemented on a {@link Item}
  */
 public interface ISpatialStorageCell {
-
     /**
      * @param is spatial storage cell
      *

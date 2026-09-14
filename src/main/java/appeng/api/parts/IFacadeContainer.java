@@ -23,12 +23,12 @@
 
 package appeng.api.parts;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 /**
  * Used Internally.
@@ -36,7 +36,6 @@ import net.minecraft.world.level.storage.ValueOutput;
  * not intended for implementation.
  */
 public interface IFacadeContainer {
-
     /**
      * Checks if the {@link IFacadePart} can be added to the given side.
      *
@@ -65,9 +64,10 @@ public interface IFacadeContainer {
     /**
      * write nbt data
      *
-     * @param output to be written data
+     * @param data       to be written data
+     * @param registries
      */
-    void writeToNBT(ValueOutput output);
+    void writeToNBT(CompoundTag data, HolderLookup.Provider registries);
 
     /**
      * read from stream
@@ -81,9 +81,10 @@ public interface IFacadeContainer {
     /**
      * read from NBT
      *
-     * @param input to be read data
+     * @param data       to be read data
+     * @param registries
      */
-    void readFromNBT(ValueInput input);
+    void readFromNBT(CompoundTag data, HolderLookup.Provider registries);
 
     /**
      * write to stream

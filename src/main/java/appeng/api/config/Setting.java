@@ -23,16 +23,17 @@
 
 package appeng.api.config;
 
+import appeng.api.util.IConfigManager;
+import com.google.common.collect.ImmutableSet;
+import lombok.Getter;
+
 import java.util.EnumSet;
 import java.util.Set;
 
-import com.google.common.collect.ImmutableSet;
-
-import appeng.api.util.IConfigManager;
-
 public final class Setting<T extends Enum<T>> {
-
+    @Getter
     private final String name;
+    @Getter
     private final Class<T> enumClass;
     private final ImmutableSet<T> values;
 
@@ -40,14 +41,10 @@ public final class Setting<T extends Enum<T>> {
         this(name, enumClass, EnumSet.allOf(enumClass));
     }
 
-    public Setting(String name, Class<T> enumClass, EnumSet<T> values) {
+    public Setting(String name, Class<T> enumClass, Set<T> values) {
         this.name = name;
         this.enumClass = enumClass;
         this.values = ImmutableSet.copyOf(values);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Set<T> getValues() {
@@ -56,10 +53,6 @@ public final class Setting<T extends Enum<T>> {
 
     public T getValue(IConfigManager configManager) {
         return enumClass.cast(configManager.getSetting(this));
-    }
-
-    public Class<T> getEnumClass() {
-        return enumClass;
     }
 
     public void setFromString(IConfigManager cm, String value) {

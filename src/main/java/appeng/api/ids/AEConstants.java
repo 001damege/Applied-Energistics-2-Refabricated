@@ -27,7 +27,5 @@ package appeng.api.ids;
  * Contains various global constants
  */
 public class AEConstants {
-
     public static final String MOD_ID = "ae2";
-
 }

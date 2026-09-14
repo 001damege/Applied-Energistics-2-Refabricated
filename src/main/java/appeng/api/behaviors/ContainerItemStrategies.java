@@ -31,11 +31,9 @@ public class ContainerItemStrategies {
         register(AEKeyType.fluids(), AEFluidKey.class, new FluidContainerItemStrategy());
     }
 
-    public static <T extends AEKey> void register(AEKeyType type, Class<T> keyClass,
-            ContainerItemStrategy<T, ?> strategy) {
+    public static <T extends AEKey> void register(AEKeyType type, Class<T> keyClass, ContainerItemStrategy<T, ?> strategy) {
         Preconditions.checkArgument(type.getKeyClass() == keyClass, "%s != %s", type.getKeyClass(), keyClass);
         Preconditions.checkArgument(type != AEKeyType.items(), "Can't register container items for AEItemKey");
-
         strategies.putIfAbsent(type, strategy);
     }
 
@@ -76,10 +74,7 @@ public class ContainerItemStrategies {
         }
 
         var strategy = strategies.getMap().get(keyType);
-        if (strategy != null) {
-            return strategy.getContainedStack(stack);
-        }
-        return null;
+        return strategy != null ? strategy.getContainedStack(stack) : null;
     }
 
     @Nullable
@@ -93,14 +88,12 @@ public class ContainerItemStrategies {
         return new EmptyingAction(description, contents.what(), contents.amount());
     }
 
-    public static ContainerItemContext findCarriedContextForKey(@Nullable AEKey key, Player player,
-            AbstractContainerMenu menu) {
+    public static ContainerItemContext findCarriedContextForKey(@Nullable AEKey key, Player player, AbstractContainerMenu menu) {
         return findCarriedContext(key == null ? null : key.getType(), player, menu);
     }
 
     @Nullable
-    private static ContainerItemContext findContext(@Nullable AEKeyType keyType,
-            Function<ContainerItemStrategy<?, ?>, @Nullable Object> contextFinder) {
+    private static ContainerItemContext findContext(@Nullable AEKeyType keyType, Function<ContainerItemStrategy<?, ?>, @Nullable Object> contextFinder) {
         var candidates = keyType == null ? AEKeyTypes.getAll() : List.of(keyType);
         Map<AEKeyType, ContainerItemContext.Entry<?>> entries = new LinkedHashMap<>();
         for (var type : candidates) {
@@ -121,8 +114,7 @@ public class ContainerItemStrategies {
      * @param keyType Desired key type, or null if any is ok.
      */
     @Nullable
-    public static ContainerItemContext findCarriedContext(@Nullable AEKeyType keyType, Player player,
-            AbstractContainerMenu menu) {
+    public static ContainerItemContext findCarriedContext(@Nullable AEKeyType keyType, Player player, AbstractContainerMenu menu) {
         return findContext(keyType, strategy -> strategy.findCarriedContext(player, menu));
     }
 
@@ -137,11 +129,9 @@ public class ContainerItemStrategies {
      * @param keyType Desired key type, or null if any is ok.
      */
     @Nullable
-    public static ContainerItemContext findOwnedItemContext(@Nullable AEKeyType keyType,
-            Player player,
-            ItemStack stack) {
+    public static ContainerItemContext findOwnedItemContext(@Nullable AEKeyType keyType, Player player, ItemStack stack) {
         // Check if the player has an open menu and the stack is the carried stack first
-        if (player.containerMenu != null && player.containerMenu.getCarried() == stack) {
+        if (player.containerMenu.getCarried() == stack) {
             return findCarriedContext(keyType, player, player.containerMenu);
         }
 
@@ -158,9 +148,7 @@ public class ContainerItemStrategies {
         if (slotIdx == -1) {
             return null; // Couldn't find the stack in the player inventory
         }
-
         int slotIdxCopy = slotIdx;
         return findContext(keyType, strategy -> strategy.findPlayerSlotContext(player, slotIdxCopy));
     }
-
 }

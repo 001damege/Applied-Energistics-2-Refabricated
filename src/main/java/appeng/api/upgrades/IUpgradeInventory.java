@@ -23,9 +23,9 @@
 
 package appeng.api.upgrades;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 import appeng.api.inventories.InternalInventory;
 
@@ -59,10 +59,10 @@ public interface IUpgradeInventory extends InternalInventory {
     /**
      * Reads the contents of this upgrade inventory from a subtag of the given compound tag.
      */
-    void readFromNBT(ValueInput input, String subtag);
+    void readFromNBT(CompoundTag data, String subtag, HolderLookup.Provider registries);
 
     /**
      * Reads the contents of this upgrade inventory from a subtag of the given compound tag.
      */
-    void writeToNBT(ValueOutput output, String subtag);
+    void writeToNBT(CompoundTag data, String subtag, HolderLookup.Provider registries);
 }

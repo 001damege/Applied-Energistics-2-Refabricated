@@ -25,6 +25,8 @@ package appeng.api.parts;
 
 import java.util.Objects;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.BlockPos;
@@ -41,10 +43,8 @@ import appeng.core.definitions.AEBlockEntities;
 import appeng.core.definitions.AEBlocks;
 import appeng.parts.PartPlacement;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class PartHelper {
-    private PartHelper() {
-    }
-
     /**
      * When implementing a custom part in an addon, you can use this method in
      * {@link net.minecraft.world.item.Item#useOn} of your parts item (if you're not using AE2s internal PartItem class)
@@ -63,8 +63,7 @@ public final class PartHelper {
      * @param side Null will retrieve the part at the center (the cable).
      */
     @Nullable
-    public static <T extends IPart> T getPart(IPartItem<T> partItem, BlockGetter level, BlockPos pos,
-            @Nullable Direction side) {
+    public static <T extends IPart> T getPart(IPartItem<T> partItem, BlockGetter level, BlockPos pos, @Nullable Direction side) {
         var part = getPart(level, pos, side);
         if (part != null) {
             var partClass = partItem.getPartClass();
@@ -83,10 +82,7 @@ public final class PartHelper {
     @Nullable
     public static IPart getPart(BlockGetter level, BlockPos pos, @Nullable Direction side) {
         var be = level.getBlockEntity(pos);
-        if (be instanceof IPartHost partHost) {
-            return partHost.getPart(side);
-        }
-        return null;
+        return be instanceof IPartHost partHost ? partHost.getPart(side) : null;
     }
 
     /**
@@ -97,8 +93,7 @@ public final class PartHelper {
      * @param player The player is only used to set the ownership of the created grid node.
      */
     @Nullable
-    public static <T extends IPart> T setPart(ServerLevel level, BlockPos pos, @Nullable Direction side,
-            @Nullable Player player, IPartItem<T> partItem) {
+    public static <T extends IPart> T setPart(ServerLevel level, BlockPos pos, @Nullable Direction side, @Nullable Player player, IPartItem<T> partItem) {
         Objects.requireNonNull(level, "level");
         Objects.requireNonNull(pos, "pos");
 
@@ -160,11 +155,7 @@ public final class PartHelper {
     }
 
     public static boolean canPlacePartHost(@Nullable Player player, Level level, BlockPos pos) {
-        if (player != null && !level.mayInteract(player, pos)) {
-            return false;
-        }
-
-        return level.isEmptyBlock(pos) || level.getBlockState(pos).canBeReplaced();
+        return (player == null || level.mayInteract(player, pos)) && (level.isEmptyBlock(pos) || level.getBlockState(pos).canBeReplaced());
     }
 
     /**
@@ -173,11 +164,7 @@ public final class PartHelper {
     @Nullable
     public static IPartHost getPartHost(Level level, BlockPos pos) {
         var blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof IPartHost partHost) {
-            return partHost;
-        }
-
-        return null;
+        return blockEntity instanceof IPartHost partHost ? partHost : null;
     }
 
     /**
@@ -186,5 +173,4 @@ public final class PartHelper {
     public static CableRenderMode getCableRenderMode() {
         return AppEng.instance().getCableRenderMode();
     }
-
 }

@@ -32,7 +32,6 @@ import net.minecraft.core.Direction;
  *
  */
 public class SelectedPart {
-
     /**
      * selected part.
      */

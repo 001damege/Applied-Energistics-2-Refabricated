@@ -23,13 +23,12 @@
 
 package appeng.api.inventories;
 
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.minecraft.world.item.ItemStack;
+
 import java.util.Collections;
 import java.util.Iterator;
-
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.EmptyResourceHandler;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
 
 class EmptyInternalInventory implements InternalInventory {
     static final EmptyInternalInventory INSTANCE = new EmptyInternalInventory();
@@ -43,8 +42,8 @@ class EmptyInternalInventory implements InternalInventory {
     }
 
     @Override
-    public ResourceHandler<ItemResource> toResourceHandler() {
-        return EmptyResourceHandler.instance();
+    public Storage<ItemVariant> toResourceHandler() {
+        return Storage.empty();
     }
 
     @Override

@@ -49,5 +49,4 @@ public interface IEnergyWatcher {
      * Removes all thresholds and resets the watcher to a clean state.
      */
     void reset();
-
 }

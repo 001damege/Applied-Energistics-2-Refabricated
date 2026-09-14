@@ -12,6 +12,9 @@ import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.minecraft.core.HolderLookup;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -23,11 +26,6 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.transfer.fluid.FluidResource;
-import net.neoforged.neoforge.transfer.item.ItemResource;
 
 import appeng.api.ids.AEComponents;
 import appeng.core.definitions.AEItems;
@@ -119,42 +117,48 @@ public record GenericStack(AEKey what, long amount) {
     }
 
     @Nullable
-    public static GenericStack readBuffer(RegistryFriendlyByteBuf buffer) {
-        if (!buffer.readBoolean()) {
+    public static GenericStack readBuffer(RegistryFriendlyByteBuf data) {
+        if (!data.readBoolean()) {
             return null;
         }
 
-        var what = AEKey.readKey(buffer);
+        var what = AEKey.readKey(data);
         if (what == null) {
             return null;
         }
 
-        return new GenericStack(what, buffer.readVarLong());
+        return new GenericStack(what, data.readVarLong());
     }
 
-    public static void writeBuffer(@Nullable GenericStack stack, RegistryFriendlyByteBuf buffer) {
+    public static void writeBuffer(@Nullable GenericStack stack, RegistryFriendlyByteBuf data) {
         if (stack == null) {
-            buffer.writeBoolean(false);
+            data.writeBoolean(false);
         } else {
-            buffer.writeBoolean(true);
-
-            AEKey.writeKey(buffer, stack.what);
-            buffer.writeVarLong(stack.amount);
+            data.writeBoolean(true);
+            AEKey.writeKey(data, stack.what);
+            data.writeVarLong(stack.amount);
         }
     }
 
     @Nullable
-    public static GenericStack readTag(ValueInput input) {
-        if (input.getString(AEKey.TYPE_FIELD).isEmpty()) {
+    public static GenericStack readTag(HolderLookup.Provider registries, CompoundTag tag) {
+        if (tag.isEmpty()) {
             return null;
         }
-        return input.read(MAP_CODEC).orElse(null);
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
+        return GenericStack.CODEC.decode(ops, tag)
+                .ifError(err -> LOG.error("Failed to decode GenericStack from {}: {}", tag, err.message()))
+                .getPartialOrThrow()
+                .getFirst();
     }
 
-    public static void writeTag(ValueOutput output, @Nullable GenericStack stack) {
-        if (stack != null) {
-            output.store(MAP_CODEC, stack);
+    public static CompoundTag writeTag(HolderLookup.Provider registries, @Nullable GenericStack stack) {
+        if (stack == null) {
+            return new CompoundTag();
         }
+
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
+        return (CompoundTag) GenericStack.CODEC.encodeStart(ops, stack).getOrThrow();
     }
 
     /**
@@ -169,46 +173,25 @@ public record GenericStack(AEKey what, long amount) {
         }
 
         var key = AEItemKey.of(stack);
-        if (key == null) {
-            return null;
-        }
-        return new GenericStack(key, stack.getCount());
-    }
-
-    /**
-     * Converts a given fluid stack into a generic stack. If the fluid stack is empty, null is returned.
-     */
-    @Nullable
-    public static GenericStack fromFluidStack(FluidStack stack) {
-        var key = AEFluidKey.of(stack);
-        if (key == null) {
-            return null;
-        }
-        return new GenericStack(key, stack.getAmount());
+        return key == null ? null : new GenericStack(key, stack.getCount());
     }
 
     /**
      * Converts a given item resource and amount into a generic stack. If the resource is empty, null is returned.
      */
     @Nullable
-    public static GenericStack from(ItemResource resource, long amount) {
+    public static GenericStack from(ItemVariant resource, long amount) {
         var key = AEItemKey.of(resource);
-        if (key == null) {
-            return null;
-        }
-        return new GenericStack(key, amount);
+        return key == null ? null : new GenericStack(key, amount);
     }
 
     /**
      * Converts a given fluid resource and amount into a generic stack. If the resource is empty, null is returned.
      */
     @Nullable
-    public static GenericStack from(FluidResource resource, long amount) {
+    public static GenericStack from(FluidVariant resource, long amount) {
         var key = AEFluidKey.of(resource);
-        if (key == null) {
-            return null;
-        }
-        return new GenericStack(key, amount);
+        return key == null ? null : new GenericStack(key, amount);
     }
 
     public static long getStackSizeOrZero(@Nullable GenericStack stack) {
@@ -216,11 +199,7 @@ public record GenericStack(AEKey what, long amount) {
     }
 
     public static ItemStack wrapInItemStack(@Nullable GenericStack stack) {
-        if (stack != null) {
-            return wrapInItemStack(stack.what(), stack.amount());
-        } else {
-            return ItemStack.EMPTY;
-        }
+        return stack != null ? wrapInItemStack(stack.what(), stack.amount()) : ItemStack.EMPTY;
     }
 
     public static ItemStack wrapInItemStack(AEKey what, long amount) {
@@ -240,7 +219,6 @@ public record GenericStack(AEKey what, long amount) {
                 return new GenericStack(what, amount);
             }
         }
-
         return null;
     }
 
@@ -250,5 +228,4 @@ public record GenericStack(AEKey what, long amount) {
         }
         return new GenericStack(left.what, left.amount + right.amount);
     }
-
 }

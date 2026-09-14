@@ -34,25 +34,14 @@ import appeng.core.settings.TickRates;
  * @param isSleeping  Determines the current expected state of your node, if your node expects to be sleeping, then
  *                    return true.
  */
-public record TickingRequest(
-        int minTickRate,
-        int maxTickRate,
-        boolean isSleeping,
-        int initialTickRate) {
+public record TickingRequest(int minTickRate, int maxTickRate, boolean isSleeping, int initialTickRate) {
 
     public TickingRequest(int minTickRate, int maxTickRate, boolean isSleeping) {
-        this(
-                minTickRate,
-                maxTickRate,
-                isSleeping,
-                getInitialTickDelay(minTickRate, maxTickRate));
+        this(minTickRate, maxTickRate, isSleeping, getInitialTickDelay(minTickRate, maxTickRate));
     }
 
     public TickingRequest(TickRates tickRates, boolean isSleeping) {
-        this(
-                tickRates.getMin(),
-                tickRates.getMax(),
-                isSleeping);
+        this(tickRates.getMin(), tickRates.getMax(), isSleeping);
     }
 
     private static int getInitialTickDelay(int min, int max) {

@@ -23,14 +23,12 @@
 
 package appeng.api.inventories;
 
-import java.util.Iterator;
-import java.util.function.Predicate;
-
+import appeng.api.config.FuzzyMode;
+import appeng.util.helpers.ItemComparisonHelper;
 import com.google.common.base.Preconditions;
-
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.Nullable;
-
+import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Container;
@@ -38,22 +36,18 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.config.FuzzyMode;
-import appeng.util.helpers.ItemComparisonHelper;
+import java.util.Iterator;
+import java.util.function.Predicate;
 
 public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
 
     @Nullable
     static ItemTransfer wrapExternal(Level level, BlockPos pos, Direction side) {
-        var handler = level.getCapability(Capabilities.Item.BLOCK, pos, side);
-        if (handler != null) {
-            return new PlatformInventoryWrapper(handler);
-        }
-        return null;
+        var handler = ItemStorage.SIDED.find(level, pos, side);
+        return handler != null ? new PlatformInventoryWrapper(handler) : null;
     }
 
     static InternalInventory empty() {
@@ -70,7 +64,7 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
         return !iterator().hasNext();
     }
 
-    ResourceHandler<ItemResource> toResourceHandler();
+    Storage<ItemVariant> toResourceHandler();
 
     default Container toContainer() {
         return new ContainerAdapter(this);
@@ -137,18 +131,10 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
      */
 
     default ItemStack addItems(ItemStack stack, boolean simulate) {
-        if (stack.isEmpty()) {
-            return ItemStack.EMPTY;
-        }
-
         // Heuristically use a faster one-pass approach to fill inventories that we consider "large",
         // i.e. external storage drawer inventories that might be exposed as hundreds of slots.
         // 54 is the size of a double chest and will include the player inventory as well as our sky chest
-        if (size() <= 54) {
-            return addItemSlow(stack, simulate);
-        } else {
-            return addItemFast(stack, simulate);
-        }
+        return stack.isEmpty() ? ItemStack.EMPTY : size() <= 54 ? addItemSlow(stack, simulate) : addItemFast(stack, simulate);
     }
 
     /**
@@ -169,7 +155,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 }
             }
         }
-
         return remainder;
     }
 
@@ -185,7 +170,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 return ItemStack.EMPTY;
             }
         }
-
         return remainder;
     }
 
@@ -204,7 +188,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 if (extracted.isEmpty()) {
                     continue;
                 }
-
                 if (!destination.test(extracted)) {
                     continue;
                 }
@@ -216,7 +199,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
             if (extracted.isEmpty()) {
                 continue;
             }
-
             if (rv.isEmpty()) {
                 // Use the first stack as a template for the result
                 rv = extracted;
@@ -243,11 +225,9 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 if (extracted.isEmpty()) {
                     continue;
                 }
-
                 if (destination != null && !destination.test(extracted)) {
                     continue;
                 }
-
                 if (rv.isEmpty()) {
                     // Use the first stack as a template for the result
                     rv = extracted.copy();
@@ -283,7 +263,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 if (simulated.isEmpty()) {
                     continue;
                 }
-
                 if (!destination.test(simulated)) {
                     continue;
                 }
@@ -292,13 +271,10 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
             // Attempt extracting it
             extracted = extractItem(slot, amount, false);
         }
-
         return extracted;
     }
 
-    default ItemStack simulateSimilarRemove(int amount, ItemStack filter,
-            FuzzyMode fuzzyMode,
-            Predicate<ItemStack> destination) {
+    default ItemStack simulateSimilarRemove(int amount, ItemStack filter, FuzzyMode fuzzyMode, Predicate<ItemStack> destination) {
         int slots = size();
         ItemStack extracted = ItemStack.EMPTY;
 
@@ -315,7 +291,6 @@ public interface InternalInventory extends Iterable<ItemStack>, ItemTransfer {
                 extracted = ItemStack.EMPTY; // Keep on looking...
             }
         }
-
         return extracted;
     }
 

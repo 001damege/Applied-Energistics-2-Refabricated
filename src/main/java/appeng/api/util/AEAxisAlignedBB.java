@@ -18,6 +18,7 @@
 
 package appeng.api.util;
 
+import lombok.AllArgsConstructor;
 import net.minecraft.world.phys.AABB;
 
 /**
@@ -25,6 +26,7 @@ import net.minecraft.world.phys.AABB;
  *
  * TODO: Replace with interface and maybe factory should it ever be needed for addons.
  */
+@AllArgsConstructor
 public class AEAxisAlignedBB {
     public double minX;
     public double minY;
@@ -37,18 +39,7 @@ public class AEAxisAlignedBB {
         return new AABB(this.minX, this.minY, this.minZ, this.maxX, this.maxY, this.maxZ);
     }
 
-    public AEAxisAlignedBB(double a, double b, double c, double d, double e,
-            double f) {
-        this.minX = a;
-        this.minY = b;
-        this.minZ = c;
-        this.maxX = d;
-        this.maxY = e;
-        this.maxZ = f;
-    }
-
-    public static AEAxisAlignedBB fromBounds(double a, double b, double c, double d,
-            double e, double f) {
+    public static AEAxisAlignedBB fromBounds(double a, double b, double c, double d, double e, double f) {
         return new AEAxisAlignedBB(a, b, c, d, e, f);
     }
 

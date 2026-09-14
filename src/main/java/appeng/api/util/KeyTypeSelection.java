@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import net.minecraft.resources.Identifier;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 import appeng.api.ids.AEComponents;
 import appeng.api.stacks.AEKeyType;
@@ -85,23 +87,24 @@ public class KeyTypeSelection {
         return keyType -> keyTypes.getOrDefault(keyType, Boolean.FALSE);
     }
 
-    public void writeToNBT(ValueOutput output) {
-        var enabledKeyTypes = output.list("enabledKeyTypes", Identifier.CODEC);
+    public void writeToNBT(CompoundTag tag) {
+        ListTag enabledKeyTypesTag = new ListTag();
         for (var entry : keyTypes.entrySet()) {
             if (entry.getValue()) {
-                enabledKeyTypes.add(entry.getKey().getId());
+                enabledKeyTypesTag.add(StringTag.valueOf(entry.getKey().getId().toString()));
             }
         }
+        tag.put("enabledKeyTypes", enabledKeyTypesTag);
     }
 
-    public void readFromNBT(ValueInput input) {
+    public void readFromNBT(CompoundTag tag, HolderLookup.Provider registries) {
         for (var entry : keyTypes.entrySet()) {
             entry.setValue(false);
         }
-        var enabledKeyTypes = input.listOrEmpty("enabledKeyTypes", Identifier.CODEC);
-        for (var enabledKeyType : enabledKeyTypes) {
+        ListTag enabledKeyTypesTag = tag.getList("enabledKeyTypes", 8);
+        for (int i = 0; i < enabledKeyTypesTag.size(); i++) {
             try {
-                var keyType = AEKeyTypes.get(enabledKeyType);
+                var keyType = AEKeyTypes.get(ResourceLocation.parse(enabledKeyTypesTag.getString(i)));
                 if (keyTypes.containsKey(keyType)) {
                     keyTypes.put(keyType, true);
                 }

@@ -1,38 +1,28 @@
 package appeng.api.stacks;
 
-import java.util.List;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import appeng.api.config.FuzzyMode;
+import appeng.api.ids.AEComponents;
+import appeng.core.definitions.AEItems;
+import com.mojang.serialization.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.ids.AEComponents;
-import appeng.core.definitions.AEItems;
+import java.util.List;
 
 /**
  * Uniquely identifies something that "stacks" within an ME inventory.
@@ -79,9 +69,10 @@ public abstract class AEKey {
                     if (AEItems.MISSING_CONTENT.is(input)) {
                         var originalData = input.get(AEComponents.MISSING_CONTENT_AEKEY_DATA);
                         if (originalData != null) {
-                            var originalDataMap = originalData.copyTag();
-                            for (var entry : originalDataMap.entrySet()) {
-                                t.add(entry.getKey(), NbtOps.INSTANCE.convertTo(ops, entry.getValue()));
+                            //noinspection deprecation
+                            var originalDataMap = originalData.getUnsafe();
+                            for (var key : originalDataMap.getAllKeys()) {
+                                t.add(key, NbtOps.INSTANCE.convertTo(ops, originalDataMap.get(key)));
                             }
                         }
                     }
@@ -101,41 +92,38 @@ public abstract class AEKey {
             AEKey::readOptionalKey);
 
     /**
-     * Writes a generic, nullable key to the given buffer.
+     * Writes a generic, nullable key to the given data.
      */
-    public static void writeOptionalKey(RegistryFriendlyByteBuf buffer, @Nullable AEKey key) {
-        buffer.writeBoolean(key != null);
+    public static void writeOptionalKey(RegistryFriendlyByteBuf data, @Nullable AEKey key) {
+        data.writeBoolean(key != null);
         if (key != null) {
-            writeKey(buffer, key);
+            writeKey(data, key);
         }
     }
 
-    public static void writeKey(RegistryFriendlyByteBuf buffer, AEKey key) {
+    public static void writeKey(RegistryFriendlyByteBuf data, AEKey key) {
         var id = key.getType().getRawId();
-        buffer.writeVarInt(id);
-        key.writeToPacket(buffer);
+        data.writeVarInt(id);
+        key.writeToPacket(data);
     }
 
     /**
      * Tries reading a key written using {@link #writeOptionalKey}.
      */
     @Nullable
-    public static AEKey readOptionalKey(RegistryFriendlyByteBuf buffer) {
-        if (!buffer.readBoolean()) {
-            return null;
-        }
-        return readKey(buffer);
+    public static AEKey readOptionalKey(RegistryFriendlyByteBuf data) {
+        return !data.readBoolean() ? null : readKey(data);
     }
 
     @Nullable
-    public static AEKey readKey(RegistryFriendlyByteBuf buffer) {
-        var id = buffer.readVarInt();
+    public static AEKey readKey(RegistryFriendlyByteBuf data) {
+        var id = data.readVarInt();
         var type = AEKeyType.fromRawId(id);
         if (type == null) {
             LOG.error("Received unknown key type id {}", id);
             return null;
         }
-        return type.readFromPacket(buffer);
+        return type.readFromPacket(data);
     }
 
     /**
@@ -145,21 +133,24 @@ public abstract class AEKey {
     private volatile Component cachedDisplayName;
 
     @Nullable
-    public static AEKey fromTagGeneric(ValueInput input) {
+    public static AEKey fromTagGeneric(HolderLookup.Provider registries, CompoundTag tag) {
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
         try {
-            return input.read(MAP_CODEC).orElseThrow();
+            return CODEC.decode(ops, tag).getOrThrow().getFirst();
         } catch (Exception e) {
-            LOG.warn("Cannot deserialize generic key from {}: {}", input, e);
+            LOG.warn("Cannot deserialize generic key from {}: {}", tag, e);
             return null;
         }
     }
 
     /**
-     * Same as {@link #toTag(ValueOutput)}, but includes type information so that {@link #fromTagGeneric(ValueInput)}
-     * can restore this particular type of key withot knowing the actual type beforehand.
+     * Same as {@link #toTag(HolderLookup.Provider)}, but includes type information so that
+     * {@link #fromTagGeneric(HolderLookup.Provider, CompoundTag)} can restore this particular type of key withot
+     * knowing the actual type beforehand.
      */
-    public final void toTagGeneric(ValueOutput output) {
-        output.store(MAP_CODEC, this);
+    public final CompoundTag toTagGeneric(HolderLookup.Provider registries) {
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
+        return (CompoundTag) CODEC.encodeStart(ops, this).getOrThrow();
     }
 
     /**
@@ -212,7 +203,7 @@ public abstract class AEKey {
      * Serialized keys MUST NOT contain keys that start with <code>#</code>, because this prefix can be used to add
      * additional data into the same tag as the key.
      */
-    public abstract void toTag(ValueOutput output);
+    public abstract CompoundTag toTag(HolderLookup.Provider registries);
 
     public abstract Object getPrimaryKey();
 
@@ -280,7 +271,7 @@ public abstract class AEKey {
     /**
      * @return The ID of the resource identified by this key.
      */
-    public abstract Identifier getId();
+    public abstract ResourceLocation getId();
 
     public abstract void writeToPacket(RegistryFriendlyByteBuf data);
 

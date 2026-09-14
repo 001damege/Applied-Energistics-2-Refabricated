@@ -23,6 +23,8 @@
 
 package appeng.api.networking.events;
 
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
@@ -30,45 +32,14 @@ import net.minecraft.world.level.Level;
  * An event that is posted whenever a spatial IO is active.
  */
 public class GridSpatialEvent extends GridEvent {
-    /**
-     * The level in which the Spatial I/O block entity triggering this transition is located.
-     */
-    public final Level spatialIoLevel;
-    /**
-     * The block position at which the Spatial I/O block entity triggering this transition is located.
-     */
-    public final BlockPos spatialIoPos;
-    /**
-     * The energy in AE units needed to perform this transition.
-     */
-    public final double spatialEnergyUsage;
-    private boolean preventTransition;
+    public static final Event<Spatial> EVENT = EventFactory.createArrayBacked(Spatial.class, callbacks -> (spatialIoLevel, spatialIoPos, energyUsage) -> {
+        for (var callback : callbacks) {
+            callback.spatial(spatialIoLevel, spatialIoPos, energyUsage);
+        }
+    });
 
-    /**
-     * @param spatialIoLevel Level where the Spatial IO is located
-     * @param spatialIoPos   Position where the Spatial IO is located
-     * @param EnergyUsage    ( the amount of energy that the SpatialIO uses)
-     */
-    public GridSpatialEvent(Level spatialIoLevel,
-            BlockPos spatialIoPos,
-            double EnergyUsage) {
-        this.spatialIoLevel = spatialIoLevel;
-        this.spatialIoPos = spatialIoPos;
-        this.spatialEnergyUsage = EnergyUsage;
+    @FunctionalInterface
+    public interface Spatial {
+        void spatial(Level spatialIoLevel, BlockPos spatialIoPos, double energyUsage);
     }
-
-    /**
-     * Prevent the Spatial IO transition from happening.
-     */
-    public void preventTransition() {
-        this.preventTransition = true;
-    }
-
-    /**
-     * @return True if the transition into the spatial IO should not be allowed.
-     */
-    public boolean isTransitionPrevented() {
-        return preventTransition;
-    }
-
 }

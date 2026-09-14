@@ -21,10 +21,10 @@ package appeng.util.inv;
 import java.util.Iterator;
 import java.util.function.Supplier;
 
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
 
 import appeng.api.inventories.InternalInventory;
 
@@ -49,7 +49,7 @@ public class SupplierInternalInventory<T extends InternalInventory> implements I
     }
 
     @Override
-    public ResourceHandler<ItemResource> toResourceHandler() {
+    public Storage<ItemVariant> toResourceHandler() {
         return getDelegate().toResourceHandler();
     }
 

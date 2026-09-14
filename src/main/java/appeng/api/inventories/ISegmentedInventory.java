@@ -25,7 +25,7 @@ package appeng.api.inventories;
 
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import appeng.api.upgrades.IUpgradeInventory;
 
@@ -38,30 +38,30 @@ public interface ISegmentedInventory {
      * Identifies an inventory that contains fake items for the purpose of configuring a filter or interface
      * auto-stocking.
      */
-    Identifier CONFIG = Identifier.parse("ae2:config");
+    ResourceLocation CONFIG = ResourceLocation.parse("ae2:config");
 
     /**
      * Identifies the sub-inventory that contains installed upgrades. See {@link IUpgradeInventory}.
      */
-    Identifier UPGRADES = Identifier.parse("ae2:upgrades");
+    ResourceLocation UPGRADES = ResourceLocation.parse("ae2:upgrades");
 
     /**
      * Identifies the sub-inventory used locally by the machine to store items.
      */
-    Identifier STORAGE = Identifier.parse("ae2:storage");
+    ResourceLocation STORAGE = ResourceLocation.parse("ae2:storage");
 
     /**
      * Identifies the sub-inventory used to store storage cells in machines such as the cell workbench, drive, ME chest.
      */
-    Identifier CELLS = Identifier.parse("ae2:cells");
+    ResourceLocation CELLS = ResourceLocation.parse("ae2:cells");
 
     /**
      * Access an internal inventory, note, not all inventories contain real items, some may be ghost items, and treating
      * them as real inventories will result in duplication.
      *
-     * @param id Identifier for the inventory segment.
+     * @param id ResourceLocation for the inventory segment.
      * @return Null if the machine has no sub-inventory with the given id.
      */
     @Nullable
-    InternalInventory getSubInventory(Identifier id);
+    InternalInventory getSubInventory(ResourceLocation id);
 }

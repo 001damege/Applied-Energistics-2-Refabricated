@@ -35,10 +35,7 @@ public class FacingStrategy implements IOrientationStrategy {
 
     @Override
     public BlockState setFacing(BlockState state, Direction facing) {
-        if (!property.getPossibleValues().contains(facing)) {
-            return state;
-        }
-        return state.setValue(property, facing);
+        return !property.getPossibleValues().contains(facing) ? state : state.setValue(property, facing);
     }
 
     @Override

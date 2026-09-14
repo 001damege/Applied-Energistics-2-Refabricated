@@ -24,6 +24,8 @@
 package appeng.api.networking.events;
 
 import appeng.api.networking.energy.IAEPowerStorage;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 
 /**
  * informs the network, that a {@link IAEPowerStorage} block that had either run, out of power, or was full, is no
@@ -35,13 +37,15 @@ import appeng.api.networking.energy.IAEPowerStorage;
  * you do not need to send this event when your node is added / removed from the grid.
  */
 public class GridPowerStorageStateChanged extends GridEvent {
+    public static final Event<PowerStorageStateChanged> EVENT = EventFactory.createArrayBacked(PowerStorageStateChanged.class, callbacks -> (storage, type1) -> {
+        for (var callback : callbacks) {
+            callback.changed(storage, type1);
+        }
+    });
 
-    public final IAEPowerStorage storage;
-    public final PowerEventType type;
-
-    public GridPowerStorageStateChanged(IAEPowerStorage storage, PowerEventType type) {
-        this.storage = storage;
-        this.type = type;
+    @FunctionalInterface
+    public interface PowerStorageStateChanged {
+        void changed(IAEPowerStorage storage, PowerEventType type);
     }
 
     public enum PowerEventType {

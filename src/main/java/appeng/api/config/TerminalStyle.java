@@ -23,18 +23,17 @@
 
 package appeng.api.config;
 
-public enum TerminalStyle {
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+public enum TerminalStyle {
     SMALL(1),
     MEDIUM(2),
     TALL(3),
     FULL(4);
 
     private final int multiplier;
-
-    TerminalStyle(int multiplier) {
-        this.multiplier = multiplier;
-    }
 
     public int getRows(int maxRows) {
         return maxRows * this.multiplier / 4;

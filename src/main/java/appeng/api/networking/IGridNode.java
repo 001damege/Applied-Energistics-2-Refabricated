@@ -48,7 +48,6 @@ import appeng.api.util.AEColor;
  * Don't Implement; Acquire from {@link GridHelper} via {@link IManagedGridNode}.
  */
 public interface IGridNode {
-
     /**
      * Tries to get a service that was attached to this grid node when it was created. Used by overlay grids such as the
      * {@link ICraftingService}.

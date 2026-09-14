@@ -15,8 +15,6 @@ import appeng.api.AECapabilities;
 import appeng.api.behaviors.GenericInternalInventory;
 import appeng.api.implementations.items.IAEItemPowerStorage;
 import appeng.api.networking.IInWorldGridNodeHost;
-import appeng.api.parts.RegisterPartCapabilitiesEvent;
-import appeng.api.parts.RegisterPartCapabilitiesEventInternal;
 import appeng.blockentity.AEBaseInvBlockEntity;
 import appeng.blockentity.misc.ChargerBlockEntity;
 import appeng.blockentity.misc.GrowthAcceleratorBlockEntity;

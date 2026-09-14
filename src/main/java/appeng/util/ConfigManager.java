@@ -23,12 +23,12 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 import appeng.api.config.Setting;
 import appeng.api.util.IConfigManager;
@@ -81,31 +81,21 @@ public final class ConfigManager implements IConfigManager {
         }
     }
 
-    /**
-     * save all settings using config manager.
-     *
-     * @param output to be written to compound
-     */
     @Override
-    public void writeToNBT(ValueOutput output) {
+    public void writeToNBT(CompoundTag destination, HolderLookup.Provider registries) {
         for (var entry : this.settings.entrySet()) {
-            output.putString(entry.getKey().getName(), this.settings.get(entry.getKey()).toString());
+            destination.putString(entry.getKey().getName(), this.settings.get(entry.getKey()).toString());
         }
     }
 
-    /**
-     * read all settings using config manager.
-     *
-     * @param input to be read from compound
-     */
     @Override
-    public boolean readFromNBT(ValueInput input) {
+    public boolean readFromNBT(CompoundTag src, HolderLookup.Provider registries) {
         boolean anythingRead = false;
         for (var setting : this.settings.keySet()) {
-            var value = input.getString(setting.getName());
-            if (value.isPresent()) {
+            if (src.contains(setting.getName(), Tag.TAG_STRING)) {
+                String value = src.getString(setting.getName());
                 try {
-                    setting.setFromString(this, value.get());
+                    setting.setFromString(this, value);
                     anythingRead = true;
                 } catch (IllegalArgumentException e) {
                     LOG.warn("Failed to load setting {} from value '{}': {}", setting, value, e.getMessage());

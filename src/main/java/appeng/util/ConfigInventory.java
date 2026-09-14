@@ -9,6 +9,8 @@ import java.util.Set;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.world.level.ItemLike;
@@ -50,16 +52,14 @@ public class ConfigInventory extends GenericStackInv {
         return EMPTY_TYPES;
     }
 
-    protected ConfigInventory(Set<AEKeyType> supportedTypes, @Nullable AEKeySlotFilter slotFilter,
-            Mode mode,
-            int size, @Nullable Runnable listener,
-            boolean allowOverstacking) {
+    protected ConfigInventory(Set<AEKeyType> supportedTypes, @Nullable AEKeySlotFilter slotFilter, Mode mode, int size, @Nullable Runnable listener, boolean allowOverstacking) {
         super(supportedTypes, listener, mode, size);
         this.allowOverstacking = allowOverstacking;
         setFilter(slotFilter);
     }
 
-    public final static class Builder {
+    @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+    public static final class Builder {
         private final Mode mode;
         private final int size;
         private Set<AEKeyType> supportedTypes = AEKeyTypes.getAll();
@@ -68,11 +68,6 @@ public class ConfigInventory extends GenericStackInv {
         @Nullable
         private Runnable changeListener;
         private boolean allowOverstacking;
-
-        private Builder(Mode mode, int size) {
-            this.mode = mode;
-            this.size = size;
-        }
 
         public Builder supportedType(AEKeyType type) {
             this.supportedTypes = Set.of(type);
@@ -223,9 +218,7 @@ public class ConfigInventory extends GenericStackInv {
 
     @Override
     public long getMaxAmount(AEKey key) {
-        if (allowOverstacking)
-            return getCapacity(key.getType());
-        return super.getMaxAmount(key);
+        return allowOverstacking ? getCapacity(key.getType()) : super.getMaxAmount(key);
     }
 
     @Override

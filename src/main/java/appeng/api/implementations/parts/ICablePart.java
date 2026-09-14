@@ -38,7 +38,6 @@ import appeng.api.util.AEColor;
  * Implemented on the {@link IPart}s cable objects that can be placed at the center of {@link IPartHost}s.
  */
 public interface ICablePart extends IPart {
-
     /**
      * does this cable support buses?
      */
@@ -80,5 +79,4 @@ public interface ICablePart extends IPart {
      * @return true if this side is currently connects to an external block.
      */
     boolean isConnected(Direction side);
-
 }

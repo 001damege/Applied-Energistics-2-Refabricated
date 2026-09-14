@@ -36,7 +36,6 @@ import net.minecraft.core.Direction;
  * Don't Implement.
  */
 public interface IGridConnection {
-
     /**
      * lets you get the opposing node of the connection by passing your own node.
      *

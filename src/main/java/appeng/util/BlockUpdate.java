@@ -18,19 +18,20 @@
 
 package appeng.util;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class BlockUpdate implements ILevelRunnable {
     private final BlockPos pos;
 
-    BlockUpdate(BlockPos pos) {
-        this.pos = pos;
-    }
-
+    @SuppressWarnings("deprecation")
     @Override
     public void call(Level level) throws Exception {
+        assert level != null;
         if (level.hasChunkAt(this.pos)) {
             level.updateNeighborsAt(this.pos, Blocks.AIR);
         }

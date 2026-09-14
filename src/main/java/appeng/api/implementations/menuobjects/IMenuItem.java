@@ -41,6 +41,5 @@ public interface IMenuItem {
      * @return Null if no menu host is available.
      */
     @Nullable
-    ItemMenuHost<?> getMenuHost(Player player, ItemMenuHostLocator locator,
-            @Nullable BlockHitResult hitResult);
+    ItemMenuHost<?> getMenuHost(Player player, ItemMenuHostLocator locator, @Nullable BlockHitResult hitResult);
 }

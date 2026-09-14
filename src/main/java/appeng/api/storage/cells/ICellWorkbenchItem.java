@@ -38,7 +38,7 @@ public interface ICellWorkbenchItem extends IUpgradeableItem {
      * @return true if the item should be editable in the cell workbench.
      */
     default boolean isEditable(ItemStack is) {
-        return getConfigInventory(is).size() > 0 || getUpgrades(is).size() > 0;
+        return !getConfigInventory(is).isEmpty() || !getUpgrades(is).isEmpty();
     }
 
     /**

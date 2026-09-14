@@ -24,12 +24,18 @@
 package appeng.api.networking.events;
 
 import appeng.api.networking.IGridNode;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 
 public class GridCraftingCpuChange extends GridEvent {
+    public static final Event<CraftingCpuChange> EVENT = EventFactory.createArrayBacked(CraftingCpuChange.class, callbacks -> node -> {
+        for (var callback : callbacks) {
+            callback.change(node);
+        }
+    });
 
-    public final IGridNode node;
-
-    public GridCraftingCpuChange(IGridNode n) {
-        this.node = n;
+    @FunctionalInterface
+    public interface CraftingCpuChange {
+        void change(IGridNode node);
     }
 }

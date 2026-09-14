@@ -45,8 +45,7 @@ public interface ItemTransfer {
      */
     ItemStack removeSimilarItems(int amount, ItemStack filter, FuzzyMode fuzzyMode, Predicate<ItemStack> destination);
 
-    ItemStack simulateSimilarRemove(int amount, ItemStack filter, FuzzyMode fuzzyMode,
-            Predicate<ItemStack> destination);
+    ItemStack simulateSimilarRemove(int amount, ItemStack filter, FuzzyMode fuzzyMode, Predicate<ItemStack> destination);
 
     /**
      * Attempts to insert as much of the given item into this inventory as possible.

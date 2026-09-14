@@ -27,9 +27,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 import appeng.api.config.Setting;
 import appeng.api.ids.AEComponents;
@@ -76,17 +76,19 @@ public interface IConfigManager {
     /**
      * write all settings to the NBT Tag so they can be read later.
      *
-     * @param output to be written nbt tag
+     * @param destination to be written nbt tag
+     * @param registries
      */
-    void writeToNBT(ValueOutput output);
+    void writeToNBT(CompoundTag destination, HolderLookup.Provider registries);
 
     /**
      * Only works after settings have been registered
      *
-     * @param input to be read nbt tag
+     * @param src        to be read nbt tag
+     * @param registries
      * @return true if any configuration was loaded from src
      */
-    boolean readFromNBT(ValueInput input);
+    boolean readFromNBT(CompoundTag src, HolderLookup.Provider registries);
 
     /**
      * Import settings that were previously exported from {@link #exportSettings()}. Unparsable or unknown settings are

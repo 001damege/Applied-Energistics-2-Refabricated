@@ -18,22 +18,21 @@
 
 package appeng.api.stacks;
 
+import appeng.core.AppEng;
+import appeng.core.localization.GuiText;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import com.mojang.serialization.MapCodec;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.storage.ValueInput;
-
-import appeng.core.AppEng;
-import appeng.core.localization.GuiText;
-
 final class AEItemKeys extends AEKeyType {
-    private static final Identifier ID = AppEng.makeId("i");
+    private static final ResourceLocation ID = AppEng.makeId("i");
 
     static final AEItemKeys INSTANCE = new AEItemKeys();
 
@@ -54,8 +53,8 @@ final class AEItemKeys extends AEKeyType {
     }
 
     @Override
-    public AEItemKey loadKeyFromTag(ValueInput input) {
-        return AEItemKey.fromTag(input);
+    public AEItemKey loadKeyFromTag(HolderLookup.Provider registries, CompoundTag tag) {
+        return AEItemKey.fromTag(registries, tag);
     }
 
     @Override
@@ -65,6 +64,6 @@ final class AEItemKeys extends AEKeyType {
 
     @Override
     public Stream<TagKey<?>> getTagNames() {
-        return BuiltInRegistries.ITEM.listTagIds().map(t -> t);
+        return BuiltInRegistries.ITEM.getTagNames().map(t -> t);
     }
 }

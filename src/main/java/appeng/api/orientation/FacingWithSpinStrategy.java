@@ -13,13 +13,10 @@ import net.minecraft.world.level.block.state.properties.Property;
  * Extends {@link FacingStrategy} to also allow the block to be rotated around its facing axis.
  */
 public class FacingWithSpinStrategy implements IOrientationStrategy {
-
     private final List<Property<?>> properties;
 
     protected FacingWithSpinStrategy() {
-        this.properties = List.of(
-                BlockStateProperties.FACING,
-                SPIN);
+        this.properties = List.of(BlockStateProperties.FACING, SPIN);
     }
 
     @Override

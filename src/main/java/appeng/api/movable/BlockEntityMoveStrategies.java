@@ -39,12 +39,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
  * {@link appeng.api.ids.AETags#SPATIAL_BLACKLIST the blacklist tag for blocks}.
  */
 public final class BlockEntityMoveStrategies {
-
     private static final IBlockEntityMoveStrategy DEFAULT_STRATEGY = new DefaultBlockEntityMoveStrategy() {
         @Override
-        public boolean canHandle(BlockEntityType<?> type) {
-            return true;
-        }
+        public boolean canHandle(BlockEntityType<?> type) {return true;}
     };
     private static final List<IBlockEntityMoveStrategy> strategies = new ArrayList<>();
     private static final Map<BlockEntityType<?>, IBlockEntityMoveStrategy> valid = new IdentityHashMap<>();
@@ -54,7 +51,7 @@ public final class BlockEntityMoveStrategies {
      *
      * @param strategy The strategy to add.
      */
-    public synchronized static void add(IBlockEntityMoveStrategy strategy) {
+    public static synchronized void add(IBlockEntityMoveStrategy strategy) {
         Objects.requireNonNull(strategy, "handler");
         strategies.add(strategy);
     }
@@ -65,7 +62,7 @@ public final class BlockEntityMoveStrategies {
      * @return The strategy for moving the given block entity. If no custom strategy was {@link #add registered}, the
      *         {@link #getDefault() default strategy} will be returned.
      */
-    public synchronized static IBlockEntityMoveStrategy get(BlockEntity blockEntity) {
+    public static synchronized IBlockEntityMoveStrategy get(BlockEntity blockEntity) {
         Objects.requireNonNull(blockEntity, "blockEntity");
 
         // Prefer a cached handler if possible
@@ -94,5 +91,4 @@ public final class BlockEntityMoveStrategies {
     public static IBlockEntityMoveStrategy getDefault() {
         return DEFAULT_STRATEGY;
     }
-
 }

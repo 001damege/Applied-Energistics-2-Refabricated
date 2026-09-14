@@ -92,11 +92,7 @@ abstract class VariantCounter implements Iterable<Object2LongMap.Entry<AEKey>> {
 
     @Override
     public Iterator<Object2LongMap.Entry<AEKey>> iterator() {
-        if (!dropZeros) {
-            return Object2LongMaps.fastIterator(getRecords());
-        }
-
-        return new NonDefaultIterator();
+        return !dropZeros ? Object2LongMaps.fastIterator(getRecords()) : new NonDefaultIterator();
     }
 
     abstract AEKey2LongMap getRecords();

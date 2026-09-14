@@ -33,7 +33,6 @@ import appeng.api.storage.cells.CellState;
 import appeng.api.storage.cells.StorageCell;
 
 public interface IChestOrDrive extends IActionHost {
-
     /**
      * @return how many slots are available. Chest has 1, Drive has 10.
      */

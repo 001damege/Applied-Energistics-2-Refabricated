@@ -6,6 +6,8 @@ import java.util.SortedMap;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.world.item.ItemStack;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectAVLTreeMap;
@@ -13,12 +15,10 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMap;
 
 import appeng.api.config.FuzzyMode;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 final class FuzzySearch {
     @VisibleForTesting
     static final KeyComparator COMPARATOR = new KeyComparator();
-
-    private FuzzySearch() {
-    }
 
     /**
      * Creates a map that is searchable via {@link #findFuzzy}.
@@ -73,6 +73,7 @@ final class FuzzySearch {
                 stackA = (AEKey) a;
                 fuzzyOrderB = stackA.getFuzzySearchValue();
             }
+
             FuzzyBound boundB = null;
             AEKey stackB = null;
             int fuzzyOrderA;
@@ -89,7 +90,6 @@ final class FuzzySearch {
             if (boundA != null || boundB != null) {
                 return Integer.compare(fuzzyOrderA, fuzzyOrderB);
             }
-
             if (stackA.equals(stackB)) {
                 return 0;
             }
@@ -124,8 +124,7 @@ final class FuzzySearch {
      */
     static FuzzyBound makeLowerBound(AEKey key, FuzzyMode fuzzy) {
         var maxValue = key.getFuzzySearchMaxValue();
-        Preconditions.checkState(maxValue > 0, "Cannot use fuzzy search on keys that don't have a fuzzy max value: %s",
-                key);
+        Preconditions.checkState(maxValue > 0, "Cannot use fuzzy search on keys that don't have a fuzzy max value: %s", key);
 
         int damage;
         if (fuzzy == FuzzyMode.IGNORE_ALL) {
@@ -134,7 +133,6 @@ final class FuzzySearch {
             var breakpoint = fuzzy.calculateBreakPoint(maxValue);
             damage = key.getFuzzySearchValue() <= breakpoint ? breakpoint : maxValue;
         }
-
         return new FuzzyBound(damage);
     }
 
@@ -144,8 +142,7 @@ final class FuzzySearch {
      */
     static FuzzyBound makeUpperBound(AEKey key, FuzzyMode fuzzy) {
         var maxValue = key.getFuzzySearchMaxValue();
-        Preconditions.checkState(maxValue > 0, "Cannot use fuzzy search on keys that don't have a fuzzy max value: %s",
-                key);
+        Preconditions.checkState(maxValue > 0, "Cannot use fuzzy search on keys that don't have a fuzzy max value: %s", key);
 
         int damage;
         if (fuzzy == FuzzyMode.IGNORE_ALL) {
@@ -154,7 +151,6 @@ final class FuzzySearch {
             final var breakpoint = fuzzy.calculateBreakPoint(maxValue);
             damage = key.getFuzzySearchValue() <= breakpoint ? MIN_DAMAGE_VALUE : breakpoint;
         }
-
         return new FuzzyBound(damage);
     }
 }

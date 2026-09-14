@@ -23,9 +23,14 @@
 
 package appeng.api.storage.cells;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * @author yueh
  */
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum CellState {
     /**
      * No cell at all
@@ -55,16 +60,6 @@ public enum CellState {
     /**
      * A color indicating this state.
      */
+    @Getter
     private final int stateColor;
-
-    CellState(int stateColor) {
-        this.stateColor = stateColor;
-    }
-
-    /**
-     * @return A color representative of this state. Used for the drive LEDs for example.
-     */
-    public int getStateColor() {
-        return stateColor;
-    }
 }

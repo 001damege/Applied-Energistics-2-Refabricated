@@ -23,6 +23,14 @@
 
 package appeng.api.util;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
+
+import java.util.Objects;
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum AECableType {
     /**
      * No Cable present.
@@ -56,21 +64,12 @@ public enum AECableType {
 
     public static final AECableType[] VALIDCABLES = { GLASS, COVERED, SMART, DENSE_COVERED, DENSE_SMART };
 
+    @Accessors(fluent = true)
+    @Getter
     private final AECableVariant variant;
+    @Accessors(fluent = true)
+    @Getter
     private final AECableSize size;
-
-    AECableType(AECableVariant variant, AECableSize size) {
-        this.variant = variant;
-        this.size = size;
-    }
-
-    public AECableSize size() {
-        return this.size;
-    }
-
-    public AECableVariant variant() {
-        return this.variant;
-    }
 
     public boolean isValid() {
         return this.variant != AECableVariant.NONE && this.size != AECableSize.NONE;
@@ -87,53 +86,33 @@ public enum AECableType {
     public static AECableType min(AECableType a, AECableType b) {
         final AECableVariant v = AECableVariant.min(a.variant(), b.variant());
         final AECableSize s = AECableSize.min(a.size(), b.size());
-
         return AECableType.from(v, s);
     }
 
     public static AECableType max(AECableType a, AECableType b) {
         final AECableVariant v = AECableVariant.max(a.variant(), b.variant());
         final AECableSize s = AECableSize.max(a.size(), b.size());
-
         return AECableType.from(v, s);
     }
 
     private static AECableType from(AECableVariant variant, AECableSize size) {
-        switch (variant) {
-            case GLASS:
-                switch (size) {
-                    case NORMAL:
-                        return GLASS;
-                    default:
-                        break;
-                }
-
-                break;
-            case COVERED:
-                switch (size) {
-                    case NORMAL:
-                        return COVERED;
-                    case DENSE:
-                        return DENSE_COVERED;
-                    default:
-                        break;
-                }
-
-                break;
-            case SMART:
-                switch (size) {
-                    case NORMAL:
-                        return SMART;
-                    case DENSE:
-                        return DENSE_SMART;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
+        if (Objects.requireNonNull(variant) == AECableVariant.GLASS) {
+            if (Objects.requireNonNull(size) == AECableSize.NORMAL) {
+                return GLASS;
+            }
+        } else if (variant == AECableVariant.COVERED) {
+            if (Objects.requireNonNull(size) == AECableSize.NORMAL) {
+                return COVERED;
+            } else if (size == AECableSize.DENSE) {
+                return DENSE_COVERED;
+            }
+        } else if (variant == AECableVariant.SMART) {
+            if (Objects.requireNonNull(size) == AECableSize.NORMAL) {
+                return SMART;
+            } else if (size == AECableSize.DENSE) {
+                return DENSE_SMART;
+            }
         }
-
         return NONE;
     }
 }

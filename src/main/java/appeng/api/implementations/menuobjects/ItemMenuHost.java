@@ -18,6 +18,7 @@
 
 package appeng.api.implementations.menuobjects;
 
+import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.world.entity.player.Player;
@@ -43,7 +44,10 @@ public class ItemMenuHost<T extends Item> implements IUpgradeableObject {
      */
     private static final int BUFFER_ENERGY_TICKS = 10;
 
+    @Getter
     private final T item;
+    @Getter
+    // The player holding the item.
     private final Player player;
     private final ItemMenuHostLocator locator;
     private final IUpgradeInventory upgrades;
@@ -62,13 +66,6 @@ public class ItemMenuHost<T extends Item> implements IUpgradeableObject {
     }
 
     /**
-     * @return The player holding the item.
-     */
-    public Player getPlayer() {
-        return player;
-    }
-
-    /**
      * @return The index of the item hosting the menu in the {@link #getPlayer() players} inventory. Null if the item is
      *         not directly accessible via the inventory.
      */
@@ -80,10 +77,6 @@ public class ItemMenuHost<T extends Item> implements IUpgradeableObject {
     @Nullable
     public ItemMenuHostLocator getLocator() {
         return locator;
-    }
-
-    public T getItem() {
-        return item;
     }
 
     /**

@@ -1,7 +1,11 @@
 package appeng.api.orientation;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.core.Direction;
 
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum RelativeSide {
     FRONT(Direction.NORTH),
     BACK(Direction.SOUTH),
@@ -18,20 +22,13 @@ public enum RelativeSide {
         }
     }
 
+    @Getter
     private final Direction unrotatedSide;
-
-    RelativeSide(Direction unrotatedSide) {
-        this.unrotatedSide = unrotatedSide;
-    }
 
     /**
      * Find the relative side on the given absolute side of a block, assuming its default orientation.
      */
     public static RelativeSide fromUnrotatedSide(Direction side) {
         return BY_UNROTATED_SIDE[side.ordinal()];
-    }
-
-    public Direction getUnrotatedSide() {
-        return unrotatedSide;
     }
 }

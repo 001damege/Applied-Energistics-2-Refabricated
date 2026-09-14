@@ -26,7 +26,6 @@ package appeng.api.implementations.blockentities;
 import appeng.api.inventories.InternalInventory;
 
 public interface IViewCellStorage {
-
     /**
      * should contains at least 5 slot, the first 5
      *

@@ -4,6 +4,8 @@ import java.util.Map;
 
 import com.google.common.base.Preconditions;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.ApiStatus;
 
 import net.minecraft.world.item.Item;
@@ -16,6 +18,7 @@ import appeng.util.CowMap;
  * Allows custom key types to define slot capacities for pattern providers and interfaces.
  */
 @ApiStatus.Experimental
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class GenericSlotCapacities {
     private static final CowMap<AEKeyType, Long> map = CowMap.identityHashMap();
 
@@ -31,8 +34,5 @@ public class GenericSlotCapacities {
 
     public static Map<AEKeyType, Long> getMap() {
         return map.getMap();
-    }
-
-    private GenericSlotCapacities() {
     }
 }

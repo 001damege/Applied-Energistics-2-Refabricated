@@ -33,8 +33,7 @@ public interface PlacementStrategy {
 
     @FunctionalInterface
     interface Factory {
-        PlacementStrategy create(ServerLevel level, BlockPos fromPos, Direction fromSide, BlockEntity host,
-                @Nullable UUID owningPlayerId);
+        PlacementStrategy create(ServerLevel level, BlockPos fromPos, Direction fromSide, BlockEntity host, @Nullable UUID owningPlayerId);
     }
 
     static void register(AEKeyType type, Factory factory) {

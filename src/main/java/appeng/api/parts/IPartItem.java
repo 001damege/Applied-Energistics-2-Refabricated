@@ -23,12 +23,11 @@
 
 package appeng.api.parts;
 
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * When implementing a custom part, you must create an item to both represent the part in NBT and Packet data, and to
@@ -53,7 +52,7 @@ public interface IPartItem<P extends IPart> extends ItemLike {
     /**
      * @return The registry id for this item.
      */
-    static Identifier getId(IPartItem<?> item) {
+    static ResourceLocation getId(IPartItem<?> item) {
         var id = BuiltInRegistries.ITEM.getKey(item.asItem());
         if (id == BuiltInRegistries.ITEM.getDefaultKey()) {
             throw new IllegalStateException("Part item " + item + " is not registered");
@@ -76,12 +75,9 @@ public interface IPartItem<P extends IPart> extends ItemLike {
      * Retrieve a part item by its {@link #getId(IPartItem) id}.
      */
     @Nullable
-    static IPartItem<?> byId(Identifier id) {
-        var item = BuiltInRegistries.ITEM.getValue(id);
-        if (item instanceof IPartItem<?> partItem) {
-            return partItem;
-        }
-        return null;
+    static IPartItem<?> byId(ResourceLocation id) {
+        var item = BuiltInRegistries.ITEM.get(id);
+        return item instanceof IPartItem<?> partItem ? partItem : null;
     }
 
     /**
@@ -90,9 +86,6 @@ public interface IPartItem<P extends IPart> extends ItemLike {
     @Nullable
     static IPartItem<?> byNetworkId(int id) {
         var item = BuiltInRegistries.ITEM.byId(id);
-        if (item instanceof IPartItem<?> partItem) {
-            return partItem;
-        }
-        return null;
+        return item instanceof IPartItem<?> partItem ? partItem : null;
     }
 }

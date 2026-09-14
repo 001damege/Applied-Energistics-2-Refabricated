@@ -19,10 +19,12 @@
 package appeng.api.orientation;
 
 import java.util.EnumSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.mojang.math.Transformation;
 
+import lombok.Getter;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
@@ -71,14 +73,20 @@ public enum BlockOrientation {
     EAST_SOUTH(0, 90, 90, 3);
     // @formatter:on
 
+    @Getter
     private final int angleX;
+    @Getter
     private final int angleY;
+    @Getter
     private final int angleZ;
+    @Getter
     private final Quaternionf quaternion;
+    @Getter
     private final Transformation transformation;
     /**
      * How many times it has been rotated clock-wise around in 90° increments around its facing.
      */
+    @Getter
     private final int spin;
     // Map each Direction to the Direction it'll be rotated to
     private final Direction[] rotatedSideTo;
@@ -97,7 +105,7 @@ public enum BlockOrientation {
                 -angleZ * Mth.DEG_TO_RAD);
 
         if (angleX == 0 && angleY == 0 && angleZ == 0) {
-            this.transformation = Transformation.IDENTITY;
+            this.transformation = Transformation.identity();
         } else {
             var rotationMatrix = new Matrix4f()
                     .identity()
@@ -112,7 +120,7 @@ public enum BlockOrientation {
         for (var direction : Direction.values()) {
             var normal = direction.step();
             normal.rotate(quaternion);
-            var rotatedTo = Direction.getApproximateNearest(normal.x(), normal.y(), normal.z());
+            var rotatedTo = Direction.getNearest(normal.x(), normal.y(), normal.z());
             rotatedSideTo[direction.ordinal()] = rotatedTo;
             rotatedSideFrom[rotatedTo.ordinal()] = direction;
         }
@@ -122,7 +130,7 @@ public enum BlockOrientation {
      * Changes the orientation of the given block entity to this, if possible.
      */
     public void setOn(BlockEntity be) {
-        setOn(be.getLevel(), be.getBlockPos());
+        setOn(Objects.requireNonNull(be.getLevel()), be.getBlockPos());
     }
 
     /**
@@ -144,36 +152,12 @@ public enum BlockOrientation {
         return angleX == 0 && angleY == 0 && angleZ == 0;
     }
 
-    public Quaternionf getQuaternion() {
-        return this.quaternion;
-    }
-
-    public Transformation getTransformation() {
-        return transformation;
-    }
-
     public Direction rotate(Direction facing) {
         return rotatedSideTo[facing.ordinal()];
     }
 
     public Direction resultingRotate(Direction facing) {
         return rotatedSideFrom[facing.ordinal()];
-    }
-
-    public int getAngleX() {
-        return angleX;
-    }
-
-    public int getAngleY() {
-        return angleY;
-    }
-
-    public int getAngleZ() {
-        return angleZ;
-    }
-
-    public int getSpin() {
-        return spin;
     }
 
     public static BlockOrientation get(Direction facing) {

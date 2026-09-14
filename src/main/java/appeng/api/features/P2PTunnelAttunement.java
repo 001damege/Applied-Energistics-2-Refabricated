@@ -23,27 +23,22 @@
 
 package appeng.api.features;
 
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Predicate;
-
+import appeng.core.definitions.AEParts;
+import appeng.items.parts.PartItem;
+import appeng.parts.p2p.P2PTunnelPart;
+import net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup;
+import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.capabilities.ItemCapability;
-import net.neoforged.neoforge.transfer.access.ItemAccess;
 
-import appeng.core.definitions.AEParts;
-import appeng.items.parts.PartItem;
-import appeng.parts.p2p.P2PTunnelPart;
+import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * A Registry for how p2p Tunnels are attuned
@@ -94,14 +89,13 @@ public final class P2PTunnelAttunement {
         if (itemKey.equals(BuiltInRegistries.ITEM.getDefaultKey())) {
             throw new IllegalArgumentException("Tunnel item must be registered first.");
         }
-        return TagKey.create(Registries.ITEM,
-                Identifier.fromNamespaceAndPath(itemKey.getNamespace(), "p2p_attunements/" + itemKey.getPath()));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(itemKey.getNamespace(), "p2p_attunements/" + itemKey.getPath()));
     }
 
     /**
      * Attunement based on the standard item tag: {@code <tunnel item namespace>:p2p_attunements/<tunnel item path>}
      */
-    public synchronized static void registerAttunementTag(ItemLike tunnel) {
+    public static synchronized void registerAttunementTag(ItemLike tunnel) {
         Objects.requireNonNull(tunnel.asItem(), "tunnel.asItem()");
         tagTunnels.put(getAttunementTag(tunnel), validateTunnelPartItem(tunnel));
     }
@@ -112,10 +106,10 @@ public final class P2PTunnelAttunement {
      * @param tunnelPart  The P2P-tunnel part item.
      * @param description Description for display in REI/JEI.
      */
-    public synchronized static void registerAttunementApi(ItemLike tunnelPart, ItemCapability<?, Void> cap,
+    public static synchronized void registerAttunementApi(ItemLike tunnelPart, ItemApiLookup<?, Void> cap,
             Component description) {
         Objects.requireNonNull(cap, "cap");
-        Predicate<ItemStack> test = stack -> stack.getCapability(cap) != null;
+        Predicate<ItemStack> test = stack -> cap.find(stack, null) != null;
         apiAttunements.add(new ApiAttunement(test, cap, validateTunnelPartItem(tunnelPart), description));
     }
 
@@ -125,11 +119,11 @@ public final class P2PTunnelAttunement {
      * @param tunnelPart  The P2P-tunnel part item.
      * @param description Description for display in REI/JEI.
      */
-    public synchronized static void registerItemAccessAttunementApi(ItemLike tunnelPart,
-            ItemCapability<?, ItemAccess> cap,
+    public static synchronized void registerItemAccessAttunementApi(ItemLike tunnelPart,
+            ItemApiLookup<?, ContainerItemContext> cap,
             Component description) {
         Objects.requireNonNull(cap, "cap");
-        Predicate<ItemStack> test = stack -> stack.getCapability(cap, ItemAccess.forStack(stack)) != null;
+        Predicate<ItemStack> test = stack -> cap.find(stack, ContainerItemContext.withConstant(stack)) != null;
         apiAttunements.add(new ApiAttunement(test, cap, validateTunnelPartItem(tunnelPart), description));
     }
 
@@ -137,13 +131,13 @@ public final class P2PTunnelAttunement {
      * @param trigger attunement trigger
      * @return The part item for a P2P-Tunnel that should handle the given attunement, or an empty item stack.
      */
-    public synchronized static ItemStack getTunnelPartByTriggerItem(ItemStack trigger) {
+    public static synchronized ItemStack getTunnelPartByTriggerItem(ItemStack trigger) {
         if (trigger.isEmpty()) {
             return ItemStack.EMPTY;
         }
 
         // Tags first
-        for (var tag : trigger.tags().toList()) {
+        for (var tag : trigger.getTags().toList()) {
             var tagTunnelItem = tagTunnels.get(tag);
             if (tagTunnelItem != null) {
                 return new ItemStack(tagTunnelItem);
@@ -156,7 +150,6 @@ public final class P2PTunnelAttunement {
                 return new ItemStack(apiAttunement.tunnelType());
             }
         }
-
         return ItemStack.EMPTY;
     }
 
@@ -169,18 +162,12 @@ public final class P2PTunnelAttunement {
         }
 
         if (!P2PTunnelPart.class.isAssignableFrom((partItem.getPartClass()))) {
-            throw new IllegalArgumentException("Given tunnel part item results in a part that is not a P2P tunnel: "
-                    + partItem);
+            throw new IllegalArgumentException("Given tunnel part item results in a part that is not a P2P tunnel: " + partItem);
         }
-
         return item;
     }
 
-    record ApiAttunement(
-            Predicate<ItemStack> capabilityTest,
-            ItemCapability<?, ?> capability,
-            Item tunnelType,
-            Component component) {
+    record ApiAttunement(Predicate<ItemStack> capabilityTest, ItemApiLookup<?, ?> capability, Item tunnelType, Component component) {
         public boolean hasApi(ItemStack stack) {
             return !stack.isEmpty() && capabilityTest != null && capabilityTest.test(stack);
         }

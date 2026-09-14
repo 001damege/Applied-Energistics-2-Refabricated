@@ -44,7 +44,6 @@ import appeng.api.util.DimensionalBlockPos;
  * Do Not Implement
  */
 public interface IPartHost extends ICustomCableConnection {
-
     /**
      * @return the facade container
      */
@@ -89,8 +88,7 @@ public interface IPartHost extends ICustomCableConnection {
      * @return If the part could be replaced, or null.
      */
     @Nullable
-    <T extends IPart> T replacePart(IPartItem<T> partItem, @Nullable Direction side, @Nullable Player owner,
-            @Nullable InteractionHand hand);
+    <T extends IPart> T replacePart(IPartItem<T> partItem, @Nullable Direction side, @Nullable Player owner, @Nullable InteractionHand hand);
 
     /**
      * Removes the part on the side, this doesn't drop it or anything, if you don't do something with it, its just

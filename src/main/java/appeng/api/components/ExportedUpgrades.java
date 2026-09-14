@@ -9,6 +9,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 
+@SuppressWarnings("deprecation")
 public record ExportedUpgrades(List<ItemStack> upgrades) {
     // Defined using xmap since we previously used a List directly.
     public static Codec<ExportedUpgrades> CODEC = RecordCodecBuilder.create(builder -> builder.group(
@@ -21,11 +22,7 @@ public record ExportedUpgrades(List<ItemStack> upgrades) {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object)
-            return true;
-        if (!(object instanceof ExportedUpgrades that))
-            return false;
-        return ItemStack.listMatches(upgrades, that.upgrades);
+        return this == object || object instanceof ExportedUpgrades(List<ItemStack> upgrades1) && ItemStack.listMatches(upgrades, upgrades1);
     }
 
     @Override

@@ -26,9 +26,6 @@ public interface ICraftingSimulationRequester {
     @Nullable
     default IGridNode getGridNode() {
         var actionSource = getActionSource();
-        if (actionSource != null) {
-            return actionSource.machine().map(IActionHost::getActionableNode).orElse(null);
-        }
-        return null;
+        return actionSource != null ? actionSource.machine().map(IActionHost::getActionableNode).orElse(null) : null;
     }
 }

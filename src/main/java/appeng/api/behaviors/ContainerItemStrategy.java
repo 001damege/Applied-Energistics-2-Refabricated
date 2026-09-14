@@ -45,5 +45,4 @@ public interface ContainerItemStrategy<T extends AEKey, C> {
     static <T extends AEKey> void register(AEKeyType keyType, Class<T> keyClass, ContainerItemStrategy<T, ?> strategy) {
         ContainerItemStrategies.register(keyType, keyClass, strategy);
     }
-
 }

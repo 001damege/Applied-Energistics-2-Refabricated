@@ -23,30 +23,25 @@
 
 package appeng.api.networking;
 
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.networking.pathing.IPathingService;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.util.AEColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.neoforged.neoforge.common.util.ValueIOSerializable;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.networking.pathing.IPathingService;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.util.AEColor;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 /**
  * This interface is intended for the host that created this node. It is used to configure the node's properties.
  */
-public interface IManagedGridNode extends ValueIOSerializable {
+public interface IManagedGridNode {
 
     /**
      * By destroying your node, you destroy any connections, and its existence in the grid, use in invalidate, or
@@ -62,26 +57,6 @@ public interface IManagedGridNode extends ValueIOSerializable {
      * {@link GridHelper#onFirstTick}.
      */
     void create(Level level, @Nullable BlockPos blockPos);
-
-    /**
-     * this should be called for each node you create, if you have a nodeData compound to load from, you can store all
-     * your nods on a single compound using name.
-     * <p>
-     * Important: You must call this before {@link #create(Level, BlockPos)}.
-     *
-     * @param nodeData to be loaded data
-     */
-    @Override
-    void deserialize(ValueInput nodeData);
-
-    /**
-     * this should be called for each node you maintain, you can save all your nodes to the same tag with different
-     * names, if you fail to complete the load / save procedure, network state may be lost between game load/saves.
-     *
-     * @param nodeData to be saved data
-     */
-    @Override
-    void serialize(ValueOutput nodeData);
 
     /**
      * Call the given function on the grid this node is connected to. Will do nothing if the grid node isn't initialized
@@ -115,10 +90,7 @@ public interface IManagedGridNode extends ValueIOSerializable {
     @Nullable
     default IGrid getGrid() {
         var node = getNode();
-        if (node == null) {
-            return null;
-        }
-        return node.getGrid();
+        return node == null ? null : node.getGrid();
     }
 
     IManagedGridNode setFlags(GridFlags... flags);

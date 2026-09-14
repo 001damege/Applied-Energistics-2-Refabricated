@@ -11,6 +11,8 @@ import java.util.Set;
 
 import com.sun.nio.sctp.Association;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.ChatFormatting;
@@ -29,6 +31,7 @@ import appeng.items.materials.UpgradeCardItem;
 /**
  * Manages available upgrades for AE machines, parts and items.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Upgrades {
     // Key is the upgrade cards item
     private static final Map<Item, List<Association>> ASSOCIATIONS = new IdentityHashMap<>();
@@ -36,9 +39,6 @@ public final class Upgrades {
     private static final Map<IUpgradeableItem, Set<Item>> SUPPORTED_ITEM_UPGRADES = new IdentityHashMap<>();
     // Key is the upgrade cards item
     private static final Map<Item, List<Component>> UPGRADE_CARD_TOOLTIP_LINES = new IdentityHashMap<>();
-
-    private Upgrades() {
-    }
 
     /**
      * Same as {@link #add(ItemLike, ItemLike, int, String)}, but without a tooltip group.
@@ -55,8 +55,7 @@ public final class Upgrades {
      *                     the upgrade card, grouped together with all other upgradable objects using the same
      *                     translation key.
      */
-    public static synchronized void add(ItemLike upgradeCard, ItemLike upgradableObject, int maxSupported,
-            @Nullable String tooltipGroup) {
+    public static synchronized void add(ItemLike upgradeCard, ItemLike upgradableObject, int maxSupported, @Nullable String tooltipGroup) {
         Item item = upgradableObject.asItem();
         Block block;
         if (item instanceof BlockItem blockItem) {
@@ -82,8 +81,7 @@ public final class Upgrades {
         var translatedTooltipGroup = tooltipGroup != null ? Component.translatable(tooltipGroup) : null;
 
         var association = new Association(upgrade, item, block, maxSupported, translatedTooltipGroup);
-        ASSOCIATIONS.computeIfAbsent(association.upgradeCard(), ignored -> new ArrayList<>())
-                .add(association);
+        ASSOCIATIONS.computeIfAbsent(association.upgradeCard(), ignored -> new ArrayList<>()).add(association);
         // Clear tooltip cache
         UPGRADE_CARD_TOOLTIP_LINES.remove(association.upgradeCard());
     }
@@ -102,7 +100,6 @@ public final class Upgrades {
                 return association.maxCount();
             }
         }
-
         return 0;
     }
 
@@ -164,28 +161,22 @@ public final class Upgrades {
      */
     public static synchronized List<Component> getTooltipLinesForMachine(ItemLike upgradableItemLike) {
         var upgradableItem = upgradableItemLike.asItem();
-
         var result = new ArrayList<Component>();
 
         for (var cardAssociations : ASSOCIATIONS.values()) {
             for (var association : cardAssociations) {
                 if (association.upgradableItem() == upgradableItem) {
                     result.add(GuiText.CompatibleUpgrade
-                            .text(association.upgradeCard().getDefaultInstance().getItemName(), association.maxCount())
+                            .text(association.upgradeCard().getDefaultInstance().getHoverName(), association.maxCount())
                             .withStyle(ChatFormatting.GRAY));
                     break;
                 }
             }
         }
-
         return result;
     }
 
-    private record Association(Item upgradeCard,
-            Item upgradableItem,
-            @Nullable Block upgradableBlock,
-            int maxCount,
-            @Nullable Component tooltipGroup) {
+    private record Association(Item upgradeCard, Item upgradableItem, @Nullable Block upgradableBlock, int maxCount, @Nullable Component tooltipGroup) {
     }
 
     private static List<Component> createTooltipLinesForCard(Item card) {
@@ -198,7 +189,7 @@ public final class Upgrades {
 
         for (int i = 0; i < associations.size(); i++) {
             var association = associations.get(i);
-            Component name = association.upgradableItem().getDefaultInstance().getItemName();
+            Component name = association.upgradableItem().getDefaultInstance().getHoverName();
 
             // If the group was already added by a previous item, skip this
             if (association.tooltipGroup() != null && namesAdded.contains(association.tooltipGroup())) {
@@ -223,15 +214,11 @@ public final class Upgrades {
                 Component main = base;
 
                 if (association.maxCount() > 1) {
-                    main = Tooltips.of(base, Tooltips.of(" ("),
-                            Tooltips.ofUnformattedNumber(association.maxCount()), Tooltips.of(")"));
-
+                    main = Tooltips.of(base, Tooltips.of(" ("), Tooltips.ofUnformattedNumber(association.maxCount()), Tooltips.of(")"));
                 }
                 supportedTooltipLines.add(main);
             }
         }
-
         return supportedTooltipLines;
     }
-
 }

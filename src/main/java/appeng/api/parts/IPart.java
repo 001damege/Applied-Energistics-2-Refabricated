@@ -26,6 +26,8 @@ package appeng.api.parts;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.Nullable;
@@ -45,10 +47,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.model.data.ModelData;
 
 import appeng.api.networking.IGridNode;
 import appeng.api.networking.IManagedGridNode;
@@ -56,7 +55,6 @@ import appeng.api.util.AECableType;
 import appeng.util.SettingsFrom;
 
 public interface IPart extends ICustomCableConnection, Clearable {
-
     List<Direction> ATTACHMENT_POINTS = List.of(Direction.values());
 
     /**
@@ -86,17 +84,19 @@ public interface IPart extends ICustomCableConnection, Clearable {
      * Write the part information for saving. This information will be saved alongside the {@link #getPartItem()} to
      * save settings, inventory or other values to the world.
      *
-     * @param data to be written nbt data
+     * @param data       to be written nbt data
+     * @param registries
      */
-    default void writeToNBT(ValueOutput data) {
+    default void writeToNBT(CompoundTag data, HolderLookup.Provider registries) {
     }
 
     /**
      * Read the previously written NBT Data. this is the mirror for {@link #writeToNBT}.
      *
-     * @param input to be read nbt data
+     * @param data       to be read nbt data
+     * @param registries
      */
-    default void readFromNBT(ValueInput input) {
+    default void readFromNBT(CompoundTag data, HolderLookup.Provider registries) {
     }
 
     /**
@@ -142,8 +142,6 @@ public interface IPart extends ICustomCableConnection, Clearable {
 
     /**
      * a block around the bus's host has been changed.
-     *
-     * @see net.neoforged.neoforge.common.extensions.IBlockExtension#onNeighborChange
      */
     default void onNeighborChanged(BlockGetter level, BlockPos pos, BlockPos neighbor) {
     }
@@ -186,7 +184,8 @@ public interface IPart extends ICustomCableConnection, Clearable {
      * Used to store the state that is synchronized to clients for the visual appearance of this part as NBT. This is
      * only used to store this state for tools such as Create Ponders in Structure NBT. Actual synchronization uses
      * {@link #writeToStream(RegistryFriendlyByteBuf)} and {@link #readFromStream(RegistryFriendlyByteBuf)}. Any data
-     * that is saved to the NBT tag in {@link #writeToNBT(ValueOutput)} does not need to be saved here again.
+     * that is saved to the NBT tag in {@link #writeToNBT(CompoundTag, HolderLookup.Provider)} does not need to be saved
+     * here again.
      * <p>
      * The data saved should be equivalent to the data sent to the client in {@link #writeToStream}.
      * <p>
@@ -196,7 +195,7 @@ public interface IPart extends ICustomCableConnection, Clearable {
      * level.
      */
     @ApiStatus.Experimental
-    default void writeVisualStateToNBT(ValueOutput output) {
+    default void writeVisualStateToNBT(CompoundTag data) {
     }
 
     /**
@@ -213,10 +212,11 @@ public interface IPart extends ICustomCableConnection, Clearable {
      * Used to store the state that is synchronized to clients for the visual appearance of this part as NBT. This is
      * only used to store this state for tools such as Create Ponders in Structure NBT. Actual synchronization uses
      * {@link #writeToStream(RegistryFriendlyByteBuf)} and {@link #readFromStream(RegistryFriendlyByteBuf)}. Any data
-     * that is saved to the NBT tag in {@link #writeToNBT(ValueOutput)} already does not need to be saved here again.
+     * that is saved to the NBT tag in {@link #writeToNBT(CompoundTag, HolderLookup.Provider)} already does not need to
+     * be saved here again.
      */
     @ApiStatus.Experimental
-    default void readVisualStateFromNBT(ValueInput input) {
+    default void readVisualStateFromNBT(CompoundTag data) {
     }
 
     /**
@@ -390,13 +390,6 @@ public interface IPart extends ICustomCableConnection, Clearable {
      */
     default boolean canBePlacedOn(BusSupport what) {
         return what == BusSupport.CABLE;
-    }
-
-    /**
-     * Additional model data to be passed to the part models for rendering this part.
-     */
-    @Nullable
-    default void collectModelData(ModelData.Builder builder) {
     }
 
     /**

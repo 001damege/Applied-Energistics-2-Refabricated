@@ -27,8 +27,6 @@ import java.util.Objects;
 
 import com.google.common.primitives.Ints;
 
-import net.minecraft.world.level.storage.ValueInput;
-
 import appeng.api.config.Actionable;
 import appeng.api.config.PowerMultiplier;
 import appeng.api.networking.crafting.ICraftingLink;
@@ -39,21 +37,21 @@ import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKey;
 import appeng.core.stats.AeStats;
 import appeng.crafting.CraftingLink;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.minecraft.nbt.CompoundTag;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class StorageHelper {
-    private StorageHelper() {
-    }
-
     /**
      * load a crafting link from nbt data.
      *
      * @param data to be loaded data
      * @return crafting link
      */
-    public static ICraftingLink loadCraftingLink(ValueInput data, ICraftingRequester req) {
+    public static ICraftingLink loadCraftingLink(CompoundTag data, ICraftingRequester req) {
         Objects.requireNonNull(data);
         Objects.requireNonNull(req);
-
         return new CraftingLink(data, req);
     }
 
@@ -66,8 +64,7 @@ public final class StorageHelper {
      * @param src     Action source.
      * @return extracted items or {@code null} of nothing was extracted.
      */
-    public static long poweredExtraction(IEnergySource energy, MEStorage inv,
-            AEKey request, long amount, IActionSource src) {
+    public static long poweredExtraction(IEnergySource energy, MEStorage inv, AEKey request, long amount, IActionSource src) {
         return poweredExtraction(energy, inv, request, amount, src, Actionable.MODULATE);
     }
 
@@ -81,8 +78,7 @@ public final class StorageHelper {
      * @param mode    Simulate or modulate
      * @return extracted items or {@code null} of nothing was extracted.
      */
-    public static long poweredExtraction(IEnergySource energy, MEStorage inv,
-            AEKey request, long amount, IActionSource src, Actionable mode) {
+    public static long poweredExtraction(IEnergySource energy, MEStorage inv, AEKey request, long amount, IActionSource src, Actionable mode) {
         Objects.requireNonNull(energy, "energy");
         Objects.requireNonNull(inv, "inv");
         Objects.requireNonNull(request, "request");
@@ -92,8 +88,7 @@ public final class StorageHelper {
         var retrieved = inv.extract(request, amount, Actionable.SIMULATE, src);
 
         var energyFactor = Math.max(1.0, request.getAmountPerOperation());
-        var availablePower = energy.extractAEPower(retrieved / energyFactor, Actionable.SIMULATE,
-                PowerMultiplier.CONFIG);
+        var availablePower = energy.extractAEPower(retrieved / energyFactor, Actionable.SIMULATE, PowerMultiplier.CONFIG);
         var itemToExtract = Math.min((long) (availablePower * energyFactor + 0.9), retrieved);
 
         if (itemToExtract > 0) {
@@ -111,7 +106,6 @@ public final class StorageHelper {
                 return itemToExtract;
             }
         }
-
         return 0;
     }
 
@@ -124,8 +118,7 @@ public final class StorageHelper {
      * @param src    Action source.
      * @return the number of items inserted.
      */
-    public static long poweredInsert(IEnergySource energy, MEStorage inv,
-            AEKey input, long amount, IActionSource src) {
+    public static long poweredInsert(IEnergySource energy, MEStorage inv, AEKey input, long amount, IActionSource src) {
         return poweredInsert(energy, inv, input, amount, src, Actionable.MODULATE);
     }
 
@@ -139,8 +132,7 @@ public final class StorageHelper {
      * @param mode   Simulate or modulate
      * @return the number of items inserted.
      */
-    public static long poweredInsert(IEnergySource energy, MEStorage inv, AEKey input, long amount,
-            IActionSource src, Actionable mode) {
+    public static long poweredInsert(IEnergySource energy, MEStorage inv, AEKey input, long amount, IActionSource src, Actionable mode) {
         Objects.requireNonNull(energy);
         Objects.requireNonNull(inv);
         Objects.requireNonNull(input);
@@ -153,8 +145,7 @@ public final class StorageHelper {
         }
 
         final double energyFactor = Math.max(1.0, input.getAmountPerOperation());
-        final double availablePower = energy.extractAEPower(amount / energyFactor, Actionable.SIMULATE,
-                PowerMultiplier.CONFIG);
+        final double availablePower = energy.extractAEPower(amount / energyFactor, Actionable.SIMULATE, PowerMultiplier.CONFIG);
         amount = Math.min((long) (availablePower * energyFactor + 0.9), amount);
 
         if (amount <= 0) {
@@ -175,6 +166,5 @@ public final class StorageHelper {
         } else {
             return amount;
         }
-
     }
 }

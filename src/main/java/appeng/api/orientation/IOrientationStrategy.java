@@ -86,9 +86,7 @@ public interface IOrientationStrategy {
      */
     Collection<Property<?>> getProperties();
 
-    private static <T extends Comparable<T>> Stream<BlockState> enumerateValues(Stream<BlockState> stream,
-            Property<T> property) {
-        return stream.flatMap(
-                baseState -> property.getPossibleValues().stream().map(value -> baseState.setValue(property, value)));
+    private static <T extends Comparable<T>> Stream<BlockState> enumerateValues(Stream<BlockState> stream, Property<T> property) {
+        return stream.flatMap(baseState -> property.getPossibleValues().stream().map(value -> baseState.setValue(property, value)));
     }
 }

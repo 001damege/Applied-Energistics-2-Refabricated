@@ -24,6 +24,8 @@
 package appeng.api.networking.events;
 
 import appeng.api.networking.IGridNode;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 
 /**
  * Posted by the network when the booting status of the network goes up or down, the change is reflected via
@@ -32,16 +34,18 @@ import appeng.api.networking.IGridNode;
  * Note: Most machines just need to check {@link IGridNode}.isActive()
  */
 public class GridBootingStatusChange extends GridEvent {
-    private final boolean booting;
+    public static final Event<BootingStatusChange> EVENT = EventFactory.createArrayBacked(BootingStatusChange.class, callbacks -> booting -> {
+        for (var callback : callbacks) {
+            var result = callback.change(booting);
+            if (!result) {
+                return false;
+            }
+        }
+        return true;
+    });
 
-    public GridBootingStatusChange(boolean booting) {
-        this.booting = booting;
-    }
-
-    /**
-     * True if the grid is now booting, false if it just finished booting.
-     */
-    public boolean isBooting() {
-        return this.booting;
+    @FunctionalInterface
+    public interface BootingStatusChange {
+        boolean change(boolean booting);
     }
 }

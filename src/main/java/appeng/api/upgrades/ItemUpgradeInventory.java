@@ -40,21 +40,18 @@ final class ItemUpgradeInventory extends UpgradeInventory {
         super(stack.getItem(), upgrades);
         this.stack = stack;
         this.changeCallback = changeCallback;
-
         fromItemContainerContents(stack.getOrDefault(AEComponents.UPGRADES, ItemContainerContents.EMPTY));
     }
 
     @Override
     public void saveChangedInventory(AppEngInternalInventory inv) {
         stack.set(AEComponents.UPGRADES, toItemContainerContents());
-
         super.saveChangedInventory(inv);
     }
 
     @Override
     public void onChangeInventory(AppEngInternalInventory inv, int slot) {
         super.onChangeInventory(inv, slot);
-
         if (changeCallback != null) {
             changeCallback.onUpgradesChanged(stack, this);
         }

@@ -86,6 +86,5 @@ public final class ContainerItemContext {
         public void playEmptySound(Player player, AEKey what) {
             strategy.playEmptySound(player, what);
         }
-
     }
 }

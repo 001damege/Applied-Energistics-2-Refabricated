@@ -39,21 +39,14 @@ import appeng.api.stacks.KeyCounter;
  * your block entity.
  */
 public interface ICraftingMachine {
-
     @Nullable
     static ICraftingMachine of(@Nullable BlockEntity blockEntity, Direction side) {
-        if (blockEntity == null || blockEntity.getLevel() == null) {
-            return null;
-        }
-
-        return blockEntity.getLevel().getCapability(
-                AECapabilities.CRAFTING_MACHINE, blockEntity.getBlockPos(), blockEntity.getBlockState(),
-                blockEntity, side);
+        return blockEntity == null || blockEntity.getLevel() == null ? null : AECapabilities.CRAFTING_MACHINE.find(blockEntity.getLevel(), blockEntity.getBlockPos(), blockEntity.getBlockState(), blockEntity, side);
     }
 
     @Nullable
     static ICraftingMachine of(Level level, BlockPos pos, Direction side) {
-        return level.getCapability(AECapabilities.CRAFTING_MACHINE, pos, side);
+        return AECapabilities.CRAFTING_MACHINE.find(level, pos, side);
     }
 
     /**

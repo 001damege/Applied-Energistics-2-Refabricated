@@ -30,7 +30,6 @@ import appeng.api.networking.security.IActionHost;
 import appeng.api.util.DimensionalBlockPos;
 
 public interface IWirelessAccessPoint extends IActionHost {
-
     /**
      * @return location of WAP
      */

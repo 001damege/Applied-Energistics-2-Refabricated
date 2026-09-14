@@ -107,8 +107,7 @@ public interface ICraftingService extends IGridService {
      * @return a future which will at an undetermined point in the future get you the {@link ICraftingPlan} do not wait
      *         on this, your be waiting forever.
      */
-    Future<ICraftingPlan> beginCraftingCalculation(Level level, ICraftingSimulationRequester simRequester,
-            AEKey craftWhat, long amount, CalculationStrategy strategy);
+    Future<ICraftingPlan> beginCraftingCalculation(Level level, ICraftingSimulationRequester simRequester, AEKey craftWhat, long amount, CalculationStrategy strategy);
 
     /**
      * Submit the job to the Crafting system for processing.
@@ -127,9 +126,7 @@ public interface ICraftingService extends IGridService {
      *
      * @return the success/failure state, and a crafting link in case if successful and there was a requestingMachine.
      */
-    ICraftingSubmitResult submitJob(ICraftingPlan job, @Nullable ICraftingRequester requestingMachine,
-            @Nullable ICraftingCPU target,
-            boolean prioritizePower, IActionSource src);
+    ICraftingSubmitResult submitJob(ICraftingPlan job, @Nullable ICraftingRequester requestingMachine, @Nullable ICraftingCPU target, boolean prioritizePower, IActionSource src);
 
     /**
      * @return list of all the crafting cpus on the grid

@@ -24,6 +24,8 @@
 package appeng.api.networking.events;
 
 import appeng.api.networking.IGridNode;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 
 /**
  * Implementers of a IGridBlock must post this event when your getIdlePowerUsage starts returning a new value, if you do
@@ -32,10 +34,14 @@ import appeng.api.networking.IGridNode;
  * you do not need to send this event when your node is added / removed from the grid.
  */
 public class GridPowerIdleChange extends GridEvent {
+    public static final Event<PowerIdleChange> EVENT = EventFactory.createArrayBacked(PowerIdleChange.class, callbacks -> node ->  {
+        for (var callback : callbacks) {
+            callback.change(node);
+        }
+    });
 
-    public final IGridNode node;
-
-    public GridPowerIdleChange(IGridNode nodeThatChanged) {
-        this.node = nodeThatChanged;
+    @FunctionalInterface
+    public interface PowerIdleChange {
+        void change(IGridNode node);
     }
 }

@@ -23,26 +23,25 @@
 
 package appeng.api.inventories;
 
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 
 /**
  * Implementation aid for {@link InternalInventory} that ensures the platorm adapter maintains its referential equality
  * over time.
  */
 public abstract class BaseInternalInventory implements InternalInventory {
-
-    private ResourceHandler<ItemResource> platformWrapper;
+    private Storage<ItemVariant> platformWrapper;
 
     @Override
-    public final ResourceHandler<ItemResource> toResourceHandler() {
+    public Storage<ItemVariant> toResourceHandler() {
         if (platformWrapper == null) {
             platformWrapper = createResourceHandler();
         }
         return platformWrapper;
     }
 
-    protected ResourceHandler<ItemResource> createResourceHandler() {
+    protected Storage<ItemVariant> createResourceHandler() {
         return new InternalInventoryResourceHandler(this);
     }
 }

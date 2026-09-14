@@ -29,7 +29,6 @@ import net.minecraft.world.entity.player.Player;
 import appeng.api.util.AEColor;
 
 public interface IColorableBlockEntity {
-
     AEColor getColor();
 
     boolean recolourBlock(Direction side, AEColor colour, Player who);

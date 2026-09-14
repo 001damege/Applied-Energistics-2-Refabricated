@@ -23,6 +23,12 @@
 
 package appeng.api.config;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter
 public enum AccessRestriction {
     NO_ACCESS(false, false),
     READ(true, false),
@@ -31,17 +37,4 @@ public enum AccessRestriction {
 
     private final boolean allowExtraction;
     private final boolean allowInsertion;
-
-    AccessRestriction(boolean allowExtraction, boolean allowInsertion) {
-        this.allowExtraction = allowExtraction;
-        this.allowInsertion = allowInsertion;
-    }
-
-    public boolean isAllowExtraction() {
-        return allowExtraction;
-    }
-
-    public boolean isAllowInsertion() {
-        return allowInsertion;
-    }
 }

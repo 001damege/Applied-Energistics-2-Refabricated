@@ -24,9 +24,7 @@ import appeng.me.helpers.GridServiceContainer;
  * Allows access to non-public features of {@link GridServices}.
  */
 public class GridServicesInternal {
-
     public static GridServiceContainer createServices(IGrid g) {
         return GridServices.createServices(g);
     }
-
 }

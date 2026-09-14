@@ -1,20 +1,18 @@
 package appeng.api.implementations.menuobjects;
 
-import java.util.function.Supplier;
-
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
 import appeng.api.upgrades.IUpgradeInventory;
 import appeng.api.upgrades.IUpgradeableItem;
 import appeng.api.upgrades.UpgradeInventories;
 import appeng.items.contents.StackDependentSupplier;
 import appeng.util.inv.SupplierInternalInventory;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
-public final class DelegateItemUpgradeInventory extends SupplierInternalInventory<IUpgradeInventory>
-        implements IUpgradeInventory {
+import java.util.function.Supplier;
+
+public final class DelegateItemUpgradeInventory extends SupplierInternalInventory<IUpgradeInventory> implements IUpgradeInventory {
     public DelegateItemUpgradeInventory(Supplier<ItemStack> stackSupplier) {
         super(new StackDependentSupplier<>(stackSupplier, DelegateItemUpgradeInventory::inventoryFromStack));
     }
@@ -35,20 +33,16 @@ public final class DelegateItemUpgradeInventory extends SupplierInternalInventor
     }
 
     @Override
-    public void readFromNBT(ValueInput input, String subtag) {
-        getDelegate().readFromNBT(input, subtag);
+    public void readFromNBT(CompoundTag data, String subtag, HolderLookup.Provider registries) {
+        getDelegate().readFromNBT(data, subtag, registries);
     }
 
     @Override
-    public void writeToNBT(ValueOutput output, String subtag) {
-        getDelegate().writeToNBT(output, subtag);
+    public void writeToNBT(CompoundTag data, String subtag, HolderLookup.Provider registries) {
+        getDelegate().writeToNBT(data, subtag, registries);
     }
 
     private static IUpgradeInventory inventoryFromStack(ItemStack stack) {
-        if (stack.getItem() instanceof IUpgradeableItem upgradeableItem) {
-            return upgradeableItem.getUpgrades(stack);
-        } else {
-            return UpgradeInventories.empty();
-        }
+        return stack.getItem() instanceof IUpgradeableItem upgradeableItem ? upgradeableItem.getUpgrades(stack) : UpgradeInventories.empty();
     }
 }

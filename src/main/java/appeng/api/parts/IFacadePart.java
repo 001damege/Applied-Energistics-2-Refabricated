@@ -40,7 +40,6 @@ import net.minecraft.world.phys.Vec3;
  */
 @ApiStatus.NonExtendable
 public interface IFacadePart {
-
     /**
      * used to save the part.
      */

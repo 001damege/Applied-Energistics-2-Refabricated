@@ -42,6 +42,5 @@ public interface IEnergySource {
      * @param mode should the action be simulated or performed?
      * @return returns extracted power.
      */
-    double extractAEPower(double amt, Actionable mode,
-            PowerMultiplier usePowerMultiplier);
+    double extractAEPower(double amt, Actionable mode, PowerMultiplier usePowerMultiplier);
 }

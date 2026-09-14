@@ -23,48 +23,38 @@
 
 package appeng.api.inventories;
 
+import appeng.core.definitions.AEItems;
+import lombok.RequiredArgsConstructor;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.StoragePreconditions;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
+import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.IndexModifier;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.TransferPreconditions;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
-import net.neoforged.neoforge.transfer.transaction.TransactionContext;
+import java.util.Iterator;
 
-import appeng.core.definitions.AEItems;
-
-class InternalInventoryResourceHandler extends SnapshotJournal<InternalInventoryResourceHandler.Snapshot>
-        implements ResourceHandler<ItemResource>, IndexModifier<ItemResource> {
+@RequiredArgsConstructor
+class InternalInventoryResourceHandler extends SnapshotParticipant<InternalInventoryResourceHandler.Snapshot> implements Storage<ItemVariant> {
     private final InternalInventory inventory;
     @Nullable
     private Snapshot lastReleasedSnapshot;
 
-    public InternalInventoryResourceHandler(InternalInventory inventory) {
-        this.inventory = inventory;
-    }
-
     @Override
-    public void set(int index, ItemResource resource, int amount) {
-        inventory.setItemDirect(index, resource.toStack(amount));
-    }
+    public long insert(ItemVariant resource, long maxAmount, TransactionContext transaction) {
+        StoragePreconditions.notBlankNotNegative(resource, maxAmount);
 
-    @Override
-    public int insert(ItemResource resource, int maxAmount, TransactionContext transaction) {
-        TransferPreconditions.checkNonEmptyNonNegative(resource, maxAmount);
-
-        var stack = resource.toStack(maxAmount);
-
+        var stack = resource.toStack((int) maxAmount);
         updateSnapshots(transaction);
-
         var overflow = inventory.addItems(stack);
         return maxAmount - overflow.getCount();
     }
 
     @Override
-    public int extract(ItemResource resource, int maxAmount, TransactionContext transaction) {
-        TransferPreconditions.checkNonEmptyNonNegative(resource, maxAmount);
+    public long extract(ItemVariant resource, long maxAmount, TransactionContext transaction) {
+        StoragePreconditions.notBlankNotNegative(resource, maxAmount);
 
         // Do not allow extraction of wrapped fluid stacks because they're an internal detail
         if (resource.getItem() == AEItems.WRAPPED_GENERIC_STACK.asItem()) {
@@ -72,59 +62,8 @@ class InternalInventoryResourceHandler extends SnapshotJournal<InternalInventory
         }
 
         updateSnapshots(transaction);
-
-        ItemStack extracted = inventory.removeItems(maxAmount, resource.toStack(), null);
-
+        var extracted = inventory.removeItems((int) maxAmount, resource.toStack(), null);
         return extracted.getCount();
-    }
-
-    @Override
-    public int insert(int index, ItemResource resource, int maxAmount, TransactionContext transaction) {
-        TransferPreconditions.checkNonEmptyNonNegative(resource, maxAmount);
-
-        updateSnapshots(transaction);
-
-        var overflow = inventory.insertItem(index, resource.toStack(maxAmount), false).getCount();
-        return maxAmount - overflow;
-    }
-
-    @Override
-    public int extract(int index, ItemResource resource, int maxAmount, TransactionContext transaction) {
-        TransferPreconditions.checkNonEmptyNonNegative(resource, maxAmount);
-
-        // Do not allow extraction of wrapped fluid stacks because they're an internal detail
-        if (resource.getItem() == AEItems.WRAPPED_GENERIC_STACK.asItem()) {
-            return 0;
-        }
-
-        updateSnapshots(transaction);
-
-        return inventory.extractItem(index, maxAmount, false).getCount();
-    }
-
-    @Override
-    public int size() {
-        return inventory.size();
-    }
-
-    @Override
-    public boolean isValid(int index, ItemResource resource) {
-        return inventory.isItemValid(index, resource.toStack());
-    }
-
-    @Override
-    public ItemResource getResource(int index) {
-        return ItemResource.of(inventory.getStackInSlot(index));
-    }
-
-    @Override
-    public long getAmountAsLong(int index) {
-        return inventory.getStackInSlot(index).getCount();
-    }
-
-    @Override
-    public long getCapacityAsLong(int index, ItemResource resource) {
-        return inventory.getSlotLimit(index);
     }
 
     @Override
@@ -146,7 +85,7 @@ class InternalInventoryResourceHandler extends SnapshotJournal<InternalInventory
     }
 
     @Override
-    protected void revertToSnapshot(Snapshot snapshot) {
+    protected void readSnapshot(Snapshot snapshot) {
         var items = snapshot.items;
         var counts = snapshot.counts;
         for (int i = 0; i < items.length; i++) {
@@ -177,12 +116,18 @@ class InternalInventoryResourceHandler extends SnapshotJournal<InternalInventory
     }
 
     @Override
-    public void onRootCommit(Snapshot original) {
+    protected void onFinalCommit() {
+        Snapshot original = new Snapshot();
         for (int i = 0; i < original.items.length; i++) {
             var current = inventory.getStackInSlot(i);
             if (current != original.items[i] || current.getCount() != original.counts[i]) {
                 inventory.sendChangeNotification(i);
             }
         }
+    }
+
+    @Override
+    public Iterator<StorageView<ItemVariant>> iterator() {
+        return null;
     }
 }

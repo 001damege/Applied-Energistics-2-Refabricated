@@ -30,6 +30,10 @@ import com.google.common.base.Preconditions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
+import lombok.Getter;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.Registry;
@@ -37,10 +41,9 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.storage.ValueInput;
 
 import appeng.api.storage.AEKeyFilter;
 import appeng.core.AELog;
@@ -52,19 +55,21 @@ import appeng.util.ReadableNumberConverter;
  * {@link AEItemKeys}.
  */
 public abstract class AEKeyType {
-    public static final ResourceKey<Registry<AEKeyType>> REGISTRY_KEY = ResourceKey
-            .createRegistryKey(AppEng.makeId("keytypes"));
-    public static final Codec<AEKeyType> CODEC = Codec
-            .lazyInitialized(() -> AEKeyTypesInternal.getRegistry().byNameCodec());
-    public static final StreamCodec<RegistryFriendlyByteBuf, AEKeyType> STREAM_CODEC = ByteBufCodecs
-            .registry(AEKeyType.REGISTRY_KEY);
+    public static final ResourceKey<Registry<AEKeyType>> REGISTRY_KEY = ResourceKey.createRegistryKey(AppEng.makeId("keytypes"));
+    public static final Codec<AEKeyType> CODEC = Codec.lazyInitialized(() -> AEKeyTypesInternal.getRegistry().byNameCodec());
+    public static final StreamCodec<RegistryFriendlyByteBuf, AEKeyType> STREAM_CODEC = ByteBufCodecs.registry(AEKeyType.REGISTRY_KEY);
 
-    private final Identifier id;
+    private final ResourceLocation id;
     private final Class<? extends AEKey> keyClass;
     private final AEKeyFilter filter;
+    /**
+     * -- GETTER --
+     *  Get the translated name of this key space.
+     */
+    @Getter
     private final Component description;
 
-    public AEKeyType(Identifier id, Class<? extends AEKey> keyClass, Component description) {
+    public AEKeyType(ResourceLocation id, Class<? extends AEKey> keyClass, Component description) {
         Preconditions.checkArgument(!keyClass.equals(AEKey.class), "Can't register a key type for AEKey itself");
         this.id = id;
         this.keyClass = keyClass;
@@ -105,7 +110,7 @@ public abstract class AEKeyType {
     /**
      * @return The unique ID of this storage channel.
      */
-    public final Identifier getId() {
+    public final ResourceLocation getId() {
         return id;
     }
 
@@ -150,11 +155,12 @@ public abstract class AEKeyType {
      * Attempts to load a key of this type from the given tag.
      */
     @Nullable
-    public AEKey loadKeyFromTag(ValueInput input) {
+    public AEKey loadKeyFromTag(HolderLookup.Provider registries, CompoundTag tag) {
+        var ops = registries.createSerializationContext(NbtOps.INSTANCE);
         try {
-            return input.read(codec()).orElseThrow();
+            return codec().codec().decode(ops, tag).getOrThrow().getFirst();
         } catch (Exception e) {
-            AELog.debug("Tried to load an invalid item key from NBT: %s", input, e);
+            AELog.debug("Tried to load an invalid item key from NBT: %s", tag, e);
             return null;
         }
     }
@@ -194,13 +200,6 @@ public abstract class AEKeyType {
     @Override
     public String toString() {
         return id.toString();
-    }
-
-    /**
-     * Get the translated name of this key space.
-     */
-    public Component getDescription() {
-        return description;
     }
 
     /**
@@ -258,7 +257,7 @@ public abstract class AEKeyType {
      * Returns all tags that apply to keys of this type. Is an optional operation is keys of this type cannot have tags,
      * and {@link AEKey#isTagged(TagKey)} is not implemented for this key type.
      *
-     * @see Registry#listTagIds()
+     * @see Registry#getTagNames()
      */
     public Stream<TagKey<?>> getTagNames() {
         return Stream.empty();

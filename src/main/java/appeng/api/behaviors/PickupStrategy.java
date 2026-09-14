@@ -60,8 +60,7 @@ public interface PickupStrategy {
 
     @FunctionalInterface
     interface Factory {
-        PickupStrategy create(ServerLevel level, BlockPos fromPos, Direction fromSide, BlockEntity host,
-                ItemEnchantments enchantments, @Nullable UUID owningPlayerId);
+        PickupStrategy create(ServerLevel level, BlockPos fromPos, Direction fromSide, BlockEntity host, ItemEnchantments enchantments, @Nullable UUID owningPlayerId);
     }
 
     static void register(AEKeyType type, Factory factory) {

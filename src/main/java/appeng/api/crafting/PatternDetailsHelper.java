@@ -65,8 +65,7 @@ public final class PatternDetailsHelper {
      * it encodes its patterns. You do not need to register {@linkplain #registerDecoder an additional decoder} for the
      * returned item.
      */
-    public static <T extends IPatternDetails> EncodedPatternItemBuilder<T> encodedPatternItemBuilder(
-            EncodedPatternDecoder<T> decoder) {
+    public static <T extends IPatternDetails> EncodedPatternItemBuilder<T> encodedPatternItemBuilder(EncodedPatternDecoder<T> decoder) {
         return new EncodedPatternItemBuilder<>(decoder);
     }
 
@@ -75,18 +74,12 @@ public final class PatternDetailsHelper {
      * 
      * @see #encodedPatternItemBuilder(EncodedPatternDecoder)
      */
-    public static <T extends IPatternDetails> EncodedPatternItemBuilder<T> encodedPatternItemBuilder(
-            Function<AEItemKey, T> decoder) {
+    public static <T extends IPatternDetails> EncodedPatternItemBuilder<T> encodedPatternItemBuilder(Function<AEItemKey, T> decoder) {
         return new EncodedPatternItemBuilder<>((what, level) -> decoder.apply(what));
     }
 
     public static boolean isEncodedPattern(ItemStack stack) {
-        for (var decoder : DECODERS) {
-            if (decoder.isEncodedPattern(stack)) {
-                return true;
-            }
-        }
-        return false;
+        return DECODERS.stream().anyMatch(decoder -> decoder.isEncodedPattern(stack));
     }
 
     @Nullable
@@ -137,11 +130,9 @@ public final class PatternDetailsHelper {
      * @param allowFluidSubstitutes Controls whether the ME system will allow the use of equivalent fluids.
      * @throws IllegalArgumentException If either in or out contain only empty ItemStacks.
      */
-    public static ItemStack encodeCraftingPattern(RecipeHolder<CraftingRecipe> recipe, ItemStack[] in,
-            ItemStack out, boolean allowSubstitutes, boolean allowFluidSubstitutes) {
+    public static ItemStack encodeCraftingPattern(RecipeHolder<CraftingRecipe> recipe, ItemStack[] in, ItemStack out, boolean allowSubstitutes, boolean allowFluidSubstitutes) {
         var stack = AEItems.CRAFTING_PATTERN.stack();
-        AECraftingPattern.encode(stack, recipe, in, out, allowSubstitutes,
-                allowFluidSubstitutes);
+        AECraftingPattern.encode(stack, recipe, in, out, allowSubstitutes, allowFluidSubstitutes);
         return stack;
     }
 
@@ -156,9 +147,7 @@ public final class PatternDetailsHelper {
      * @param allowSubstitutes Controls whether the ME system will allow the use of equivalent items to craft this
      *                         recipe.
      */
-    public static ItemStack encodeStonecuttingPattern(RecipeHolder<StonecutterRecipe> recipe, AEItemKey in,
-            AEItemKey out,
-            boolean allowSubstitutes) {
+    public static ItemStack encodeStonecuttingPattern(RecipeHolder<StonecutterRecipe> recipe, AEItemKey in, AEItemKey out, boolean allowSubstitutes) {
         var stack = AEItems.STONECUTTING_PATTERN.stack();
         AEStonecuttingPattern.encode(stack, recipe, in, out, allowSubstitutes);
         return stack;
@@ -178,12 +167,7 @@ public final class PatternDetailsHelper {
      * @param allowSubstitutes Controls whether the ME system will allow the use of equivalent items to craft this
      *                         recipe.
      */
-    public static ItemStack encodeSmithingTablePattern(RecipeHolder<SmithingRecipe> recipe,
-            AEItemKey template,
-            AEItemKey base,
-            AEItemKey addition,
-            AEItemKey out,
-            boolean allowSubstitutes) {
+    public static ItemStack encodeSmithingTablePattern(RecipeHolder<SmithingRecipe> recipe, AEItemKey template, AEItemKey base, AEItemKey addition, AEItemKey out, boolean allowSubstitutes) {
         var stack = AEItems.SMITHING_TABLE_PATTERN.stack();
         AESmithingTablePattern.encode(stack, recipe, template, base, addition, out, allowSubstitutes);
         return stack;

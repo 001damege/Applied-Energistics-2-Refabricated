@@ -124,31 +124,19 @@ public final class KeyCounter implements Iterable<Object2LongMap.Entry<AEKey>> {
     public long get(AEKey key) {
         Objects.requireNonNull(key);
         var subIndex = lists.get(key.getPrimaryKey());
-        if (subIndex == null) {
-            return 0;
-        }
-        return subIndex.get(key);
+        return subIndex == null ? 0 : subIndex.get(key);
     }
 
     public void reset() {
-        for (var list : lists.values()) {
-            list.reset();
-        }
+        lists.values().forEach(VariantCounter::reset);
     }
 
     public void clear() {
-        for (var list : lists.values()) {
-            list.clear();
-        }
+        lists.values().forEach(VariantCounter::clear);
     }
 
     public boolean isEmpty() {
-        for (var list : lists.values()) {
-            if (!list.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
+        return lists.values().stream().allMatch(VariantCounter::isEmpty);
     }
 
     public int size() {
@@ -161,17 +149,12 @@ public final class KeyCounter implements Iterable<Object2LongMap.Entry<AEKey>> {
 
     @Override
     public Iterator<Object2LongMap.Entry<AEKey>> iterator() {
-        return Iterators.concat(
-                Iterators.transform(lists.values().iterator(), VariantCounter::iterator));
+        return Iterators.concat(Iterators.transform(lists.values().iterator(), VariantCounter::iterator));
     }
 
     private VariantCounter getSubIndex(AEKey key) {
         // We check before the call to computeIfAbsent, otherwise we'd need a capturing lambda.
-        if (key.getFuzzySearchMaxValue() > 0) {
-            return lists.computeIfAbsent(key.getPrimaryKey(), k -> new VariantCounter.FuzzyVariantMap());
-        } else {
-            return lists.computeIfAbsent(key.getPrimaryKey(), k -> new VariantCounter.UnorderedVariantMap());
-        }
+        return key.getFuzzySearchMaxValue() > 0 ? lists.computeIfAbsent(key.getPrimaryKey(), k -> new VariantCounter.FuzzyVariantMap()) : lists.computeIfAbsent(key.getPrimaryKey(), k -> new VariantCounter.UnorderedVariantMap());
     }
 
     @Nullable

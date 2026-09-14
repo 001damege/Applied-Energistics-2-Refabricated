@@ -24,16 +24,22 @@
 package appeng.api.networking.events;
 
 import appeng.api.networking.IGridNode;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 
 /**
  * Posted by storage devices to inform AE the channel cache that the included node has changed its mind about its
  * channel requirements.
  */
 public class GridChannelRequirementChanged extends GridEvent {
+    public static final Event<ChannelRequirementChanged> EVENT = EventFactory.createArrayBacked(ChannelRequirementChanged.class, callbacks -> node -> {
+        for (var callback : callbacks) {
+            callback.changed(node);
+        }
+    });
 
-    public final IGridNode node;
-
-    public GridChannelRequirementChanged(IGridNode n) {
-        this.node = n;
+    @FunctionalInterface
+    public interface ChannelRequirementChanged {
+        void changed(IGridNode node);
     }
 }

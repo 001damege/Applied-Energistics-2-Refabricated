@@ -1,5 +1,7 @@
 package appeng.api.ids;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,10 +11,8 @@ import appeng.core.AppEng;
 /**
  * IDs of the AE2 creative tabs.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AECreativeTabIds {
-    private AECreativeTabIds() {
-    }
-
     public static final ResourceKey<CreativeModeTab> MAIN = create("main");
 
     public static final ResourceKey<CreativeModeTab> FACADES = create("facades");

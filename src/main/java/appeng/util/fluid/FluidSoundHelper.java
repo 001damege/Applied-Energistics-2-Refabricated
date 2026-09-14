@@ -18,36 +18,32 @@
 
 package appeng.util.fluid;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributes;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.SoundActions;
-import net.neoforged.neoforge.transfer.fluid.FluidResource;
 
 import appeng.api.stacks.AEFluidKey;
 
 /**
  * Helps with playing fill/empty sounds for fluids to players.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FluidSoundHelper {
-
-    private FluidSoundHelper() {
-    }
-
     public static void playFillSound(Player player, @Nullable AEFluidKey fluid) {
         if (fluid == null) {
             return;
         }
 
-        SoundEvent fillSound = fluid.getFluid().getFluidType().getSound(player, SoundActions.BUCKET_FILL);
+        SoundEvent fillSound = FluidVariantAttributes.getFillSound(fluid.toResource());
         if (fillSound == null) {
             return;
         }
-
         playSound(player, fillSound);
     }
 
@@ -56,22 +52,19 @@ public final class FluidSoundHelper {
             return;
         }
 
-        SoundEvent fillSound = fluid.getFluid().getFluidType().getSound(player, SoundActions.BUCKET_EMPTY);
+        SoundEvent fillSound = FluidVariantAttributes.getEmptySound(fluid.toResource());
         if (fillSound == null) {
             return;
         }
-
         playSound(player, fillSound);
     }
 
     /**
-     * @see net.neoforged.neoforge.transfer.fluid.FluidUtil#tryPlaceFluid(FluidResource, Player, Level, InteractionHand,
-     *      BlockPos)
+     * @see net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorageUtil#interactWithFluidStorage(Storage, Player, InteractionHand)
      */
     private static void playSound(Player player, SoundEvent fillSound) {
         // TODO 1.21.11: This now plays it for everyone.
         // This should just play the sound for the player themselves
         player.playSound(fillSound);
     }
-
 }

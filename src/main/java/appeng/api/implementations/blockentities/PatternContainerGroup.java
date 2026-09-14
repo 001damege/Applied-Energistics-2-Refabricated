@@ -1,10 +1,10 @@
 package appeng.api.implementations.blockentities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
+import appeng.api.parts.IPartHost;
+import appeng.api.stacks.AEItemKey;
+import appeng.core.localization.GuiText;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -14,11 +14,10 @@ import net.minecraft.world.Nameable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.capabilities.Capabilities;
+import org.jetbrains.annotations.Nullable;
 
-import appeng.api.parts.IPartHost;
-import appeng.api.stacks.AEItemKey;
-import appeng.core.localization.GuiText;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides both a key for grouping pattern providers, and displaying the group in the pattern access terminal.
@@ -32,13 +31,8 @@ import appeng.core.localization.GuiText;
  * @param name    The name to use to refer to the group.
  * @param tooltip Additional tooltip lines to describe the group (i.e. installed upgrades).
  */
-public record PatternContainerGroup(
-        @Nullable AEItemKey icon,
-        Component name,
-        List<Component> tooltip) {
-
-    private static final PatternContainerGroup NOTHING = new PatternContainerGroup(AEItemKey.of(Items.AIR),
-            GuiText.Nothing.text(), List.of());
+public record PatternContainerGroup(@Nullable AEItemKey icon, Component name, List<Component> tooltip) {
+    private static final PatternContainerGroup NOTHING = new PatternContainerGroup(AEItemKey.of(Items.AIR), GuiText.Nothing.text(), List.of());
 
     public static PatternContainerGroup nothing() {
         return NOTHING;
@@ -82,12 +76,10 @@ public record PatternContainerGroup(
         }
 
         // Heuristic: If it doesn't allow item or fluid transfers, ignore it
-        var itemHandler = level.getCapability(Capabilities.Item.BLOCK, pos, target.getBlockState(), target,
-                side);
-        if (itemHandler == null || itemHandler.size() <= 0) {
-            var fluidHandler = level.getCapability(Capabilities.Fluid.BLOCK, pos, target.getBlockState(), target,
-                    side);
-            if (fluidHandler == null || fluidHandler.size() == 0) {
+        var itemHandler = ItemStorage.SIDED.find(level, pos, target.getBlockState(), target, side);
+        if (itemHandler == null) {
+            var fluidHandler = FluidStorage.SIDED.find(level, pos, target.getBlockState(), target, side);
+            if (fluidHandler == null) {
                 return null;
             }
         }
@@ -128,7 +120,6 @@ public record PatternContainerGroup(
                 name = targetItem.getHoverName();
             }
         }
-
         return new PatternContainerGroup(icon, name, tooltip);
     }
 }

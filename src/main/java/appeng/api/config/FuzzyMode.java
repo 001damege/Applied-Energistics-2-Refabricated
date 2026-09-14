@@ -23,12 +23,11 @@
 
 package appeng.api.config;
 
+import appeng.util.AECodecs;
 import com.mojang.serialization.Codec;
-
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;
-import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
 public enum FuzzyMode implements StringRepresentable {
     /**
@@ -59,8 +58,7 @@ public enum FuzzyMode implements StringRepresentable {
 
     public static final Codec<FuzzyMode> CODEC = StringRepresentable.fromEnum(FuzzyMode::values);
 
-    public static final StreamCodec<FriendlyByteBuf, FuzzyMode> STREAM_CODEC = NeoForgeStreamCodecs
-            .enumCodec(FuzzyMode.class);
+    public static final StreamCodec<FriendlyByteBuf, FuzzyMode> STREAM_CODEC = AECodecs.enumCodec(FuzzyMode.class);
 
     public final float breakPoint;
     /**

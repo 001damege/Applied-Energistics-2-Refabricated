@@ -51,17 +51,11 @@ public final class StorageCells {
 
     /**
      * Register a new handler.
-     * <p>
-     * Never be call before {@link net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent} was handled by AE2. Will throw
-     * an exception otherwise.
-     *
      * @param handler cell handler
      */
     public static synchronized void addCellHandler(ICellHandler handler) {
         Objects.requireNonNull(handler, "Called before FMLCommonSetupEvent.");
-        Preconditions.checkArgument(!handlers.contains(handler),
-                "Tried to register the same handler instance twice.");
-
+        Preconditions.checkArgument(!handlers.contains(handler), "Tried to register the same handler instance twice.");
         handlers.add(handler);
     }
 
@@ -73,15 +67,7 @@ public final class StorageCells {
      *         the handler instead. )
      */
     public static synchronized boolean isCellHandled(ItemStack is) {
-        if (is.isEmpty()) {
-            return false;
-        }
-        for (ICellHandler ch : handlers) {
-            if (ch.isCell(is)) {
-                return true;
-            }
-        }
-        return false;
+        return !is.isEmpty() && handlers.stream().anyMatch(ch -> ch.isCell(is));
     }
 
     /**
@@ -92,15 +78,7 @@ public final class StorageCells {
      */
     @Nullable
     public static synchronized ICellHandler getHandler(ItemStack is) {
-        if (is.isEmpty()) {
-            return null;
-        }
-        for (ICellHandler ch : handlers) {
-            if (ch.isCell(is)) {
-                return ch;
-            }
-        }
-        return null;
+        return is.isEmpty() ? null : handlers.stream().filter(ch -> ch.isCell(is)).findFirst().orElse(null);
     }
 
     /**
@@ -112,16 +90,6 @@ public final class StorageCells {
      */
     @Nullable
     public static synchronized StorageCell getCellInventory(ItemStack is, @Nullable ISaveProvider host) {
-        if (is.isEmpty()) {
-            return null;
-        }
-        for (var ch : handlers) {
-            var inventory = ch.getCellInventory(is, host);
-            if (inventory != null) {
-                return inventory;
-            }
-        }
-        return null;
+        return is.isEmpty() ? null : handlers.stream().map(ch -> ch.getCellInventory(is, host)).filter(Objects::nonNull).findFirst().orElse(null);
     }
-
 }

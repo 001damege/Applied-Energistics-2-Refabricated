@@ -7,6 +7,9 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import net.minecraft.network.FriendlyByteBuf;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +25,22 @@ import net.minecraft.world.item.component.CustomData;
 import appeng.api.ids.AEComponents;
 import appeng.core.definitions.AEItems;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AECodecs {
     private static final Logger LOG = LoggerFactory.getLogger(AECodecs.class);
 
-    private AECodecs() {
+    public static <B extends FriendlyByteBuf, V extends Enum<V>> StreamCodec<B, V> enumCodec(Class<V> enumClass) {
+        return new StreamCodec<>() {
+            @Override
+            public V decode(B data) {
+                return data.readEnum(enumClass);
+            }
+
+            @Override
+            public void encode(B data, V enumClass) {
+                data.writeEnum(enumClass);
+            }
+        };
     }
 
     public static <B extends ByteBuf, V> StreamCodec<B, V> nullable(StreamCodec<B, V> codec) {

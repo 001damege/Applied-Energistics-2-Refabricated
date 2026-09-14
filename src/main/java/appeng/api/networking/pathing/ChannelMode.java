@@ -1,8 +1,13 @@
 package appeng.api.networking.pathing;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * Defines how AE2's channel capacities work.
  */
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum ChannelMode {
     /**
      * Cables carry infinite channels, effectively disabling pathfinding and channel requirements.
@@ -25,26 +30,10 @@ public enum ChannelMode {
      */
     X4(32, 4);
 
+    // The maximum number of channels supported by ad-hoc networks.
+    @Getter
     private final int adHocNetworkChannels;
-
+    // Multiplier for the default capacity of cables. Must be a power of two.
+    @Getter
     private final int cableCapacityFactor;
-
-    ChannelMode(int adHocNetworkChannels, int cableCapacityFactor) {
-        this.adHocNetworkChannels = adHocNetworkChannels;
-        this.cableCapacityFactor = cableCapacityFactor;
-    }
-
-    /**
-     * @return The maximum number of channels supported by ad-hoc networks.
-     */
-    public int getAdHocNetworkChannels() {
-        return adHocNetworkChannels;
-    }
-
-    /**
-     * @return Multiplier for the default capacity of cables. Must be a power of two.
-     */
-    public int getCableCapacityFactor() {
-        return cableCapacityFactor;
-    }
 }

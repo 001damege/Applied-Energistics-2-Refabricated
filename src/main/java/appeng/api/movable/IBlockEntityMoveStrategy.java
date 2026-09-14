@@ -70,7 +70,5 @@ public interface IBlockEntityMoveStrategy {
      * @param newPosition Position to move to
      * @return True if moving succeeded. If false is returned, AE2 will attempt to recover the original entity.
      */
-    boolean completeMove(BlockEntity entity, BlockState state, CompoundTag savedData, Level newLevel,
-            BlockPos newPosition);
-
+    boolean completeMove(BlockEntity entity, BlockState state, CompoundTag savedData, Level newLevel, BlockPos newPosition);
 }

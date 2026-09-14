@@ -23,6 +23,8 @@
 
 package appeng.api.networking.events.statistics;
 
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 
@@ -32,43 +34,24 @@ import net.minecraft.world.level.ChunkPos;
  * Listeners will not receive updates about pre-existing chunks when joining a network.
  */
 public abstract class GridChunkEvent extends GridStatisticsEvent {
-
-    private final ServerLevel level;
-    private final ChunkPos chunkPos;
-
-    public GridChunkEvent(ServerLevel level, ChunkPos chunkPos) {
-        this.level = level;
-        this.chunkPos = chunkPos;
-    }
-
-    public ServerLevel getLevel() {
-        return level;
-    }
-
-    public ChunkPos getChunkPos() {
-        return chunkPos;
-    }
-
-    /**
-     * A chunk was added to the area this network spans.
-     */
-    public static class GridChunkAdded extends GridChunkEvent {
-
-        public GridChunkAdded(ServerLevel level, ChunkPos chunkPos) {
-            super(level, chunkPos);
+    public static final Event<Added> ADDED = EventFactory.createArrayBacked(Added.class, callbacks -> (level, chunkPos) -> {
+        for (var callback : callbacks) {
+            callback.added(level, chunkPos);
         }
+    });
 
-    }
-
-    /**
-     * A chunk was removed to the area this network spans.
-     */
-    public static class GridChunkRemoved extends GridChunkEvent {
-
-        public GridChunkRemoved(ServerLevel level, ChunkPos chunkPos) {
-            super(level, chunkPos);
+    public static final Event<Removed> REMOVED = EventFactory.createArrayBacked(Removed.class, callbacks -> (level, chunkPos) -> {
+        for (var callback : callbacks) {
+            callback.removed(level, chunkPos);
         }
+    });
 
+    @FunctionalInterface
+    public interface Added {
+        void added(ServerLevel level, ChunkPos chunkPos);
     }
 
+    public interface Removed {
+        void removed(ServerLevel level, ChunkPos chunkPos);
+    }
 }

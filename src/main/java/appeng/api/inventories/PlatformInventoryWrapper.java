@@ -23,92 +23,82 @@
 
 package appeng.api.inventories;
 
+import lombok.RequiredArgsConstructor;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.transfer.ResourceHandler;
-import net.neoforged.neoforge.transfer.item.ItemResource;
-import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 /**
- * Wraps an inventory implementing ResourceHandler such that it can be used as an {@link InternalInventory}.
- * 
- * @deprecated We need to find a better abstraction of this since we use InternalInventory for UIs too, which still need
- *             direct mutable ItemStack access
+ * Wraps an inventory implementing the platforms standard inventory interface (i.e. IItemHandler on Forge) such that it
+ * can be used as an {@link InternalInventory}.
  */
+@RequiredArgsConstructor
 public class PlatformInventoryWrapper implements InternalInventory {
-    private final ResourceHandler<ItemResource> handler;
-
-    public PlatformInventoryWrapper(ResourceHandler<ItemResource> handler) {
-        this.handler = handler;
-    }
+    private final Storage<ItemVariant> handler;
 
     @Override
-    public ResourceHandler<ItemResource> toResourceHandler() {
+    public Storage<ItemVariant> toResourceHandler() {
         return handler;
     }
 
     @Override
     public int size() {
-        return handler.size();
+        return 0;
     }
 
     @Override
     public int getSlotLimit(int slot) {
-        return handler.getCapacityAsInt(slot, ItemResource.EMPTY);
+        return (int) handler.iterator().next().getCapacity();
     }
 
     @Override
     public ItemStack getStackInSlot(int slotIndex) {
         // TODO 1.21.9: this is obviously not mutable
-        var resource = handler.getResource(slotIndex);
-        var amount = handler.getAmountAsInt(slotIndex);
-        if (!resource.isEmpty()) {
-            return resource.toStack(amount);
-        } else {
-            return ItemStack.EMPTY;
-        }
+        var resource = handler.iterator().next().getResource().toStack(slotIndex);
+        return !resource.isEmpty() ? resource : ItemStack.EMPTY;
     }
 
     @Override
     public void setItemDirect(int slotIndex, ItemStack stack) {
-        try (var tx = Transaction.open(null)) {
-            var current = handler.getResource(slotIndex);
-            if (!current.isEmpty()) {
-                handler.extract(slotIndex, current, handler.getAmountAsInt(slotIndex), tx);
+        try (var tx = Transaction.openNested(null)) {
+            var current = handler.iterator().next();
+            if (!current.isResourceBlank()) {
+                handler.extract(current.getResource(), current.getAmount(), tx);
             }
-            handler.insert(slotIndex, ItemResource.of(stack), stack.getCount(), tx);
+            handler.insert(ItemVariant.of(stack), stack.getCount(), tx);
             tx.commit();
         }
     }
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-        return handler.isValid(slot, ItemResource.of(stack));
+        return handler.iterator().hasNext();
     }
 
     @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        try (var tx = Transaction.open(null)) {
-            var inserted = handler.insert(slot, ItemResource.of(stack), stack.getCount(), tx);
+        try (var tx = Transaction.openNested(null)) {
+            var inserted = handler.insert(ItemVariant.of(stack), stack.getCount(), tx);
             if (!simulate) {
                 tx.commit();
             }
-            return stack.copyWithCount(stack.getCount() - inserted);
+            return stack.copyWithCount((int) (stack.getCount() - inserted));
         }
     }
 
     @Override
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        try (var tx = Transaction.open(null)) {
-            var resource = handler.getResource(slot);
-            if (resource.isEmpty()) {
+        try (var tx = Transaction.openNested(null)) {
+            var resource = handler.iterator().next();
+            if (resource.isResourceBlank()) {
                 return ItemStack.EMPTY;
             }
-            var extracted = handler.extract(slot, resource, amount, tx);
+            var extracted = handler.extract(resource.getResource(), amount, tx);
             if (!simulate) {
                 tx.commit();
             }
-            return resource.toStack(extracted);
+            return resource.getResource().toStack((int) extracted);
         }
     }
-
 }

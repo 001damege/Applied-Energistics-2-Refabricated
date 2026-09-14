@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.world.level.Level;
@@ -36,8 +38,8 @@ import appeng.api.networking.security.IActionHost;
 /**
  * A Registry for locatable items, works based on serial numbers.
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Locatables {
-
     private static final Type<IActionHost> QUANTUM_NETWORK_BRIDGES = new Type<>();
 
     public static class Type<T> {
@@ -57,11 +59,7 @@ public final class Locatables {
         @Nullable
         public T get(Level level, long key) {
             Objects.requireNonNull(level, "level");
-            if (level.isClientSide()) {
-                return null;
-            } else {
-                return objects.get(key);
-            }
+            return level.isClientSide() ? null : objects.get(key);
         }
 
         /**
@@ -91,14 +89,10 @@ public final class Locatables {
          */
         public void unregister(Level level, long key) {
             Objects.requireNonNull(level, "level");
-
             if (!level.isClientSide()) {
                 objects.remove(key);
             }
         }
-    }
-
-    private Locatables() {
     }
 
     /**

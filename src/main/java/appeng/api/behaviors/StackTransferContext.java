@@ -16,7 +16,6 @@ import appeng.util.prioritylist.IPartitionList;
 @ApiStatus.Experimental
 @ApiStatus.NonExtendable
 public interface StackTransferContext {
-
     IStorageService getInternalStorage();
 
     IEnergySource getEnergySource();

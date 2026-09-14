@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -25,13 +26,12 @@ import appeng.util.AECodecs;
  */
 public class PatternDetailsTooltip {
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, PatternDetailsTooltip> STREAM_CODEC = StreamCodec
-            .composite(
-                    ComponentSerialization.TRUSTED_STREAM_CODEC, PatternDetailsTooltip::getOutputMethod,
-                    Property.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getProperties,
-                    GenericStack.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getInputs,
-                    GenericStack.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getOutputs,
-                    PatternDetailsTooltip::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf, PatternDetailsTooltip> STREAM_CODEC = StreamCodec.composite(
+            ComponentSerialization.TRUSTED_STREAM_CODEC, PatternDetailsTooltip::getOutputMethod,
+            Property.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getProperties,
+            GenericStack.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getInputs,
+            GenericStack.STREAM_CODEC.apply(ByteBufCodecs.list()), PatternDetailsTooltip::getOutputs,
+            PatternDetailsTooltip::new);
 
     /**
      * The text to use when the pattern uses Vanilla crafting as its method of producing the item. Usually reserved for
@@ -44,12 +44,15 @@ public class PatternDetailsTooltip {
      */
     public static final Component OUTPUT_TEXT_PRODUCES = GuiText.Produces.text();
 
+    @Getter
     private Component outputMethod;
 
     private final List<Property> additionalProperties = new ArrayList<>();
 
+    @Getter
     private final List<GenericStack> inputs = new ArrayList<>();
 
+    @Getter
     private final List<GenericStack> outputs = new ArrayList<>();
 
     /**
@@ -61,10 +64,7 @@ public class PatternDetailsTooltip {
         setOutputMethod(outputMethod);
     }
 
-    private PatternDetailsTooltip(Component outputMethod,
-            List<Property> additionalProperties,
-            List<GenericStack> inputs,
-            List<GenericStack> outputs) {
+    private PatternDetailsTooltip(Component outputMethod, List<Property> additionalProperties, List<GenericStack> inputs, List<GenericStack> outputs) {
         setOutputMethod(outputMethod);
         this.additionalProperties.addAll(additionalProperties);
         this.inputs.addAll(inputs);
@@ -82,14 +82,6 @@ public class PatternDetailsTooltip {
 
     public List<Property> getProperties() {
         return additionalProperties;
-    }
-
-    public List<GenericStack> getInputs() {
-        return inputs;
-    }
-
-    public List<GenericStack> getOutputs() {
-        return outputs;
     }
 
     public void addInput(AEKey what, long amount) {
@@ -113,9 +105,7 @@ public class PatternDetailsTooltip {
     }
 
     public void addRecipeId(ResourceKey<Recipe<?>> recipeId) {
-        this.additionalProperties.add(
-                new Property(GuiText.PatternTooltipRecipeId.text(),
-                        Component.literal(recipeId.identifier().toString())));
+        this.additionalProperties.add(new Property(GuiText.PatternTooltipRecipeId.text(), Component.literal(recipeId.location().toString())));
     }
 
     public void addProperty(Component description) {
@@ -127,16 +117,13 @@ public class PatternDetailsTooltip {
             if (input == null) {
                 continue;
             }
-
-            addInput(input.getPossibleInputs()[0].what(),
-                    input.getPossibleInputs()[0].amount() * input.getMultiplier());
+            addInput(input.getPossibleInputs()[0].what(), input.getPossibleInputs()[0].amount() * input.getMultiplier());
         }
 
         for (var output : details.getOutputs()) {
             if (output == null) {
                 continue;
             }
-
             addOutput(output.what(), output.amount());
         }
     }
@@ -146,13 +133,6 @@ public class PatternDetailsTooltip {
      * not.
      */
     public record Property(Component name, @Nullable Component value) {
-        public static StreamCodec<RegistryFriendlyByteBuf, Property> STREAM_CODEC = StreamCodec.composite(
-                ComponentSerialization.STREAM_CODEC, Property::name,
-                ComponentSerialization.STREAM_CODEC.apply(AECodecs::nullable), Property::value,
-                Property::new);
-    }
-
-    public Component getOutputMethod() {
-        return outputMethod;
+        public static StreamCodec<RegistryFriendlyByteBuf, Property> STREAM_CODEC = StreamCodec.composite(ComponentSerialization.STREAM_CODEC, Property::name, ComponentSerialization.STREAM_CODEC.apply(AECodecs::nullable), Property::value, Property::new);
     }
 }

@@ -23,11 +23,15 @@
 
 package appeng.api.config;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.network.chat.Component;
 
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum PowerUnit {
     AE("gui.ae2.units.appliedenergistics", "AE"), // Native Units - AE Energy
-    FE("gui.ae2.units.fe", "FE"); // Forge Energy
+    TR("gui.ae2.units.tr", "TR"); // TechReborn Energy
 
     /**
      * unlocalized name for the power unit.
@@ -37,16 +41,12 @@ public enum PowerUnit {
     /**
      * unlocalized name for the power unit's symbol used to display values.
      */
+    @Getter
     public final String symbolName;
     /**
      * please do not edit this value, it is set when AE loads its config files.
      */
     public double conversionRatio = 1.0;
-
-    PowerUnit(String un, String symbolName) {
-        this.unlocalizedName = un;
-        this.symbolName = symbolName;
-    }
 
     /**
      * do power conversion using AE's conversion rates.
@@ -67,9 +67,4 @@ public enum PowerUnit {
     public Component textComponent() {
         return Component.translatable(unlocalizedName);
     }
-
-    public String getSymbolName() {
-        return symbolName;
-    }
-
 }

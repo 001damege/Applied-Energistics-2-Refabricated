@@ -22,23 +22,30 @@ import java.util.Arrays;
 
 import com.google.common.base.Preconditions;
 
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
 
 import appeng.api.inventories.BaseInternalInventory;
 import appeng.util.inv.filter.IAEItemFilter;
 
 public class AppEngInternalInventory extends BaseInternalInventory {
+    @Setter
+    @Getter
     private boolean enableClientEvents = false;
     private InternalInventoryHost host;
     private final NonNullList<ItemStack> stacks;
     private final int[] maxStack;
+    @Setter
     private IAEItemFilter filter;
     private boolean notifyingChanges = false;
 
@@ -60,10 +67,6 @@ public class AppEngInternalInventory extends BaseInternalInventory {
 
     public AppEngInternalInventory(@Nullable InternalInventoryHost inventory, int size) {
         this(inventory, size, 64);
-    }
-
-    public void setFilter(IAEItemFilter filter) {
-        this.filter = filter;
     }
 
     @Override
@@ -141,13 +144,7 @@ public class AppEngInternalInventory extends BaseInternalInventory {
     }
 
     public boolean isItemValid(int slot, ItemStack stack) {
-        if (this.maxStack[slot] == 0) {
-            return false;
-        }
-        if (this.filter != null) {
-            return this.filter.allowInsert(this, slot, stack);
-        }
-        return true;
+        return this.maxStack[slot] != 0 && (this.filter == null || this.filter.allowInsert(this, slot, stack));
     }
 
     public ItemContainerContents toItemContainerContents() {
@@ -158,33 +155,36 @@ public class AppEngInternalInventory extends BaseInternalInventory {
         contents.copyInto(stacks);
     }
 
-    public void writeToNBT(ValueOutput output, String name) {
-        var list = output.childrenList(name);
+    public void writeToNBT(CompoundTag data, String name, HolderLookup.Provider registries) {
+        if (isEmpty()) {
+            data.remove(name);
+            return;
+        }
+
+        var items = new ListTag();
         for (int i = 0; i < stacks.size(); i++) {
             var stack = stacks.get(i);
             if (!stack.isEmpty()) {
-                var entry = list.addChild();
-                entry.store(ItemStack.MAP_CODEC, stack);
-                entry.putInt("Slot", i);
+                CompoundTag itemTag = new CompoundTag();
+                itemTag.putInt("Slot", i);
+                items.add(stack.save(registries, itemTag));
             }
         }
+        data.put(name, items);
     }
 
-    public void readFromNBT(ValueInput input, String name) {
-        for (var entry : input.childrenListOrEmpty(name)) {
-            int slot = entry.getIntOr("Slot", 0);
-            if (slot >= 0 && slot < stacks.size()) {
-                stacks.set(slot, entry.read(ItemStack.MAP_CODEC).orElse(ItemStack.EMPTY));
+    public void readFromNBT(CompoundTag data, String name, HolderLookup.Provider registries) {
+        if (data.contains(name, Tag.TAG_LIST)) {
+            var tagList = data.getList(name, Tag.TAG_COMPOUND);
+            for (var itemTag : tagList) {
+                var itemCompound = (CompoundTag) itemTag;
+                int slot = itemCompound.getInt("Slot");
+
+                if (slot >= 0 && slot < stacks.size()) {
+                    stacks.set(slot, ItemStack.parseOptional(registries, itemCompound));
+                }
             }
         }
-    }
-
-    private boolean isEnableClientEvents() {
-        return this.enableClientEvents;
-    }
-
-    public void setEnableClientEvents(boolean enableClientEvents) {
-        this.enableClientEvents = enableClientEvents;
     }
 
     @ApiStatus.Internal
